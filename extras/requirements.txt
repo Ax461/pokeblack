@@ -1,0 +1,10 @@
+-e git://github.com/drj11/pypng.git@master#egg=pypng
+
+# for the map editor, pillow instead of PIL
+pillow
+
+# testing
+mock
+
+# emulation
+vba_wrapper==0.0.2
