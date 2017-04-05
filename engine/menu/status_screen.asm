@@ -144,6 +144,13 @@ StatusScreen:
 	predef IndexToPokedex
 	coord hl, 3, 7
 	ld de, wd11e
+	ld a, [wMonHIndex]
+	cp GHOST
+	jr z, .continue
+	jr .skip
+.continue
+	ld de, 1 ; don't ask
+.skip
 	lb bc, LEADING_ZEROES | 1, 3
 	call PrintNumber ; Pokémon no.
 	coord hl, 11, 10

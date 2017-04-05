@@ -298,6 +298,9 @@ _TangelaDexEntry::
 	next "shake as it walks"
 	dex
 
+_GhostDexEntry::
+	dex
+
 _GrowlitheDexEntry::
 	text "Very protective"
 	next "of its territory."

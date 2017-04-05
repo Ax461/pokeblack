@@ -1,4 +1,19 @@
 AskName:
+	ld a, [wcf91]
+	cp GHOST
+	jr z, .skip
+	jr .continue
+.skip
+	call GetPredefRegisters
+	ld a, [wcf91]
+	ld [wd11e], a
+	call GetMonName
+	ld d, h
+	ld e, l
+	ld hl, wcd6d
+	ld bc, NAME_LENGTH
+	jp CopyData
+.continue
 	call SaveScreenTilesToBuffer1
 	call GetPredefRegisters
 	push hl

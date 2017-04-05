@@ -927,6 +927,12 @@ OaksLabMonChoiceMenu:
 	ld a, [wcf91]
 	ld [wd11e], a
 	call AddPartyMon
+	ld a, 1
+	ld [wCurEnemyLVL], a
+	ld a, GHOST
+	ld [wcf91], a
+	ld [wd11e], a
+	call AddPartyMon
 	ld hl, wd72e
 	set 3, [hl]
 	ld a, $fc

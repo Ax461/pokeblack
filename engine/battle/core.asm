@@ -6818,10 +6818,10 @@ HandleExplodingAnimation:
 	bit Invulnerable, a ; fly/dig
 	ret nz
 	ld a, [hli]
-	cp GHOST
+	cp GHOST_T
 	ret z
 	ld a, [hl]
-	cp GHOST
+	cp GHOST_T
 	ret z
 	ld a, [wMoveMissed]
 	and a

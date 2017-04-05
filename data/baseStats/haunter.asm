@@ -4,7 +4,7 @@ db 50 ; base attack
 db 45 ; base defense
 db 95 ; base speed
 db 115 ; base special
-db GHOST ; species type 1
+db GHOST_T ; species type 1
 db POISON ; species type 2
 db 90 ; catch rate
 db 126 ; base exp yield

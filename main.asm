@@ -10,6 +10,7 @@ PICS_2 EQU $A
 PICS_3 EQU $B
 PICS_4 EQU $C
 PICS_5 EQU $D
+PICS_6 EQU $2D
 
 INCLUDE "home.asm"
 
@@ -22,7 +23,6 @@ INCLUDE "engine/black_out.asm"
 
 MewPicFront:: INCBIN "pic/bmon/mew.pic"
 MewPicBack::  INCBIN "pic/monback/mewb.pic"
-INCLUDE "data/baseStats/mew.asm"
 
 INCLUDE "engine/battle/safari_zone.asm"
 
@@ -2094,3 +2094,8 @@ INCLUDE "engine/evolution.asm"
 INCLUDE "engine/overworld/elevator.asm"
 
 INCLUDE "engine/items/tm_prices.asm"
+
+SECTION "Pics 6", ROMX, BANK[PICS_6]
+
+GhostPicFront::  INCBIN "pic/other/ghost.pic"
+GhostPicBack::   INCBIN "pic/monback/ghostb.pic"

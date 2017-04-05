@@ -29,7 +29,7 @@ EvosMovesPointerTable:
 	dw Mon009_EvosMoves
 	dw Mon127_EvosMoves
 	dw Mon114_EvosMoves
-	dw Mon152_EvosMoves ;MissingNo
+	dw Mon152_EvosMoves
 	dw Mon153_EvosMoves ;MissingNo
 	dw Mon058_EvosMoves
 	dw Mon095_EvosMoves
@@ -566,7 +566,7 @@ Mon114_EvosMoves:
 	db 0
 
 Mon152_EvosMoves:
-;MISSINGNO
+;GHOST
 ;Evolutions
 	db 0
 ;Learnset

@@ -81,6 +81,8 @@ _AddPartyMon:
 
 ; If the mon is being added to the player's party, update the pokedex.
 	ld a, [wcf91]
+	cp GHOST
+	jr z, .skip
 	ld [wd11e], a
 	push de
 	predef IndexToPokedex
@@ -111,6 +113,7 @@ _AddPartyMon:
 	jr nz, .copyEnemyMonData
 
 ; Not wild.
+.skip
 	call Random ; generate random IVs
 	ld b, a
 	call Random
