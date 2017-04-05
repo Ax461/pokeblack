@@ -231,9 +231,6 @@ ENDC
 	jr .awaitUserInterruptionLoop
 
 .finishedWaiting
-	ld a, [wTitleMonSpecies]
-	call PlayCry
-	call WaitForSoundToFinish
 	call GBPalWhiteOutWithDelay3
 	call ClearSprites
 	xor a
@@ -351,11 +348,7 @@ ClearBothBGMaps:
 	jp FillMemory
 
 LoadTitleMonSprite:
-	ld [wcf91], a
-	ld [wd0b5], a
-	coord hl, 5, 10
-	call GetMonHeader
-	jp LoadFrontSpriteByMonIndex
+	ret
 
 TitleScreenCopyTileMapToVRAM:
 	ld [H_AUTOBGTRANSFERDEST + 1], a
@@ -386,14 +379,14 @@ INCLUDE "data/title_mons.asm"
 
 ; prints version text (red, blue)
 PrintGameVersionOnTitleScreen:
-	coord hl, 7, 8
+	coord hl, 6, 8
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
 IF DEF(_RED)
-	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Black Version"
 ENDC
 IF DEF(_BLUE)
 	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
