@@ -1875,8 +1875,6 @@ Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
 
 SECTION "bank1A",ROMX[$4000],BANK[$1A]
 
-INCLUDE "engine/battle/decrement_pp.asm"
-
 Version_GFX:
 IF DEF(_RED)
 	INCBIN "gfx/red/redgreenversion.1bpp" ; 10 tiles
@@ -1929,6 +1927,7 @@ Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 
 SECTION "bank1C",ROMX[$4000],BANK[$1C]
 
+INCLUDE "engine/battle/decrement_pp.asm"
 INCLUDE "engine/gamefreak.asm"
 INCLUDE "engine/hall_of_fame.asm"
 INCLUDE "engine/overworld/healing_machine.asm"
@@ -2073,6 +2072,8 @@ INCLUDE "engine/menu/league_pc.asm"
 
 INCLUDE "engine/overworld/hidden_items.asm"
 
+INCLUDE "engine/items/tm_prices.asm"
+
 
 SECTION "bank1E",ROMX[$4000],BANK[$1E]
 
@@ -2093,7 +2094,6 @@ INCLUDE "engine/evolution.asm"
 
 INCLUDE "engine/overworld/elevator.asm"
 
-INCLUDE "engine/items/tm_prices.asm"
 
 SECTION "Pics 6", ROMX, BANK[PICS_6]
 

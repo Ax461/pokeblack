@@ -525,7 +525,11 @@ MainInBattleLoop:
 	jp z, HandleEnemyMonFainted
 	call HandlePoisonBurnLeechSeed
 	jp z, HandlePlayerMonFainted
+	ld a, [wCurseFlag]
+	and a
+	jr nz, .skip
 	call DrawHUDsAndHPBars
+.skip
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
 .playerMovesFirst
@@ -857,6 +861,9 @@ FaintEnemyPokemon:
 	ld hl, wPlayerUsedMove
 	ld [hli], a
 	ld [hl], a
+	ld a, [wCurseFlag]
+	and a
+	jr nz, .sfxplayed
 	coord hl, 12, 5
 	coord de, 12, 6
 	call SlideDownFaintedMonPic
@@ -899,11 +906,16 @@ FaintEnemyPokemon:
 	ld a, d
 	and a
 	ret z
+	ld a, [wCurseFlag]
+	and a
+	jr nz, .skip
 	ld hl, EnemyMonFaintedText
 	call PrintText
 	call PrintEmptyString
+.skip
 	call SaveScreenTilesToBuffer1
 	xor a
+	ld [wCurseFlag], a
 	ld [wBattleResult], a
 	ld b, EXP_ALL
 	call IsItemInBag
@@ -3135,6 +3147,12 @@ ExecutePlayerMove:
 	xor a
 	ld [H_WHOSETURN], a ; set player's turn
 	ld a, [wPlayerSelectedMove]
+	cp CURSE
+	jr nz, .skip
+	ld a, 1
+	ld [wCurseFlag], a
+	ld a, [wPlayerSelectedMove]
+.skip
 	inc a
 	jp z, ExecutePlayerMoveDone ; for selected move = FF, skip most of player's turn
 	xor a
@@ -7120,6 +7138,9 @@ LoadMonBackPic:
 
 JumpMoveEffect:
 	call _JumpMoveEffect
+	ld a, [wCurseFlag]
+	and a
+	ret nz
 	ld b, $1
 	ret
 
@@ -7142,7 +7163,7 @@ _JumpMoveEffect:
 	jp hl ; jump to special effect handler
 
 MoveEffectPointerTable:
-	 dw SleepEffect               ; unused effect
+	 dw CurseEffect               ; CURSE_EFFECT
 	 dw PoisonEffect              ; POISON_SIDE_EFFECT1
 	 dw DrainHPEffect             ; DRAIN_HP_EFFECT
 	 dw FreezeBurnParalyzeEffect  ; BURN_SIDE_EFFECT1
@@ -7228,6 +7249,9 @@ MoveEffectPointerTable:
 	 dw LeechSeedEffect           ; LEECH_SEED_EFFECT
 	 dw SplashEffect              ; SPLASH_EFFECT
 	 dw DisableEffect             ; DISABLE_EFFECT
+
+CurseEffect:
+	ret
 
 SleepEffect:
 	ld de, wEnemyMonStatus

@@ -12,7 +12,7 @@ INCBIN "pic/other/ghost.pic",0,1 ; 55, sprite dimensions
 dw GhostPicFront
 dw GhostPicBack
 ; attacks known at lvl 0
-db POUND
+db CURSE
 db 0
 db 0
 db 0

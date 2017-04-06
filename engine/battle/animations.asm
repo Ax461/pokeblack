@@ -445,6 +445,9 @@ ShareMoveAnimations:
 PlayApplyingAttackAnimation:
 ; Generic animation that shows after the move's individual animation
 ; Different animation depending on whether the move has an additional effect and on whose turn it is
+	ld a, [wCurseFlag]
+	and a
+	ret nz
 	ld a,[wAnimationType]
 	and a
 	ret z
@@ -1041,14 +1044,14 @@ SpecialEffectPointers:
 	dw AnimationSlideMonHalfOff
 	db SE_SHAKE_ENEMY_HUD ; $E4
 	dw AnimationShakeEnemyHUD
-	db SE_SHAKE_ENEMY_HUD_2 ; unused--same pointer as SE_SHAKE_ENEMY_HUD ($E4)
-	dw AnimationShakeEnemyHUD
+	db SE_PLAY_DISTORTED_CRY ; $E3
+	dw AnimationPlayDistortedCry
 	db SE_SPIRAL_BALLS_INWARD ; $E2
 	dw AnimationSpiralBallsInward
 	db SE_DELAY_ANIMATION_10 ; $E1
 	dw AnimationDelay10
-	db SE_FLASH_ENEMY_MON_PIC ; unused--same as SE_FLASH_MON_PIC ($F5), but for the enemy mon
-	dw AnimationFlashEnemyMonPic
+	db SE_DELAY_ANIMATION_30
+	dw AnimationDelay30
 	db SE_HIDE_ENEMY_MON_PIC ; $DF
 	dw AnimationHideEnemyMonPic
 	db SE_BLINK_ENEMY_MON ; $DE
@@ -1065,11 +1068,23 @@ SpecialEffectPointers:
 	dw AnimationSubstitute
 	db SE_WAVY_SCREEN ; $D8
 	dw AnimationWavyScreen
+	db SE_CLEAR_SCREEN ; $D7
+	dw AnimationClearScreen
+	db SE_CUT_TO_BLACK ; $D6
+	dw AnimationCutToBlack
 	db $FF
 
 AnimationDelay10:
 	ld c,10
 	jp DelayFrames
+
+AnimationDelay30:
+	ld c,30
+	jp DelayFrames
+
+AnimationPlayDistortedCry:
+	ld a,[wEnemyMonSpecies2]
+	jp PlayCry
 
 ; calls a function with the turn flipped from player to enemy or vice versa
 ; input - hl - address of function to call
@@ -1174,6 +1189,21 @@ AnimationFlashScreen:
 	ld [rBGP],a ; restore initial palette
 	ret
 
+AnimationClearScreen:
+	ld c,27
+	call DelayFrames
+
+	coord hl, 0, 0
+	lb bc, 4, 11
+	call ClearScreenArea
+
+	coord hl, 12, 0
+	lb bc, 7, 7
+	call ClearScreenArea
+	call Delay3
+
+	ret
+
 AnimationDarkScreenPalette:
 ; Changes the screen's palette to a dark palette.
 	lb bc, $6f, $6f
@@ -1184,12 +1214,12 @@ AnimationDarkenMonPalette:
 	lb bc, $f9, $f4
 	jr SetAnimationBGPalette
 
-AnimationUnusedPalette1:
-	lb bc, $fe, $f8
+AnimationCutToBlack:
+	lb bc, $ff, $ff
 	jr SetAnimationBGPalette
 
-AnimationUnusedPalette2:
-	lb bc, $ff, $ff
+AnimationUnusedPalette1:
+	lb bc, $fe, $f8
 	jr SetAnimationBGPalette
 
 AnimationResetScreenPalette:
@@ -1197,7 +1227,7 @@ AnimationResetScreenPalette:
 	lb bc, $e4, $e4
 	jr SetAnimationBGPalette
 
-AnimationUnusedPalette3:
+AnimationUnusedPalette2:
 	lb bc, $00, $00
 	jr SetAnimationBGPalette
 
@@ -1206,7 +1236,7 @@ AnimationLightScreenPalette:
 	lb bc, $90, $90
 	jr SetAnimationBGPalette
 
-AnimationUnusedPalette4:
+AnimationUnusedPalette3:
 	lb bc, $40, $40
 
 SetAnimationBGPalette:
@@ -3011,6 +3041,9 @@ PlayApplyingAttackSound:
 ; play a different sound depending if move is not very effective, neutral, or super-effective
 ; don't play any sound at all if move is ineffective
 	call WaitForSoundToFinish
+	ld a, [wCurseFlag]
+	and a
+	ret nz
 	ld a, [wDamageMultipliers]
 	and $7f
 	ret z

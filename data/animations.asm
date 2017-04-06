@@ -163,6 +163,7 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw CurseAnim
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -211,6 +212,14 @@ AttackAnimationPointers:
 ; $FF terminated
 ZigZagScreenAnim:
 	db SE_WAVY_SCREEN, $FF
+	db $FF
+
+CurseAnim:
+	db SE_CUT_TO_BLACK, $FF
+	db SE_DELAY_ANIMATION_30, $FF
+	db SE_PLAY_DISTORTED_CRY, $FF
+	db SE_CLEAR_SCREEN, $FF
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 PoundAnim:

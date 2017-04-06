@@ -443,6 +443,7 @@ wMenuWatchMovingOutOfBounds:: ; cc37
 wTradeCenterPointerTableIndex:: ; cc38
 	ds 1
 
+wCurseFlag:: ; cc39
 	ds 1
 
 wTextDest:: ; cc3a

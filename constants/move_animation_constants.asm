@@ -1,8 +1,10 @@
 ; subanimations
 
-const_value = $D8
+const_value = $D6
 
 ; special effects, prefaced with "SE" for "Special Effect"
+	const SE_CUT_TO_BLACK              ; $D6 used in Curse
+	const SE_CLEAR_SCREEN              ; $D7 used in Curse
 	const SE_WAVY_SCREEN               ; $D8 used in Psywave/Night Shade/Psychic etc.
 	const SE_SUBSTITUTE_MON            ; $D9 used in Substitute (turns the pokemon into a mini sprite)
 	const SE_SHAKE_BACK_AND_FORTH      ; $DA used in Double Team
@@ -11,10 +13,10 @@ const_value = $D8
 	const SE_SHOW_MON_PIC              ; $DD used in Low Kick/Quick Attack/Seismic Toss etc.
 	const SE_BLINK_ENEMY_MON           ; $DE used in Seismic Toss
 	const SE_HIDE_ENEMY_MON_PIC        ; $DF used in Seismic Toss
-	const SE_FLASH_ENEMY_MON_PIC       ; $E0 unused
+	const SE_DELAY_ANIMATION_30        ; $E0 used in Curse
 	const SE_DELAY_ANIMATION_10        ; $E1 used in lots of animations
 	const SE_SPIRAL_BALLS_INWARD       ; $E2 used in Growth/Focus Energy/Hyper Beam etc.
-	const SE_SHAKE_ENEMY_HUD_2         ; $E3 unused
+	const SE_PLAY_DISTORTED_CRY        ; $E3 used in Curse
 	const SE_SHAKE_ENEMY_HUD           ; $E4
 	const SE_SLIDE_MON_HALF_OFF        ; $E5 used in Softboiled
 	const SE_PETALS_FALLING            ; $E6 used in Petal Dance
