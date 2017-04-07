@@ -630,7 +630,7 @@ INCLUDE "audio/music/gym.asm"
 INCLUDE "audio/music/pokecenter.asm"
 
 
-SECTION "Music 2", ROMX[$6322], BANK[AUDIO_2]
+SECTION "Music 2", ROMX[$632A], BANK[AUDIO_2]
 
 INCLUDE "audio/sfx/pokeflute_ch4_ch5.asm"
 INCLUDE "audio/sfx/unused2_2.asm"
