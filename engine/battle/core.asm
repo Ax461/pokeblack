@@ -3380,6 +3380,10 @@ ScaredText:
 	TX_FAR _ScaredText
 	db "@"
 
+EnemyScaredText:
+	TX_FAR _EnemyScaredText
+	db "@"
+
 GetOutText:
 	TX_FAR _GetOutText
 	db "@"
@@ -5710,6 +5714,13 @@ ExecuteEnemyMove:
 	jr nz, .enemyHasNoSpecialConditions
 	jp hl
 .enemyHasNoSpecialConditions
+	ld a, [wBattleMonSpecies]
+	cp GHOST
+	jr nz, .skip
+	ld hl, EnemyScaredText
+	call PrintText
+	jp ExecuteEnemyMoveDone
+.skip
 	ld hl, wEnemyBattleStatus1
 	bit ChargingUp, [hl] ; is the enemy charging up for attack?
 	jr nz, EnemyCanExecuteChargingMove ; if so, jump

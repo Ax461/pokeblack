@@ -1206,6 +1206,12 @@ _ScaredText::
 	line "scared to move!"
 	prompt
 
+_EnemyScaredText::
+	TX_RAM wEnemyMonNick
+	text " is too"
+	line "scared to move!"
+	prompt
+
 _GetOutText::
 	text "GHOST: Get out..."
 	line "Get out..."
