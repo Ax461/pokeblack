@@ -5,7 +5,6 @@ flag_array: MACRO
 	ds ((\1) + 7) / 8
 ENDM
 
-box_struct_length EQU 25 + NUM_MOVES * 2
 box_struct: MACRO
 \1Species::    db
 \1HP::         dw
@@ -2116,7 +2115,7 @@ wMoveNum:: ; d0e0
 wMovesString:: ; d0e1
 	ds 56
 
-wUnusedD119:: ; d119
+wKilledMonsNumber:: ; d119
 	ds 1
 
 wWalkBikeSurfStateCopy:: ; d11a
@@ -3212,7 +3211,7 @@ wBoxSpecies:: ds MONS_PER_BOX + 1
 
 wBoxMons::
 wBoxMon1:: box_struct wBoxMon1 ; da96
-wBoxMon2:: ds box_struct_length * (MONS_PER_BOX + -1) ; dab7
+wBoxMon2:: ds BOX_STRUCT_LENGTH * (MONS_PER_BOX + -1) ; dab7
 
 wBoxMonOT::    ds NAME_LENGTH * MONS_PER_BOX ; dd2a
 wBoxMonNicks:: ds NAME_LENGTH * MONS_PER_BOX ; de06

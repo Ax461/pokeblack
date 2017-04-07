@@ -6864,6 +6864,8 @@ PlayMoveAnimation:
 	predef_jump MoveAnimation
 
 InitBattle:
+	xor a
+	ld [wKilledMonsNumber], a
 	ld a, [wCurOpponent]
 	and a
 	jr z, DetermineWildOpponent
@@ -7262,6 +7264,9 @@ MoveEffectPointerTable:
 	 dw DisableEffect             ; DISABLE_EFFECT
 
 CurseEffect:
+	ld a, [wKilledMonsNumber]
+	inc a
+	ld [wKilledMonsNumber], a
 	ret
 
 SleepEffect:
