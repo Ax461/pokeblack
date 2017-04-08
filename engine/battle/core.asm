@@ -1045,6 +1045,14 @@ TrainerBattleVictory:
 ; win money
 	ld hl, MoneyForWinningText
 	call PrintText
+	ld a, [wBattleMonSpecies]
+	cp GHOST
+	jr nz, .skip
+	ld a, BATTLE_TYPE_TRAINER
+	ld [wBattleType], a
+	call SaveScreenTilesToBuffer1
+	call DisplayBattleMenu
+.skip
 	ld de, wPlayerMoney + 2
 	ld hl, wAmountMoneyWon + 2
 	ld c, $3
@@ -2108,6 +2116,8 @@ DisplayBattleMenu:
 	call SaveScreenTilesToBuffer1
 .nonstandardbattle
 	ld a, [wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	call z, PrintEmptyString
 	cp BATTLE_TYPE_SAFARI
 	ld a, BATTLE_MENU_TEMPLATE
 	jr nz, .menuselected
@@ -2253,9 +2263,23 @@ DisplayBattleMenu:
 	cp BATTLE_TYPE_SAFARI
 	jr z, .throwSafariBallWasSelected
 ; the "FIGHT" menu was selected
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	jr z, .skip
 	xor a
 	ld [wNumRunAttempts], a
 	jp LoadScreenTilesFromBuffer1 ; restore saved screen and return
+.skip
+	call MoveSelectionMenu
+	ld a, [hJoyHeld]
+	bit 1, a ; B button pressed?
+	jp nz, DisplayBattleMenu
+	call PrintMonName1Text
+	call Delay3
+	call GBPalBlackOut
+	ld c, 30
+	call DelayFrames
+	jp LoadScreenTilesFromBuffer1
 .throwSafariBallWasSelected
 	ld a, SAFARI_BALL
 	ld [wcf91], a
@@ -2319,6 +2343,7 @@ DisplayPlayerBag:
 	ld [wListPointer + 1], a
 
 DisplayBagMenu:
+	call PrintEmptyString
 	xor a
 	ld [wPrintItemPrices], a
 	ld a, ITEMLISTMENU
@@ -2334,9 +2359,15 @@ DisplayBagMenu:
 	jp c, DisplayBattleMenu ; go back to battle menu if an item was not selected
 
 UseBagItem:
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_TRAINER
 	; either use an item from the bag or use a safari zone item
 	ld a, [wcf91]
 	ld [wd11e], a
+	jr nz, .next
+	cp $05
+	jr c, DisplayBagMenu
+.next
 	call GetItemName
 	call CopyStringToCF4B ; copy name
 	xor a
@@ -2377,6 +2408,14 @@ UseBagItem:
 	call Delay3
 .returnAfterUsingItem_NoCapture
 
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	jr nz, .skip
+	call LoadScreenTilesFromBuffer2
+	call Delay3
+	call GBPalNormal
+	jp DisplayBattleMenu
+.skip
 	call GBPalNormal
 	and a ; reset carry
 	ret
@@ -2500,6 +2539,9 @@ PartyMenuOrRockOrRun:
 	call PrintText
 	jp .partyMonDeselected
 .notAlreadyOut
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	jp z, .partyMonWasSelected
 	call HasMonFainted
 	jp z, .partyMonDeselected ; can't switch to fainted mon
 	ld a, $1
@@ -2540,6 +2582,9 @@ AlreadyOutText:
 	db "@"
 
 BattleMenu_RunWasSelected:
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	ret z
 	call LoadScreenTilesFromBuffer1
 	ld a, $3
 	ld [wCurrentMenuItem], a

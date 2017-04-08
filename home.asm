@@ -1436,6 +1436,8 @@ DisplayListMenuIDLoop::
 	ld a,[wBattleType]
 	and a ; is it the Old Man battle?
 	jr z,.notOldManBattle
+	cp BATTLE_TYPE_TRAINER
+	jr z, .notOldManBattle
 .oldManBattle
 	ld a,"▶"
 	Coorda 5, 4 ; place menu cursor in front of first menu entry
@@ -4492,6 +4494,14 @@ GBPalNormal::
 GBPalWhiteOut::
 ; White out all palettes.
 	xor a
+	ld [rBGP],a
+	ld [rOBP0],a
+	ld [rOBP1],a
+	ret
+
+GBPalBlackOut::
+; Black out all palettes.
+	ld a, $FF
 	ld [rBGP],a
 	ld [rOBP0],a
 	ld [rOBP1],a
