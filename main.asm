@@ -102,6 +102,9 @@ INCLUDE "engine/overworld/daycare_exp.asm"
 
 INCLUDE "data/hide_show_data.asm"
 
+INCLUDE "engine/overworld/killtrainer.asm"
+INCLUDE "data/killtrainer_data.asm"
+
 INCLUDE "engine/overworld/field_move_messages.asm"
 
 INCLUDE "engine/items/inventory.asm"

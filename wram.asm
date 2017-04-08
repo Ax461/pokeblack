@@ -2573,7 +2573,24 @@ wDestinationWarpID:: ; d42f
 ; if $ff, the player's coordinates are not updated when entering the map
 	ds 1
 
-	ds 128
+	ds 85
+
+wKillTrainerCurseFlag::
+	ds 1
+
+wKillTrainerList::
+; each entry consists of 3 bytes
+; * the sprite ID (depending on the current map)
+; * the trainer index (global, used for wKillTrainerFlags)
+; terminated with $FF
+	ds 10 * 3
+
+wKillTrainerFlags:: ; d430
+	ds 10
+wKillTrainerFlagsEnd::
+
+wKillTrainerIndex::
+	ds 2
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)

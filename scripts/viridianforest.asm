@@ -35,7 +35,7 @@ ViridianForestTrainerHeader0:
 	dw ViridianForestBattleText1 ; TextBeforeBattle
 	dw ViridianForestAfterBattleText1 ; TextAfterBattle
 	dw ViridianForestEndBattleText1 ; TextEndBattle
-	dw ViridianForestEndBattleText1 ; TextEndBattle
+	dw KT_VIRIDIAN_FOREST_TRAINER_0 ; TrainerIndex
 
 ViridianForestTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_1
@@ -44,7 +44,7 @@ ViridianForestTrainerHeader1:
 	dw ViridianForestBattleText2 ; TextBeforeBattle
 	dw ViridianForestAfterBattleText2 ; TextAfterBattle
 	dw ViridianForestEndBattleText2 ; TextEndBattle
-	dw ViridianForestEndBattleText2 ; TextEndBattle
+	dw KT_VIRIDIAN_FOREST_TRAINER_1 ; TrainerIndex
 
 ViridianForestTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_2
@@ -53,7 +53,7 @@ ViridianForestTrainerHeader2:
 	dw ViridianForestBattleText3 ; TextBeforeBattle
 	dw ViridianForestAfterBattleText3 ; TextAfterBattle
 	dw ViridianForestEndBattleText3 ; TextEndBattle
-	dw ViridianForestEndBattleText3 ; TextEndBattle
+	dw KT_VIRIDIAN_FOREST_TRAINER_2 ; TrainerIndex
 
 	db $ff
 

@@ -748,6 +748,14 @@ ExtraWarpCheck::
 
 MapEntryAfterBattle::
 	callba IsPlayerStandingOnWarp ; for enabling warp testing after collisions
+	ld a, [wKillTrainerCurseFlag]
+	or a
+	jp z, .skip
+	xor a
+	ld [wKillTrainerCurseFlag], a
+	call UpdateSprites
+	call Delay3
+.skip
 	ld a,[wMapPalOffset]
 	and a
 	jp z,GBFadeInFromWhite
@@ -2033,6 +2041,7 @@ LoadPlayerSpriteGraphicsCommon::
 ; function to load data from the map header
 LoadMapHeader::
 	callba MarkTownVisitedAndLoadMissableObjects
+	callba LoadTrainers
 	ld a,[wCurMapTileset]
 	ld a,[wCurMap]
 	call SwitchToMapRomBank

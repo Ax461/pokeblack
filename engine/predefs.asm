@@ -71,6 +71,7 @@ PredefPointers::
 	add_predef FlagActionPredef
 	add_predef HideObject
 	add_predef IsObjectHidden
+	add_predef IsTrainerKilled
 	add_predef ApplyOutOfBattlePoisonDamage
 	add_predef AnyPartyAlive
 	add_predef ShowObject

@@ -1,0 +1,5 @@
+const_value = 1
+
+	const KT_VIRIDIAN_FOREST_TRAINER_0    ; 01
+	const KT_VIRIDIAN_FOREST_TRAINER_1    ; 02
+	const KT_VIRIDIAN_FOREST_TRAINER_2    ; 03

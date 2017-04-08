@@ -2275,6 +2275,9 @@ DisplayBattleMenu:
 	bit 1, a ; B button pressed?
 	jp nz, DisplayBattleMenu
 	call PrintMonName1Text
+	ld a, 1
+	ld [wKillTrainerCurseFlag], a
+	callba KillTrainer
 	call Delay3
 	call GBPalBlackOut
 	ld c, 30

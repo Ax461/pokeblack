@@ -476,6 +476,10 @@ CheckSpriteAvailability:
 	ld a, [$ffe5]
 	and a
 	jp nz, .spriteInvisible
+	predef IsTrainerKilled
+	ld a, [$ffe5]
+	and a
+	jp nz, .spriteInvisible
 	ld h, wSpriteStateData2 / $100
 	ld a, [H_CURRENTSPRITEOFFSET]
 	add $6

@@ -2277,6 +2277,8 @@ ReadTrainerHeaderInfo::
 	cp $8
 	jr z, .readPointer ; read end battle text
 	cp $a
+	jr z, .readPointer ; read trainer index
+	cp $b
 	jr nz, .done
 	ld a, [hli]        ; read end battle text (2) but override the result afterwards (XXX why, bug?)
 	ld d, [hl]
@@ -2295,6 +2297,12 @@ TrainerFlagAction::
 
 TalkToTrainer::
 	call StoreTrainerHeaderPointer
+	ld a, $a
+	call ReadTrainerHeaderInfo
+	ld a, h
+	ld [wKillTrainerIndex], a
+	ld a, l
+	ld [wKillTrainerIndex + 1], a
 	xor a
 	call ReadTrainerHeaderInfo     ; read flag's bit
 	ld a, $2
