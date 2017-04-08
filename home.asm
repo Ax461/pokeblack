@@ -4009,6 +4009,18 @@ HandleMenuInput_::
 	xor a
 	ld [wMenuWrappingEnabled],a ; disable menu wrapping
 	ld a,[hJoy5]
+	cp A_BUTTON
+	ret nz
+	ld a, [wDayCareFlag]
+	and a
+	jp z, .end
+	ld a, [wCurrentMenuItem]
+	ld b, a
+	ld a, [wGhostPartyPos]
+	cp b
+	jp z, HandleMenuInput_
+.end
+	ld a, [hJoy5]
 	ret
 .noWrappingAround
 	ld a,[wMenuWatchMovingOutOfBounds]

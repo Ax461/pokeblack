@@ -2956,6 +2956,7 @@ wPlayerJumpingYScreenCoordsIndex:: ; d714
 wRivalStarter:: ; d715
 	ds 1
 
+wDayCareFlag:: ; d716
 	ds 1
 
 wPlayerStarter:: ; d717
@@ -2972,7 +2973,7 @@ wDestinationMap:: ; d71a
 ; destination map (for certain types of special warps, not ordinary walking)
 	ds 1
 
-wUnusedD71B:: ; d71b
+wGhostPartyPos:: ; d71b
 	ds 1
 
 wTileInFrontOfBoulderAndBoulderCollisionResult:: ; d71c
