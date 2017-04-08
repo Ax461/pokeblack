@@ -159,9 +159,10 @@ ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
+TombstoneSprite:       INCBIN "gfx/sprites/tombstone.2bpp"
 
 
-SECTION "Graphics", ROMX[$5380], BANK[GFX]
+SECTION "Graphics", ROMX[$53C0], BANK[GFX]
 
 PokemonLogoGraphics:            INCBIN "gfx/pokemon_logo.2bpp"
 FontGraphics:                   INCBIN "gfx/font.1bpp"
@@ -187,7 +188,7 @@ PlayerCharacterTitleGraphics:   INCBIN "gfx/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:
 
 
-SECTION "Battle (bank 4)", ROMX[$68D8], BANK[$4]
+SECTION "Battle (bank 4)", ROMX[$6918], BANK[$4]
 
 INCLUDE "engine/overworld/is_player_just_outside_map.asm"
 INCLUDE "engine/menu/status_screen.asm"
