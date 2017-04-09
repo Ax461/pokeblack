@@ -116,11 +116,3 @@ RedrawMapView:
 	pop af
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ret
-
-CompareHLWithBC:
-	ld a, h
-	sub b
-	ret nz
-	ld a, l
-	sub c
-	ret

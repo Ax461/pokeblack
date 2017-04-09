@@ -2276,6 +2276,18 @@ DisplayBattleMenu:
 	jp nz, DisplayBattleMenu
 	call LoadScreenTilesFromBuffer1
 	call PrintMonName1Text
+	ld bc, KT_NOT_KILLABLE
+	ld a, [wKillTrainerIndex]
+	ld h, a
+	ld a, [wKillTrainerIndex + 1]
+	ld l, a
+	call CompareHLWithBC
+	jr nz, .continue
+	ld c, 30
+	call DelayFrames
+	call PrintButItFailedText_
+	jp DisplayBattleMenu
+.continue
 	ld a, 1
 	ld [wKillTrainerCurseFlag], a
 	callba KillTrainer
