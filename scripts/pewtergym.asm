@@ -43,10 +43,11 @@ PewterGymScript3:
 	ld [wJoyIgnore], a
 
 PewterGymScript_5c3df:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_5c408
 	ld a, $4
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_BROCK
 	lb bc, TM_34, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,6 +61,7 @@ PewterGymScript_5c3df:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_5c408
+	SetEvent EVENT_BEAT_BROCK
 	ld hl, wObtainedBadges
 	set 0, [hl]
 	ld hl, wBeatGymFlags
@@ -94,7 +96,7 @@ PewterGymTrainerHeader0:
 	dw PewterGymBattleText1 ; TextBeforeBattle
 	dw PewterGymAfterBattleText1 ; TextAfterBattle
 	dw PewterGymEndBattleText1 ; TextEndBattle
-	dw PewterGymEndBattleText1 ; TextEndBattle
+	dw KT_PEWTER_GYM_TRAINER_0 ; TrainerIndex
 
 	db $ff
 
@@ -122,6 +124,11 @@ PewterGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
+	ld hl, KT_PEWTER_GYM_LEADER
+	ld a, h
+	ld [wKillTrainerIndex], a
+	ld a, l
+	ld [wKillTrainerIndex + 1], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $1

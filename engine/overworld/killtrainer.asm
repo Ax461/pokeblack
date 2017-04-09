@@ -8,6 +8,14 @@ KillTrainer:
 	call KillTrainerFlagAction
 	jp UpdateSprites
 
+IsKillTrainerFlagSet:
+	ld hl, wKillTrainerFlags
+	ld a, [wKillTrainerIndex]
+	ld d, a
+	ld a, [wKillTrainerIndex + 1]
+	ld e, a
+	ld b, FLAG_TEST
+
 KillTrainerFlagAction::
 ; Perform action b on bit de in flag array hl.
 

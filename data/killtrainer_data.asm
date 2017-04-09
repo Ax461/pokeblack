@@ -53,7 +53,7 @@ MapKTPointers:
 	dw MapKT33
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT36
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -258,3 +258,6 @@ MapKT33:
 	db VIRIDIAN_FOREST,$2
 	db VIRIDIAN_FOREST,$3
 	db VIRIDIAN_FOREST,$4
+MapKT36:
+	db PEWTER_GYM,$1
+	db PEWTER_GYM,$2
