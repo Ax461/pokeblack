@@ -95,6 +95,9 @@ OverworldLoopLessDelay::
 	ld a,[hSpriteIndexOrTextID]
 	and a
 	jp z,OverworldLoop
+	ld a,[hSpriteIndexOrTextID]
+	callba IsTrainerTombstone
+	jp z,OverworldLoop
 .displayDialogue
 	predef GetTileAndCoordsInFrontOfPlayer
 	call UpdateSprites
@@ -480,6 +483,8 @@ WarpFound1::
 	ld [hWarpDestinationMap],a
 
 WarpFound2::
+	ld a, 1
+	ld [wWarpFlag], a
 	ld a,[wNumberOfWarps]
 	sub c
 	ld [wWarpedFromWhichWarp],a ; save ID of used warp
@@ -491,7 +496,6 @@ WarpFound2::
 	ld a,[wCurMap]
 	ld [wLastMap],a
 	ld a,[wCurMapWidth]
-	ld [wUnusedD366],a ; not read
 	ld a,[hWarpDestinationMap]
 	ld [wCurMap],a
 	cp ROCK_TUNNEL_1
@@ -2314,6 +2318,12 @@ LoadMapHeader::
 	pop af
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
+	ld a, [wWarpFlag]
+	and a
+	ret z
+	callba PlaceTombstones
+	xor a
+	ld [wWarpFlag], a
 	ret
 
 ; function to copy map connection data from ROM to WRAM

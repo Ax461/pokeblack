@@ -2421,7 +2421,7 @@ wXBlockCoord:: ; d364
 wLastMap:: ; d365
 	ds 1
 
-wUnusedD366:: ; d366
+wWarpFlag:: ; d366
 	ds 1
 
 wCurMapTileset:: ; d367
