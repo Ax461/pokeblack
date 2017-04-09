@@ -140,10 +140,10 @@ LoadTrainers:
 	xor a
 	ld [H_DIVIDEND+2], a
 	ld [H_DIVIDEND+3], a
-	ld a, $3
+	ld a, $2
 	ld [H_DIVISOR], a
 	ld b, $2
-	call Divide                ; divide difference by 3, resulting in the global offset (number of trainers before ours)
+	call Divide                ; divide difference by 2, resulting in the global offset (number of trainers before ours)
 	ld a, [H_DIVIDEND+2]
 	ld b, a
 	ld a, [H_DIVIDEND+3]
@@ -159,18 +159,20 @@ LoadTrainers:
 	jr z, .done     ; end of list
 	cp b
 	jr nz, .done    ; not for current map anymore
+	xor a
+	ld b, a
 	ld a, [hli]
 	ld [de], a                 ; write (map-local) sprite ID
 	inc de
-	pop bc
-	inc bc
-	push bc
 	ld a, b
 	ld [de], a                  ; write (global) trainer index first byte
 	inc de
 	ld a, c
 	ld [de], a                  ; write (global) trainer index second byte
 	inc de
+	pop bc
+	inc bc
+	push bc
 	jr .writeKillTrainerListLoop
 .done
 	ld a, $ff
