@@ -2274,6 +2274,7 @@ DisplayBattleMenu:
 	ld a, [hJoyHeld]
 	bit 1, a ; B button pressed?
 	jp nz, DisplayBattleMenu
+	call LoadScreenTilesFromBuffer1
 	call PrintMonName1Text
 	ld a, 1
 	ld [wKillTrainerCurseFlag], a
