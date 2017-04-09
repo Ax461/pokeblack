@@ -67,6 +67,15 @@ KillTrainerFlagAction::
 	ld [hl], a
 	ret
 
+IsTrainerTombstone:
+	ld a, [hSpriteIndexOrTextID]
+	swap a
+	ld d, $c1
+	ld e, a
+	ld a, [de]
+	cp SPRITE_TOMBSTONE
+	ret
+
 IsTrainerKilled:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	ld d, $c1

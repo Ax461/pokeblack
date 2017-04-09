@@ -95,6 +95,9 @@ OverworldLoopLessDelay::
 	ld a,[hSpriteIndexOrTextID]
 	and a
 	jp z,OverworldLoop
+	ld a,[hSpriteIndexOrTextID]
+	callba IsTrainerTombstone
+	jp z,OverworldLoop
 .displayDialogue
 	predef GetTileAndCoordsInFrontOfPlayer
 	call UpdateSprites
