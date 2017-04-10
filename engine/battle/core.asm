@@ -2521,6 +2521,14 @@ PartyMenuOrRockOrRun:
 ; display the two status screens
 	predef StatusScreen
 	predef StatusScreen2
+	ld a, [wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	jp nz, .skip
+	call GetTrainerInformation
+	callab ReadTrainer
+	call _LoadTrainerPic
+	jp .partyMenuWasSelected
+.skip
 ; now we need to reload the enemy mon pic
 	ld a, [wEnemyBattleStatus2]
 	bit HasSubstituteUp, a ; does the enemy mon have a substitute?
