@@ -154,6 +154,8 @@ CeruleanCityScript1:
 	ld [wTrainerNo], a
 
 	xor a
+	ld [wKillTrainerIndex], a
+	ld [wKillTrainerIndex  + 1], a
 	ld [hJoyHeld], a
 	call CeruleanCityScript_1955d
 	ld a, $2

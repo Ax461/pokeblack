@@ -87,6 +87,8 @@ MtMoon3Script3:
 	ret
 
 MtMoon3Script4:
+	callba IsKillTrainerFlagSet
+	ret nz
 	ld a, $1
 	ld [H_SPRITEINDEX], a
 	call SetSpriteMovementBytesToFF
@@ -173,7 +175,7 @@ MtMoon3TrainerHeader0:
 	dw MtMoon3BattleText2 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText2 ; TextAfterBattle
 	dw MtMoon3EndBattleText2 ; TextEndBattle
-	dw MtMoon3EndBattleText2 ; TextEndBattle
+	dw KT_MT_MOON_3_TRAINER_0 ; TrainerIndex
 
 MtMoon3TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_1
@@ -182,7 +184,7 @@ MtMoon3TrainerHeader1:
 	dw MtMoon3BattleText3 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText3 ; TextAfterBattle
 	dw MtMoon3EndBattleText3 ; TextEndBattle
-	dw MtMoon3EndBattleText3 ; TextEndBattle
+	dw KT_MT_MOON_3_TRAINER_1 ; TrainerIndex
 
 MtMoon3TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_2
@@ -191,7 +193,7 @@ MtMoon3TrainerHeader2:
 	dw MtMoon3BattleText4 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText4 ; TextAfterBattle
 	dw MtMoon3EndBattleText4 ; TextEndBattle
-	dw MtMoon3EndBattleText4 ; TextEndBattle
+	dw KT_MT_MOON_3_TRAINER_2 ; TrainerIndex
 
 MtMoon3TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_3
@@ -200,7 +202,7 @@ MtMoon3TrainerHeader3:
 	dw MtMoon3BattleText5 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText5 ; TextAfterBattle
 	dw MtMoon3EndBattleText5 ; TextEndBattle
-	dw MtMoon3EndBattleText5 ; TextEndBattle
+	dw KT_MT_MOON_3_TRAINER_3 ; TrainerIndex
 
 	db $ff
 
@@ -224,6 +226,11 @@ MtMoon3Text1:
 	call SaveEndBattleTextPointers
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
+	ld hl, KT_MT_MOON_EXIT_SUPER_NERD
+	ld a, h
+	ld [wKillTrainerIndex], a
+	ld a, l
+	ld [wKillTrainerIndex + 1], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $3

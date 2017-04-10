@@ -13,7 +13,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT0E
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -58,9 +58,9 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
+	dw MapKT3B
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT3D
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -254,6 +254,15 @@ MapKTXX:
 	db $FF,$FF
 MapKT00:
 	db $00,$00
+MapKT0E:
+	db ROUTE_3,$2
+	db ROUTE_3,$3
+	db ROUTE_3,$4
+	db ROUTE_3,$5
+	db ROUTE_3,$6
+	db ROUTE_3,$7
+	db ROUTE_3,$8
+	db ROUTE_3,$9
 MapKT33:
 	db VIRIDIAN_FOREST,$2
 	db VIRIDIAN_FOREST,$3
@@ -261,3 +270,17 @@ MapKT33:
 MapKT36:
 	db PEWTER_GYM,$1
 	db PEWTER_GYM,$2
+MapKT3B:
+	db MT_MOON_1,$1
+	db MT_MOON_1,$2
+	db MT_MOON_1,$3
+	db MT_MOON_1,$4
+	db MT_MOON_1,$5
+	db MT_MOON_1,$6
+	db MT_MOON_1,$7
+MapKT3D:
+	db MT_MOON_3,$1
+	db MT_MOON_3,$2
+	db MT_MOON_3,$3
+	db MT_MOON_3,$4
+	db MT_MOON_3,$5
