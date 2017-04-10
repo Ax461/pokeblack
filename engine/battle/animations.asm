@@ -393,10 +393,14 @@ MoveAnimation:
 	jp TossBallAnimation
 
 .moveAnimation
+	ld a, [wAnimationID]
+	cp $a5 ; Curse animation ID
+	jp z, .skip
 	; check if battle animations are disabled in the options
 	ld a,[wOptions]
 	bit 7,a
 	jr nz, .animationsDisabled
+.skip
 	call ShareMoveAnimations
 	call PlayAnimation
 	jr .next4
