@@ -23,15 +23,15 @@ MapSpriteSets:
 	db $f2 ; ROUTE_10
 	db $f3 ; ROUTE_11
 	db $f4 ; ROUTE_12
-	db $08 ; ROUTE_13
-	db $08 ; ROUTE_14
+	db $0c ; ROUTE_13
+	db $0c ; ROUTE_14
 	db $f5 ; ROUTE_15
 	db $f6 ; ROUTE_16
-	db $09 ; ROUTE_17
+	db $0c ; ROUTE_17
 	db $f7 ; ROUTE_18
 	db $0a ; ROUTE_19
 	db $f8 ; ROUTE_20
-	db $01 ; ROUTE_21
+	db $0b ; ROUTE_21
 	db $01 ; ROUTE_22
 	db $06 ; ROUTE_23
 	db $02 ; ROUTE_24
@@ -47,12 +47,12 @@ MapSpriteSets:
 SplitMapSpriteSets:
 	db $02,$25,$02,$01 ; $f1
 	db $02,$32,$02,$03 ; $f2
-	db $01,$39,$04,$08 ; $f3
-	db $02,$15,$03,$08 ; $f4
-	db $01,$08,$0A,$08 ; $f5
-	db $01,$18,$09,$05 ; $f6
+	db $01,$39,$04,$0C ; $f3
+	db $02,$15,$03,$0C ; $f4
+	db $01,$08,$0A,$0C ; $f5
+	db $01,$18,$0C,$05 ; $f6
 	db $01,$22,$09,$0A ; $f7
-	db $01,$35,$01,$0A ; $f8
+	db $01,$35,$0B,$0A ; $f8
 	db $02,$21,$02,$07 ; $f9
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
@@ -83,7 +83,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_TOMBSTONE
 
 ; sprite set $03
 	db SPRITE_LITTLE_GIRL
@@ -96,7 +96,7 @@ SpriteSets:
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_GUARD
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_TOMBSTONE
 
 ; sprite set $04
 	db SPRITE_FOULARD_WOMAN
@@ -109,7 +109,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_TOMBSTONE
 
 ; sprite set $05
 	db SPRITE_LITTLE_GIRL
@@ -135,7 +135,7 @@ SpriteSets:
 	db SPRITE_GUARD
 	db SPRITE_GAMBLER
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_TOMBSTONE
 
 ; sprite set $07
 	db SPRITE_ROCKET
@@ -148,7 +148,7 @@ SpriteSets:
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_SLOWBRO
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_TOMBSTONE
 
 ; sprite set $08
 	db SPRITE_BIKER
@@ -188,6 +188,32 @@ SpriteSets:
 	db SPRITE_BUG_CATCHER
 	db SPRITE_BALL
 	db SPRITE_OMANYTE
+
+; sprite set $0b
+	db SPRITE_BLUE
+	db SPRITE_BUG_CATCHER
+	db SPRITE_GIRL
+	db SPRITE_FISHER2
+	db SPRITE_BLACK_HAIR_BOY_1
+	db SPRITE_GAMBLER
+	db SPRITE_SEEL
+	db SPRITE_OAK
+	db SPRITE_SWIMMER
+	db SPRITE_BALL
+	db SPRITE_TOMBSTONE
+
+; sprite set $0c
+	db SPRITE_BIKER
+	db SPRITE_BLACK_HAIR_BOY_2
+	db SPRITE_FAT_BALD_GUY
+	db SPRITE_LASS
+	db SPRITE_BLACK_HAIR_BOY_1
+	db SPRITE_FOULARD_WOMAN
+	db SPRITE_FISHER2
+	db SPRITE_ROCKER
+	db SPRITE_SNORLAX
+	db SPRITE_BALL
+	db SPRITE_TOMBSTONE
 
 SpriteSheetPointerTable:
 	; SPRITE_RED
