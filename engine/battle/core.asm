@@ -1053,6 +1053,8 @@ TrainerBattleVictory:
 	call SaveScreenTilesToBuffer1
 	call DisplayBattleMenu
 .skip
+	xor a
+	ld [wWarpFlag], a
 	ld de, wPlayerMoney + 2
 	ld hl, wAmountMoneyWon + 2
 	ld c, $3

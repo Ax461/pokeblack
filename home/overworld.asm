@@ -677,6 +677,8 @@ CheckMapConnections::
 	ld a,h
 	ld [wCurrentTileBlockMapViewPointer + 1],a
 .loadNewMap ; load the connected map that was entered
+	ld a, 1
+	ld [wWarpFlag], a
 	call LoadMapHeader
 	call PlayDefaultMusicFadeOutCurrent
 	ld b, SET_PAL_OVERWORLD
@@ -794,6 +796,8 @@ StopMusic::
 	jp StopAllSounds
 
 HandleFlyWarpOrDungeonWarp::
+	ld a, 1
+	ld [wWarpFlag], a
 	call UpdateSprites
 	call Delay3
 	xor a
@@ -2322,8 +2326,6 @@ LoadMapHeader::
 	and a
 	ret z
 	callba PlaceTombstones
-	xor a
-	ld [wWarpFlag], a
 	ret
 
 ; function to copy map connection data from ROM to WRAM
