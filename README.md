@@ -15,4 +15,4 @@ To set up the repository, see [**INSTALL.md**](INSTALL.md).
 [pokered]: https://github.com/pret/pokered
 [pokecrystal]: https://github.com/pret/pokecrystal
 [irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
-[creepypasta]: http://creepypasta.wikia.com/wiki/Pok%C3%A9mon_Black
+[creepypasta]: http://tinycartridge.com/post/866743831/super-creepy-pok%C3%A9mon-hack
