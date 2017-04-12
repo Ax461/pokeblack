@@ -226,11 +226,7 @@ MtMoon3Text1:
 	call SaveEndBattleTextPointers
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
-	ld hl, KT_MT_MOON_EXIT_SUPER_NERD
-	ld a, h
-	ld [wKillTrainerIndex], a
-	ld a, l
-	ld [wKillTrainerIndex + 1], a
+	SetKillTrainerIndex KT_MT_MOON_EXIT_SUPER_NERD
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $3
