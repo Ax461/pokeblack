@@ -518,7 +518,15 @@ TradeCenter_SelectMon:
 	call LoadScreenTilesFromBuffer1
 	jp .playerMonMenu
 .choseTrade
+	callba GetGhostPartyPosition
+	ld a, [wGhostPartyPos]
+	ld b, a
+	pop af
+	cp b
+	push af
+	jr z, .selectTradeMenuItem
 	call PlaceUnfilledArrowMenuCursor
+.skip
 	pop af
 	ld [wCurrentMenuItem], a
 	ld [wTradingWhichPlayerMon], a

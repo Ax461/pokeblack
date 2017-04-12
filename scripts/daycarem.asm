@@ -27,22 +27,9 @@ DayCareMText1:
 	ld [wUpdateSpritesEnabled], a
 	ld [wPartyMenuTypeOrMessageID], a
 	ld [wMenuItemToSwap], a
-	ld b, a
 	inc a
-	ld [wDayCareFlag], a
-	ld hl, wPartySpecies
-.loop
-	ld a, [hli]
-	cp GHOST
-	jr nz, .continue
-	ld a, b
-	ld [wGhostPartyPos], a
-	jr .end
-.continue
-	inc b
-	cp $FF
-	jr nz, .loop
-.end
+	ld [wDisableSelectionFlag], a
+	callba GetGhostPartyPosition
 	call DisplayPartyMenu
 	push af
 	call GBPalWhiteOutWithDelay3
@@ -224,7 +211,7 @@ DayCareMText1:
 
 .done
 	xor a
-	ld [wDayCareFlag], a
+	ld [wDisableSelectionFlag], a
 	call PrintText
 	jp TextScriptEnd
 

@@ -2973,7 +2973,7 @@ wPlayerJumpingYScreenCoordsIndex:: ; d714
 wRivalStarter:: ; d715
 	ds 1
 
-wDayCareFlag:: ; d716
+wDisableSelectionFlag:: ; d716
 	ds 1
 
 wPlayerStarter:: ; d717

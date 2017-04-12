@@ -3999,7 +3999,7 @@ HandleMenuInput_::
 	ld a,[hJoy5]
 	cp A_BUTTON
 	ret nz
-	ld a, [wDayCareFlag]
+	ld a, [wDisableSelectionFlag]
 	and a
 	jp z, .end
 	ld a, [wCurrentMenuItem]

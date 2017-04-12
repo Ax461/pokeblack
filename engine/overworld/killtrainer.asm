@@ -210,3 +210,18 @@ PlaceTombstones:
 	jr .loop
 .end
 	ret
+
+GetGhostPartyPosition:
+	ld b, 0
+	ld hl, wPartySpecies
+.loop
+	ld a, [hli]
+	cp GHOST
+	jr nz, .continue
+	ld a, b
+	ld [wGhostPartyPos], a
+	ret
+.continue
+	inc b
+	cp $FF
+	jr nz, .loop
