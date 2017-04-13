@@ -1880,12 +1880,7 @@ Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
 SECTION "bank1A",ROMX[$4000],BANK[$1A]
 
 Version_GFX:
-IF DEF(_RED)
-	INCBIN "gfx/red/redgreenversion.1bpp" ; 10 tiles
-ENDC
-IF DEF(_BLUE)
-	INCBIN "gfx/blue/blueversion.1bpp" ; 8 tiles
-ENDC
+	INCBIN "gfx/blackversion.1bpp" ; 10 tiles
 Version_GFXEnd:
 
 Dojo_GFX:

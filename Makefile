@@ -27,7 +27,7 @@ clean:
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 $(pokeblack_obj): %.o: %.asm $$(dep)
-	rgbasm -D _RED -h -o $@ $*.asm
+	rgbasm -h -o $@ $*.asm
 
 pokeblack_opt  = -jsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLACK"
 
