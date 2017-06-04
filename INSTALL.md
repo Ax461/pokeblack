@@ -1,12 +1,5 @@
 # Linux
 
-	sudo apt-get install make gcc bison git python
-
-	git clone https://github.com/rednex/rgbds
-	cd rgbds
-	sudo make install
-	cd ..
-
 	git clone --recursive https://github.com/Ax461/pokeblack
 	cd pokeblack
 
@@ -21,7 +14,9 @@ In **Terminal**, run:
 
 	git clone https://github.com/rednex/rgbds
 	cd rgbds
-	sudo make install
+	git checkout v0.2.5
+	make
+	cp rgbasm rgblink rgbfix ../rgbds
 	cd ..
 
 	git clone --recursive https://github.com/Ax461/pokeblack
@@ -36,8 +31,9 @@ To build on Windows, use [**Cygwin**](http://cygwin.com/install.html). Use the d
 
 In the installer, select the following packages: `make` `git` `python` `gettext`
 
-Then get the most recent version of [**rgbds**](https://github.com/bentley/rgbds/releases/).
-Extract the archive and put `rgbasm.exe`, `rgblink.exe` and `rgbfix.exe` in `C:\cygwin\usr\local\bin`.
+Then get [**rgbds 0.2.5**](https://github.com/bentley/rgbds/releases/tag/v0.2.5).
+Extract the archive and put `rgbasm.exe`, `rgblink.exe` and `rgbfix.exe` in `pokeblack\rgbds`.
+Change the line in Makefile starting with `EXE :=`  to `EXE := .exe`
 
 In the **Cygwin terminal**:
 
