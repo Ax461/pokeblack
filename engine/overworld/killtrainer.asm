@@ -223,5 +223,4 @@ GetGhostPartyPosition:
 	ret
 .continue
 	inc b
-	cp $FF
-	jr nz, .loop
+	jr .loop
