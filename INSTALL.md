@@ -1,6 +1,6 @@
 # Linux
 
-	git clone --recursive https://github.com/Ax461/pokeblack
+	git clone https://github.com/Ax461/pokeblack
 	cd pokeblack
 
 	make
@@ -19,7 +19,7 @@ In **Terminal**, run:
 	cp rgbasm rgblink rgbfix ../rgbds
 	cd ..
 
-	git clone --recursive https://github.com/Ax461/pokeblack
+	git clone https://github.com/Ax461/pokeblack
 	cd pokeblack
 
 	make
@@ -37,7 +37,7 @@ Change the line in Makefile starting with `EXE :=`  to `EXE := .exe`
 
 In the **Cygwin terminal**:
 
-	git clone --recursive https://github.com/Ax461/pokeblack
+	git clone https://github.com/Ax461/pokeblack
 	cd pokeblack
 
 	make
