@@ -10,7 +10,6 @@ PICS_2 EQU $A
 PICS_3 EQU $B
 PICS_4 EQU $C
 PICS_5 EQU $D
-PICS_6 EQU $2D
 
 INCLUDE "home.asm"
 
@@ -102,9 +101,6 @@ INCLUDE "engine/overworld/daycare_exp.asm"
 
 INCLUDE "data/hide_show_data.asm"
 
-INCLUDE "engine/overworld/killtrainer.asm"
-INCLUDE "data/killtrainer_data.asm"
-
 INCLUDE "engine/overworld/field_move_messages.asm"
 
 INCLUDE "engine/items/inventory.asm"
@@ -159,7 +155,6 @@ ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
-TombstoneSprite:       INCBIN "gfx/sprites/tombstone.2bpp"
 
 
 SECTION "Graphics", ROMX, BANK[GFX]
@@ -1873,15 +1868,15 @@ ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.t2.2bpp"
 ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
 Interior_GFX:      INCBIN "gfx/tilesets/interior.t1.2bpp"
 Interior_Block:    INCBIN "gfx/blocksets/interior.bst"
-Plateau_GFX:       INCBIN "gfx/tilesets/plateau.t10.2bpp"
-Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
-
 
 SECTION "bank1A",ROMX,BANK[$1A]
 
 Version_GFX:
 	INCBIN "gfx/blackversion.1bpp" ; 10 tiles
 Version_GFXEnd:
+
+Plateau_GFX:       INCBIN "gfx/tilesets/plateau.t10.2bpp"
+Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
 
 Dojo_GFX:
 Gym_GFX:           INCBIN "gfx/tilesets/gym.2bpp"
@@ -1902,12 +1897,12 @@ Gate_Block:        INCBIN "gfx/blocksets/gate.bst"
 
 Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
-Facility_GFX:      INCBIN "gfx/tilesets/facility.2bpp"
-Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
 
 
 SECTION "bank1B",ROMX,BANK[$1B]
 
+Facility_GFX:      INCBIN "gfx/tilesets/facility.2bpp"
+Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
 Cemetery_GFX:      INCBIN "gfx/tilesets/cemetery.t4.2bpp"
 Cemetery_Block:    INCBIN "gfx/blocksets/cemetery.bst"
 Cavern_GFX:        INCBIN "gfx/tilesets/cavern.t14.2bpp"
@@ -1916,12 +1911,6 @@ Lobby_GFX:         INCBIN "gfx/tilesets/lobby.t2.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
 Ship_GFX:          INCBIN "gfx/tilesets/ship.t6.2bpp"
 Ship_Block:        INCBIN "gfx/blocksets/ship.bst"
-Lab_GFX:           INCBIN "gfx/tilesets/lab.t4.2bpp"
-Lab_Block:         INCBIN "gfx/blocksets/lab.bst"
-Club_GFX:          INCBIN "gfx/tilesets/club.t5.2bpp"
-Club_Block:        INCBIN "gfx/blocksets/club.bst"
-Underground_GFX:   INCBIN "gfx/tilesets/underground.t7.2bpp"
-Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 
 
 SECTION "bank1C",ROMX,BANK[$1C]
@@ -1941,6 +1930,15 @@ INCLUDE "engine/save.asm"
 
 
 SECTION "bank1D",ROMX,BANK[$1D]
+
+Lab_GFX:           INCBIN "gfx/tilesets/lab.t4.2bpp"
+Lab_Block:         INCBIN "gfx/blocksets/lab.bst"
+
+Club_GFX:          INCBIN "gfx/tilesets/club.t5.2bpp"
+Club_Block:        INCBIN "gfx/blocksets/club.bst"
+
+Underground_GFX:   INCBIN "gfx/tilesets/underground.t7.2bpp"
+Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 
 CopycatsHouse1FBlocks: INCBIN "maps/copycatshouse1f.blk"
 
@@ -2094,7 +2092,12 @@ INCLUDE "engine/evolution.asm"
 INCLUDE "engine/overworld/elevator.asm"
 
 
-SECTION "Pics 6", ROMX, BANK[PICS_6]
+SECTION "bank2D",ROMX,BANK[$2D]
 
 GhostPicFront::  INCBIN "pic/other/ghost.pic"
 GhostPicBack::   INCBIN "pic/monback/ghostb.pic"
+
+INCLUDE "engine/overworld/tombstone.asm"
+INCLUDE "data/tombstone_data.asm"
+INCLUDE "engine/overworld/killtrainer.asm"
+INCLUDE "data/killtrainer_data.asm"

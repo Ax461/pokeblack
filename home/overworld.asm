@@ -95,9 +95,6 @@ OverworldLoopLessDelay::
 	ld a,[hSpriteIndexOrTextID]
 	and a
 	jp z,OverworldLoop
-	ld a,[hSpriteIndexOrTextID]
-	callba IsTrainerTombstone
-	jp z,OverworldLoop
 .displayDialogue
 	predef GetTileAndCoordsInFrontOfPlayer
 	call UpdateSprites
@@ -483,8 +480,7 @@ WarpFound1::
 	ld [hWarpDestinationMap],a
 
 WarpFound2::
-	ld a, 1
-	ld [wWarpFlag], a
+	call SetWarpFlag
 	ld a,[wNumberOfWarps]
 	sub c
 	ld [wWarpedFromWhichWarp],a ; save ID of used warp
@@ -677,8 +673,7 @@ CheckMapConnections::
 	ld a,h
 	ld [wCurrentTileBlockMapViewPointer + 1],a
 .loadNewMap ; load the connected map that was entered
-	ld a, 1
-	ld [wWarpFlag], a
+	call SetWarpFlag
 	call LoadMapHeader
 	call PlayDefaultMusicFadeOutCurrent
 	ld b, SET_PAL_OVERWORLD
@@ -796,8 +791,7 @@ StopMusic::
 	jp StopAllSounds
 
 HandleFlyWarpOrDungeonWarp::
-	ld a, 1
-	ld [wWarpFlag], a
+	call SetWarpFlag
 	call UpdateSprites
 	call Delay3
 	xor a
@@ -892,7 +886,7 @@ LoadTilesetTilePatternData::
 	ld a,[wTilesetGfxPtr + 1]
 	ld h,a
 	ld de,vTileset
-	ld bc,$600
+	ld bc,$740
 	ld a,[wTilesetBank]
 	jp FarCopyData2
 
@@ -1025,7 +1019,7 @@ LoadTileBlockMap::
 	ld [hEastWestConnectedMapWidth],a
 	call LoadEastWestConnectionsTileMap
 .done
-	ret
+	jpba PlaceTombstones
 
 LoadNorthSouthConnectionsTileMap::
 	ld c,MAP_BORDER
@@ -2322,10 +2316,6 @@ LoadMapHeader::
 	pop af
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
-	ld a, [wWarpFlag]
-	and a
-	ret z
-	callba PlaceTombstones
 	ret
 
 ; function to copy map connection data from ROM to WRAM
@@ -2433,6 +2423,16 @@ IgnoreInputForHalfSecond:
 ResetUsingStrengthOutOfBattleBit:
 	ld hl, wd728
 	res 0, [hl]
+	ret
+
+SetWarpFlag:
+	ld a, 1
+	ld [wWarpFlag], a
+	ld hl, wTombstoneList
+	ld a, h
+	ld [wTombstoneListPointer], a
+	ld a, l
+	ld [wTombstoneListPointer + 1], a
 	ret
 
 ForceBikeOrSurf::

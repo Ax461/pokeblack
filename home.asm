@@ -254,6 +254,16 @@ DrawHPBar::
 LoadMonData::
 	jpab LoadMonData_
 
+OverwritewMoves::
+; Write c to [wMoves + b]. Unused.
+	ld hl, wMoves
+	ld e, b
+	ld d, 0
+	add hl, de
+	ld a, c
+	ld [hl],a
+	ret
+
 LoadFlippedFrontSpriteByMonIndex::
 	ld a, 1
 	ld [wSpriteFlipped], a
@@ -2573,17 +2583,6 @@ TrainerEndBattleText::
 	call TextCommandProcessor
 	jp TextScriptEnd
 
-; only engage withe trainer if the player is not already
-; engaged with another trainer
-; XXX unused?
-CheckIfAlreadyEngaged::
-	ld a, [wFlags_0xcd60]
-	bit 0, a
-	ret nz
-	call EngageMapTrainer
-	xor a
-	ret
-
 PlayTrainerMusic::
 	ld a, [wEngagedTrainerClass]
 	cp OPP_SONY1
@@ -3100,13 +3099,13 @@ LoadTextBoxTilePatterns::
 	jr nz, .on
 .off
 	ld hl, TextBoxGraphics
-	ld de, vChars2 + $600
+	ld de, vChars2 + $740
 	ld bc, TextBoxGraphicsEnd - TextBoxGraphics
 	ld a, BANK(TextBoxGraphics)
 	jp FarCopyData2 ; if LCD is off, transfer all at once
 .on
 	ld de, TextBoxGraphics
-	ld hl, vChars2 + $600
+	ld hl, vChars2 + $740
 	lb bc, BANK(TextBoxGraphics), (TextBoxGraphicsEnd - TextBoxGraphics) / $10
 	jp CopyVideoData ; if LCD is on, transfer during V-blank
 
@@ -3305,7 +3304,9 @@ GetName::
 	call CopyData
 .gotPtr
 	ld a,e
+	ld [wUnusedCF8D],a
 	ld a,d
+	ld [wUnusedCF8D + 1],a
 	pop de
 	pop bc
 	pop hl

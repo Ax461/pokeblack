@@ -155,10 +155,10 @@ charmap "#", $54
 ;charmap "POKé", $54
 charmap "<TARGET>", $59
 charmap "<USER>", $5A
-charmap "′", $71
-charmap "″", $73
 charmap "№", $74
-charmap "…", $75
+charmap "…", $76
+charmap "″", $77
+charmap "′", $78
 
 charmap "┌", $79
 charmap "─", $7A

@@ -2573,7 +2573,21 @@ wDestinationWarpID:: ; d42f
 ; if $ff, the player's coordinates are not updated when entering the map
 	ds 1
 
-	ds 85
+	ds 52
+
+wTombstoneListMap::
+	ds 1
+
+wTombstoneList::
+; each entry consist of 3 bytes
+; * the tile block ID
+; * the Y coordinate
+; * the X coordinate
+; terminated with $FF
+	ds 10 * 3
+
+wTombstoneListPointer::
+	ds 2
 
 wKillTrainerCurseFlag::
 	ds 1

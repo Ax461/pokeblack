@@ -8,12 +8,12 @@ UpdatePlayerSprite:
 	ld [wSpriteStateData2], a
 	jr .disableSprite
 ; check if a text box is in front of the sprite by checking if the lower left
-; background tile the sprite is standing on is greater than $5F, which is
+; background tile the sprite is standing on is greater than $73, which is
 ; the maximum number for map tiles
 .checkIfTextBoxInFrontOfSprite
 	aCoord 8, 9
 	ld [hTilePlayerStandingOn], a
-	cp $60
+	cp $74
 	jr c, .lowerLeftTileIsMapTile
 .disableSprite
 	ld a, $ff

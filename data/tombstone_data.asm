@@ -1,0 +1,27 @@
+TombstoneTileBlocks:
+	db $00
+	db $84
+	db $80
+	db $83
+	db $81
+	db $82
+	db $83
+	db $85
+	db $86
+	db $80
+	db $80
+	db $81
+	db $74
+	db $75
+	db $81
+	db $80
+	db $80
+	db $82
+	db $82
+	db $81
+	db $82
+	db $85
+	db $84
+	db $84
+	db $83
+	db $83

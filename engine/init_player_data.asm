@@ -48,6 +48,15 @@ START_MONEY EQU $3000
 	ld bc, wKillTrainerFlagsEnd - wKillTrainerFlags
 	call FillMemory
 
+	ld a, $ff
+	ld [wTombstoneList], a
+
+	ld hl, wTombstoneList
+	ld a, h
+	ld [wTombstoneListPointer], a
+	ld a, l
+	ld [wTombstoneListPointer + 1], a
+
 	jp InitializeMissableObjectsFlags
 
 InitializeEmptyList:

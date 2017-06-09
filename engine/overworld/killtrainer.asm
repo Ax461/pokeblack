@@ -75,24 +75,8 @@ KillTrainerFlagAction::
 	ld [hl], a
 	ret
 
-IsTrainerTombstone:
-	ld a, [hSpriteIndexOrTextID]
-	swap a
-	ld d, $c1
-	ld e, a
-	ld a, [de]
-	cp SPRITE_TOMBSTONE
-	ret
-
 IsTrainerKilled:
 	ld a, [H_CURRENTSPRITEOFFSET]
-	ld d, $c1
-	ld e, a
-	ld a, [de]
-	cp SPRITE_TOMBSTONE
-	jr z, .notKilled
-.skip
-	ld a, e
 	swap a
 	ld b, a
 	ld hl, wKillTrainerList
@@ -186,29 +170,6 @@ LoadTrainers:
 	ld a, $ff
 	ld [de], a                 ; write sentinel
 	pop bc
-	ret
-
-PlaceTombstones:
-	ld a, $10
-.loop
-	ld e, a
-	ld [H_CURRENTSPRITEOFFSET], a
-	push de
-	call IsTrainerKilled
-	pop de
-	ld a, [$ffe5]
-	and a
-	jr z, .next
-	ld d, $c1
-	ld a, SPRITE_TOMBSTONE
-	ld [de], a
-.next
-	ld a, e
-	or a
-	jr z, .end
-	add a, $10
-	jr .loop
-.end
 	ret
 
 GetGhostPartyPosition:
