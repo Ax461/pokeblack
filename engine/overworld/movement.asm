@@ -64,10 +64,16 @@ UpdatePlayerSprite:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	add $7
 	ld l, a
+	ld b, 4
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	sla b
+.skip
 	ld a, [hl]
 	inc a
 	ld [hl], a
-	cp 4
+	cp b
 	jr nz, .calcImageIndex
 	xor a
 	ld [hl], a

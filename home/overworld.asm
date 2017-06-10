@@ -1472,6 +1472,14 @@ LoadCurrentMapView::
 	ret
 
 AdvancePlayerSprite::
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld a, [wHalfSpeedFlag]
+	xor 1
+	ld [wHalfSpeedFlag], a
+	ret z
+.skip
 	ld a,[wSpriteStateData1 + 3] ; delta Y
 	ld b,a
 	ld a,[wSpriteStateData1 + 5] ; delta X
