@@ -886,7 +886,7 @@ LoadTilesetTilePatternData::
 	ld a,[wTilesetGfxPtr + 1]
 	ld h,a
 	ld de,vTileset
-	ld bc,$740
+	ld bc,$780
 	ld a,[wTilesetBank]
 	jp FarCopyData2
 

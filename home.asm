@@ -3099,13 +3099,13 @@ LoadTextBoxTilePatterns::
 	jr nz, .on
 .off
 	ld hl, TextBoxGraphics
-	ld de, vChars2 + $740
+	ld de, vChars2 + $780
 	ld bc, TextBoxGraphicsEnd - TextBoxGraphics
 	ld a, BANK(TextBoxGraphics)
 	jp FarCopyData2 ; if LCD is off, transfer all at once
 .on
 	ld de, TextBoxGraphics
-	ld hl, vChars2 + $740
+	ld hl, vChars2 + $780
 	lb bc, BANK(TextBoxGraphics), (TextBoxGraphicsEnd - TextBoxGraphics) / $10
 	jp CopyVideoData ; if LCD is on, transfer during V-blank
 

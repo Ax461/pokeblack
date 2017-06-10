@@ -156,9 +156,6 @@ charmap "#", $54
 charmap "<TARGET>", $59
 charmap "<USER>", $5A
 charmap "№", $74
-charmap "…", $76
-charmap "″", $77
-charmap "′", $78
 
 charmap "┌", $79
 charmap "─", $7A
@@ -241,6 +238,7 @@ charmap "'m", $E5
 charmap "?", $E6
 charmap "!", $E7
 charmap ".", $E8
+charmap "…", $EA
 
 charmap "▷", $EC
 charmap "▶", $ED

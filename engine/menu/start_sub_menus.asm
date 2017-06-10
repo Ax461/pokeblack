@@ -553,15 +553,9 @@ DrawTrainerInfo:
 	ld bc,$0400
 	ld a,$03
 	call FarCopyData2
-	ld hl,TextBoxGraphics
-	ld de,vChars1 + $560
-	ld bc,$0010
-	ld a,$04
-	push bc
-	call FarCopyData2
-	pop bc
 	ld hl,TrainerInfoTextBoxTileGraphics + $80  ; background tile pattern
 	ld de,vChars1 + $570
+	ld bc,$0010
 	call TrainerInfo_FarCopyData
 	call EnableLCD
 	ld hl,wTrainerInfoTextBoxWidthPlus1
@@ -602,7 +596,7 @@ DrawTrainerInfo:
 	ld de,wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3
 	call PrintNumber
-	ld [hl],$d6 ; colon tile ID
+	ld [hl],$e9 ; colon tile ID
 	inc hl
 	ld de,wPlayTimeMinutes ; minutes
 	lb bc, LEADING_ZEROES | 1, 2
