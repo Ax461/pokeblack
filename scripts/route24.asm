@@ -58,13 +58,15 @@ Route24Script4:
 	ret
 
 Route24Script3:
+	SetEvent EVENT_BEAT_ROUTE24_ROCKET
+	callba IsKillTrainerFlagSet
+	jp nz, Route24Script_513c0
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, Route24Script_513c0
 	call UpdateSprites
 	ld a, $f0
 	ld [wJoyIgnore], a
-	SetEvent EVENT_BEAT_ROUTE24_ROCKET
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -92,7 +94,7 @@ Route24TrainerHeader0:
 	dw Route24BattleText1 ; TextBeforeBattle
 	dw Route24AfterBattleText1 ; TextAfterBattle
 	dw Route24EndBattleText1 ; TextEndBattle
-	dw Route24EndBattleText1 ; TextEndBattle
+	dw KT_ROUTE_24_TRAINER_0; TrainerIndex
 
 Route24TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_1
@@ -101,7 +103,7 @@ Route24TrainerHeader1:
 	dw Route24BattleText2 ; TextBeforeBattle
 	dw Route24AfterBattleText2 ; TextAfterBattle
 	dw Route24EndBattleText2 ; TextEndBattle
-	dw Route24EndBattleText2 ; TextEndBattle
+	dw KT_ROUTE_24_TRAINER_1 ; TrainerIndex
 
 Route24TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_2
@@ -110,7 +112,7 @@ Route24TrainerHeader2:
 	dw Route24BattleText3 ; TextBeforeBattle
 	dw Route24AfterBattleText3 ; TextAfterBattle
 	dw Route24EndBattleText3 ; TextEndBattle
-	dw Route24EndBattleText3 ; TextEndBattle
+	dw KT_ROUTE_24_TRAINER_2 ; TrainerIndex
 
 Route24TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_3
@@ -119,7 +121,7 @@ Route24TrainerHeader3:
 	dw Route24BattleText4 ; TextBeforeBattle
 	dw Route24AfterBattleText4 ; TextAfterBattle
 	dw Route24EndBattleText4 ; TextEndBattle
-	dw Route24EndBattleText4 ; TextEndBattle
+	dw KT_ROUTE_24_TRAINER_3 ; TrainerIndex
 
 Route24TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_4
@@ -128,7 +130,7 @@ Route24TrainerHeader4:
 	dw Route24BattleText5 ; TextBeforeBattle
 	dw Route24AfterBattleText5 ; TextAfterBattle
 	dw Route24EndBattleText5 ; TextEndBattle
-	dw Route24EndBattleText5 ; TextEndBattle
+	dw KT_ROUTE_24_TRAINER_4 ; TrainerIndex
 
 Route24TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_5
@@ -137,7 +139,7 @@ Route24TrainerHeader5:
 	dw Route24BattleText6 ; TextBeforeBattle
 	dw Route24AfterBattleText6 ; TextAfterBattle
 	dw Route24EndBattleText6 ; TextEndBattle
-	dw Route24EndBattleText6 ; TextEndBattle
+	dw KT_ROUTE_24_TRAINER_5 ; TrainerIndex
 
 	db $ff
 
@@ -164,6 +166,7 @@ Route24Text1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_ROUTE_24_ROCKET
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	xor a

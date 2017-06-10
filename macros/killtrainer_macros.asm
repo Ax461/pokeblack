@@ -9,6 +9,5 @@ SetKillTrainerIndex: MACRO
 		ld [wKillTrainerIndex], a
 		ld a, l
 	ENDC
-
 		ld [wKillTrainerIndex + 1], a
 	ENDM

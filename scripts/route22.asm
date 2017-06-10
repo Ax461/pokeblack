@@ -31,6 +31,7 @@ Route22Script_50ed6:
 	inc hl
 	jr .asm_50eda
 .asm_50ee1
+	SetKillTrainerIndex KT_NOT_KILLABLE
 	ld a, [hl]
 	ld [wTrainerNo], a
 	ret

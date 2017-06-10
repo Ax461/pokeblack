@@ -2,7 +2,7 @@ MapKTPointers:
 	dw MapKT00
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT03
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -14,6 +14,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKT0E
+	dw MapKT0F
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -33,8 +34,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT23
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -64,7 +64,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT41
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -254,6 +254,8 @@ MapKTXX:
 	db $FF,$FF
 MapKT00:
 	db $00,$00
+MapKT03:
+	db CERULEAN_CITY,$2
 MapKT0E:
 	db ROUTE_3,$2
 	db ROUTE_3,$3
@@ -263,6 +265,16 @@ MapKT0E:
 	db ROUTE_3,$7
 	db ROUTE_3,$8
 	db ROUTE_3,$9
+MapKT0F:
+	db ROUTE_4,$2
+MapKT23:
+	db ROUTE_24,$1
+	db ROUTE_24,$2
+	db ROUTE_24,$3
+	db ROUTE_24,$4
+	db ROUTE_24,$5
+	db ROUTE_24,$6
+	db ROUTE_24,$7
 MapKT33:
 	db VIRIDIAN_FOREST,$2
 	db VIRIDIAN_FOREST,$3
@@ -284,3 +296,7 @@ MapKT3D:
 	db MT_MOON_3,$3
 	db MT_MOON_3,$4
 	db MT_MOON_3,$5
+MapKT41:
+	db CERULEAN_GYM,$1
+	db CERULEAN_GYM,$2
+	db CERULEAN_GYM,$3

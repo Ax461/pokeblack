@@ -43,10 +43,11 @@ CeruleanGymScript3:
 	ld [wJoyIgnore], a
 
 CeruleanGymScript_5c70d:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_5c736
 	ld a, $5
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_MISTY
 	lb bc, TM_11, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,6 +61,7 @@ CeruleanGymScript_5c70d:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_5c736
+	SetEvent EVENT_BEAT_MISTY
 	ld hl, wObtainedBadges
 	set 1, [hl]
 	ld hl, wBeatGymFlags
@@ -86,7 +88,7 @@ CeruleanGymTrainerHeader0:
 	dw CeruleanGymBattleText1 ; TextBeforeBattle
 	dw CeruleanGymAfterBattleText1 ; TextAfterBattle
 	dw CeruleanGymEndBattleText1 ; TextEndBattle
-	dw CeruleanGymEndBattleText1 ; TextEndBattle
+	dw KT_CERULEAN_GYM_TRAINER_0 ; TrainerIndex
 
 CeruleanGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_CERULEAN_GYM_TRAINER_1
@@ -95,7 +97,7 @@ CeruleanGymTrainerHeader1:
 	dw CeruleanGymBattleText2 ; TextBeforeBattle
 	dw CeruleanGymAfterBattleText2 ; TextAfterBattle
 	dw CeruleanGymEndBattleText2 ; TextEndBattle
-	dw CeruleanGymEndBattleText2 ; TextEndBattle
+	dw KT_CERULEAN_GYM_TRAINER_1 ; TrainerIndex
 
 	db $ff
 
@@ -123,6 +125,7 @@ CeruleanGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_CERULEAN_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $2

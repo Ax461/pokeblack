@@ -26,15 +26,27 @@ CeruleanCityScript4:
 	ld a, $f0
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
+	callba IsKillTrainerFlagSet
+	jr nz, .skip
 	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
+.skip
 	xor a
 	ld [wJoyIgnore], a
 	ld [wCeruleanCityCurScript], a
 	ret
 
 CeruleanCityScript0:
+	ld a, [wOverworldMap + 13]
+	cp $89
+	jr z, .skip
+	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
+	callba IsKillTrainerFlagSet
+	jr z, .skip
+	ld a, $89
+	ld [wOverworldMap + 13], a
+.skip
 	CheckEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
 	jr nz, .asm_194f7
 	ld hl, CeruleanCityCoords1
@@ -152,10 +164,7 @@ CeruleanCityScript1:
 	ld a, $9
 .done
 	ld [wTrainerNo], a
-
-	xor a
-	ld [wKillTrainerIndex], a
-	ld [wKillTrainerIndex  + 1], a
+	SetKillTrainerIndex KT_NOT_KILLABLE
 	ld [hJoyHeld], a
 	call CeruleanCityScript_1955d
 	ld a, $2
@@ -293,6 +302,7 @@ CeruleanCityText2:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_CERULEAN_CITY_ROCKET_THIEF
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $4
