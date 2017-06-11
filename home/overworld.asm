@@ -751,7 +751,7 @@ MapEntryAfterBattle::
 	callba IsPlayerStandingOnWarp ; for enabling warp testing after collisions
 	ld a, [wKillTrainerCurseFlag]
 	or a
-	jp z, .skip
+	jr z, .skip
 	xor a
 	ld [wKillTrainerCurseFlag], a
 	call UpdateSprites
