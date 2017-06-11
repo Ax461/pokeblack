@@ -2285,7 +2285,7 @@ DisplayBattleMenu:
 	ld l, a
 	call CompareHLWithBC
 	jr nz, .continue
-	ld c, 30
+	ld c, 50
 	call DelayFrames
 	call PrintButItFailedText_
 	jp DisplayBattleMenu
