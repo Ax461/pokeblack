@@ -16,7 +16,7 @@ MapKTPointers:
 	dw MapKT0E
 	dw MapKT0F
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT11
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -267,6 +267,13 @@ MapKT0E:
 	db ROUTE_3,$9
 MapKT0F:
 	db ROUTE_4,$2
+MapKT11:
+	db ROUTE_6,$1
+	db ROUTE_6,$2
+	db ROUTE_6,$3
+	db ROUTE_6,$4
+	db ROUTE_6,$5
+	db ROUTE_6,$6
 MapKT23:
 	db ROUTE_24,$1
 	db ROUTE_24,$2

@@ -86,6 +86,53 @@ PlaceTombstones:
 .done
 	xor a
 	ld [wWarpFlag], a
+
+; individual map hacks
+	ld a, [wCurMap]
+	cp CERULEAN_CITY
+	jr z, .ceruleanCity
+	cp VERMILION_CITY
+	jr z, .vermilionCity
+	cp ROUTE_6
+	jr z, .route6
+	ret
+.ceruleanCity
+	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
+	callba IsKillTrainerFlagSet
+	ret z
+	ld a, $89
+	ld [wOverworldMap + 13], a
+	ret
+.vermilionCity
+	SetKillTrainerIndex KT_ROUTE_6_TRAINER_3
+	callba IsKillTrainerFlagSet
+	ret z
+	ld a, $81
+	ld [wOverworldMap + 13], a
+	SetKillTrainerIndex KT_ROUTE_6_TRAINER_4
+	callba IsKillTrainerFlagSet
+	ret z
+	ld a, $90
+	ld [wOverworldMap + 13], a
+	ret
+.route6
+	SetKillTrainerIndex KT_ROUTE_6_TRAINER_0
+	callba IsKillTrainerFlagSet
+	jr z, .route6_next
+	SetKillTrainerIndex KT_ROUTE_6_TRAINER_1
+	callba IsKillTrainerFlagSet
+	jr z, .route6_next
+	ld a, $8f
+	ld [wOverworldMap + 216], a
+.route6_next
+	SetKillTrainerIndex KT_ROUTE_6_TRAINER_3
+	callba IsKillTrainerFlagSet
+	ret z
+	SetKillTrainerIndex KT_ROUTE_6_TRAINER_4
+	callba IsKillTrainerFlagSet
+	ret z
+	ld a, $90
+	ld [wOverworldMap + 296], a
 	ret
 
 LoadTileBlock:
@@ -119,7 +166,7 @@ ReplaceTileBlock2:
 	dec b
 	jr nz, .addWidthYTimesLoop
 .addX
-	add hl, bc ; add X
+	add hl, bc
 	ld a, [wNewTileBlockID]
 	ld [hl], a
 	ret

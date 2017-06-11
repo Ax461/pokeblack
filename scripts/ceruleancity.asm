@@ -38,15 +38,6 @@ CeruleanCityScript4:
 	ret
 
 CeruleanCityScript0:
-	ld a, [wOverworldMap + 13]
-	cp $89
-	jr z, .skip
-	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
-	callba IsKillTrainerFlagSet
-	jr z, .skip
-	ld a, $89
-	ld [wOverworldMap + 13], a
-.skip
 	CheckEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
 	jr nz, .asm_194f7
 	ld hl, CeruleanCityCoords1

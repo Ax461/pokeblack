@@ -10,6 +10,12 @@ TombstoneTileBlocks:
 	db $85
 	db $86
 	db $81 ; ROUTE_4
+	db $8D ; ROUTE_6
+	db $87
+	db $8B
+	db $81
+	db $82
+	db $8C
 	db $87 ; ROUTE_24
 	db $86
 	db $89
