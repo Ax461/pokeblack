@@ -2285,9 +2285,7 @@ DisplayBattleMenu:
 	ld l, a
 	call CompareHLWithBC
 	jr nz, .continue
-	ld c, 50
-	call DelayFrames
-	call PrintButItFailedText_
+	call PrintButItFailedTextDelay
 	jp DisplayBattleMenu
 .continue
 	ld a, 1
@@ -3434,6 +3432,12 @@ PrintGhostText:
 	ld a,[H_WHOSETURN]
 	and a
 	jr nz,.Ghost
+	ld a, [wBattleMonSpecies]
+	cp GHOST
+	jr nz, .skip
+	call PrintMonName1Text
+	jp PrintButItFailedTextDelay
+.skip
 	ld a,[wBattleMonStatus] ; player’s turn
 	and a,SLP | (1 << FRZ)
 	ret nz
@@ -8743,6 +8747,11 @@ PrintButItFailedText_:
 ButItFailedText:
 	TX_FAR _ButItFailedText
 	db "@"
+
+PrintButItFailedTextDelay:
+	ld c, 50
+	call DelayFrames
+	jr PrintButItFailedText_
 
 PrintDidntAffectText:
 	ld hl, DidntAffectText
