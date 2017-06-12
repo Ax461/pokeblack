@@ -47,7 +47,13 @@ HandleLedges:
 	ld a, e
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wSimulatedJoypadStatesEnd + 1], a
-	ld a, $2
+	ld b, $3
+	ld a, [wNumHoFTeams]
+	and a
+	jr nz, .skip
+	dec b
+.skip
+	ld a, b
 	ld [wSimulatedJoypadStatesIndex], a
 	call LoadHoppingShadowOAM
 	ld a, SFX_LEDGE

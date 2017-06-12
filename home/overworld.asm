@@ -1472,6 +1472,9 @@ LoadCurrentMapView::
 	ret
 
 AdvancePlayerSprite::
+	ld a, [wd736]
+	bit 6, a ; check if jumping down ledge
+	jr nz, .skip
 	ld a, [wNumHoFTeams]
 	and a
 	jr z, .skip
@@ -2019,6 +2022,11 @@ RunMapScript::
 
 LoadWalkingPlayerSpriteGraphics::
 	ld de,RedSprite
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld de, OldPersonSprite
+.skip
 	ld hl,vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
