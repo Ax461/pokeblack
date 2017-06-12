@@ -117,10 +117,7 @@ DisplayTitleScreen:
 	call SaveScreenTilesToBuffer2
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
-	ld a,CHARMANDER ; which Pokemon to show first on the title screen
 
-	ld [wTitleMonSpecies], a
-	call LoadTitleMonSprite
 	ld a, (vBGMap0 + $300) / $100
 	call TitleScreenCopyTileMapToVRAM
 	call SaveScreenTilesToBuffer1
@@ -217,12 +214,9 @@ DisplayTitleScreen:
 	ld c, 200
 	call CheckForUserInterruption
 	jr c, .finishedWaiting
-	call TitleScreenScrollInMon
 	ld c, 1
 	call CheckForUserInterruption
 	jr c, .finishedWaiting
-	callba TitleScreenAnimateBallIfStarterOut
-	call TitleScreenPickNewMon
 	jr .awaitUserInterruptionLoop
 
 .finishedWaiting
@@ -248,41 +242,6 @@ DisplayTitleScreen:
 
 .doClearSaveDialogue
 	jpba DoClearSaveDialogue
-
-TitleScreenPickNewMon:
-	ld a, vBGMap0 / $100
-	call TitleScreenCopyTileMapToVRAM
-
-.loop
-; Keep looping until a mon different from the current one is picked.
-	call Random
-	and $f
-	ld c, a
-	ld b, 0
-	ld hl, TitleMons
-	add hl, bc
-	ld a, [hl]
-	ld hl, wTitleMonSpecies
-
-; Can't be the same as before.
-	cp [hl]
-	jr z, .loop
-
-	ld [hl], a
-	call LoadTitleMonSprite
-
-	ld a, $90
-	ld [hWY], a
-	ld d, 1 ; scroll out
-	callba TitleScroll
-	ret
-
-TitleScreenScrollInMon:
-	ld d, 0 ; scroll in
-	callba TitleScroll
-	xor a
-	ld [hWY], a
-	ret
 
 ScrollTitleScreenGameVersion:
 .wait
@@ -341,9 +300,6 @@ ClearBothBGMaps:
 	ld bc, $400 * 2
 	ld a, " "
 	jp FillMemory
-
-LoadTitleMonSprite:
-	ret
 
 TitleScreenCopyTileMapToVRAM:
 	ld [H_AUTOBGTRANSFERDEST + 1], a

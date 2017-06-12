@@ -875,7 +875,6 @@ VictreebelPicBack::    INCBIN "pic/monback/victreebelb.pic"
 
 SECTION "Battle (bank D)", ROMX, BANK[$D]
 
-INCLUDE "engine/titlescreen2.asm"
 INCLUDE "engine/battle/link_battle_versus_text.asm"
 INCLUDE "engine/slot_machine.asm"
 INCLUDE "engine/overworld/pewter_guys.asm"

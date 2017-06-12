@@ -750,7 +750,7 @@ ExtraWarpCheck::
 MapEntryAfterBattle::
 	callba IsPlayerStandingOnWarp ; for enabling warp testing after collisions
 	ld a, [wKillTrainerCurseFlag]
-	or a
+	and a
 	jr z, .skip
 	xor a
 	ld [wKillTrainerCurseFlag], a

@@ -527,9 +527,7 @@ MainInBattleLoop:
 	jp z, HandlePlayerMonFainted
 	ld a, [wCurseFlag]
 	and a
-	jr nz, .skip
-	call DrawHUDsAndHPBars
-.skip
+	call z, DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
 .playerMovesFirst
@@ -7339,9 +7337,8 @@ MoveEffectPointerTable:
 	 dw DisableEffect             ; DISABLE_EFFECT
 
 CurseEffect:
-	ld a, [wKilledMonsNumber]
-	inc a
-	ld [wKilledMonsNumber], a
+	ld hl, wKilledMonsNumber
+	inc [hl]
 	ret
 
 SleepEffect:

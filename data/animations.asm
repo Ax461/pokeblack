@@ -215,6 +215,7 @@ ZigZagScreenAnim:
 	db $FF
 
 CurseAnim:
+	db SE_DELAY_ANIMATION_30, $FF
 	db SE_CUT_TO_BLACK, $FF
 	db SE_DELAY_ANIMATION_30, $FF
 	db SE_PLAY_DISTORTED_CRY, $FF

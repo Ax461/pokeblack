@@ -47,4 +47,4 @@ TypeNames:
 .Bug:      db "BUG@"
 .Ghost:    db "GHOST@"
 .Dragon:   db "DRAGON@"
-.Unknown:   db "???@"
+.Unknown:  db "???@"
