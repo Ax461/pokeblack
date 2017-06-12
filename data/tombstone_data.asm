@@ -23,6 +23,15 @@ TombstoneTileBlocks:
 	db $89
 	db $88
 	db $89
+	db $95 ; ROUTE_25
+	db $96
+	db $95
+	db $92
+	db $93
+	db $94
+	db $80
+	db $81
+	db $91
 	db $80 ; VIRIDIAN_FOREST
 	db $80
 	db $81

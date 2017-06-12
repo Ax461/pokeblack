@@ -35,7 +35,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKT23
-	dw MapKTXX
+	dw MapKT24
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -282,6 +282,16 @@ MapKT23:
 	db ROUTE_24,$5
 	db ROUTE_24,$6
 	db ROUTE_24,$7
+MapKT24:
+	db ROUTE_25,$1
+	db ROUTE_25,$2
+	db ROUTE_25,$3
+	db ROUTE_25,$4
+	db ROUTE_25,$5
+	db ROUTE_25,$6
+	db ROUTE_25,$7
+	db ROUTE_25,$8
+	db ROUTE_25,$9
 MapKT33:
 	db VIRIDIAN_FOREST,$2
 	db VIRIDIAN_FOREST,$3

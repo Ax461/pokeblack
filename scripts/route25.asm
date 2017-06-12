@@ -60,7 +60,7 @@ Route25TrainerHeader0:
 	dw Route25BattleText1 ; TextBeforeBattle
 	dw Route25AfterBattleText1 ; TextAfterBattle
 	dw Route25EndBattleText1 ; TextEndBattle
-	dw Route25EndBattleText1 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_0 ; TrainerIndex
 
 Route25TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_1
@@ -69,7 +69,7 @@ Route25TrainerHeader1:
 	dw Route25BattleText2 ; TextBeforeBattle
 	dw Route25AfterBattleText2 ; TextAfterBattle
 	dw Route25EndBattleText2 ; TextEndBattle
-	dw Route25EndBattleText2 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_1 ; TrainerIndex
 
 Route25TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_2
@@ -78,7 +78,7 @@ Route25TrainerHeader2:
 	dw Route25BattleText3 ; TextBeforeBattle
 	dw Route25AfterBattleText3 ; TextAfterBattle
 	dw Route25EndBattleText3 ; TextEndBattle
-	dw Route25EndBattleText3 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_2 ; TrainerIndex
 
 Route25TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_3
@@ -87,7 +87,7 @@ Route25TrainerHeader3:
 	dw Route25BattleText4 ; TextBeforeBattle
 	dw Route25AfterBattleText4 ; TextAfterBattle
 	dw Route25EndBattleText4 ; TextEndBattle
-	dw Route25EndBattleText4 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_3 ; TrainerIndex
 
 Route25TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_4
@@ -96,7 +96,7 @@ Route25TrainerHeader4:
 	dw Route25BattleText5 ; TextBeforeBattle
 	dw Route25AfterBattleText5 ; TextAfterBattle
 	dw Route25EndBattleText5 ; TextEndBattle
-	dw Route25EndBattleText5 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_4 ; TrainerIndex
 
 Route25TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_5
@@ -105,7 +105,7 @@ Route25TrainerHeader5:
 	dw Route25BattleText6 ; TextBeforeBattle
 	dw Route25AfterBattleText6 ; TextAfterBattle
 	dw Route25EndBattleText6 ; TextEndBattle
-	dw Route25EndBattleText6 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_5 ; TrainerIndex
 
 Route25TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_6
@@ -114,7 +114,7 @@ Route25TrainerHeader6:
 	dw Route25BattleText7 ; TextBeforeBattle
 	dw Route25AfterBattleText7 ; TextAfterBattle
 	dw Route25EndBattleText7 ; TextEndBattle
-	dw Route25EndBattleText7 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_6 ; TrainerIndex
 
 Route25TrainerHeader7:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_7, 1
@@ -123,7 +123,7 @@ Route25TrainerHeader7:
 	dw Route25BattleText8 ; TextBeforeBattle
 	dw Route25AfterBattleText8 ; TextAfterBattle
 	dw Route25EndBattleText8 ; TextEndBattle
-	dw Route25EndBattleText8 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_7 ; TrainerIndex
 
 Route25TrainerHeader8:
 	dbEventFlagBit EVENT_BEAT_ROUTE_25_TRAINER_8, 1
@@ -132,7 +132,7 @@ Route25TrainerHeader8:
 	dw Route25BattleText9 ; TextBeforeBattle
 	dw Route25AfterBattleText9 ; TextAfterBattle
 	dw Route25EndBattleText9 ; TextEndBattle
-	dw Route25EndBattleText9 ; TextEndBattle
+	dw KT_ROUTE_25_TRAINER_8 ; TrainerIndex
 
 	db $ff
 
