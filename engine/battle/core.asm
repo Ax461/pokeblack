@@ -3213,8 +3213,8 @@ LinkBattleExchangeData:
 ExecutePlayerMove:
 	xor a
 	ld [H_WHOSETURN], a ; set player's turn
-	ld a, [wPlayerSelectedMove]
-	cp CURSE
+	ld a, [wBattleMonSpecies]
+	cp GHOST
 	jr nz, .skip
 	ld a, 1
 	ld [wCurseFlag], a
