@@ -468,7 +468,7 @@ TextCommand02::
 	ld h,b
 	ld l,c
 	ld c,a
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	ld b,h
 	ld c,l
 	pop hl

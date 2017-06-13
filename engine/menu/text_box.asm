@@ -279,7 +279,7 @@ DisplayMoneyBox:
 	coord hl, 12, 1
 	ld de, wPlayerMoney
 	ld c, $a3
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	ld hl, wd730
 	res 6, [hl]
 	ret

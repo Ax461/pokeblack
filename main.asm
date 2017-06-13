@@ -1870,8 +1870,7 @@ Interior_Block:    INCBIN "gfx/blocksets/interior.bst"
 
 SECTION "bank1A",ROMX,BANK[$1A]
 
-Version_GFX:
-	INCBIN "gfx/blackversion.1bpp" ; 10 tiles
+Version_GFX:       INCBIN "gfx/blackversion.1bpp" ; 10 tiles
 Version_GFXEnd:
 
 Plateau_GFX:       INCBIN "gfx/tilesets/plateau.t10.2bpp"
@@ -2092,6 +2091,8 @@ INCLUDE "engine/overworld/elevator.asm"
 
 
 SECTION "bank2D",ROMX,BANK[$2D]
+
+PokecenterAlt_GFX: INCBIN "gfx/pokecenteralt.2bpp"
 
 GhostPicFront::  INCBIN "pic/other/ghost.pic"
 GhostPicBack::   INCBIN "pic/monback/ghostb.pic"

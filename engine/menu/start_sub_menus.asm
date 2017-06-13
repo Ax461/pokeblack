@@ -591,7 +591,7 @@ DrawTrainerInfo:
 	coord hl, 8, 4
 	ld de,wPlayerMoney
 	ld c,$e3
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	coord hl, 9, 6
 	ld de,wPlayTimeHours ; hours
 	lb bc, LEFT_ALIGN | 1, 3

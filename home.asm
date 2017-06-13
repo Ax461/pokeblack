@@ -87,7 +87,7 @@ INCLUDE "home/copy.asm"
 SECTION "Entry", ROM0 [$100]
 
 	nop
-	jp Start
+	jp Init
 
 
 SECTION "Header", ROM0 [$104]
@@ -100,18 +100,6 @@ SECTION "Header", ROM0 [$104]
 
 
 SECTION "Main", ROM0
-
-Start::
-	cp GBC
-	jr z, .gbc
-	xor a
-	jr .ok
-.gbc
-	ld a, 0
-.ok
-	ld [wGBC], a
-	jp Init
-
 
 INCLUDE "home/joypad.asm"
 INCLUDE "data/map_header_pointers.asm"
@@ -167,76 +155,6 @@ LoadDestinationWarpPosition::
 	ld [H_LOADEDROMBANK],a
 	ld [MBC1RomBank],a
 	ret
-
-
-DrawHPBar::
-; Draw an HP bar d tiles long, and fill it to e pixels.
-; If c is nonzero, show at least a sliver regardless.
-; The right end of the bar changes with [wHPBarType].
-
-	push hl
-	push de
-	push bc
-
-	; Left
-	ld a, $71 ; "HP:"
-	ld [hli], a
-	ld a, $62
-	ld [hli], a
-
-	push hl
-
-	; Middle
-	ld a, $63 ; empty
-.draw
-	ld [hli],a
-	dec d
-	jr nz, .draw
-
-	; Right
-	ld a,[wHPBarType]
-	dec a
-	ld a, $6d ; status screen and battle
-	jr z, .ok
-	dec a ; pokemon menu
-.ok
-	ld [hl],a
-
-	pop hl
-
-	ld a, e
-	and a
-	jr nz, .fill
-
-	; If c is nonzero, draw a pixel anyway.
-	ld a, c
-	and a
-	jr z, .done
-	ld e, 1
-
-.fill
-	ld a, e
-	sub 8
-	jr c, .partial
-	ld e, a
-	ld a, $6b ; full
-	ld [hli], a
-	ld a, e
-	and a
-	jr z, .done
-	jr .fill
-
-.partial
-	; Fill remaining pixels at the end if necessary.
-	ld a, $63 ; empty
-	add e
-	ld [hl], a
-.done
-	pop bc
-	pop de
-	pop hl
-	ret
-
 
 ; loads pokemon data from one of multiple sources to wLoadedMon
 ; loads base stats to wMonHeader
@@ -615,84 +533,6 @@ GetPartyMonName::
 	pop hl
 	ret
 
-; function to print a BCD (Binary-coded decimal) number
-; de = address of BCD number
-; hl = destination address
-; c = flags and length
-; bit 7: if set, do not print leading zeroes
-;        if unset, print leading zeroes
-; bit 6: if set, left-align the string (do not pad empty digits with spaces)
-;        if unset, right-align the string
-; bit 5: if set, print currency symbol at the beginning of the string
-;        if unset, do not print the currency symbol
-; bits 0-4: length of BCD number in bytes
-; Note that bits 5 and 7 are modified during execution. The above reflects
-; their meaning at the beginning of the functions's execution.
-PrintBCDNumber::
-	ld b,c ; save flags in b
-	res 7,c
-	res 6,c
-	res 5,c ; c now holds the length
-	bit 5,b
-	jr z,.loop
-	bit 7,b
-	jr nz,.loop
-	ld [hl],"¥"
-	inc hl
-.loop
-	ld a,[de]
-	swap a
-	call PrintBCDDigit ; print upper digit
-	ld a,[de]
-	call PrintBCDDigit ; print lower digit
-	inc de
-	dec c
-	jr nz,.loop
-	bit 7,b ; were any non-zero digits printed?
-	jr z,.done ; if so, we are done
-.numberEqualsZero ; if every digit of the BCD number is zero
-	bit 6,b ; left or right alignment?
-	jr nz,.skipRightAlignmentAdjustment
-	dec hl ; if the string is right-aligned, it needs to be moved back one space
-.skipRightAlignmentAdjustment
-	bit 5,b
-	jr z,.skipCurrencySymbol
-	ld [hl],"¥"
-	inc hl
-.skipCurrencySymbol
-	ld [hl],"0"
-	call PrintLetterDelay
-	inc hl
-.done
-	ret
-
-PrintBCDDigit::
-	and $f
-	and a
-	jr z,.zeroDigit
-.nonzeroDigit
-	bit 7,b ; have any non-space characters been printed?
-	jr z,.outputDigit
-; if bit 7 is set, then no numbers have been printed yet
-	bit 5,b ; print the currency symbol?
-	jr z,.skipCurrencySymbol
-	ld [hl],"¥"
-	inc hl
-	res 5,b
-.skipCurrencySymbol
-	res 7,b ; unset 7 to indicate that a nonzero digit has been reached
-.outputDigit
-	add "0"
-	ld [hli],a
-	jp PrintLetterDelay
-.zeroDigit
-	bit 7,b ; either printing leading zeroes or already reached a nonzero digit?
-	jr z,.outputDigit ; if so, print a zero digit
-	bit 6,b ; left or right alignment?
-	ret nz
-	inc hl ; if right-aligned, "print" a space by advancing the pointer
-	ret
-
 ; uncompresses the front or back sprite of the specified mon
 ; assumes the corresponding mon header is already loaded
 ; hl contains offset to sprite pointer ($b for front or $d for back)
@@ -1029,9 +869,19 @@ FadeOutAudio::
 	ld [wNewSoundID], a
 	jp PlaySound
 
+
 ; this function is used to display sign messages, sprite dialog, etc.
 ; INPUT: [hSpriteIndexOrTextID] = sprite ID or text ID
 DisplayTextID::
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .continue
+	ld a, [hSpriteIndexOrTextID]
+	cp $0f
+	jr c, .continue
+	cp $1b
+	ret c
+.continue
 	ld a,[H_LOADEDROMBANK]
 	push af
 	callba DisplayTextIDInit ; initialization
@@ -1643,7 +1493,7 @@ DisplayChooseQuantityMenu::
 	call PlaceString
 	ld de,hMoney ; total price
 	ld c,$a3
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	coord hl, 9, 10
 .printQuantity
 	ld de,wItemQuantity ; current quantity
@@ -1768,7 +1618,7 @@ PrintListMenuEntries::
 	ld bc, SCREEN_WIDTH + 5 ; 1 row down and 5 columns right
 	add hl,bc
 	ld c,$a3 ; no leading zeroes, right-aligned, print currency symbol, 3 bytes
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 .skipPrintingItemPrice
 	ld a,[wListMenuID]
 	and a

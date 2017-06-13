@@ -58,7 +58,7 @@ PredefPointers::
 	add_predef ScaleSpriteByTwo
 	add_predef LoadMonBackPic
 	add_predef CopyDownscaledMonTiles
-	dbw $03,JumpMoveEffect ; wrong bank
+	add_predef DrawHPBarPredef
 	add_predef HealParty
 	add_predef MoveAnimation
 	add_predef DivideBCDPredef
@@ -67,6 +67,7 @@ PredefPointers::
 	add_predef SubBCDPredef
 	add_predef DivideBCDPredef3
 	add_predef DivideBCDPredef4
+	add_predef PrintBCDNumberPredef
 	add_predef InitPlayerData
 	add_predef FlagActionPredef
 	add_predef HideObject

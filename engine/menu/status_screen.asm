@@ -38,7 +38,7 @@ DrawHP_:
 	push de
 	push hl
 	push hl
-	call DrawHPBar
+	predef DrawHPBarPredef
 	pop hl
 	ld a, [hFlags_0xFFF6]
 	bit 0, a

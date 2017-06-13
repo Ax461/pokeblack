@@ -135,15 +135,15 @@ GetPrizeMenuId:
 	ld c,(1 << 7 | 2)
 ; Function $15CD displays BCD value (same routine
 ; used by text-command $02)
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	ld de,wPrize2Price
 	coord hl, 13, 7
 	ld c,(1 << 7 | 2)
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	ld de,wPrize3Price
 	coord hl, 13, 9
 	ld c,(1 << 7 | 2)
-	jp PrintBCDNumber
+	predef_jump PrintBCDNumberPredef
 
 INCLUDE "data/prizes.asm"
 
@@ -162,7 +162,7 @@ PrintPrizePrice:
 	coord hl, 13, 1
 	ld de,wPlayerCoins
 	ld c,%10000010
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	ret
 
 .CoinString:

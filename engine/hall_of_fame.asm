@@ -238,7 +238,7 @@ HoFDisplayPlayerStats:
 	coord hl, 4, 10
 	ld de, wPlayerMoney
 	ld c, $a3
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	ld hl, DexSeenOwnedText
 	call HoFPrintTextAndDelay
 	ld hl, DexRatingText

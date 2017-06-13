@@ -102,6 +102,9 @@ IsObjectHidden:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	swap a
 	ld b, a
+	ld a, [wNumHoFTeams]
+	and a
+	jr nz, .hidden
 	ld hl, wMissableObjectList
 .loop
 	ld a, [hli]

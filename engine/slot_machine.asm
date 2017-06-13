@@ -645,7 +645,7 @@ SlotMachine_PrintCreditCoins:
 	coord hl, 5, 1
 	ld de, wPlayerCoins
 	ld c, $2
-	jp PrintBCDNumber
+	predef_jump PrintBCDNumberPredef
 
 SlotMachine_PrintPayoutCoins:
 	coord hl, 11, 1

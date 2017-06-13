@@ -492,7 +492,7 @@ CeladonGameCornerScript_48f1e:
 	coord hl, 12, 3
 	ld de, wPlayerMoney
 	ld c, $a3
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	coord hl, 12, 4
 	ld de, GameCornerCoinText
 	call PlaceString
@@ -502,7 +502,7 @@ CeladonGameCornerScript_48f1e:
 	coord hl, 15, 5
 	ld de, wPlayerCoins
 	ld c, $82
-	call PrintBCDNumber
+	predef PrintBCDNumberPredef
 	ld hl, wd730
 	res 6, [hl]
 	ret

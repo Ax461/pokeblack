@@ -185,3 +185,27 @@ GetGhostPartyPosition:
 .continue
 	inc b
 	jr .loop
+
+RemoveBenchGuy:
+	ld a, [wNumHoFTeams]
+	and a
+	ret z
+	ld a, [wCurMapTileset]
+	cp POKECENTER
+	ret nz
+	ld hl, PokecenterAlt_GFX
+	ld de, vTileset + $240
+	ld bc, $20
+	call CopyData
+	ld hl, PokecenterAlt_GFX + $20
+	ld de, vTileset + $390
+	ld bc, $10
+	call CopyData
+	ld hl, PokecenterAlt_GFX + $30
+	ld de, vTileset + $340
+	ld bc, $20
+	call CopyData
+	ld hl, PokecenterAlt_GFX + $50
+	ld de, vTileset + $3c0
+	ld bc, $10
+	jp CopyData

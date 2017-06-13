@@ -2066,7 +2066,7 @@ DrawEnemyHUDAndHPBar:
 	xor a
 	ld [wHPBarType], a
 	coord hl, 2, 2
-	call DrawHPBar
+	predef DrawHPBarPredef
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld hl, wEnemyHPBarColor
