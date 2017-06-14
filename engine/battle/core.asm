@@ -6512,17 +6512,16 @@ SwapPlayerAndEnemyLevels:
 LoadPlayerBackPic:
 	ld a, [wBattleType]
 	dec a ; is it the old man tutorial?
-    ld de, OldManPic ; $7e0a
-    jr z, .asm_3ec9e
-    ld a, [wNumHoFTeams]
-    and a
-    jr z, .RedBack
-    ld de, OldManPic
-    jr .asm_3ec9e
-.RedBack
-    ld de, RedPicBack ; $7e9a
+	ld de, OldManPic ; $7e0a
+	jr z, .asm_3ec9e
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .redBack
+	ld de, OldManPic
+	jr .asm_3ec9e
+.redBack
+	ld de, RedPicBack ; $7e9a
 .asm_3ec9e
-.next
 	ld a, BANK(RedPicBack)
 	call UncompressSpriteFromDE
 	predef ScaleSpriteByTwo
