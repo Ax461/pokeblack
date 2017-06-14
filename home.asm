@@ -4303,6 +4303,9 @@ RestoreScreenTilesAndReloadTilePatterns::
 	call LoadScreenTilesFromBuffer2
 	call LoadTextBoxTilePatterns
 	call RunDefaultPaletteCommand
+	call DisableLCD
+	call LoadTilesetTilePatternData
+	call EnableLCD
 	jr Delay3
 
 
