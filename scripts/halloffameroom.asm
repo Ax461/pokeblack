@@ -43,6 +43,7 @@ HallofFameRoomScript2:
 	ResetEventRange ELITE4_EVENTS_START, ELITE4_CHAMPION_EVENTS_END, 1
 	xor a
 	ld [wHallOfFameRoomCurScript], a
+	ld [wPartyCount], a
 	ld a, PALLET_TOWN
 	ld [wLastBlackoutMap], a
 	callba SaveSAVtoSRAM
