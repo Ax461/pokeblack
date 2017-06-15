@@ -1,11 +1,11 @@
 PYTHON := python2
+EXE :=
 
 2bpp     := $(PYTHON) extras/pokemontools/gfx.py 2bpp
 1bpp     := $(PYTHON) extras/pokemontools/gfx.py 1bpp
 pic      := $(PYTHON) extras/pokemontools/pic.py compress
 includes := $(PYTHON) extras/pokemontools/scan_includes.py
 
-EXE :=
 rgbasm   := rgbds/rgbasm${EXE}
 rgblink  := rgbds/rgblink${EXE}
 rgbfix   := rgbds/rgbfix${EXE}
