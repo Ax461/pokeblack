@@ -442,7 +442,6 @@ wMenuWatchMovingOutOfBounds:: ; cc37
 wTradeCenterPointerTableIndex:: ; cc38
 	ds 1
 
-wCurseFlag:: ; cc39
 	ds 1
 
 wTextDest:: ; cc3a
@@ -2115,7 +2114,7 @@ wMoveNum:: ; d0e0
 wMovesString:: ; d0e1
 	ds 56
 
-wKilledMonsNumber:: ; d119
+wUnusedD119:: ; d119
 	ds 1
 
 wWalkBikeSurfStateCopy:: ; d11a
@@ -2421,7 +2420,7 @@ wXBlockCoord:: ; d364
 wLastMap:: ; d365
 	ds 1
 
-wWarpFlag:: ; d366
+wUnusedD366:: ; d366
 	ds 1
 
 wCurMapTileset:: ; d367
@@ -2573,7 +2572,42 @@ wDestinationWarpID:: ; d42f
 ; if $ff, the player's coordinates are not updated when entering the map
 	ds 1
 
-	ds 52
+wCurseFlag::
+	ds 1
+
+wDisableSelectionFlag::
+	ds 1
+
+wWarpFlag::
+	ds 1
+
+wHalfSpeedFlag::
+	ds 1
+
+wKillTrainerCurseFlag::
+	ds 1
+
+wKilledMonsNumber::
+	ds 1
+
+wGhostPartyPos::
+	ds 1
+
+wKillTrainerList::
+; each entry consists of 3 bytes
+; * the sprite ID (depending on the current map)
+; * the trainer index (global, used for wKillTrainerFlags)
+; terminated with $FF
+	ds 10 * 3
+
+	ds 1
+
+wKillTrainerFlags::
+	ds 50
+wKillTrainerFlagsEnd::
+
+wKillTrainerIndex::
+	ds 2
 
 wTombstoneListMap::
 	ds 1
@@ -2586,25 +2620,12 @@ wTombstoneList::
 ; terminated with $FF
 	ds 10 * 3
 
+	ds 1
+
 wTombstoneListPointer::
 	ds 2
 
-wKillTrainerCurseFlag::
-	ds 1
-
-wKillTrainerList::
-; each entry consists of 3 bytes
-; * the sprite ID (depending on the current map)
-; * the trainer index (global, used for wKillTrainerFlags)
-; terminated with $FF
-	ds 10 * 3
-
-wKillTrainerFlags:: ; d430
-	ds 10
-wKillTrainerFlagsEnd::
-
-wKillTrainerIndex::
-	ds 2
+	ds 4
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)
@@ -2705,7 +2726,7 @@ wNumHoFTeams:: ; d5a2
 ; number of HOF teams
 	ds 1
 
-wHalfSpeedFlag:: ; d5a3
+wUnusedD5A3:: ; d5a3
 	ds 1
 
 wPlayerCoins:: ; d5a4
@@ -2987,7 +3008,6 @@ wPlayerJumpingYScreenCoordsIndex:: ; d714
 wRivalStarter:: ; d715
 	ds 1
 
-wDisableSelectionFlag:: ; d716
 	ds 1
 
 wPlayerStarter:: ; d717
@@ -3004,7 +3024,7 @@ wDestinationMap:: ; d71a
 ; destination map (for certain types of special warps, not ordinary walking)
 	ds 1
 
-wGhostPartyPos:: ; d71b
+wUnusedD71B:: ; d71b
 	ds 1
 
 wTileInFrontOfBoulderAndBoulderCollisionResult:: ; d71c
