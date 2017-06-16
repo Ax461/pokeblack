@@ -450,6 +450,7 @@ DisplayDepositWithdrawMenu:
 	predef StatusScreen2
 	call LoadScreenTilesFromBuffer1
 	call ReloadTilesetTilePatterns
+	call LoadHpBarAndStatusTilePatterns
 	call RunDefaultPaletteCommand
 	call LoadGBPal
 	jr .loop
