@@ -62,10 +62,11 @@ VermilionGymScript3:
 	ld [wJoyIgnore], a
 
 VermilionGymScript_5caaa:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_5cad3
 	ld a, $6
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_LT_SURGE
 	lb bc, TM_24, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -79,6 +80,7 @@ VermilionGymScript_5caaa:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_5cad3
+	SetEvent EVENT_BEAT_LT_SURGE
 	ld hl, wObtainedBadges
 	set 2, [hl]
 	ld hl, wBeatGymFlags
@@ -106,7 +108,7 @@ VermilionGymTrainerHeader0:
 	dw VermilionGymBattleText1 ; TextBeforeBattle
 	dw VermilionGymAfterBattleText1 ; TextAfterBattle
 	dw VermilionGymEndBattleText1 ; TextEndBattle
-	dw VermilionGymEndBattleText1 ; TextEndBattle
+	dw KT_VERMILION_GYM_TRAINER_0 ; TrainerIndex
 
 VermilionGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_1
@@ -115,7 +117,7 @@ VermilionGymTrainerHeader1:
 	dw VermilionGymBattleText2 ; TextBeforeBattle
 	dw VermilionGymAfterBattleText2 ; TextAfterBattle
 	dw VermilionGymEndBattleText2 ; TextEndBattle
-	dw VermilionGymEndBattleText2 ; TextEndBattle
+	dw KT_VERMILION_GYM_TRAINER_1 ; TrainerIndex
 
 VermilionGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_2
@@ -124,7 +126,7 @@ VermilionGymTrainerHeader2:
 	dw VermilionGymBattleText3 ; TextBeforeBattle
 	dw VermilionGymAfterBattleText3 ; TextAfterBattle
 	dw VermilionGymEndBattleText3 ; TextEndBattle
-	dw VermilionGymEndBattleText3 ; TextEndBattle
+	dw KT_VERMILION_GYM_TRAINER_2 ; TrainerIndex
 
 	db $ff
 
@@ -152,6 +154,7 @@ VermilionGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_VERMILION_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $3

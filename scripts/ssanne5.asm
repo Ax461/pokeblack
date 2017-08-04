@@ -26,7 +26,7 @@ SSAnne5TrainerHeader0:
 	dw SSAnne5BattleText1 ; TextBeforeBattle
 	dw SSAnne5AfterBattleText1 ; TextAfterBattle
 	dw SSAnne5EndBattleText1 ; TextEndBattle
-	dw SSAnne5EndBattleText1 ; TextEndBattle
+	dw KT_SS_ANNE_5_TRAINER_0; TrainerIndex
 
 SSAnne5TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SS_ANNE_5_TRAINER_1
@@ -35,7 +35,7 @@ SSAnne5TrainerHeader1:
 	dw SSAnne5BattleText2 ; TextBeforeBattle
 	dw SSAnne5AfterBattleText2 ; TextAfterBattle
 	dw SSAnne5EndBattleText2 ; TextEndBattle
-	dw SSAnne5EndBattleText2 ; TextEndBattle
+	dw KT_SS_ANNE_5_TRAINER_1; TrainerIndex
 
 	db $ff
 

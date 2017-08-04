@@ -15,7 +15,17 @@ TombstoneTileBlocks:
 	db $8B
 	db $81
 	db $82
+	db $86
+	db $98 ; ROUTE_11
+	db $8B
 	db $8C
+	db $9A
+	db $99
+	db $8C
+	db $8C
+	db $8C
+	db $9B
+	db $97
 	db $87 ; ROUTE_24
 	db $86
 	db $89
@@ -52,3 +62,23 @@ TombstoneTileBlocks:
 	db $76 ; CERULEAN_GYM
 	db $77
 	db $16
+	db $7A ; VERMILION_GYM
+	db $79
+	db $79
+	db $78
+	db $3E ; SS_ANNE_5
+	db $3E
+	db $3F ; SS_ANNE_8
+	db $40
+	db $40
+	db $41
+	db $42 ; SS_ANNE_9
+	db $43
+	db $47
+	db $44
+	db $3F ; SS_ANNE_10
+	db $44
+	db $45
+	db $46
+	db $42
+	db $47

@@ -37,7 +37,7 @@ SSAnne9TrainerHeader0:
 	dw SSAnne9BattleText1 ; TextBeforeBattle
 	dw SSAnne9AfterBattleText1 ; TextAfterBattle
 	dw SSAnne9EndBattleText1 ; TextEndBattle
-	dw SSAnne9EndBattleText1 ; TextEndBattle
+	dw KT_SS_ANNE_9_TRAINER_0 ; TrainerIndex
 
 SSAnne9TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SS_ANNE_9_TRAINER_1
@@ -46,7 +46,7 @@ SSAnne9TrainerHeader1:
 	dw SSAnne9BattleText2 ; TextBeforeBattle
 	dw SSAnne9AfterBattleText2 ; TextAfterBattle
 	dw SSAnne9EndBattleText2 ; TextEndBattle
-	dw SSAnne9EndBattleText2 ; TextEndBattle
+	dw KT_SS_ANNE_9_TRAINER_1 ; TrainerIndex
 
 SSAnne9TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SS_ANNE_9_TRAINER_2
@@ -55,7 +55,7 @@ SSAnne9TrainerHeader2:
 	dw SSAnne9BattleText3 ; TextBeforeBattle
 	dw SSAnne9AfterBattleText3 ; TextAfterBattle
 	dw SSAnne9EndBattleText3 ; TextEndBattle
-	dw SSAnne9EndBattleText3 ; TextEndBattle
+	dw KT_SS_ANNE_9_TRAINER_2 ; TrainerIndex
 
 SSAnne9TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SS_ANNE_9_TRAINER_3
@@ -64,7 +64,7 @@ SSAnne9TrainerHeader3:
 	dw SSAnne9BattleText4 ; TextBeforeBattle
 	dw SSAnne9AfterBattleText4 ; TextAfterBattle
 	dw SSAnne9EndBattleText4 ; TextEndBattle
-	dw SSAnne9EndBattleText4 ; TextEndBattle
+	dw KT_SS_ANNE_9_TRAINER_3 ; TrainerIndex
 
 	db $ff
 

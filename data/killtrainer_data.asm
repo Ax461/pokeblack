@@ -21,7 +21,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT16
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -91,19 +91,19 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
+	dw MapKT5C
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
+	dw MapKT63
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT66
+	dw MapKT67
+	dw MapKT68
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -274,6 +274,17 @@ MapKT11:
 	db ROUTE_6,$4
 	db ROUTE_6,$5
 	db ROUTE_6,$6
+MapKT16:
+	db ROUTE_11,$1
+	db ROUTE_11,$2
+	db ROUTE_11,$3
+	db ROUTE_11,$4
+	db ROUTE_11,$5
+	db ROUTE_11,$6
+	db ROUTE_11,$7
+	db ROUTE_11,$8
+	db ROUTE_11,$9
+	db ROUTE_11,$A
 MapKT23:
 	db ROUTE_24,$1
 	db ROUTE_24,$2
@@ -317,3 +328,28 @@ MapKT41:
 	db CERULEAN_GYM,$1
 	db CERULEAN_GYM,$2
 	db CERULEAN_GYM,$3
+MapKT5C:
+	db VERMILION_GYM,$1
+	db VERMILION_GYM,$2
+	db VERMILION_GYM,$3
+	db VERMILION_GYM,$4
+MapKT63:
+	db SS_ANNE_5,$4
+	db SS_ANNE_5,$5
+MapKT66:
+	db SS_ANNE_8,$1
+	db SS_ANNE_8,$2
+	db SS_ANNE_8,$3
+	db SS_ANNE_8,$4
+MapKT67:
+	db SS_ANNE_9,$1
+	db SS_ANNE_9,$2
+	db SS_ANNE_9,$3
+	db SS_ANNE_9,$4
+MapKT68:
+	db SS_ANNE_10,$1
+	db SS_ANNE_10,$2
+	db SS_ANNE_10,$3
+	db SS_ANNE_10,$4
+	db SS_ANNE_10,$5
+	db SS_ANNE_10,$6

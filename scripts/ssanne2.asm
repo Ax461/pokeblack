@@ -39,7 +39,7 @@ SSAnne2Script0:
 	ld a, $2
 	ld [H_SPRITEINDEX], a
 	call SetSpriteMovementBytesToFF
-	xor a
+	SetKillTrainerIndex KT_NOT_KILLABLE
 	ld [hJoyHeld], a
 	ld a, $f0
 	ld [wJoyIgnore], a
