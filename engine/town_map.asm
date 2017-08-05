@@ -338,7 +338,10 @@ ExitTownMap:
 	call LoadPlayerSpriteGraphics
 	call LoadFontTilePatterns
 	call UpdateSprites
-	jp RunDefaultPaletteCommand
+	call RunDefaultPaletteCommand
+	call DisableLCD
+	call LoadTilesetTilePatternData
+	jp EnableLCD
 
 DrawPlayerOrBirdSprite:
 ; a = map number
