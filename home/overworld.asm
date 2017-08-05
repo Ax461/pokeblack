@@ -759,8 +759,11 @@ MapEntryAfterBattle::
 .skip
 	ld a,[wMapPalOffset]
 	and a
-	jp z,GBFadeInFromWhite
-	jp LoadGBPal
+	call z,GBFadeInFromWhite
+	call LoadGBPal
+	xor a
+	ld [PlayerIntraAnimFrameCounter], a
+	ret
 
 HandleBlackOut::
 ; For when all the player's pokemon faint.
