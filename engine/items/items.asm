@@ -107,6 +107,10 @@ ItemUseBall:
 	and a
 	jp z,ItemUseNotTime
 
+	ld a,[wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	jp z,ItemUseNotTime
+
 ; Balls can't catch trainers' Pokémon.
 	dec a
 	jp nz,ThrowBallAtTrainerMon

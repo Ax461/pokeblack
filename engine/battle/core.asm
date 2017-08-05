@@ -2373,15 +2373,9 @@ DisplayBagMenu:
 	jp c, DisplayBattleMenu ; go back to battle menu if an item was not selected
 
 UseBagItem:
-	ld a, [wBattleType]
-	cp BATTLE_TYPE_TRAINER
 	; either use an item from the bag or use a safari zone item
 	ld a, [wcf91]
 	ld [wd11e], a
-	jr nz, .next
-	cp $05
-	jr c, DisplayBagMenu
-.next
 	call GetItemName
 	call CopyStringToCF4B ; copy name
 	xor a
