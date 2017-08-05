@@ -186,13 +186,13 @@ GetGhostPartyPosition:
 	inc b
 	jr .loop
 
-RemoveBenchGuy:
+ReplaceTileset:
 	ld a, [wNumHoFTeams]
 	and a
-	ret z
+	jr z, .continue
 	ld a, [wCurMapTileset]
 	cp POKECENTER
-	ret nz
+	jr nz, .continue
 	ld hl, PokecenterAlt_GFX
 	ld de, vTileset + $240
 	ld bc, $20
@@ -208,4 +208,16 @@ RemoveBenchGuy:
 	ld hl, PokecenterAlt_GFX + $50
 	ld de, vTileset + $3c0
 	ld bc, $10
+	call CopyData
+.continue
+	ld a, [wCurMap]
+	cp ROUTE_10
+	ret nz
+	ld hl, TombstonesAlt_GFX
+	ld de, vTileset + $5e0
+	ld bc, $20
+	call CopyData
+	ld hl, TombstonesAlt_GFX + $20
+	ld de, vTileset + $700
+	ld bc, $20
 	jp CopyData

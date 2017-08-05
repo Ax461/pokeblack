@@ -2093,6 +2093,7 @@ INCLUDE "engine/overworld/elevator.asm"
 SECTION "bank2D",ROMX,BANK[$2D]
 
 PokecenterAlt_GFX: INCBIN "gfx/pokecenteralt.2bpp"
+TombstonesAlt_GFX: INCBIN "gfx/tombstonesalt.2bpp"
 
 GhostPicFront::  INCBIN "pic/other/ghost.pic"
 GhostPicBack::   INCBIN "pic/monback/ghostb.pic"
