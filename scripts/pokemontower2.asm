@@ -48,7 +48,7 @@ PokemonTower2Script0:
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	xor a
+	SetKillTrainerIndex KT_NOT_KILLABLE
 	ld [hJoyHeld], a
 	ld [hJoyPressed], a
 	ret

@@ -95,6 +95,8 @@ PlaceTombstones:
 	jr z, .vermilionCity
 	cp ROUTE_6
 	jr z, .route6
+	cp ROUTE_8
+	jp z, .route8
 	ret
 .ceruleanCity
 	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
@@ -133,6 +135,15 @@ PlaceTombstones:
 	ret z
 	ld a, $90
 	ld [wOverworldMap + 296], a
+.route8
+	SetKillTrainerIndex KT_ROUTE_8_TRAINER_4
+	callba IsKillTrainerFlagSet
+	ret z
+	SetKillTrainerIndex KT_ROUTE_8_TRAINER_5
+	callba IsKillTrainerFlagSet
+	ret z
+	ld a, $a6
+	ld [wOverworldMap + 196], a
 	ret
 
 LoadTileBlock:

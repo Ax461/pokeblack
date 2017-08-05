@@ -16,6 +16,30 @@ TombstoneTileBlocks:
 	db $81
 	db $82
 	db $86
+	db $A3 ; ROUTE_8
+	db $A2
+	db $99
+	db $96
+	db $A4
+	db $A5
+	db $99
+	db $96
+	db $82
+	db $9C ; ROUTE_9
+	db $9D
+	db $87
+	db $9E
+	db $8D
+	db $81
+	db $80
+	db $81
+	db $9E
+	db $A0 ; ROUTE_10
+	db $87
+	db $80
+	db $9F
+	db $A1
+	db $8E
 	db $98 ; ROUTE_11
 	db $8B
 	db $8C
@@ -82,3 +106,19 @@ TombstoneTileBlocks:
 	db $46
 	db $42
 	db $47
+	db $17 ; POKEMONTOWER_3
+	db $4E
+	db $69
+	db $4E ; POKEMONTOWER_4
+	db $50
+	db $51
+	db $13 ; POKEMONTOWER_5
+	db $5D
+	db $4D
+	db $53
+	db $67 ; POKEMONTOWER_6
+	db $6A
+	db $59
+	db $57 ; POKEMONTOWER_7
+	db $58
+	db $57

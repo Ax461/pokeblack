@@ -27,7 +27,7 @@ PokemonTower4TrainerHeader0:
 	dw PokemonTower4BattleText1 ; TextBeforeBattle
 	dw PokemonTower4AfterBattleText1 ; TextAfterBattle
 	dw PokemonTower4EndBattleText1 ; TextEndBattle
-	dw PokemonTower4EndBattleText1 ; TextEndBattle
+	dw KT_POKEMONTOWER_4_TRAINER_0 ; TrainerIndex
 
 PokemonTower4TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_4_TRAINER_1
@@ -36,7 +36,7 @@ PokemonTower4TrainerHeader1:
 	dw PokemonTower4BattleText2 ; TextBeforeBattle
 	dw PokemonTower4AfterBattleText2 ; TextAfterBattle
 	dw PokemonTower4EndBattleText2 ; TextEndBattle
-	dw PokemonTower4EndBattleText2 ; TextEndBattle
+	dw KT_POKEMONTOWER_4_TRAINER_1 ; TrainerIndex
 
 PokemonTower4TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_4_TRAINER_2
@@ -45,7 +45,7 @@ PokemonTower4TrainerHeader2:
 	dw PokemonTower4BattleText3 ; TextBeforeBattle
 	dw PokemonTower4AfterBattleText3 ; TextAfterBattle
 	dw PokemonTower4EndBattleText3 ; TextEndBattle
-	dw PokemonTower4EndBattleText3 ; TextEndBattle
+	dw KT_POKEMONTOWER_4_TRAINER_2 ; TrainerIndex
 
 	db $ff
 

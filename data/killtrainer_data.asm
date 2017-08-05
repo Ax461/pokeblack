@@ -18,9 +18,9 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKT11
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT13
+	dw MapKT14
+	dw MapKT15
 	dw MapKT16
 	dw MapKTXX
 	dw MapKTXX
@@ -143,11 +143,11 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT90
+	dw MapKT91
+	dw MapKT92
+	dw MapKT93
+	dw MapKT94
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -274,6 +274,33 @@ MapKT11:
 	db ROUTE_6,$4
 	db ROUTE_6,$5
 	db ROUTE_6,$6
+MapKT13:
+	db ROUTE_8,$1
+	db ROUTE_8,$2
+	db ROUTE_8,$3
+	db ROUTE_8,$4
+	db ROUTE_8,$5
+	db ROUTE_8,$6
+	db ROUTE_8,$7
+	db ROUTE_8,$8
+	db ROUTE_8,$9
+MapKT14:
+	db ROUTE_9,$1
+	db ROUTE_9,$2
+	db ROUTE_9,$3
+	db ROUTE_9,$4
+	db ROUTE_9,$5
+	db ROUTE_9,$6
+	db ROUTE_9,$7
+	db ROUTE_9,$8
+	db ROUTE_9,$9
+MapKT15:
+	db ROUTE_10,$1
+	db ROUTE_10,$2
+	db ROUTE_10,$3
+	db ROUTE_10,$4
+	db ROUTE_10,$5
+	db ROUTE_10,$6
 MapKT16:
 	db ROUTE_11,$1
 	db ROUTE_11,$2
@@ -353,3 +380,24 @@ MapKT68:
 	db SS_ANNE_10,$4
 	db SS_ANNE_10,$5
 	db SS_ANNE_10,$6
+MapKT90:
+	db POKEMONTOWER_3,$1
+	db POKEMONTOWER_3,$2
+	db POKEMONTOWER_3,$3
+MapKT91:
+	db POKEMONTOWER_4,$1
+	db POKEMONTOWER_4,$2
+	db POKEMONTOWER_4,$3
+MapKT92:
+	db POKEMONTOWER_5,$2
+	db POKEMONTOWER_5,$3
+	db POKEMONTOWER_5,$4
+	db POKEMONTOWER_5,$5
+MapKT93:
+	db POKEMONTOWER_6,$1
+	db POKEMONTOWER_6,$2
+	db POKEMONTOWER_6,$3
+MapKT94:
+	db POKEMONTOWER_7,$1
+	db POKEMONTOWER_7,$2
+	db POKEMONTOWER_7,$3

@@ -64,7 +64,7 @@ PokemonTower5TrainerHeader0:
 	dw PokemonTower5BattleText1 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText1 ; TextAfterBattle
 	dw PokemonTower5EndBattleText1 ; TextEndBattle
-	dw PokemonTower5EndBattleText1 ; TextEndBattle
+	dw KT_POKEMONTOWER_5_TRAINER_0 ; TrainerIndex
 
 PokemonTower5TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_1
@@ -73,7 +73,7 @@ PokemonTower5TrainerHeader1:
 	dw PokemonTower5BattleText2 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText2 ; TextAfterBattle
 	dw PokemonTower5EndBattleText2 ; TextEndBattle
-	dw PokemonTower5EndBattleText2 ; TextEndBattle
+	dw KT_POKEMONTOWER_5_TRAINER_1 ; TrainerIndex
 
 PokemonTower5TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_2
@@ -82,7 +82,7 @@ PokemonTower5TrainerHeader2:
 	dw PokemonTower5BattleText3 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText3 ; TextAfterBattle
 	dw PokemonTower5EndBattleText3 ; TextEndBattle
-	dw PokemonTower5EndBattleText3 ; TextEndBattle
+	dw KT_POKEMONTOWER_5_TRAINER_2 ; TrainerIndex
 
 PokemonTower5TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_3
@@ -91,7 +91,7 @@ PokemonTower5TrainerHeader3:
 	dw PokemonTower5BattleText4 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText4 ; TextAfterBattle
 	dw PokemonTower5EndBattleText4 ; TextEndBattle
-	dw PokemonTower5EndBattleText4 ; TextEndBattle
+	dw KT_POKEMONTOWER_5_TRAINER_3 ; TrainerIndex
 
 	db $ff
 

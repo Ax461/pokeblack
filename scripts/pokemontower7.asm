@@ -28,6 +28,8 @@ PokemonTower7Script2:
 	cp $ff
 	jp z, PokemonTower7Script_60d18
 	call EndTrainerBattle
+	callba IsKillTrainerFlagSet
+	ret nz
 	ld a, $f0
 	ld [wJoyIgnore], a
 	ld a, [wSpriteIndex]
@@ -211,7 +213,7 @@ PokemonTower7TrainerHeader0:
 	dw PokemonTower7BattleText1 ; TextBeforeBattle
 	dw PokemonTower7AfterBattleText1 ; TextAfterBattle
 	dw PokemonTower7EndBattleText1 ; TextEndBattle
-	dw PokemonTower7EndBattleText1 ; TextEndBattle
+	dw KT_POKEMONTOWER_7_TRAINER_0 ; TrainerIndex
 
 PokemonTower7TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_7_TRAINER_1
@@ -220,7 +222,7 @@ PokemonTower7TrainerHeader1:
 	dw PokemonTower7BattleText2 ; TextBeforeBattle
 	dw PokemonTower7AfterBattleText2 ; TextAfterBattle
 	dw PokemonTower7EndBattleText2 ; TextEndBattle
-	dw PokemonTower7EndBattleText2 ; TextEndBattle
+	dw KT_POKEMONTOWER_7_TRAINER_1 ; TrainerIndex
 
 PokemonTower7TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_7_TRAINER_2
@@ -229,7 +231,7 @@ PokemonTower7TrainerHeader2:
 	dw PokemonTower7BattleText3 ; TextBeforeBattle
 	dw PokemonTower7AfterBattleText3 ; TextAfterBattle
 	dw PokemonTower7EndBattleText3 ; TextEndBattle
-	dw PokemonTower7EndBattleText3 ; TextEndBattle
+	dw KT_POKEMONTOWER_7_TRAINER_2 ; TrainerIndex
 
 	db $ff
 
