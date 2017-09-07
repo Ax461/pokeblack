@@ -2515,7 +2515,7 @@ PartyMenuOrRockOrRun:
 	predef StatusScreen2
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_TRAINER
-	jp nz, .skip
+	jr nz, .skip
 	call GetTrainerInformation
 	callab ReadTrainer
 	call _LoadTrainerPic
@@ -6506,7 +6506,7 @@ SwapPlayerAndEnemyLevels:
 LoadPlayerBackPic:
 	ld a, [wBattleType]
 	dec a ; is it the old man tutorial?
-	ld de, OldManPic ; $7e0a
+	ld de, OldManPic
 	jr z, .asm_3ec9e
 	ld a, [wNumHoFTeams]
 	and a
@@ -6514,7 +6514,7 @@ LoadPlayerBackPic:
 	ld de, OldManPic
 	jr .asm_3ec9e
 .redBack
-	ld de, RedPicBack ; $7e9a
+	ld de, RedPicBack
 .asm_3ec9e
 	ld a, BANK(RedPicBack)
 	call UncompressSpriteFromDE

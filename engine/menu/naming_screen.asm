@@ -1,9 +1,7 @@
 AskName:
 	ld a, [wcf91]
 	cp GHOST
-	jr z, .skip
-	jr .continue
-.skip
+	jr nz, .continue
 	call GetPredefRegisters
 	ld a, [wcf91]
 	ld [wd11e], a

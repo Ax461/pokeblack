@@ -135,6 +135,7 @@ PlaceTombstones:
 	ret z
 	ld a, $90
 	ld [wOverworldMap + 296], a
+	ret
 .route8
 	SetKillTrainerIndex KT_ROUTE_8_TRAINER_4
 	callba IsKillTrainerFlagSet

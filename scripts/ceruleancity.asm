@@ -155,6 +155,7 @@ CeruleanCityScript1:
 	ld a, $9
 .done
 	ld [wTrainerNo], a
+
 	SetKillTrainerIndex KT_NOT_KILLABLE
 	ld [hJoyHeld], a
 	call CeruleanCityScript_1955d

@@ -526,7 +526,6 @@ TradeCenter_SelectMon:
 	push af
 	jr z, .selectTradeMenuItem
 	call PlaceUnfilledArrowMenuCursor
-.skip
 	pop af
 	ld [wCurrentMenuItem], a
 	ld [wTradingWhichPlayerMon], a

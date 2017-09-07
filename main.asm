@@ -1868,6 +1868,7 @@ ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
 Interior_GFX:      INCBIN "gfx/tilesets/interior.t1.2bpp"
 Interior_Block:    INCBIN "gfx/blocksets/interior.bst"
 
+
 SECTION "bank1A",ROMX,BANK[$1A]
 
 Version_GFX:       INCBIN "gfx/blackversion.1bpp" ; 10 tiles

@@ -146,9 +146,7 @@ StatusScreen:
 	ld de, wd11e
 	ld a, [wMonHIndex]
 	cp GHOST
-	jr z, .continue
-	jr .skip
-.continue
+	jr nz, .skip
 	ld de, 1 ; don't ask
 .skip
 	lb bc, LEADING_ZEROES | 1, 3
