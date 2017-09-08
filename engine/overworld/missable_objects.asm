@@ -4,7 +4,7 @@ MarkTownVisitedAndLoadMissableObjects:
 	jr nc, .notInTown
 	ld c, a
 	ld b, FLAG_SET
-	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	ld hl, wTownVisitedFlags  ; mark town as visited (for flying)
 	predef FlagActionPredef
 .notInTown
 	ld hl, MapHSPointers

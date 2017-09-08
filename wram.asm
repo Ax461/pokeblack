@@ -2603,7 +2603,7 @@ wKillTrainerList::
 	ds 1
 
 wKillTrainerFlags::
-	ds 50
+	ds 42
 wKillTrainerFlagsEnd::
 
 wKillTrainerIndex::
@@ -2625,7 +2625,7 @@ wTombstoneList::
 wTombstoneListPointer::
 	ds 2
 
-	ds 4
+	ds 12
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)
@@ -2981,7 +2981,7 @@ wWalkBikeSurfState:: ; d700
 
 	ds 10
 
-wTownVisitedFlag:: ; d70b
+wTownVisitedFlags:: ; d70b
 	flag_array 13
 
 wSafariSteps:: ; d70d
