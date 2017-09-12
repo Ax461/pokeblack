@@ -56,9 +56,10 @@ PlaceTombstones:
 	dec b
 	dec c
 	dec c
-	call LoadTileBlock
-	ld [wNewTileBlockID], a
 	push bc
+	push bc
+	call LoadTileBlock
+	pop bc
 	call ReplaceTileBlock2
 	pop bc
 	ld hl, wTombstoneListPointer
@@ -92,10 +93,6 @@ PlaceTombstones:
 	jr z, .ceruleanCity
 	cp VERMILION_CITY
 	jr z, .vermilionCity
-	cp ROUTE_6
-	jr z, .route6
-	cp ROUTE_8
-	jp z, .route8
 	ret
 .ceruleanCity
 	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
@@ -116,35 +113,6 @@ PlaceTombstones:
 	ld a, $90
 	ld [wOverworldMap + 13], a
 	ret
-.route6
-	SetKillTrainerIndex KT_ROUTE_6_TRAINER_0
-	call IsKillTrainerFlagSet
-	jr z, .route6_next
-	SetKillTrainerIndex KT_ROUTE_6_TRAINER_1
-	call IsKillTrainerFlagSet
-	jr z, .route6_next
-	ld a, $8f
-	ld [wOverworldMap + 216], a
-.route6_next
-	SetKillTrainerIndex KT_ROUTE_6_TRAINER_3
-	call IsKillTrainerFlagSet
-	ret z
-	SetKillTrainerIndex KT_ROUTE_6_TRAINER_4
-	call IsKillTrainerFlagSet
-	ret z
-	ld a, $90
-	ld [wOverworldMap + 296], a
-	ret
-.route8
-	SetKillTrainerIndex KT_ROUTE_8_TRAINER_4
-	call IsKillTrainerFlagSet
-	ret z
-	SetKillTrainerIndex KT_ROUTE_8_TRAINER_5
-	call IsKillTrainerFlagSet
-	ret z
-	ld a, $a6
-	ld [wOverworldMap + 196], a
-	ret
 
 LoadTileBlock:
 	ld hl, TombstoneTileBlocks
@@ -154,6 +122,58 @@ LoadTileBlock:
 	ld e, a
 	add hl, de
 	ld a, [hl]
+	ld [wNewTileBlockID], a
+
+	ld b, a
+	ld a, [wCurMap]
+	ld c, a
+	ld hl, DoubleTombstoneTileBlocks
+.next
+	ld a, [hli]
+	cp $ff
+	ret z
+	cp c
+	jr z, .checkTile
+	ld de, 6
+	add hl, de
+	jr .next
+.checkTile
+	ld a, [hli] ; tile to replace
+	cp b
+	jr z, .checkTrainerIndex1
+	ld de, 5
+	add hl, de
+	jr .next
+.checkTrainerIndex1
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	push hl
+	ld hl, wKillTrainerFlags
+	ld b, FLAG_TEST
+	call KillTrainerFlagAction
+	pop hl
+	jr nz, .checkTrainerIndex2
+	ld de, 3
+	add hl, de
+	jr .next
+.checkTrainerIndex2
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	push hl
+	ld hl, wKillTrainerFlags
+	ld b, FLAG_TEST
+	call KillTrainerFlagAction
+	pop hl
+	jr nz, .done
+	inc hl
+	jr .next
+.done
+	ld a, [hl]
+	ld [wNewTileBlockID], a
 	ret
 
 ReplaceTileBlock2:

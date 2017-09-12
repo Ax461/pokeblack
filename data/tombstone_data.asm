@@ -122,3 +122,22 @@ TombstoneTileBlocks:
 	db $57 ; POKEMONTOWER_7
 	db $58
 	db $57
+
+; \1 map
+; \2 1st trainer ID
+; \3 2nd trainer ID
+; \4 original tile
+; \5 new tile
+double_tombstone: MACRO
+	db \1
+	db \4
+	dw \2
+	dw \3
+	db \5
+ENDM
+
+DoubleTombstoneTileBlocks:
+	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $87, $8F
+	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $82, $90
+	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $A5, $A6
+	db $ff
