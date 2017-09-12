@@ -859,6 +859,7 @@ CharizardPicFront::    INCBIN "pic/bmon/charizard.pic"
 CharizardPicBack::     INCBIN "pic/monback/charizardb.pic"
 FossilAerodactylPic::  INCBIN "pic/bmon/fossilaerodactyl.pic"
 GhostPic::             INCBIN "pic/other/ghost.pic"
+GhostPicBack::         INCBIN "pic/monback/ghostb.pic"
 OddishPicFront::       INCBIN "pic/bmon/oddish.pic"
 OddishPicBack::        INCBIN "pic/monback/oddishb.pic"
 GloomPicFront::        INCBIN "pic/bmon/gloom.pic"
@@ -2095,9 +2096,6 @@ SECTION "bank2D",ROMX,BANK[$2D]
 
 PokecenterAlt_GFX: INCBIN "gfx/pokecenteralt.2bpp"
 TombstonesAlt_GFX: INCBIN "gfx/tombstonesalt.2bpp"
-
-GhostPicFront::  INCBIN "pic/other/ghost.pic"
-GhostPicBack::   INCBIN "pic/monback/ghostb.pic"
 
 INCLUDE "engine/overworld/tombstone.asm"
 INCLUDE "data/tombstone_data.asm"

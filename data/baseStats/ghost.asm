@@ -9,7 +9,7 @@ db UNKNOWN ; species type 2
 db 0 ; catch rate
 db 0 ; base exp yield
 INCBIN "pic/other/ghost.pic",0,1 ; 66, sprite dimensions
-dw GhostPicFront
+dw GhostPic
 dw GhostPicBack
 ; attacks known at lvl 0
 db CURSE

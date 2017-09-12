@@ -560,7 +560,7 @@ UncompressMonSprite::
 	jr z,.GotBank
 	ld a,b
 	cp GHOST
-	ld a,BANK(GhostPicFront)
+	ld a,BANK(GhostPic)
 	jr z,.GotBank
 	ld a,b
 	cp FOSSIL_KABUTOPS
