@@ -948,6 +948,11 @@ Audio2_21e2f:
 	jr nc, .asm_21e4c
 .asm_21e39
 	ld d, $0
+	ld a, [wCurseFlag]
+	and a
+	jr z, .notDistorted
+	ld d, 2
+.notDistorted
 	ld a, [wTempoModifier]
 	add $80
 	jr nc, .asm_21e43
@@ -971,7 +976,12 @@ Audio2_21e56:
 	call Audio2_21e9f
 	jr nc, .asm_21e6c
 .asm_21e60
+	ld a, [wCurseFlag]
+	and a
 	ld a, [wFrequencyModifier]
+	jr z, .notDistorted
+	srl a
+.notDistorted
 	add e
 	jr nc, .asm_21e67
 	inc d
