@@ -220,6 +220,8 @@ LoadFrontSpriteByMonIndex::
 PlayCry::
 ; Play monster a's cry.
 	call GetCryData
+	cp CRY_SFX_END
+	ret z
 	call PlaySound
 	jp WaitForSoundToFinish
 
