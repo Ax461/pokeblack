@@ -6,10 +6,9 @@ PlaceTombstones:
 	jr nz, .continue
 	ld hl, wTombstoneList
 .next
-	ld a, [hl]
+	ld a, [hli]
 	cp $ff
 	jr z, .continue
-	ld a, [hli]
 	ld [wNewTileBlockID], a
 	ld a, [hli]
 	ld b, a
@@ -62,11 +61,11 @@ PlaceTombstones:
 	push bc
 	call ReplaceTileBlock2
 	pop bc
-	ld a, [wTombstoneListPointer]
+	ld hl, wTombstoneListPointer
+	ld a, [hli]
+	ld l, [hl]
 	ld h, a
-	ld a, [wTombstoneListPointer + 1]
-	ld l, a
-	ld a, [wBuffer + 3]
+	ld a, [wNewTileBlockID]
 	ld [hli], a
 	ld a, b
 	ld [hli], a
@@ -100,48 +99,48 @@ PlaceTombstones:
 	ret
 .ceruleanCity
 	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	ret z
 	ld a, $89
 	ld [wOverworldMap + 13], a
 	ret
 .vermilionCity
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_3
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	ret z
 	ld a, $81
 	ld [wOverworldMap + 13], a
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_4
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	ret z
 	ld a, $90
 	ld [wOverworldMap + 13], a
 	ret
 .route6
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_0
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	jr z, .route6_next
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_1
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	jr z, .route6_next
 	ld a, $8f
 	ld [wOverworldMap + 216], a
 .route6_next
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_3
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	ret z
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_4
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	ret z
 	ld a, $90
 	ld [wOverworldMap + 296], a
 	ret
 .route8
 	SetKillTrainerIndex KT_ROUTE_8_TRAINER_4
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	ret z
 	SetKillTrainerIndex KT_ROUTE_8_TRAINER_5
-	callba IsKillTrainerFlagSet
+	call IsKillTrainerFlagSet
 	ret z
 	ld a, $a6
 	ld [wOverworldMap + 196], a
@@ -155,7 +154,6 @@ LoadTileBlock:
 	ld e, a
 	add hl, de
 	ld a, [hl]
-	ld [wBuffer + 3], a
 	ret
 
 ReplaceTileBlock2:
