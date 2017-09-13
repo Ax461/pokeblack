@@ -3212,8 +3212,8 @@ ExecutePlayerMove:
 	jr nz, .skip
 	ld a, 1
 	ld [wCurseFlag], a
-	ld a, [wPlayerSelectedMove]
 .skip
+	ld a, [wPlayerSelectedMove]
 	inc a
 	jp z, ExecutePlayerMoveDone ; for selected move = FF, skip most of player's turn
 	xor a
