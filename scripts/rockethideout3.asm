@@ -156,7 +156,7 @@ RocketHideout3TrainerHeader0:
 	dw RocketHideout3BattleText2 ; TextBeforeBattle
 	dw RocketHideout3AfterBattleTxt2 ; TextAfterBattle
 	dw RocketHideout3EndBattleText2 ; TextEndBattle
-	dw RocketHideout3EndBattleText2 ; TextEndBattle
+	dw KT_ROCKET_HIDEOUT_3_TRAINER_0 ; TrainerIndex
 
 RocketHideout3TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_3_TRAINER_1
@@ -165,7 +165,7 @@ RocketHideout3TrainerHeader1:
 	dw RocketHideout3BattleTxt ; TextBeforeBattle
 	dw RocketHideout3AfterBattleText3 ; TextAfterBattle
 	dw RocketHideout3EndBattleText3 ; TextEndBattle
-	dw RocketHideout3EndBattleText3 ; TextEndBattle
+	dw KT_ROCKET_HIDEOUT_3_TRAINER_1 ; TrainerIndex
 
 	db $ff
 
@@ -194,7 +194,23 @@ RocketHideout3Text2:
 	jp TextScriptEnd
 
 RocketHideout3BattleTxt:
+	TX_ASM
+	SetKillTrainerIndex KT_GAME_CORNER_ROCKET
+	callba IsKillTrainerFlagSet
+	ld hl, RocketHideout3BattleTxtAlt
+	jr nz, .done
+	ld hl, RocketHideout3BattleTxtNormal
+.done
+	call PrintText
+	SetKillTrainerIndex KT_ROCKET_HIDEOUT_3_TRAINER_1
+	jp TextScriptEnd
+
+RocketHideout3BattleTxtNormal:
 	TX_FAR _RocketHideout3BattleTxt
+	db "@"
+
+RocketHideout3BattleTxtAlt:
+	TX_FAR _RocketHideout3BattleTxtAlt
 	db "@"
 
 RocketHideout3EndBattleText3:

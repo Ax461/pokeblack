@@ -56,6 +56,8 @@ CeladonGameCornerScript1:
 	jp z, CeladonGameCornerScript_48c07
 	ld a, $f0
 	ld [wJoyIgnore], a
+	callba IsKillTrainerFlagSet
+	jr nz, CeladonGameCornerScript_48c07
 	ld a, $d
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -420,6 +422,7 @@ CeladonGameCornerText11:
 	call SaveEndBattleTextPointers
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_GAME_CORNER_ROCKET
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	xor a

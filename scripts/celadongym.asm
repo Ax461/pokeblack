@@ -43,10 +43,11 @@ CeladonGymScript3:
 	ld [wJoyIgnore], a
 
 CeladonGymText_48963:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_4898c
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_ERIKA
 	lb bc, TM_21, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,6 +61,7 @@ CeladonGymText_48963:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_4898c
+	SetEvent EVENT_BEAT_ERIKA
 	ld hl, wObtainedBadges
 	set 3, [hl]
 	ld hl, wBeatGymFlags
@@ -90,7 +92,7 @@ CeladonGymTrainerHeader0:
 	dw CeladonGymBattleText2 ; TextBeforeBattle
 	dw CeladonGymAfterBattleText2 ; TextAfterBattle
 	dw CeladonGymEndBattleText2 ; TextEndBattle
-	dw CeladonGymEndBattleText2 ; TextEndBattle
+	dw KT_CELADON_GYM_TRAINER_0 ; TrainerIndex
 
 CeladonGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_CELADON_GYM_TRAINER_1
@@ -99,7 +101,7 @@ CeladonGymTrainerHeader1:
 	dw CeladonGymBattleText3 ; TextBeforeBattle
 	dw CeladonGymAfterBattleText3 ; TextAfterBattle
 	dw CeladonGymEndBattleText3 ; TextEndBattle
-	dw CeladonGymEndBattleText3 ; TextEndBattle
+	dw KT_CELADON_GYM_TRAINER_1 ; TrainerIndex
 
 CeladonGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_CELADON_GYM_TRAINER_2
@@ -108,7 +110,7 @@ CeladonGymTrainerHeader2:
 	dw CeladonGymBattleText4 ; TextBeforeBattle
 	dw CeladonGymAfterBattleText4 ; TextAfterBattle
 	dw CeladonGymEndBattleText4 ; TextEndBattle
-	dw CeladonGymEndBattleText4 ; TextEndBattle
+	dw KT_CELADON_GYM_TRAINER_2 ; TrainerIndex
 
 CeladonGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_CELADON_GYM_TRAINER_3
@@ -117,7 +119,7 @@ CeladonGymTrainerHeader3:
 	dw CeladonGymBattleText5 ; TextBeforeBattle
 	dw CeladonGymAfterBattleText5 ; TextAfterBattle
 	dw CeladonGymEndBattleText5 ; TextEndBattle
-	dw CeladonGymEndBattleText5 ; TextEndBattle
+	dw KT_CELADON_GYM_TRAINER_3 ; TrainerIndex
 
 CeladonGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_CELADON_GYM_TRAINER_4
@@ -126,7 +128,7 @@ CeladonGymTrainerHeader4:
 	dw CeladonGymBattleText6 ; TextBeforeBattle
 	dw CeladonGymAfterBattleText6 ; TextAfterBattle
 	dw CeladonGymEndBattleText6 ; TextEndBattle
-	dw CeladonGymEndBattleText6 ; TextEndBattle
+	dw KT_CELADON_GYM_TRAINER_4 ; TrainerIndex
 
 CeladonGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_CELADON_GYM_TRAINER_5
@@ -135,7 +137,7 @@ CeladonGymTrainerHeader5:
 	dw CeladonGymBattleText7 ; TextBeforeBattle
 	dw CeladonGymAfterBattleText7 ; TextAfterBattle
 	dw CeladonGymEndBattleText7 ; TextEndBattle
-	dw CeladonGymEndBattleText7 ; TextEndBattle
+	dw KT_CELADON_GYM_TRAINER_5 ; TrainerIndex
 
 CeladonGymTrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_CELADON_GYM_TRAINER_6, 1
@@ -144,7 +146,7 @@ CeladonGymTrainerHeader6:
 	dw CeladonGymBattleText8 ; TextBeforeBattle
 	dw CeladonGymAfterBattleText8 ; TextAfterBattle
 	dw CeladonGymEndBattleText8 ; TextEndBattle
-	dw CeladonGymEndBattleText8 ; TextEndBattle
+	dw KT_CELADON_GYM_TRAINER_6 ; TrainerIndex
 
 	db $ff
 
@@ -172,6 +174,7 @@ CeladonGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_CELADON_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $4

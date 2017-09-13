@@ -38,10 +38,20 @@ RocketHideout4Script_454a3:
 	ret
 
 RocketHideout4ScriptPointers:
-	dw CheckFightingMapTrainers
+	dw RocketHideout4Script0
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
 	dw RocketHideout4Script3
+
+RocketHideout4Script0:
+	SetKillTrainerIndex KT_ROCKET_HIDEOUT_4_TRAINER_2
+	callba IsKillTrainerFlagSet
+	jr z, .end
+	ld a, $0f
+	ld [Sprite09MapX], a
+	call RocketHideout4DropLiftKey
+.end
+	jp CheckFightingMapTrainers
 
 RocketHideout4Script3:
 	ld a, [wIsInBattle]
@@ -91,7 +101,7 @@ RocketHideout4TrainerHeader0:
 	dw RocketHideout4BattleText2 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText2 ; TextAfterBattle
 	dw RocketHideout4EndBattleText2 ; TextEndBattle
-	dw RocketHideout4EndBattleText2 ; TextEndBattle
+	dw KT_ROCKET_HIDEOUT_4_TRAINER_0 ; TrainerIndex
 
 RocketHideout4TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1
@@ -100,7 +110,7 @@ RocketHideout4TrainerHeader1:
 	dw RocketHideout4BattleText3 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText3 ; TextAfterBattle
 	dw RocketHideout4EndBattleText3 ; TextEndBattle
-	dw RocketHideout4EndBattleText3 ; TextEndBattle
+	dw KT_ROCKET_HIDEOUT_4_TRAINER_1 ; TrainerIndex
 
 RocketHideout4TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_2
@@ -109,9 +119,18 @@ RocketHideout4TrainerHeader2:
 	dw RocketHideout4BattleText4 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText4 ; TextAfterBattle
 	dw RocketHideout4EndBattleText4 ; TextEndBattle
-	dw RocketHideout4EndBattleText4 ; TextEndBattle
+	dw KT_ROCKET_HIDEOUT_4_TRAINER_2 ; TrainerIndex
 
 	db $ff
+
+RocketHideout4TrainerHeader3:
+	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0
+	dw RocketHideout4BattleText5 ; TextBeforeBattle
+	dw RocketHideout4AfterBattleText5 ; TextAfterBattle
+	dw RocketHideout4EndBattleText5 ; TextEndBattle
+	dw KT_ROCKET_HIDEOUT_4_TRAINER_0 ; TrainerIndex
 
 RocketHideout4Text1:
 	TX_ASM
@@ -129,7 +148,7 @@ RocketHideout4Text1:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
+	SetKillTrainerIndex KT_NOT_KILLABLE
 	ld [hJoyHeld], a
 	ld a, $3
 	ld [wRocketHideout4CurScript], a
@@ -155,8 +174,14 @@ RocketHideout4Text10:
 
 RocketHideout4Text2:
 	TX_ASM
+	SetKillTrainerIndex KT_MT_MOON_3_TRAINER_1
+	callba IsKillTrainerFlagSet
+	ld hl, RocketHideout4TrainerHeader3
+	jr nz, .done
 	ld hl, RocketHideout4TrainerHeader0
+.done
 	call TalkToTrainer
+	SetKillTrainerIndex KT_ROCKET_HIDEOUT_4_TRAINER_0
 	jp TextScriptEnd
 
 RocketHideout4BattleText2:
@@ -207,6 +232,8 @@ RocketHideout4AfterBattleText4:
 	TX_ASM
 	ld hl, RocketHideout4Text_455ec
 	call PrintText
+
+RocketHideout4DropLiftKey:
 	CheckAndSetEvent EVENT_ROCKET_DROPPED_LIFT_KEY
 	jr nz, .asm_455e9
 	ld a, HS_ROCKET_HIDEOUT_4_ITEM_5
@@ -217,4 +244,16 @@ RocketHideout4AfterBattleText4:
 
 RocketHideout4Text_455ec:
 	TX_FAR _RocketHideout4Text_455ec
+	db "@"
+
+RocketHideout4BattleText5:
+	TX_FAR _RocketHideout4BattleText5
+	db "@"
+
+RocketHideout4EndBattleText5:
+	TX_FAR _RocketHideout4EndBattleText5
+	db "@"
+
+RocketHideout4AfterBattleText5:
+	TX_FAR _RocketHide4AfterBattleText5
 	db "@"

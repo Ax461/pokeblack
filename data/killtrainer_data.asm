@@ -81,7 +81,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT52
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -133,8 +133,8 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT86
+	dw MapKT87
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -198,6 +198,10 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
+	dw MapKTC7
+	dw MapKTC8
+	dw MapKTC9
+	dw MapKTCA
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -227,11 +231,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTE8
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -355,6 +355,14 @@ MapKT41:
 	db CERULEAN_GYM,$1
 	db CERULEAN_GYM,$2
 	db CERULEAN_GYM,$3
+MapKT52:
+	db ROCK_TUNNEL_1,$1
+	db ROCK_TUNNEL_1,$2
+	db ROCK_TUNNEL_1,$3
+	db ROCK_TUNNEL_1,$4
+	db ROCK_TUNNEL_1,$5
+	db ROCK_TUNNEL_1,$6
+	db ROCK_TUNNEL_1,$7
 MapKT5C:
 	db VERMILION_GYM,$1
 	db VERMILION_GYM,$2
@@ -380,6 +388,17 @@ MapKT68:
 	db SS_ANNE_10,$4
 	db SS_ANNE_10,$5
 	db SS_ANNE_10,$6
+MapKT86:
+	db CELADON_GYM,$1
+	db CELADON_GYM,$2
+	db CELADON_GYM,$3
+	db CELADON_GYM,$4
+	db CELADON_GYM,$5
+	db CELADON_GYM,$6
+	db CELADON_GYM,$7
+	db CELADON_GYM,$8
+MapKT87:
+	db GAME_CORNER,$B
 MapKT90:
 	db POKEMONTOWER_3,$1
 	db POKEMONTOWER_3,$2
@@ -401,3 +420,27 @@ MapKT94:
 	db POKEMONTOWER_7,$1
 	db POKEMONTOWER_7,$2
 	db POKEMONTOWER_7,$3
+MapKTC7:
+	db ROCKET_HIDEOUT_1,$1
+	db ROCKET_HIDEOUT_1,$2
+	db ROCKET_HIDEOUT_1,$3
+	db ROCKET_HIDEOUT_1,$4
+	db ROCKET_HIDEOUT_1,$5
+MapKTC8:
+	db ROCKET_HIDEOUT_2,$1
+MapKTC9:
+	db ROCKET_HIDEOUT_3,$1
+	db ROCKET_HIDEOUT_3,$2
+MapKTCA:
+	db ROCKET_HIDEOUT_4,$2
+	db ROCKET_HIDEOUT_4,$3
+	db ROCKET_HIDEOUT_4,$4
+MapKTE8:
+	db ROCK_TUNNEL_2,$1
+	db ROCK_TUNNEL_2,$2
+	db ROCK_TUNNEL_2,$3
+	db ROCK_TUNNEL_2,$4
+	db ROCK_TUNNEL_2,$5
+	db ROCK_TUNNEL_2,$6
+	db ROCK_TUNNEL_2,$7
+	db ROCK_TUNNEL_2,$8

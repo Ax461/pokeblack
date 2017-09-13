@@ -72,3 +72,19 @@ _RocketHideout4Text_455ec::
 	text "Oh no! I dropped"
 	line "the LIFT KEY!"
 	done
+
+_RocketHideout4BattleText5::
+	text "You don't stand"
+	line "a chance against"
+	cont "TEAM ROCKET!"
+	done
+
+_RocketHideout4EndBattleText5::
+	text "Darn!"
+	line "I lost!"
+	prompt
+
+_RocketHide4AfterBattleText5::
+	text "You will pay for"
+	line "this!"
+	done

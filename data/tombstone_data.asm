@@ -86,6 +86,13 @@ TombstoneTileBlocks:
 	db $76 ; CERULEAN_GYM
 	db $77
 	db $16
+	db $83 ; ROCK_TUNNEL_1
+	db $81
+	db $83
+	db $81
+	db $83
+	db $80
+	db $80
 	db $7A ; VERMILION_GYM
 	db $79
 	db $79
@@ -106,6 +113,15 @@ TombstoneTileBlocks:
 	db $46
 	db $42
 	db $47
+	db $80 ; CELADON_GYM
+	db $7C
+	db $7B
+	db $7D
+	db $7D
+	db $7F
+	db $7E
+	db $81
+	db $4F ; GAME_CORNER
 	db $17 ; POKEMONTOWER_3
 	db $4E
 	db $69
@@ -122,6 +138,25 @@ TombstoneTileBlocks:
 	db $57 ; POKEMONTOWER_7
 	db $58
 	db $57
+	db $82 ; ROCKET_HIDEOUT_1
+	db $80
+	db $83
+	db $86
+	db $85
+	db $80 ; ROCKET_HIDEOUT_2
+	db $80 ; ROCKET_HIDEOUT_3
+	db $84
+	db $81 ; ROCKET_HIDEOUT_4
+	db $80
+	db $81
+	db $83 ; ROCK_TUNNEL_2
+	db $80
+	db $83
+	db $82
+	db $80
+	db $80
+	db $83
+	db $80
 
 ; \1 map
 ; \2 1st trainer ID
@@ -140,4 +175,6 @@ DoubleTombstoneTileBlocks:
 	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $87, $8F
 	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $82, $90
 	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $A5, $A6
+	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $81, $82
+
 	db $ff

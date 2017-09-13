@@ -29,7 +29,7 @@ RockTunnel2TrainerHeader0:
 	dw RockTunnel2BattleText2 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText2 ; TextAfterBattle
 	dw RockTunnel2EndBattleText2 ; TextEndBattle
-	dw RockTunnel2EndBattleText2 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_0 ; TrainerIndex
 
 RockTunnel2TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_1
@@ -38,7 +38,7 @@ RockTunnel2TrainerHeader1:
 	dw RockTunnel2BattleText3 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText3 ; TextAfterBattle
 	dw RockTunnel2EndBattleText3 ; TextEndBattle
-	dw RockTunnel2EndBattleText3 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_1 ; TrainerIndex
 
 RockTunnel2TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_2
@@ -47,7 +47,7 @@ RockTunnel2TrainerHeader2:
 	dw RockTunnel2BattleText4 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText4 ; TextAfterBattle
 	dw RockTunnel2EndBattleText4 ; TextEndBattle
-	dw RockTunnel2EndBattleText4 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_2 ; TrainerIndex
 
 RockTunnel2TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_3
@@ -56,7 +56,7 @@ RockTunnel2TrainerHeader3:
 	dw RockTunnel2BattleText5 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText5 ; TextAfterBattle
 	dw RockTunnel2EndBattleText5 ; TextEndBattle
-	dw RockTunnel2EndBattleText5 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_3 ; TrainerIndex
 
 RockTunnel2TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_4
@@ -65,7 +65,7 @@ RockTunnel2TrainerHeader4:
 	dw RockTunnel2BattleText6 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText6 ; TextAfterBattle
 	dw RockTunnel2EndBattleText6 ; TextEndBattle
-	dw RockTunnel2EndBattleText6 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_4 ; TrainerIndex
 
 RockTunnel2TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_5
@@ -74,7 +74,7 @@ RockTunnel2TrainerHeader5:
 	dw RockTunnel2BattleText7 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText7 ; TextAfterBattle
 	dw RockTunnel2EndBattleText7 ; TextEndBattle
-	dw RockTunnel2EndBattleText7 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_5 ; TrainerIndex
 
 RockTunnel2TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_6
@@ -83,7 +83,7 @@ RockTunnel2TrainerHeader6:
 	dw RockTunnel2BattleText8 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText8 ; TextAfterBattle
 	dw RockTunnel2EndBattleText8 ; TextEndBattle
-	dw RockTunnel2EndBattleText8 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_6 ; TrainerIndex
 
 RockTunnel2TrainerHeader7:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_2_TRAINER_7, 1
@@ -92,7 +92,7 @@ RockTunnel2TrainerHeader7:
 	dw RockTunnel2BattleText9 ; TextBeforeBattle
 	dw RockTunnel2AfterBattleText9 ; TextAfterBattle
 	dw RockTunnel2EndBattleText9 ; TextEndBattle
-	dw RockTunnel2EndBattleText9 ; TextEndBattle
+	dw KT_ROCK_TUNNEL_2_TRAINER_7 ; TrainerIndex
 
 	db $ff
 

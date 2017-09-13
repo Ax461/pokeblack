@@ -22,6 +22,11 @@ _RocketHideout3BattleTxt::
 	cont "were coming!"
 	done
 
+_RocketHideout3BattleTxtAlt::
+	text "I won't let you"
+	line "go any further!"
+	done
+
 _RocketHideout3EndBattleText3::
 	text "What?"
 	line "I lost? No!"
