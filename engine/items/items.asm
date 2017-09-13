@@ -102,13 +102,13 @@ ItemUsePtrTable:
 
 ItemUseBall:
 
+	ld a,[wBattleType]
+	cp BATTLE_TYPE_TRAINER
+	jp z,ItemUseNotTime
+
 ; Balls can't be used out of battle.
 	ld a,[wIsInBattle]
 	and a
-	jp z,ItemUseNotTime
-
-	ld a,[wBattleType]
-	cp BATTLE_TYPE_TRAINER
 	jp z,ItemUseNotTime
 
 ; Balls can't catch trainers' Pokémon.
