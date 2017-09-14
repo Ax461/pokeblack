@@ -3413,6 +3413,7 @@ MultiHitText:
 
 ExecutePlayerMoveDone:
 	xor a
+	ld [wCurseFlag], a
 	ld [wActionResultOrTookBattleTurn],a
 	ld b,1
 	ret
