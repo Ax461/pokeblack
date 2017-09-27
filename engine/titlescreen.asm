@@ -24,7 +24,7 @@ SetDefaultNamesBeforeTitlescreen:
 DisplayTitleScreen:
 	call GBPalWhiteOut
 	ld a, $1
-	ld [H_AUTOBGTRANSFERENABLED], a
+	ld [hAutoBGTransferEnabled], a
 	xor a
 	ld [hTilesetType], a
 	ld [hSCX], a
@@ -225,7 +225,7 @@ DisplayTitleScreen:
 	xor a
 	ld [hWY], a
 	inc a
-	ld [H_AUTOBGTRANSFERENABLED], a
+	ld [hAutoBGTransferEnabled], a
 	call ClearScreen
 	ld a, vBGMap0 / $100
 	call TitleScreenCopyTileMapToVRAM
@@ -302,7 +302,7 @@ ClearBothBGMaps:
 	jp FillMemory
 
 TitleScreenCopyTileMapToVRAM:
-	ld [H_AUTOBGTRANSFERDEST + 1], a
+	ld [hAutoBGTransferDest + 1], a
 	jp Delay3
 
 LoadCopyrightAndTextBoxTiles:

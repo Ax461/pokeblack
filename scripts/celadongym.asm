@@ -172,7 +172,7 @@ CeladonGymText1:
 	ld hl, CeladonGymText_48a63
 	ld de, CeladonGymText_48a63
 	call SaveEndBattleTextPointers
-	ld a, [H_SPRITEINDEX]
+	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
 	SetKillTrainerIndex KT_CELADON_GYM_LEADER
 	call EngageMapTrainer

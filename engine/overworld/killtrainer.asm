@@ -76,7 +76,7 @@ KillTrainerFlagAction::
 	ret
 
 IsTrainerKilled:
-	ld a, [H_CURRENTSPRITEOFFSET]
+	ld a, [hCurrentSpriteOffset]
 	swap a
 	ld b, a
 	ld hl, wKillTrainerList
@@ -126,19 +126,19 @@ LoadTrainers:
 	sub d
 	ld h, a
 	ld a, h
-	ld [H_DIVIDEND], a
+	ld [hDividend], a
 	ld a, l
-	ld [H_DIVIDEND+1], a
+	ld [hDividend+1], a
 	xor a
-	ld [H_DIVIDEND+2], a
-	ld [H_DIVIDEND+3], a
+	ld [hDividend+2], a
+	ld [hDividend+3], a
 	ld a, $2
-	ld [H_DIVISOR], a
+	ld [hDivisor], a
 	ld b, $2
 	call Divide                ; divide difference by 2, resulting in the global offset (number of trainers before ours)
-	ld a, [H_DIVIDEND+2]
+	ld a, [hDividend+2]
 	ld b, a
-	ld a, [H_DIVIDEND+3]
+	ld a, [hDividend+3]
 	ld c, a
 	pop hl
 	push bc

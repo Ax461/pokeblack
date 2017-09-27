@@ -152,7 +152,7 @@ VermilionGymText1:
 	ld hl, ReceivedThunderbadgeText
 	ld de, ReceivedThunderbadgeText
 	call SaveEndBattleTextPointers
-	ld a, [H_SPRITEINDEX]
+	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
 	SetKillTrainerIndex KT_VERMILION_GYM_LEADER
 	call EngageMapTrainer
