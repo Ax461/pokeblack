@@ -123,7 +123,7 @@ AutoBgMapTransfer::
 	ld a,[hAutoBGTransferEnabled]
 	and a
 	ret z
-	ld hl,[sp + 0]
+	ld hl, sp + 0
 	ld a,h
 	ld [hSPTemp],a
 	ld a,l
@@ -205,7 +205,7 @@ VBlankCopyBgMap::
 	ld a,[hVBCopyBGSrc] ; doubles as enabling byte
 	and a
 	ret z
-	ld hl,[sp + 0]
+	ld hl, sp + 0
 	ld a,h
 	ld [hSPTemp],a
 	ld a,l
@@ -238,7 +238,7 @@ VBlankCopyDouble::
 	and a
 	ret z
 
-	ld hl, [sp + 0]
+	ld hl, sp + 0
 	ld a, h
 	ld [hSPTemp], a
 	ld a, l
@@ -290,7 +290,7 @@ VBlankCopyDouble::
 	ld a, h
 	ld [hVBCopyDoubleDest + 1], a
 
-	ld hl, [sp + 0]
+	ld hl, sp + 0
 	ld a, l
 	ld [hVBCopyDoubleSrc], a
 	ld a, h
@@ -316,7 +316,7 @@ VBlankCopy::
 	and a
 	ret z
 
-	ld hl, [sp + 0]
+	ld hl, sp + 0
 	ld a, h
 	ld [hSPTemp], a
 	ld a, l
@@ -360,7 +360,7 @@ VBlankCopy::
 	ld a, h
 	ld [hVBCopyDest + 1], a
 
-	ld hl, [sp + 0]
+	ld hl, sp + 0
 	ld a, l
 	ld [hVBCopySrc], a
 	ld a, h

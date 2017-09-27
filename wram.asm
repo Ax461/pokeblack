@@ -203,7 +203,7 @@ wTempoModifier:: ; c0f2
 	ds 13
 
 
-SECTION "Sprite State Data", WRAM0[$c100]
+SECTION "Sprite State Data", WRAM0
 
 wSpriteDataStart::
 
@@ -261,8 +261,6 @@ endm
 	spritestatedata1 Sprite15
 	; ds $10 * $10
 
-
-;SECTION "Sprite State Data 2", WRAM0[$c200]
 
 wSpriteStateData2:: ; c200
 ; more data for all sprites on the current map
@@ -322,7 +320,7 @@ endm
 wSpriteDataEnd::
 
 
-SECTION "OAM Buffer", WRAM0[$c300]
+SECTION "OAM Buffer", WRAM0
 
 wOAMBuffer:: ; c300
 ; buffer for OAM data. Copied to OAM by DMA
@@ -1609,8 +1607,11 @@ wEnemyMonDefense::   dw
 wEnemyMonSpeed::     dw
 wEnemyMonSpecial::   dw
 wEnemyMonPP::        ds 2 ; NUM_MOVES - 2
-SECTION "WRAM Bank 1", WRAMX, BANK[1]
-                     ds 2 ; NUM_MOVES - 2
+
+
+SECTION "WRAM Bank 1", WRAMX
+
+	ds 2
 
 wEnemyMonBaseStats:: ds 5
 wEnemyMonCatchRate:: ds 1
@@ -3188,11 +3189,13 @@ wSerialEnemyDataBlock:: ; d893
 wEnemyPartyCount:: ds 1     ; d89c
 wEnemyPartyMons::  ds PARTY_LENGTH + 1 ; d89d
 
-; Overload enemy party data
+UNION
+
 wWaterRate:: db ; d8a4
 wWaterMons:: db ; d8a5
 
-	ds wWaterRate - @
+
+NEXTU
 
 wEnemyMons:: ; d8a4
 wEnemyMon1:: party_struct wEnemyMon1
@@ -3204,6 +3207,8 @@ wEnemyMon6:: party_struct wEnemyMon6
 
 wEnemyMonOT::    ds NAME_LENGTH * PARTY_LENGTH ; d9ac
 wEnemyMonNicks:: ds NAME_LENGTH * PARTY_LENGTH ; d9ee
+
+ENDU
 
 
 wTrainerHeaderPtr:: ; da30
@@ -3272,9 +3277,11 @@ wBoxMonNicksEnd:: ; dee2
 wBoxDataEnd::
 
 
-SECTION "Stack", WRAMX[$dfff], BANK[1]
+SECTION "Stack", WRAMX
+
+	ds $ff
+
 wStack:: ; dfff
-	ds -$100
 
 
 INCLUDE "sram.asm"

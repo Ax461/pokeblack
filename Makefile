@@ -1,14 +1,9 @@
-PYTHON := python2
-EXE :=
+PYTHON := python2.7
 
 2bpp     := $(PYTHON) extras/pokemontools/gfx.py 2bpp
 1bpp     := $(PYTHON) extras/pokemontools/gfx.py 1bpp
 pic      := $(PYTHON) extras/pokemontools/pic.py compress
 includes := $(PYTHON) extras/pokemontools/scan_includes.py
-
-rgbasm   := rgbds/rgbasm${EXE}
-rgblink  := rgbds/rgblink${EXE}
-rgbfix   := rgbds/rgbfix${EXE}
 
 pokeblack_obj := audio.o main.o text.o wram.o
 
@@ -32,13 +27,13 @@ clean:
 
 %.o: dep = $(shell $(includes) $(@D)/$*.asm)
 $(pokeblack_obj): %.o: %.asm $$(dep)
-	$(rgbasm) -h -o $@ $*.asm
+	rgbasm -h -o $@ $*.asm
 
 pokeblack_opt  = -jsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLACK"
 
 %.gb: $$(%_obj)
-	$(rgblink) -n $*.sym -o $@ $^
-	$(rgbfix) $($*_opt) $@
+	rgblink -n $*.sym -l linkerscript.link -o $@ $^
+	rgbfix $($*_opt) $@
 
 %.png:  ;
 %.2bpp: %.png  ; @$(2bpp) $<
