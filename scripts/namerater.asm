@@ -9,6 +9,9 @@ NameRaterScript_1da15:
 	ret
 
 NameRaterScript_1da20:
+	ld a, [wcf91]
+	cp GHOST
+	jr z, .asm_1da52
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	ld a, [wWhichPokemon]
