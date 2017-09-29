@@ -172,18 +172,6 @@ LoadTrainers:
 	pop bc
 	ret
 
-GetGhostPartyPosition:
-	ld b, -1
-	ld hl, wPartySpecies
-.loop
-	inc b
-	ld a, [hli]
-	cp GHOST
-	jr nz, .loop
-	ld a, b
-	ld [wGhostPartyPos], a
-	ret
-
 ReplaceTileset:
 	ld a, [wNumHoFTeams]
 	and a

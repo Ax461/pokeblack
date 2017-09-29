@@ -16,6 +16,12 @@ _DayCareOnlyHaveOneMonText::
 	line "#MON with you."
 	done
 
+_DayCareCantAcceptMonText::
+	text "I'm sorry, but i"
+	line "can't accept that"
+	cont "#MON."
+	done
+
 _DayCareCantAcceptMonWithHMText::
 	text "I can't accept a"
 	line "#MON that"

@@ -27,9 +27,6 @@ DayCareMText1:
 	ld [wUpdateSpritesEnabled], a
 	ld [wPartyMenuTypeOrMessageID], a
 	ld [wMenuItemToSwap], a
-	inc a
-	ld [wDisableSelectionFlag], a
-	callba GetGhostPartyPosition
 	call DisplayPartyMenu
 	push af
 	call GBPalWhiteOutWithDelay3
@@ -41,6 +38,10 @@ DayCareMText1:
 	callab KnowsHMMove
 	ld hl, DayCareCantAcceptMonWithHMText
 	jp c, .done
+	ld hl, DayCareCantAcceptMonText
+	ld a, [wcf91]
+	cp GHOST
+	jp z, .done
 	xor a
 	ld [wPartyAndBillsPCSavedMenuItem], a
 	ld a, [wWhichPokemon]
@@ -210,8 +211,6 @@ DayCareMText1:
 	ld [wDayCareMonBoxLevel], a
 
 .done
-	xor a
-	ld [wDisableSelectionFlag], a
 	call PrintText
 	jp TextScriptEnd
 
@@ -259,6 +258,10 @@ DayCareNoRoomForMonText:
 
 DayCareOnlyHaveOneMonText:
 	TX_FAR _DayCareOnlyHaveOneMonText
+	db "@"
+
+DayCareCantAcceptMonText:
+	TX_FAR _DayCareCantAcceptMonText
 	db "@"
 
 DayCareCantAcceptMonWithHMText:

@@ -2576,9 +2576,6 @@ wDestinationWarpID:: ; d42f
 wCurseFlag::
 	ds 1
 
-wDisableSelectionFlag::
-	ds 1
-
 wWarpFlag::
 	ds 1
 
@@ -2589,9 +2586,6 @@ wKillTrainerCurseFlag::
 	ds 1
 
 wKilledMonsNumber::
-	ds 1
-
-wGhostPartyPos::
 	ds 1
 
 wKillTrainerList::
@@ -2626,7 +2620,7 @@ wTombstoneList::
 wTombstoneListPointer::
 	ds 2
 
-	ds 12
+	ds 14
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)
