@@ -125,9 +125,9 @@ CeruleanGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_CERULEAN_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_CERULEAN_GYM_LEADER
 	ld a, $2
 	ld [wGymLeaderNo], a
 	xor a

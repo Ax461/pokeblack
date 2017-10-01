@@ -175,9 +175,9 @@ SaffronGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_SAFFRON_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_SAFFRON_GYM_LEADER
 	ld a, $6
 	ld [wGymLeaderNo], a
 	ld a, $3

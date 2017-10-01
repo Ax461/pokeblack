@@ -147,9 +147,9 @@ FightingDojoText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_KARATE_MASTER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_KARATE_MASTER
 	ld a, $3
 	ld [wFightingDojoCurScript], a
 	ld [wCurMapScript], a

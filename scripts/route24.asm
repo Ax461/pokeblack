@@ -166,9 +166,9 @@ Route24Text1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_ROUTE_24_ROCKET
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_ROUTE_24_ROCKET
 	xor a
 	ld [hJoyHeld], a
 	ld a, $3

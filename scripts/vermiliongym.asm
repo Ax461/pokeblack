@@ -154,9 +154,9 @@ VermilionGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_VERMILION_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_VERMILION_GYM_LEADER
 	ld a, $3
 	ld [wGymLeaderNo], a
 	xor a

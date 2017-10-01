@@ -174,9 +174,9 @@ CeladonGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_CELADON_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_CELADON_GYM_LEADER
 	ld a, $4
 	ld [wGymLeaderNo], a
 	ld a, $3

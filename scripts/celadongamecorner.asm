@@ -422,9 +422,9 @@ CeladonGameCornerText11:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_GAME_CORNER_ROCKET
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_GAME_CORNER_ROCKET
 	xor a
 	ld [hJoyHeld], a
 	ld [hJoyPressed], a

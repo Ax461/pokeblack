@@ -124,9 +124,9 @@ PewterGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_PEWTER_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_PEWTER_GYM_LEADER
 	ld a, $1
 	ld [wGymLeaderNo], a
 	xor a
