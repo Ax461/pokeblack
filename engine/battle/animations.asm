@@ -444,8 +444,8 @@ ShareMoveAnimations:
 PlayApplyingAttackAnimation:
 ; Generic animation that shows after the move's individual animation
 ; Different animation depending on whether the move has an additional effect and on whose turn it is
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a ; curse flag
 	ret nz
 	ld a,[wAnimationType]
 	and a
@@ -3040,8 +3040,8 @@ PlayApplyingAttackSound:
 ; play a different sound depending if move is not very effective, neutral, or super-effective
 ; don't play any sound at all if move is ineffective
 	call WaitForSoundToFinish
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a ; curse flag
 	ret nz
 	ld a, [wDamageMultipliers]
 	and $7f

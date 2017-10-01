@@ -2573,16 +2573,11 @@ wDestinationWarpID:: ; d42f
 ; if $ff, the player's coordinates are not updated when entering the map
 	ds 1
 
-wCurseFlag::
-	ds 1
-
-wWarpFlag::
-	ds 1
-
-wHalfSpeedFlag::
-	ds 1
-
-wKillTrainerCurseFlag::
+wd430::
+; bit 0: curse animation playing
+; bit 1: trainer is being cursed
+; bit 2: set when entering a new map
+; bit 3: used to make the player move at half speed
 	ds 1
 
 wKilledMonsNumber::
@@ -2620,7 +2615,7 @@ wTombstoneList::
 wTombstoneListPointer::
 	ds 2
 
-	ds 14
+	ds 17
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)

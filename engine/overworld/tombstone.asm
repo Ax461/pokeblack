@@ -19,8 +19,8 @@ PlaceTombstones:
 	pop hl
 	jr .next
 .continue
-	ld a, [wWarpFlag]
-	and a
+	ld a, [wd430]
+	bit 2, a ; warp flag
 	ret z
 	ld hl, wKillTrainerList
 .loop
@@ -84,8 +84,8 @@ PlaceTombstones:
 	pop hl
 	jr .loop
 .done
-	xor a
-	ld [wWarpFlag], a
+	ld hl, wd430
+	res 2, [hl] ; warp flag
 
 ; individual map hacks
 	ld a, [wCurMap]

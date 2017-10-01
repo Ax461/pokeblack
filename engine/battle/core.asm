@@ -525,8 +525,8 @@ MainInBattleLoop:
 	jp z, HandleEnemyMonFainted
 	call HandlePoisonBurnLeechSeed
 	jp z, HandlePlayerMonFainted
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a ; curse flag
 	call z, DrawHUDsAndHPBars
 	call CheckNumAttacksLeft
 	jp MainInBattleLoop
@@ -859,8 +859,8 @@ FaintEnemyPokemon:
 	ld hl, wPlayerUsedMove
 	ld [hli], a
 	ld [hl], a
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a ; curse flag
 	jr nz, .sfxplayed
 	coord hl, 12, 5
 	coord de, 12, 6
@@ -904,16 +904,17 @@ FaintEnemyPokemon:
 	ld a, d
 	and a
 	ret z
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a
 	jr nz, .skip
 	ld hl, EnemyMonFaintedText
 	call PrintText
 	call PrintEmptyString
 .skip
 	call SaveScreenTilesToBuffer1
+	ld hl, wd430
+	res 0, [hl] ; curse flag
 	xor a
-	ld [wCurseFlag], a
 	ld [wBattleResult], a
 	ld b, EXP_ALL
 	call IsItemInBag
@@ -1051,8 +1052,8 @@ TrainerBattleVictory:
 	call SaveScreenTilesToBuffer1
 	call DisplayBattleMenu
 .skip
-	xor a
-	ld [wWarpFlag], a
+	ld hl, wd430
+	res 2, [hl] ; warp flag
 	ld de, wPlayerMoney + 2
 	ld hl, wAmountMoneyWon + 2
 	ld c, $3
@@ -2286,8 +2287,8 @@ DisplayBattleMenu:
 	call PrintButItFailedTextDelay
 	jp DisplayBattleMenu
 .continue
-	ld a, 1
-	ld [wKillTrainerCurseFlag], a
+	ld hl, wd430
+	set 1, [hl] ; trainer curse flag
 	callba KillTrainer
 	call Delay3
 	call GBPalBlackOut
@@ -3210,8 +3211,8 @@ ExecutePlayerMove:
 	ld a, [wBattleMonSpecies]
 	cp GHOST
 	jr nz, .skip
-	ld a, 1
-	ld [wCurseFlag], a
+	ld hl, wd430
+	set 0, [hl] ; curse flag
 .skip
 	ld a, [wPlayerSelectedMove]
 	inc a
@@ -3412,8 +3413,11 @@ MultiHitText:
 	db "@"
 
 ExecutePlayerMoveDone:
+	push hl
+	ld hl, wd430
+	res 0, [hl] ; curse flag
+	pop hl
 	xor a
-	ld [wCurseFlag], a
 	ld [wActionResultOrTookBattleTurn],a
 	ld b,1
 	ret
@@ -7227,8 +7231,8 @@ LoadMonBackPic:
 
 JumpMoveEffect:
 	call _JumpMoveEffect
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a ; curse flag
 	ret nz
 	ld b, $1
 	ret

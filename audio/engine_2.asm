@@ -948,8 +948,8 @@ Audio2_21e2f:
 	jr nc, .asm_21e4c
 .asm_21e39
 	ld d, $0
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a ; curse flag
 	jr z, .notDistorted
 	ld d, 2
 .notDistorted
@@ -976,8 +976,8 @@ Audio2_21e56:
 	call Audio2_21e9f
 	jr nc, .asm_21e6c
 .asm_21e60
-	ld a, [wCurseFlag]
-	and a
+	ld a, [wd430]
+	bit 0, a ; curse flag
 	ld a, [wFrequencyModifier]
 	jr z, .notDistorted
 	srl a

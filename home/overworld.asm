@@ -749,11 +749,10 @@ ExtraWarpCheck::
 
 MapEntryAfterBattle::
 	callba IsPlayerStandingOnWarp ; for enabling warp testing after collisions
-	ld a, [wKillTrainerCurseFlag]
-	and a
+	ld hl, wd430
+	bit 1, [hl] ; trainer curse flag
 	jr z, .skip
-	xor a
-	ld [wKillTrainerCurseFlag], a
+	res 1, [hl] ; trainer curse flag
 	call UpdateSprites
 	call Delay3
 .skip
@@ -1482,9 +1481,9 @@ AdvancePlayerSprite::
 	ld a, [wNumHoFTeams]
 	and a
 	jr z, .skip
-	ld a, [wHalfSpeedFlag]
-	xor 1
-	ld [wHalfSpeedFlag], a
+	ld a, [wd430]
+	xor $8 ; half speed flag
+	ld [wd430], a
 	ret z
 .skip
 	ld a,[wSpriteStateData1 + 3] ; delta Y
@@ -2446,8 +2445,8 @@ ResetUsingStrengthOutOfBattleBit:
 	ret
 
 SetWarpFlag:
-	ld a, 1
-	ld [wWarpFlag], a
+	ld hl, wd430
+	set 2, [hl] ; warp flag
 	ld hl, wTombstoneList
 	ld a, h
 	ld [wTombstoneListPointer], a
