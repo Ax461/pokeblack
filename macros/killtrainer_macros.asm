@@ -4,10 +4,9 @@ SetKillTrainerIndex: MACRO
 		xor a
 		ld [wKillTrainerIndex], a
 	ELSE
-		ld hl, \1
-		ld a, h
+		ld a, (\1 >> 8) & $ff
 		ld [wKillTrainerIndex], a
-		ld a, l
+		ld a, \1 & $ff
 	ENDC
 		ld [wKillTrainerIndex + 1], a
 	ENDM
