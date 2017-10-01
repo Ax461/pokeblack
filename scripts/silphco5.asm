@@ -90,7 +90,7 @@ SilphCo5TrainerHeader0:
 	dw SilphCo5BattleText2 ; TextBeforeBattle
 	dw SilphCo5AfterBattleText2 ; TextAfterBattle
 	dw SilphCo5EndBattleText2 ; TextEndBattle
-	dw SilphCo5EndBattleText2 ; TextEndBattle
+	dw KT_SILPH_CO_5F_TRAINER_0 ; TrainerIndex
 
 SilphCo5TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_1
@@ -99,7 +99,7 @@ SilphCo5TrainerHeader1:
 	dw SilphCo5BattleText3 ; TextBeforeBattle
 	dw SilphCo5AfterBattleText3 ; TextAfterBattle
 	dw SilphCo5EndBattleText3 ; TextEndBattle
-	dw SilphCo5EndBattleText3 ; TextEndBattle
+	dw KT_SILPH_CO_5F_TRAINER_1 ; TrainerIndex
 
 SilphCo5TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_2
@@ -108,7 +108,7 @@ SilphCo5TrainerHeader2:
 	dw SilphCo5BattleText4 ; TextBeforeBattle
 	dw SilphCo5AfterBattleText4 ; TextAfterBattle
 	dw SilphCo5EndBattleText4 ; TextEndBattle
-	dw SilphCo5EndBattleText4 ; TextEndBattle
+	dw KT_SILPH_CO_5F_TRAINER_2 ; TrainerIndex
 
 SilphCo5TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_3
@@ -117,7 +117,7 @@ SilphCo5TrainerHeader3:
 	dw SilphCo5BattleText5 ; TextBeforeBattle
 	dw SilphCo5AfterBattleText5 ; TextAfterBattle
 	dw SilphCo5EndBattleText5 ; TextEndBattle
-	dw SilphCo5EndBattleText5 ; TextEndBattle
+	dw KT_SILPH_CO_5F_TRAINER_3 ; TrainerIndex
 
 	db $ff
 

@@ -71,9 +71,12 @@ FightingDojoScript3:
 	ld a, $f0
 	ld [wJoyIgnore], a
 	SetEventRange EVENT_BEAT_KARATE_MASTER, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
+	callba IsKillTrainerFlagSet
+	jr nz, .skip
 	ld a, $8
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
+.skip
 	xor a
 	ld [wJoyIgnore], a
 	ld [wFightingDojoCurScript], a
@@ -97,7 +100,7 @@ FightingDojoTrainerHeader0:
 	dw FightingDojoBattleText1 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText1 ; TextAfterBattle
 	dw FightingDojoEndBattleText1 ; TextEndBattle
-	dw FightingDojoEndBattleText1 ; TextEndBattle
+	dw KT_FIGHTING_DOJO_TRAINER_0 ; TrainerIndex
 
 FightingDojoTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_1
@@ -106,7 +109,7 @@ FightingDojoTrainerHeader1:
 	dw FightingDojoBattleText2 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText2 ; TextAfterBattle
 	dw FightingDojoEndBattleText2 ; TextEndBattle
-	dw FightingDojoEndBattleText2 ; TextEndBattle
+	dw KT_FIGHTING_DOJO_TRAINER_1 ; TrainerIndex
 
 FightingDojoTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_2
@@ -115,7 +118,7 @@ FightingDojoTrainerHeader2:
 	dw FightingDojoBattleText3 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText3 ; TextAfterBattle
 	dw FightingDojoEndBattleText3 ; TextEndBattle
-	dw FightingDojoEndBattleText3 ; TextEndBattle
+	dw KT_FIGHTING_DOJO_TRAINER_2 ; TrainerIndex
 
 FightingDojoTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
@@ -124,7 +127,7 @@ FightingDojoTrainerHeader3:
 	dw FightingDojoBattleText4 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText4 ; TextAfterBattle
 	dw FightingDojoEndBattleText4 ; TextEndBattle
-	dw FightingDojoEndBattleText4 ; TextEndBattle
+	dw KT_FIGHTING_DOJO_TRAINER_3 ; TrainerIndex
 
 	db $ff
 
@@ -144,6 +147,7 @@ FightingDojoText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_KARATE_MASTER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $3
@@ -253,6 +257,9 @@ FightingDojoText6:
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
+	SetKillTrainerIndex KT_KARATE_MASTER
+	callba IsKillTrainerFlagSet
+	jr nz, .GetMon
 	ld hl, OtherHitmonText
 	call PrintText
 	jr .done
@@ -288,6 +295,9 @@ FightingDojoText7:
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
+	SetKillTrainerIndex KT_KARATE_MASTER
+	callba IsKillTrainerFlagSet
+	jr nz, .GetMon
 	ld hl, OtherHitmonText
 	call PrintText
 	jr .done

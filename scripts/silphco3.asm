@@ -68,7 +68,7 @@ SilphCo3TrainerHeader0:
 	dw SilphCo3BattleText1 ; TextBeforeBattle
 	dw SilphCo3AfterBattleText1 ; TextAfterBattle
 	dw SilphCo3EndBattleText1 ; TextEndBattle
-	dw SilphCo3EndBattleText1 ; TextEndBattle
+	dw KT_SILPH_CO_3F_TRAINER_0 ; TrainerIndex
 
 SilphCo3TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_3F_TRAINER_1
@@ -77,7 +77,7 @@ SilphCo3TrainerHeader1:
 	dw SilphCo3BattleText2 ; TextBeforeBattle
 	dw SilphCo3AfterBattleText2 ; TextAfterBattle
 	dw SilphCo3EndBattleText2 ; TextEndBattle
-	dw SilphCo3EndBattleText2 ; TextEndBattle
+	dw KT_SILPH_CO_3F_TRAINER_1 ; TrainerIndex
 
 	db $ff
 

@@ -138,6 +138,19 @@ TombstoneTileBlocks:
 	db $57 ; POKEMONTOWER_7
 	db $58
 	db $57
+	db $83 ; FIGHTING_DOJO
+	db $7B
+	db $7B
+	db $83
+	db $83
+	db $81 ; SAFFRON_GYM
+	db $83
+	db $92
+	db $92
+	db $92
+	db $92
+	db $92
+	db $92
 	db $82 ; ROCKET_HIDEOUT_1
 	db $80
 	db $83
@@ -149,6 +162,29 @@ TombstoneTileBlocks:
 	db $81 ; ROCKET_HIDEOUT_4
 	db $80
 	db $81
+	db $81 ; SILPH_CO_2F
+	db $87
+	db $87
+	db $87
+	db $89 ; SILPH_CO_3F
+	db $88
+	db $81 ; SILPH_CO_4F
+	db $80
+	db $8A
+	db $84 ; SILPH_CO_5F
+	db $87
+	db $80
+	db $8B
+	db $88 ; SILPH_C0_6F
+	db $81
+	db $8C
+	db $8E ; SILPH_CO_7F
+	db $8D
+	db $80
+	db $81
+	db $81 ; SILPH_CO_8F
+	db $80
+	db $87
 	db $83 ; ROCK_TUNNEL_2
 	db $80
 	db $83
@@ -157,6 +193,13 @@ TombstoneTileBlocks:
 	db $80
 	db $83
 	db $80
+	db $8F ; SILPH_CO_9F
+	db $88
+	db $90
+	db $91 ; SILPH_CO_10F
+	db $80
+	db $3B ; SILPH_CO_11F
+	db $3A
 
 ; \1 map
 ; \2 1st trainer ID

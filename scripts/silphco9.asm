@@ -136,7 +136,7 @@ SilphCo9TrainerHeader0:
 	dw SilphCo9BattleText1 ; TextBeforeBattle
 	dw SilphCo9AfterBattleText1 ; TextAfterBattle
 	dw SilphCo9EndBattleText1 ; TextEndBattle
-	dw SilphCo9EndBattleText1 ; TextEndBattle
+	dw KT_SILPH_CO_9F_TRAINER_0 ; TrainerIndex
 
 SilphCo9TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_9F_TRAINER_1
@@ -145,7 +145,7 @@ SilphCo9TrainerHeader1:
 	dw SilphCo9BattleText2 ; TextBeforeBattle
 	dw SilphCo9AfterBattleText2 ; TextAfterBattle
 	dw SilphCo9EndBattleText2 ; TextEndBattle
-	dw SilphCo9EndBattleText2 ; TextEndBattle
+	dw KT_SILPH_CO_9F_TRAINER_1 ; TrainerIndex
 
 SilphCo9TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_9F_TRAINER_2
@@ -154,7 +154,7 @@ SilphCo9TrainerHeader2:
 	dw SilphCo9BattleText3 ; TextBeforeBattle
 	dw SilphCo9AfterBattleText3 ; TextAfterBattle
 	dw SilphCo9EndBattleText3 ; TextEndBattle
-	dw SilphCo9EndBattleText3 ; TextEndBattle
+	dw KT_SILPH_CO_9F_TRAINER_2 ; TrainerIndex
 
 	db $ff
 

@@ -176,8 +176,8 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTB1
+	dw MapKTB2
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -206,13 +206,13 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTCF
+	dw MapKTD0
+	dw MapKTD1
+	dw MapKTD2
+	dw MapKTD3
+	dw MapKTD4
+	dw MapKTD5
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -232,9 +232,9 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTE8
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTE9
+	dw MapKTEA
+	dw MapKTEB
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -420,6 +420,21 @@ MapKT94:
 	db POKEMONTOWER_7,$1
 	db POKEMONTOWER_7,$2
 	db POKEMONTOWER_7,$3
+MapKTB1:
+	db FIGHTING_DOJO,$1
+	db FIGHTING_DOJO,$2
+	db FIGHTING_DOJO,$3
+	db FIGHTING_DOJO,$4
+	db FIGHTING_DOJO,$5
+MapKTB2:
+	db SAFFRON_GYM,$1
+	db SAFFRON_GYM,$2
+	db SAFFRON_GYM,$3
+	db SAFFRON_GYM,$4
+	db SAFFRON_GYM,$5
+	db SAFFRON_GYM,$6
+	db SAFFRON_GYM,$7
+	db SAFFRON_GYM,$8
 MapKTC7:
 	db ROCKET_HIDEOUT_1,$1
 	db ROCKET_HIDEOUT_1,$2
@@ -435,6 +450,36 @@ MapKTCA:
 	db ROCKET_HIDEOUT_4,$2
 	db ROCKET_HIDEOUT_4,$3
 	db ROCKET_HIDEOUT_4,$4
+MapKTCF:
+	db SILPH_CO_2F,$2
+	db SILPH_CO_2F,$3
+	db SILPH_CO_2F,$4
+	db SILPH_CO_2F,$5
+MapKTD0:
+	db SILPH_CO_3F,$2
+	db SILPH_CO_3F,$3
+MapKTD1:
+	db SILPH_CO_4F,$2
+	db SILPH_CO_4F,$3
+	db SILPH_CO_4F,$4
+MapKTD2:
+	db SILPH_CO_5F,$2
+	db SILPH_CO_5F,$3
+	db SILPH_CO_5F,$4
+	db SILPH_CO_5F,$5
+MapKTD3:
+	db SILPH_CO_6F,$6
+	db SILPH_CO_6F,$7
+	db SILPH_CO_6F,$8
+MapKTD4:
+	db SILPH_CO_7F,$5
+	db SILPH_CO_7F,$6
+	db SILPH_CO_7F,$7
+	db SILPH_CO_7F,$8
+MapKTD5:
+	db SILPH_CO_8F,$2
+	db SILPH_CO_8F,$3
+	db SILPH_CO_8F,$4
 MapKTE8:
 	db ROCK_TUNNEL_2,$1
 	db ROCK_TUNNEL_2,$2
@@ -444,3 +489,13 @@ MapKTE8:
 	db ROCK_TUNNEL_2,$6
 	db ROCK_TUNNEL_2,$7
 	db ROCK_TUNNEL_2,$8
+MapKTE9:
+	db SILPH_CO_9F,$2
+	db SILPH_CO_9F,$3
+	db SILPH_CO_9F,$4
+MapKTEA:
+	db SILPH_CO_10F,$1
+	db SILPH_CO_10F,$2
+MapKTEB:
+	db SILPH_CO_11F,$4
+	db SILPH_CO_11F,$5

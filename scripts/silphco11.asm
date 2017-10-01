@@ -267,7 +267,7 @@ SilphCo11Script4:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	xor a
+	SetKillTrainerIndex KT_NOT_KILLABLE
 	ld [wJoyIgnore], a
 	ld a, $5
 	jp SilphCo11Script_621c8
@@ -287,7 +287,7 @@ SilphCo11TrainerHeader0:
 	dw SilphCo11BattleText1 ; TextBeforeBattle
 	dw SilphCo11AfterBattleText1 ; TextAfterBattle
 	dw SilphCo11EndBattleText1 ; TextEndBattle
-	dw SilphCo11EndBattleText1 ; TextEndBattle
+	dw KT_SILPH_CO_11F_TRAINER_0 ; TrainerIndex
 
 SilphCo11TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_1
@@ -296,7 +296,7 @@ SilphCo11TrainerHeader1:
 	dw SilphCo11BattleText2 ; TextBeforeBattle
 	dw SilphCo11AfterBattleText2 ; TextAfterBattle
 	dw SilphCo11EndBattleText2 ; TextEndBattle
-	dw SilphCo11EndBattleText2 ; TextEndBattle
+	dw KT_SILPH_CO_11F_TRAINER_1 ; TrainerIndex
 
 	db $ff
 

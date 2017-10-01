@@ -107,7 +107,7 @@ SilphCo4TrainerHeader0:
 	dw SilphCo4BattleText2 ; TextBeforeBattle
 	dw SilphCo4AfterBattleText2 ; TextAfterBattle
 	dw SilphCo4EndBattleText2 ; TextEndBattle
-	dw SilphCo4EndBattleText2 ; TextEndBattle
+	dw KT_SILPH_CO_4F_TRAINER_0 ; TrainerIndex
 
 SilphCo4TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_4F_TRAINER_1
@@ -116,7 +116,7 @@ SilphCo4TrainerHeader1:
 	dw SilphCo4BattleText3 ; TextBeforeBattle
 	dw SilphCo4AfterBattleText3 ; TextAfterBattle
 	dw SilphCo4EndBattleText3 ; TextEndBattle
-	dw SilphCo4EndBattleText3 ; TextEndBattle
+	dw KT_SILPH_CO_4F_TRAINER_1 ; TrainerIndex
 
 SilphCo4TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_4F_TRAINER_2
@@ -125,7 +125,7 @@ SilphCo4TrainerHeader2:
 	dw SilphCo4BattleText4 ; TextBeforeBattle
 	dw SilphCo4AfterBattleText4 ; TextAfterBattle
 	dw SilphCo4EndBattleText4 ; TextEndBattle
-	dw SilphCo4EndBattleText4 ; TextEndBattle
+	dw KT_SILPH_CO_4F_TRAINER_2 ; TrainerIndex
 
 	db $ff
 

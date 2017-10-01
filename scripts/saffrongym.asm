@@ -43,10 +43,11 @@ SaffronGymScript3:
 	ld [wJoyIgnore], a
 
 SaffronGymText_5d068:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_5d091
 	ld a, $a
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_SABRINA
 	lb bc, TM_46, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,6 +61,7 @@ SaffronGymText_5d068:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_5d091
+	SetEvent EVENT_BEAT_SABRINA
 	ld hl, wObtainedBadges
 	set 5, [hl]
 	ld hl, wBeatGymFlags
@@ -91,7 +93,7 @@ SaffronGymTrainerHeader0:
 	dw SaffronGymBattleText1 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText1 ; TextAfterBattle
 	dw SaffronGymEndBattleText1 ; TextEndBattle
-	dw SaffronGymEndBattleText1 ; TextEndBattle
+	dw KT_SAFFRON_GYM_TRAINER_0 ; TrainerIndex
 
 SaffronGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_1
@@ -100,7 +102,7 @@ SaffronGymTrainerHeader1:
 	dw SaffronGymBattleText2 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText2 ; TextAfterBattle
 	dw SaffronGymEndBattleText2 ; TextEndBattle
-	dw SaffronGymEndBattleText2 ; TextEndBattle
+	dw KT_SAFFRON_GYM_TRAINER_1 ; TrainerIndex
 
 SaffronGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_2
@@ -109,7 +111,7 @@ SaffronGymTrainerHeader2:
 	dw SaffronGymBattleText3 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText3 ; TextAfterBattle
 	dw SaffronGymEndBattleText3 ; TextEndBattle
-	dw SaffronGymEndBattleText3 ; TextEndBattle
+	dw KT_SAFFRON_GYM_TRAINER_2 ; TrainerIndex
 
 SaffronGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_3
@@ -118,7 +120,7 @@ SaffronGymTrainerHeader3:
 	dw SaffronGymBattleText4 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText4 ; TextAfterBattle
 	dw SaffronGymEndBattleText4 ; TextEndBattle
-	dw SaffronGymEndBattleText4 ; TextEndBattle
+	dw KT_SAFFRON_GYM_TRAINER_3 ; TrainerIndex
 
 SaffronGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_4
@@ -127,7 +129,7 @@ SaffronGymTrainerHeader4:
 	dw SaffronGymBattleText5 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText5 ; TextAfterBattle
 	dw SaffronGymEndBattleText5 ; TextEndBattle
-	dw SaffronGymEndBattleText5 ; TextEndBattle
+	dw KT_SAFFRON_GYM_TRAINER_4 ; TrainerIndex
 
 SaffronGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_5
@@ -136,7 +138,7 @@ SaffronGymTrainerHeader5:
 	dw SaffronGymBattleText6 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText6 ; TextAfterBattle
 	dw SaffronGymEndBattleText6 ; TextEndBattle
-	dw SaffronGymEndBattleText6 ; TextEndBattle
+	dw KT_SAFFRON_GYM_TRAINER_5 ; TrainerIndex
 
 SaffronGymTrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_6, 1
@@ -145,7 +147,7 @@ SaffronGymTrainerHeader6:
 	dw SaffronGymBattleText7 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText7 ; TextAfterBattle
 	dw SaffronGymEndBattleText7 ; TextEndBattle
-	dw SaffronGymEndBattleText7 ; TextEndBattle
+	dw KT_SAFFRON_GYM_TRAINER_6 ; TrainerIndex
 
 	db $ff
 
@@ -173,6 +175,7 @@ SaffronGymText1:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndex]
 	ld [wSpriteIndex], a
+	SetKillTrainerIndex KT_SAFFRON_GYM_LEADER
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld a, $6
