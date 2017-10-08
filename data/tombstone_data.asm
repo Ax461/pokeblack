@@ -1,97 +1,97 @@
 TombstoneTileBlocks:
 	db $00
-	db $8A ; CERULEAN_CITY
-	db $84 ; ROUTE_3
+	db $9D ; CERULEAN_CITY
+	db $86 ; ROUTE_3
 	db $80
-	db $83
-	db $81
-	db $82
-	db $83
-	db $85
-	db $86
-	db $81 ; ROUTE_4
-	db $8D ; ROUTE_6
-	db $87
 	db $8B
-	db $81
 	db $82
-	db $86
-	db $A3 ; ROUTE_8
-	db $A2
-	db $99
-	db $96
-	db $A4
-	db $A5
-	db $99
-	db $96
-	db $82
-	db $9C ; ROUTE_9
-	db $9D
-	db $87
-	db $9E
-	db $8D
 	db $81
-	db $80
-	db $81
-	db $9E
-	db $A0 ; ROUTE_10
-	db $87
-	db $80
-	db $9F
-	db $A1
-	db $8E
-	db $98 ; ROUTE_11
 	db $8B
-	db $8C
-	db $9A
-	db $99
-	db $8C
-	db $8C
-	db $8C
-	db $9B
-	db $97
-	db $AB ; ROUTE_12
-	db $89
-	db $AA
-	db $9E
-	db $88
-	db $AA
-	db $AC
-	db $8E ; ROUTE_16
-	db $8D
-	db $8E
 	db $87
-	db $80
-	db $8E
-	db $8B ; ROUTE_17
-	db $94
-	db $A7
-	db $94
-	db $99
-	db $94
-	db $99
-	db $99
-	db $94
-	db $9E
-	db $A8 ; ROUTE_18
-	db $8B
-	db $A9
-	db $87 ; ROUTE_24
-	db $86
-	db $89
-	db $88
-	db $89
-	db $88
-	db $89
-	db $95 ; ROUTE_25
-	db $96
+	db $A6
+	db $82 ; ROUTE_4
+	db $96 ; ROUTE_6
 	db $95
-	db $92
-	db $93
-	db $94
-	db $80
+	db $A8
+	db $82
 	db $81
+	db $A6
+	db $9B ; ROUTE_8
 	db $91
+	db $AA
+	db $83
+	db $AC
+	db $AE
+	db $AA
+	db $83
+	db $81
+	db $98 ; ROUTE_9
+	db $99
+	db $95
+	db $93
+	db $96
+	db $82
+	db $80
+	db $82
+	db $93
+	db $B0 ; ROUTE_10
+	db $95
+	db $80
+	db $9E
+	db $B1
+	db $94
+	db $A9 ; ROUTE_11
+	db $A8
+	db $A7
+	db $AB
+	db $AA
+	db $A7
+	db $A7
+	db $A7
+	db $AD
+	db $A5
+	db $A3 ; ROUTE_12
+	db $A2
+	db $A1
+	db $93
+	db $A0
+	db $A1
+	db $8C
+	db $94 ; ROUTE_16
+	db $96
+	db $94
+	db $95
+	db $80
+	db $94
+	db $AD ; ROUTE_17
+	db $90
+	db $8F
+	db $90
+	db $AA
+	db $90
+	db $AA
+	db $AA
+	db $90
+	db $93
+	db $8D ; ROUTE_18
+	db $A8
+	db $8E
+	db $95 ; ROUTE_24
+	db $A6
+	db $A2
+	db $A0
+	db $A2
+	db $A0
+	db $A2
+	db $8A ; ROUTE_25
+	db $83
+	db $8A
+	db $88
+	db $92
+	db $90
+	db $80
+	db $82
+	db $89
 	db $80 ; VIRIDIAN_FOREST
 	db $80
 	db $81
@@ -241,9 +241,9 @@ double_tombstone: MACRO
 ENDM
 
 DoubleTombstoneTileBlocks:
-	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $87, $8F
-	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $82, $90
-	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $A5, $A6
+	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $95, $97
+	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $81, $85
+	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $AE, $AF
 	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $81, $82
 
 	db $ff

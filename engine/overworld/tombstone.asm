@@ -104,26 +104,26 @@ PlaceTombstones:
 	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
 	call IsKillTrainerFlagSet
 	ret z
-	ld a, $89
+	ld a, $a2
 	ld [wOverworldMap + 13], a
 	ret
 .vermilionCity
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_3
 	call IsKillTrainerFlagSet
 	ret z
-	ld a, $81
+	ld a, $82
 	ld [wOverworldMap + 13], a
 	SetKillTrainerIndex KT_ROUTE_6_TRAINER_4
 	call IsKillTrainerFlagSet
 	ret z
-	ld a, $90
+	ld a, $85
 	ld [wOverworldMap + 13], a
 	ret
 .route17
 	SetKillTrainerIndex KT_ROUTE_16_TRAINER_1
 	call IsKillTrainerFlagSet
 	ret z
-	ld a, $8d
+	ld a, $96
 	ld [wOverworldMap + 10], a
 	ret
 .gameCorner
