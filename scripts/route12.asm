@@ -36,12 +36,17 @@ Route12Script0:
 	ld a, HS_ROUTE_12_SNORLAX
 	ld [wMissableObjectIndex], a
 	predef HideObject
+	ld hl, wd430
+	res 4, [hl]
 	ld a, $3
 	ld [wRoute12CurScript], a
 	ld [wCurMapScript], a
 	ret
 
 Route12Script3:
+	ld a, [wd430]
+	bit 4, a
+	jr nz, .asm_59664
 	ld a, [wIsInBattle]
 	cp $ff
 	jr z, Route12Script_59606
@@ -83,7 +88,7 @@ Route12TrainerHeader0:
 	dw Route12BattleText1 ; TextBeforeBattle
 	dw Route12AfterBattleText1 ; TextAfterBattle
 	dw Route12EndBattleText1 ; TextEndBattle
-	dw Route12EndBattleText1 ; TextEndBattle
+	dw KT_ROUTE_12_TRAINER_0 ; TrainerIndex
 
 Route12TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_12_TRAINER_1
@@ -92,7 +97,7 @@ Route12TrainerHeader1:
 	dw Route12BattleText2 ; TextBeforeBattle
 	dw Route12AfterBattleText2 ; TextAfterBattle
 	dw Route12EndBattleText2 ; TextEndBattle
-	dw Route12EndBattleText2 ; TextEndBattle
+	dw KT_ROUTE_12_TRAINER_1 ; TrainerIndex
 
 Route12TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_12_TRAINER_2
@@ -101,7 +106,7 @@ Route12TrainerHeader2:
 	dw Route12BattleText3 ; TextBeforeBattle
 	dw Route12AfterBattleText3 ; TextAfterBattle
 	dw Route12EndBattleText3 ; TextEndBattle
-	dw Route12EndBattleText3 ; TextEndBattle
+	dw KT_ROUTE_12_TRAINER_2 ; TrainerIndex
 
 Route12TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_12_TRAINER_3
@@ -110,7 +115,7 @@ Route12TrainerHeader3:
 	dw Route12BattleText4 ; TextBeforeBattle
 	dw Route12AfterBattleText4 ; TextAfterBattle
 	dw Route12EndBattleText4 ; TextEndBattle
-	dw Route12EndBattleText4 ; TextEndBattle
+	dw KT_ROUTE_12_TRAINER_3 ; TrainerIndex
 
 Route12TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_12_TRAINER_4
@@ -119,7 +124,7 @@ Route12TrainerHeader4:
 	dw Route12BattleText5 ; TextBeforeBattle
 	dw Route12AfterBattleText5 ; TextAfterBattle
 	dw Route12EndBattleText5 ; TextEndBattle
-	dw Route12EndBattleText5 ; TextEndBattle
+	dw KT_ROUTE_12_TRAINER_4 ; TrainerIndex
 
 Route12TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_12_TRAINER_5
@@ -128,7 +133,7 @@ Route12TrainerHeader5:
 	dw Route12BattleText6 ; TextBeforeBattle
 	dw Route12AfterBattleText6 ; TextAfterBattle
 	dw Route12EndBattleText6 ; TextEndBattle
-	dw Route12EndBattleText6 ; TextEndBattle
+	dw KT_ROUTE_12_TRAINER_5 ; TrainerIndex
 
 Route12TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_12_TRAINER_6, 1
@@ -137,7 +142,7 @@ Route12TrainerHeader6:
 	dw Route12BattleText7 ; TextBeforeBattle
 	dw Route12AfterBattleText7 ; TextAfterBattle
 	dw Route12EndBattleText7 ; TextEndBattle
-	dw Route12EndBattleText7 ; TextEndBattle
+	dw KT_ROUTE_12_TRAINER_6 ; TrainerIndex
 
 	db $ff
 

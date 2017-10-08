@@ -93,6 +93,8 @@ PlaceTombstones:
 	jr z, .ceruleanCity
 	cp VERMILION_CITY
 	jr z, .vermilionCity
+	cp ROUTE_17
+	jr z, .route17
 	cp GAME_CORNER
 	jp z, .gameCorner
 	cp ROCKET_HIDEOUT_4
@@ -116,6 +118,13 @@ PlaceTombstones:
 	ret z
 	ld a, $90
 	ld [wOverworldMap + 13], a
+	ret
+.route17
+	SetKillTrainerIndex KT_ROUTE_16_TRAINER_1
+	call IsKillTrainerFlagSet
+	ret z
+	ld a, $8d
+	ld [wOverworldMap + 10], a
 	ret
 .gameCorner
 	CheckEvent EVENT_FOUND_ROCKET_HIDEOUT

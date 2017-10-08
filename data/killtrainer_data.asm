@@ -22,13 +22,13 @@ MapKTPointers:
 	dw MapKT14
 	dw MapKT15
 	dw MapKT16
+	dw MapKT17
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT1B
+	dw MapKT1C
+	dw MapKT1D
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -312,6 +312,36 @@ MapKT16:
 	db ROUTE_11,$8
 	db ROUTE_11,$9
 	db ROUTE_11,$A
+MapKT17:
+	db ROUTE_12,$2
+	db ROUTE_12,$3
+	db ROUTE_12,$4
+	db ROUTE_12,$5
+	db ROUTE_12,$6
+	db ROUTE_12,$7
+	db ROUTE_12,$8
+MapKT1B:
+	db ROUTE_16,$1
+	db ROUTE_16,$2
+	db ROUTE_16,$3
+	db ROUTE_16,$4
+	db ROUTE_16,$5
+	db ROUTE_16,$6
+MapKT1C:
+	db ROUTE_17,$1
+	db ROUTE_17,$2
+	db ROUTE_17,$3
+	db ROUTE_17,$4
+	db ROUTE_17,$5
+	db ROUTE_17,$6
+	db ROUTE_17,$7
+	db ROUTE_17,$8
+	db ROUTE_17,$9
+	db ROUTE_17,$A
+MapKT1D:
+	db ROUTE_18,$1
+	db ROUTE_18,$2
+	db ROUTE_18,$3
 MapKT23:
 	db ROUTE_24,$1
 	db ROUTE_24,$2

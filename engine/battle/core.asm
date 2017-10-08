@@ -3213,6 +3213,7 @@ ExecutePlayerMove:
 	jr nz, .skip
 	ld hl, wd430
 	set 0, [hl] ; curse flag
+	set 4, [hl]
 .skip
 	ld a, [wPlayerSelectedMove]
 	inc a

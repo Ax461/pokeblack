@@ -2578,6 +2578,7 @@ wd430::
 ; bit 1: trainer is being cursed
 ; bit 2: set when entering a new map
 ; bit 3: used to make the player move at half speed
+; bit 4: used for Snorlax at Route 12 and Route 16
 	ds 1
 
 wKilledMonsNumber::
