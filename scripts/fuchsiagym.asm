@@ -42,11 +42,13 @@ FuchsiaGymScript3:
 	jp z, FuchsiaGymScript_75477
 	ld a, $f0
 	ld [wJoyIgnore], a
+
 FuchsiaGymScript3_75497:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_754c0
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_KOGA
 	lb bc, TM_06, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -60,6 +62,7 @@ FuchsiaGymScript3_75497:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_754c0
+	SetEvent EVENT_BEAT_KOGA
 	ld hl, wObtainedBadges
 	set 4, [hl]
 	ld hl, wBeatGymFlags
@@ -90,7 +93,7 @@ FuchsiaGymTrainerHeader0:
 	dw FuchsiaGymBattleText1 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText1 ; TextAfterBattle
 	dw FuchsiaGymEndBattleText1 ; TextEndBattle
-	dw FuchsiaGymEndBattleText1 ; TextEndBattle
+	dw KT_FUCHSIA_GYM_TRAINER_0 ; TrainerIndex
 
 FuchsiaGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
@@ -99,7 +102,7 @@ FuchsiaGymTrainerHeader1:
 	dw FuchsiaGymBattleText2 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText2 ; TextAfterBattle
 	dw FuchsiaGymEndBattleText2 ; TextEndBattle
-	dw FuchsiaGymEndBattleText2 ; TextEndBattle
+	dw KT_FUCHSIA_GYM_TRAINER_1 ; TrainerIndex
 
 FuchsiaGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
@@ -108,7 +111,7 @@ FuchsiaGymTrainerHeader2:
 	dw FuchsiaGymBattleText3 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText3 ; TextAfterBattle
 	dw FuchsiaGymEndBattleText3 ; TextEndBattle
-	dw FuchsiaGymEndBattleText3 ; TextEndBattle
+	dw KT_FUCHSIA_GYM_TRAINER_2 ; TrainerIndex
 
 FuchsiaGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_3
@@ -117,7 +120,7 @@ FuchsiaGymTrainerHeader3:
 	dw FuchsiaGymBattleText4 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText4 ; TextAfterBattle
 	dw FuchsiaGymEndBattleText4 ; TextEndBattle
-	dw FuchsiaGymEndBattleText4 ; TextEndBattle
+	dw KT_FUCHSIA_GYM_TRAINER_3 ; TrainerIndex
 
 FuchsiaGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_4
@@ -126,7 +129,7 @@ FuchsiaGymTrainerHeader4:
 	dw FuchsiaGymBattleText5 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText5 ; TextAfterBattle
 	dw FuchsiaGymEndBattleText5 ; TextEndBattle
-	dw FuchsiaGymEndBattleText5 ; TextEndBattle
+	dw KT_FUCHSIA_GYM_TRAINER_4 ; TrainerIndex
 
 FuchsiaGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
@@ -135,7 +138,7 @@ FuchsiaGymTrainerHeader5:
 	dw FuchsiaGymBattleText6 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText6 ; TextAfterBattle
 	dw FuchsiaGymEndBattleText6 ; TextEndBattle
-	dw FuchsiaGymEndBattleText6 ; TextEndBattle
+	dw KT_FUCHSIA_GYM_TRAINER_5 ; TrainerIndex
 
 	db $ff
 
@@ -165,6 +168,7 @@ FuchsiaGymText1:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_FUCHSIA_GYM_LEADER
 	ld a, $5
 	ld [wGymLeaderNo], a
 	xor a

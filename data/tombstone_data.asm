@@ -1,6 +1,6 @@
 TombstoneTileBlocks:
 	db $00
-	db $9D ; CERULEAN_CITY
+	db $9E ; CERULEAN_CITY
 	db $86 ; ROUTE_3
 	db $80
 	db $8B
@@ -8,21 +8,21 @@ TombstoneTileBlocks:
 	db $81
 	db $8B
 	db $87
-	db $A6
+	db $A8
 	db $82 ; ROUTE_4
 	db $96 ; ROUTE_6
 	db $95
 	db $A8
 	db $82
 	db $81
-	db $A6
-	db $9B ; ROUTE_8
+	db $A8
+	db $9C ; ROUTE_8
 	db $91
-	db $AA
-	db $83
 	db $AC
+	db $83
 	db $AE
-	db $AA
+	db $B0
+	db $AC
 	db $83
 	db $81
 	db $98 ; ROUTE_9
@@ -34,55 +34,85 @@ TombstoneTileBlocks:
 	db $80
 	db $82
 	db $93
-	db $B0 ; ROUTE_10
+	db $B2 ; ROUTE_10
 	db $95
 	db $80
-	db $9E
-	db $B1
-	db $94
-	db $A9 ; ROUTE_11
-	db $A8
-	db $A7
-	db $AB
-	db $AA
-	db $A7
-	db $A7
-	db $A7
-	db $AD
-	db $A5
-	db $A3 ; ROUTE_12
-	db $A2
-	db $A1
-	db $93
 	db $A0
-	db $A1
+	db $B3
+	db $94
+	db $AB ; ROUTE_11
+	db $AA
+	db $A9
+	db $AD
+	db $AC
+	db $A9
+	db $A9
+	db $A9
+	db $AF
+	db $A7
+	db $A5 ; ROUTE_12
+	db $A4
+	db $A3
+	db $94
+	db $A2
+	db $A3
 	db $8C
+	db $A3 ; ROUTE_13
+	db $A2
+	db $95
+	db $94
+	db $A5
+	db $9A
+	db $9B
+	db $9A
+	db $96
+	db $95
+	db $93 ; ROUTE_14
+	db $94
+	db $96
+	db $8E
+	db $82
+	db $83
+	db $82
+	db $80
+	db $81
+	db $83
+	db $A0 ; ROUTE_15
+	db $9F
+	db $96
+	db $95
+	db $A0
+	db $9F
+	db $9E
+	db $9E
+	db $A0
+	db $95
 	db $94 ; ROUTE_16
 	db $96
 	db $94
 	db $95
 	db $80
 	db $94
-	db $AD ; ROUTE_17
+	db $AF ; ROUTE_17
 	db $90
 	db $8F
 	db $90
-	db $AA
+	db $AC
 	db $90
-	db $AA
-	db $AA
+	db $AC
+	db $AC
 	db $90
 	db $93
 	db $8D ; ROUTE_18
-	db $A8
+	db $AA
 	db $8E
 	db $95 ; ROUTE_24
-	db $A6
+	db $A8
+	db $A4
 	db $A2
-	db $A0
+	db $A4
 	db $A2
-	db $A0
-	db $A2
+	db $A4
 	db $8A ; ROUTE_25
 	db $83
 	db $8A
@@ -164,6 +194,13 @@ TombstoneTileBlocks:
 	db $57 ; POKEMONTOWER_7
 	db $58
 	db $57
+	db $84 ; FUCHSIA_GYM
+	db $7C
+	db $86
+	db $7B
+	db $83
+	db $84
+	db $85
 	db $83 ; FIGHTING_DOJO
 	db $7B
 	db $7B
@@ -244,6 +281,12 @@ DoubleTombstoneTileBlocks:
 	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $2, $97
 	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $5, $85
 	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $6, $AF
+	double_tombstone ROUTE_13, KT_ROUTE_13_TRAINER_0, KT_ROUTE_13_TRAINER_1, $2, $A6
+	double_tombstone ROUTE_13, KT_ROUTE_13_TRAINER_6, KT_ROUTE_13_TRAINER_7, $6, $9D
+	double_tombstone ROUTE_14, KT_ROUTE_14_TRAINER_4, KT_ROUTE_14_TRAINER_8, $9, $85
+	double_tombstone ROUTE_14, KT_ROUTE_14_TRAINER_7, KT_ROUTE_14_TRAINER_9, $A, $84
+	double_tombstone ROUTE_15, KT_ROUTE_15_TRAINER_1, KT_ROUTE_15_TRAINER_4, $5, $A1
+	double_tombstone ROUTE_15, KT_ROUTE_15_TRAINER_0, KT_ROUTE_15_TRAINER_5, $6, $A1
 	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $8, $82
 
 	db $ff
@@ -262,6 +305,7 @@ ENDM
 ConnectionTombstoneTileBlocks:
 	connection_tombstone CERULEAN_CITY, KT_ROUTE_24_TRAINER_5, $a2, 13
 	connection_tombstone VERMILION_CITY, KT_ROUTE_6_TRAINER_3, $82, 13
+	connection_tombstone ROUTE_13, KT_ROUTE_14_TRAINER_1, $94, 216
 	connection_tombstone ROUTE_17, KT_ROUTE_16_TRAINER_1, $96, 10
 
 	db $ff

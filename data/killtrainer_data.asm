@@ -23,9 +23,9 @@ MapKTPointers:
 	dw MapKT15
 	dw MapKT16
 	dw MapKT17
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT18
+	dw MapKT19
+	dw MapKT1A
 	dw MapKT1B
 	dw MapKT1C
 	dw MapKT1D
@@ -156,7 +156,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT9D
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -320,6 +320,39 @@ MapKT17:
 	db ROUTE_12,$6
 	db ROUTE_12,$7
 	db ROUTE_12,$8
+MapKT18:
+	db ROUTE_13,$1
+	db ROUTE_13,$2
+	db ROUTE_13,$3
+	db ROUTE_13,$4
+	db ROUTE_13,$5
+	db ROUTE_13,$6
+	db ROUTE_13,$7
+	db ROUTE_13,$8
+	db ROUTE_13,$9
+	db ROUTE_13,$A
+MapKT19:
+	db ROUTE_14,$1
+	db ROUTE_14,$2
+	db ROUTE_14,$3
+	db ROUTE_14,$4
+	db ROUTE_14,$5
+	db ROUTE_14,$6
+	db ROUTE_14,$7
+	db ROUTE_14,$8
+	db ROUTE_14,$9
+	db ROUTE_14,$A
+MapKT1A:
+	db ROUTE_15,$1
+	db ROUTE_15,$2
+	db ROUTE_15,$3
+	db ROUTE_15,$4
+	db ROUTE_15,$5
+	db ROUTE_15,$6
+	db ROUTE_15,$7
+	db ROUTE_15,$8
+	db ROUTE_15,$9
+	db ROUTE_15,$A
 MapKT1B:
 	db ROUTE_16,$1
 	db ROUTE_16,$2
@@ -450,6 +483,14 @@ MapKT94:
 	db POKEMONTOWER_7,$1
 	db POKEMONTOWER_7,$2
 	db POKEMONTOWER_7,$3
+MapKT9D:
+	db FUCHSIA_GYM,$1
+	db FUCHSIA_GYM,$2
+	db FUCHSIA_GYM,$3
+	db FUCHSIA_GYM,$4
+	db FUCHSIA_GYM,$5
+	db FUCHSIA_GYM,$6
+	db FUCHSIA_GYM,$7
 MapKTB1:
 	db FIGHTING_DOJO,$1
 	db FIGHTING_DOJO,$2
