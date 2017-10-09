@@ -228,9 +228,9 @@ TombstoneTileBlocks:
 	db $3A
 
 ; \1 map
-; \2 1st trainer ID
-; \3 2nd trainer ID
-; \4 original tile
+; \2 1st trainer index
+; \3 2nd trainer index
+; \4 sprite ID
 ; \5 new tile
 double_tombstone: MACRO
 	db \1
@@ -241,9 +241,9 @@ double_tombstone: MACRO
 ENDM
 
 DoubleTombstoneTileBlocks:
-	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $95, $97
-	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $81, $85
-	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $AE, $AF
-	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $81, $82
+	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $2, $97
+	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $5, $85
+	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $6, $AF
+	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $8, $82
 
 	db $ff

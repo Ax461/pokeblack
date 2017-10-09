@@ -154,6 +154,7 @@ LoadTileBlock:
 	ld a, [hl]
 	ld [wNewTileBlockID], a
 
+	ld a, [wBuffer]
 	ld b, a
 	ld a, [wCurMap]
 	ld c, a
@@ -163,12 +164,12 @@ LoadTileBlock:
 	cp $ff
 	ret z
 	cp c
-	jr z, .checkTile
+	jr z, .checkSpriteID
 	ld de, 6
 	add hl, de
 	jr .next
-.checkTile
-	ld a, [hli] ; tile to replace
+.checkSpriteID
+	ld a, [hli]
 	cp b
 	jr z, .checkTrainerIndex1
 	ld de, 5
