@@ -8,6 +8,18 @@ KillTrainer:
 	call KillTrainerFlagAction
 	jp UpdateSprites
 
+IsKillTrainerFlagInHLSet:
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	push hl
+	ld hl, wKillTrainerFlags
+	ld b, FLAG_TEST
+	call KillTrainerFlagAction
+	pop hl
+	ret
+
 IsKillTrainerFlagSet:
 	ld hl, wKillTrainerFlags
 	ld a, [wKillTrainerIndex]

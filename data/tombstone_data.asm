@@ -231,7 +231,7 @@ TombstoneTileBlocks:
 ; \2 1st trainer index
 ; \3 2nd trainer index
 ; \4 sprite ID
-; \5 new tile
+; \5 tombstone tile block
 double_tombstone: MACRO
 	db \1
 	db \4
@@ -245,5 +245,23 @@ DoubleTombstoneTileBlocks:
 	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $5, $85
 	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $6, $AF
 	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $8, $82
+
+	db $ff
+
+; \1 map
+; \2 trainer index
+; \3 tombstone tile block
+; \4 offset from wOverwoldMap
+connection_tombstone: MACRO
+	db \1
+	dw \2
+	db \3
+	db \4
+ENDM
+
+ConnectionTombstoneTileBlocks:
+	connection_tombstone CERULEAN_CITY, KT_ROUTE_24_TRAINER_5, $a2, 13
+	connection_tombstone VERMILION_CITY, KT_ROUTE_6_TRAINER_3, $82, 13
+	connection_tombstone ROUTE_17, KT_ROUTE_16_TRAINER_1, $96, 10
 
 	db $ff

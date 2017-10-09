@@ -30,6 +30,8 @@ CeladonGameCornerScript_48bec:
 	ret z
 	CheckEvent EVENT_FOUND_ROCKET_HIDEOUT
 	ret nz
+	ld a, $34
+	ld [wOverworldMap + 87], a
 	ld a, $2a
 	ld [wNewTileBlockID], a
 	lb bc, 2, 8

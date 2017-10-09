@@ -28,7 +28,17 @@ RocketHideout4Script_45473:
 .asm_45498
 	ld [wNewTileBlockID], a
 	lb bc, 5, 12
-	predef_jump ReplaceTileBlock
+	predef ReplaceTileBlock
+	ld hl, wMissableObjectFlags
+	ld c, HS_ROCKET_HIDEOUT_4_ITEM_5
+	ld b, FLAG_TEST
+	predef FlagActionPredef
+	ld a, c
+	and a
+	ret nz
+	ld a, $0e
+	ld [wOverworldMap + 92], a
+	ret
 
 RocketHideout4Script_454a3:
 	xor a

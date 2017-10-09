@@ -87,62 +87,37 @@ PlaceTombstones:
 	ld hl, wd430
 	res 2, [hl] ; warp flag
 
-; individual map hacks
 	ld a, [wCurMap]
-	cp CERULEAN_CITY
-	jr z, .ceruleanCity
-	cp VERMILION_CITY
-	jr z, .vermilionCity
-	cp ROUTE_17
-	jr z, .route17
-	cp GAME_CORNER
-	jp z, .gameCorner
-	cp ROCKET_HIDEOUT_4
-	jp z, .rocketHideout4
-	ret
-.ceruleanCity
-	SetKillTrainerIndex KT_ROUTE_24_TRAINER_5
-	call IsKillTrainerFlagSet
+	ld b, a
+	ld hl, ConnectionTombstoneTileBlocks
+.next2
+	ld a, [hli]
+	cp $ff
 	ret z
-	ld a, $a2
-	ld [wOverworldMap + 13], a
-	ret
-.vermilionCity
-	SetKillTrainerIndex KT_ROUTE_6_TRAINER_3
-	call IsKillTrainerFlagSet
-	ret z
-	ld a, $82
-	ld [wOverworldMap + 13], a
-	SetKillTrainerIndex KT_ROUTE_6_TRAINER_4
-	call IsKillTrainerFlagSet
-	ret z
-	ld a, $85
-	ld [wOverworldMap + 13], a
-	ret
-.route17
-	SetKillTrainerIndex KT_ROUTE_16_TRAINER_1
-	call IsKillTrainerFlagSet
-	ret z
-	ld a, $96
-	ld [wOverworldMap + 10], a
-	ret
-.gameCorner
-	CheckEvent EVENT_FOUND_ROCKET_HIDEOUT
-	ret nz
-	ld a, $34
-	ld [wOverworldMap + 87], a
-	ret
-.rocketHideout4
-	ld hl, wMissableObjectFlags
-	ld c, HS_ROCKET_HIDEOUT_4_ITEM_5
-	ld b, FLAG_TEST
-	predef FlagActionPredef
+	cp b
+	jr z, .checkTrainerIndex
+	ld de, 4
+	add hl, de
+	jr .next2
+.checkTrainerIndex
+	call IsKillTrainerFlagInHLSet
+	jr nz, .found
+	inc hl
+	inc hl
+	jr .next2
+.found
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	push hl
+	ld h, 0
+	ld l, a
+	ld de, wOverworldMap
+	add hl, de
 	ld a, c
-	and a
-	ret nz
-	ld a, $0e
-	ld [wOverworldMap + 92], a
-	ret
+	ld [hl], a
+	pop hl
+	jr .next2
 
 LoadTileBlock:
 	ld hl, TombstoneTileBlocks
@@ -176,29 +151,13 @@ LoadTileBlock:
 	add hl, de
 	jr .next
 .checkTrainerIndex1
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	push hl
-	ld hl, wKillTrainerFlags
-	ld b, FLAG_TEST
-	call KillTrainerFlagAction
-	pop hl
+	call IsKillTrainerFlagInHLSet
 	jr nz, .checkTrainerIndex2
 	ld de, 3
 	add hl, de
 	jr .next
 .checkTrainerIndex2
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	push hl
-	ld hl, wKillTrainerFlags
-	ld b, FLAG_TEST
-	call KillTrainerFlagAction
-	pop hl
+	call IsKillTrainerFlagInHLSet
 	jr nz, .done
 	inc hl
 	jr .next
