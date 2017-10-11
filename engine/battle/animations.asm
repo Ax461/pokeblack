@@ -1199,6 +1199,11 @@ AnimationClearScreen:
 	coord hl, 12, 0
 	lb bc, 7, 7
 	call ClearScreenArea
+
+	coord hl, 1, 14
+	lb bc, 3, 11
+	call ClearScreenArea
+
 	call Delay3
 
 	ret
