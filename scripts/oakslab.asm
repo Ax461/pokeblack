@@ -931,7 +931,6 @@ OaksLabMonChoiceMenu:
 	ld [wCurEnemyLVL], a
 	ld a, GHOST
 	ld [wcf91], a
-	ld [wd11e], a
 	call AddPartyMon
 	ld hl, wd72e
 	set 3, [hl]
