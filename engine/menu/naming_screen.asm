@@ -1,17 +1,4 @@
 AskName:
-	ld a, [wcf91]
-	cp GHOST
-	jr nz, .continue
-	call GetPredefRegisters
-	ld a, [wcf91]
-	ld [wd11e], a
-	call GetMonName
-	ld d, h
-	ld e, l
-	ld hl, wcd6d
-	ld bc, NAME_LENGTH
-	jp CopyData
-.continue
 	call SaveScreenTilesToBuffer1
 	call GetPredefRegisters
 	push hl
@@ -23,7 +10,9 @@ AskName:
 	call z, ClearScreenArea ; only if in wild battle
 	ld a, [wcf91]
 	ld [wd11e], a
+	cp GHOST
 	call GetMonName
+	jr z, .skipNaming
 	ld hl, DoYouWantToNicknameText
 	call PrintText
 	coord hl, 14, 7
@@ -55,6 +44,8 @@ AskName:
 	ld a, [wcf4b]
 	cp "@"
 	ret nz
+.skipNaming
+	pop hl
 .declinedNickname
 	ld d, h
 	ld e, l
