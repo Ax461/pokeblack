@@ -159,22 +159,18 @@ LoadTrainers:
 	ld a, [wCurMap]
 	ld b, a
 	ld a, [hli]
-	cp $ff
-	jr z, .done     ; end of list
 	cp b
 	jr nz, .done    ; not for current map anymore
-	xor a
-	ld b, a
 	ld a, [hli]
 	ld [de], a                 ; write (map-local) sprite ID
 	inc de
+	pop bc
 	ld a, b
-	ld [de], a                  ; write (global) trainer index first byte
+	ld [de], a                 ; write (global) trainer index first byte
 	inc de
 	ld a, c
-	ld [de], a                  ; write (global) trainer index second byte
+	ld [de], a                 ; write (global) trainer index second byte
 	inc de
-	pop bc
 	inc bc
 	push bc
 	jr .writeKillTrainerListLoop
