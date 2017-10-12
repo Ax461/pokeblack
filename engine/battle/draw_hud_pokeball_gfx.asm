@@ -35,6 +35,7 @@ SetupEnemyPartyPokeballs:
 	ld a, [wKilledMonsNumber]
 	ld b, a
 	ld a, [wEnemyPartyCount]
+	push af
 	sub b
 	ld [wEnemyPartyCount], a
 	ld hl, wEnemyMons
@@ -49,10 +50,7 @@ SetupEnemyPartyPokeballs:
 .skip
 	ld de, wEnemyPartyCount
 	call SetupPokeballs
-	ld a, [wKilledMonsNumber]
-	ld b, a
-	ld a, [wEnemyPartyCount]
-	add b
+	pop af
 	ld [wEnemyPartyCount], a
 	ld hl, wBaseCoordX
 	ld a, $48
