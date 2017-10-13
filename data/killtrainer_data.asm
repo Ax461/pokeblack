@@ -44,7 +44,7 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
+	dw MapKT2D
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -425,6 +425,16 @@ MapKT24:
 	db ROUTE_25,$7
 	db ROUTE_25,$8
 	db ROUTE_25,$9
+MapKT2D:
+	db VIRIDIAN_GYM,$1
+	db VIRIDIAN_GYM,$2
+	db VIRIDIAN_GYM,$3
+	db VIRIDIAN_GYM,$4
+	db VIRIDIAN_GYM,$5
+	db VIRIDIAN_GYM,$6
+	db VIRIDIAN_GYM,$7
+	db VIRIDIAN_GYM,$8
+	db VIRIDIAN_GYM,$9
 MapKT33:
 	db VIRIDIAN_FOREST,$2
 	db VIRIDIAN_FOREST,$3

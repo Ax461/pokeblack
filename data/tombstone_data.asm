@@ -151,6 +151,15 @@ TombstoneTileBlocks:
 	db $80
 	db $82
 	db $89
+	db $8A ; VIRIDIAN_GYM
+	db $87
+	db $83
+	db $87
+	db $83
+	db $83
+	db $89
+	db $84
+	db $88
 	db $80 ; VIRIDIAN_FOREST
 	db $80
 	db $81

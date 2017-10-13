@@ -136,11 +136,13 @@ ViridianGymScript3:
 	jp z, ViridianGymScript_748d6
 	ld a, $f0
 	ld [wJoyIgnore], a
+
 ViridianGymScript3_74995:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_749be
 	ld a, $c
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	lb bc, TM_27, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -154,6 +156,7 @@ ViridianGymScript3_74995:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_749be
+	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	ld hl, wObtainedBadges
 	set 7, [hl]
 	ld hl, wBeatGymFlags
@@ -191,7 +194,7 @@ ViridianGymTrainerHeader0:
 	dw ViridianGymBattleText1 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText1 ; TextAfterBattle
 	dw ViridianGymEndBattleText1 ; TextEndBattle
-	dw ViridianGymEndBattleText1 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_0 ; TrainerIndex
 
 ViridianGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_1
@@ -200,7 +203,7 @@ ViridianGymTrainerHeader1:
 	dw ViridianGymBattleText2 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText2 ; TextAfterBattle
 	dw ViridianGymEndBattleText2 ; TextEndBattle
-	dw ViridianGymEndBattleText2 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_1 ; TrainerIndex
 
 ViridianGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_2
@@ -209,7 +212,7 @@ ViridianGymTrainerHeader2:
 	dw ViridianGymBattleText3 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText3 ; TextAfterBattle
 	dw ViridianGymEndBattleText3 ; TextEndBattle
-	dw ViridianGymEndBattleText3 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_2 ; TrainerIndex
 
 ViridianGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_3
@@ -218,7 +221,7 @@ ViridianGymTrainerHeader3:
 	dw ViridianGymBattleText4 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText4 ; TextAfterBattle
 	dw ViridianGymEndBattleText4 ; TextEndBattle
-	dw ViridianGymEndBattleText4 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_3 ; TrainerIndex
 
 ViridianGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_4
@@ -227,7 +230,7 @@ ViridianGymTrainerHeader4:
 	dw ViridianGymBattleText5 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText5 ; TextAfterBattle
 	dw ViridianGymEndBattleText5 ; TextEndBattle
-	dw ViridianGymEndBattleText5 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_4 ; TrainerIndex
 
 ViridianGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_5
@@ -236,7 +239,7 @@ ViridianGymTrainerHeader5:
 	dw ViridianGymBattleText6 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText6 ; TextAfterBattle
 	dw ViridianGymEndBattleText6 ; TextEndBattle
-	dw ViridianGymEndBattleText6 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_5 ; TrainerIndex
 
 ViridianGymTrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_6, 1
@@ -245,7 +248,7 @@ ViridianGymTrainerHeader6:
 	dw ViridianGymBattleText7 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText7 ; TextAfterBattle
 	dw ViridianGymEndBattleText7 ; TextEndBattle
-	dw ViridianGymEndBattleText7 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_6 ; TrainerIndex
 
 ViridianGymTrainerHeader7:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_7, 1
@@ -254,7 +257,7 @@ ViridianGymTrainerHeader7:
 	dw ViridianGymBattleText8 ; TextBeforeBattle
 	dw ViridianGymAfterBattleText8 ; TextAfterBattle
 	dw ViridianGymEndBattleText8 ; TextEndBattle
-	dw ViridianGymEndBattleText8 ; TextEndBattle
+	dw KT_VIRIDIAN_GYM_TRAINER_7 ; TrainerIndex
 
 	db $ff
 
@@ -293,6 +296,7 @@ ViridianGymText1:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_VIRIDIAN_GYM_LEADER
 	ld a, $8
 	ld [wGymLeaderNo], a
 	ld a, $3
