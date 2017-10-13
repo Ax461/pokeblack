@@ -32,7 +32,7 @@ Route19TrainerHeader0:
 	dw Route19BattleText1 ; TextBeforeBattle
 	dw Route19AfterBattleText1 ; TextAfterBattle
 	dw Route19EndBattleText1 ; TextEndBattle
-	dw Route19EndBattleText1 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_0 ; TrainerIndex
 
 Route19TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_1
@@ -41,7 +41,7 @@ Route19TrainerHeader1:
 	dw Route19BattleText2 ; TextBeforeBattle
 	dw Route19AfterBattleText2 ; TextAfterBattle
 	dw Route19EndBattleText2 ; TextEndBattle
-	dw Route19EndBattleText2 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_1 ; TrainerIndex
 
 Route19TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_2
@@ -50,7 +50,7 @@ Route19TrainerHeader2:
 	dw Route19BattleText3 ; TextBeforeBattle
 	dw Route19AfterBattleText3 ; TextAfterBattle
 	dw Route19EndBattleText3 ; TextEndBattle
-	dw Route19EndBattleText3 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_2 ; TrainerIndex
 
 Route19TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_3
@@ -59,7 +59,7 @@ Route19TrainerHeader3:
 	dw Route19BattleText4 ; TextBeforeBattle
 	dw Route19AfterBattleText4 ; TextAfterBattle
 	dw Route19EndBattleText4 ; TextEndBattle
-	dw Route19EndBattleText4 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_3 ; TrainerIndex
 
 Route19TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_4
@@ -68,7 +68,7 @@ Route19TrainerHeader4:
 	dw Route19BattleText5 ; TextBeforeBattle
 	dw Route19AfterBattleText5 ; TextAfterBattle
 	dw Route19EndBattleText5 ; TextEndBattle
-	dw Route19EndBattleText5 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_4 ; TrainerIndex
 
 Route19TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_5
@@ -77,7 +77,7 @@ Route19TrainerHeader5:
 	dw Route19BattleText6 ; TextBeforeBattle
 	dw Route19AfterBattleText6 ; TextAfterBattle
 	dw Route19EndBattleText6 ; TextEndBattle
-	dw Route19EndBattleText6 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_5 ; TrainerIndex
 
 Route19TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_6
@@ -86,7 +86,7 @@ Route19TrainerHeader6:
 	dw Route19BattleText7 ; TextBeforeBattle
 	dw Route19AfterBattleText7 ; TextAfterBattle
 	dw Route19EndBattleText7 ; TextEndBattle
-	dw Route19EndBattleText7 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_6 ; TrainerIndex
 
 Route19TrainerHeader7:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_7, 1
@@ -95,7 +95,7 @@ Route19TrainerHeader7:
 	dw Route19BattleText8 ; TextBeforeBattle
 	dw Route19AfterBattleText8 ; TextAfterBattle
 	dw Route19EndBattleText8 ; TextEndBattle
-	dw Route19EndBattleText8 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_7 ; TrainerIndex
 
 Route19TrainerHeader8:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_8, 1
@@ -104,7 +104,7 @@ Route19TrainerHeader8:
 	dw Route19BattleText9 ; TextBeforeBattle
 	dw Route19AfterBattleText9 ; TextAfterBattle
 	dw Route19EndBattleText9 ; TextEndBattle
-	dw Route19EndBattleText9 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_8 ; TrainerIndex
 
 Route19TrainerHeader9:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_9, 1
@@ -113,7 +113,7 @@ Route19TrainerHeader9:
 	dw Route19BattleText10 ; TextBeforeBattle
 	dw Route19AfterBattleText10 ; TextAfterBattle
 	dw Route19EndBattleText10 ; TextEndBattle
-	dw Route19EndBattleText10 ; TextEndBattle
+	dw KT_ROUTE_19_TRAINER_9 ; TrainerIndex
 
 	db $ff
 

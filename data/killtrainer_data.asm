@@ -29,9 +29,9 @@ MapKTPointers:
 	dw MapKT1B
 	dw MapKT1C
 	dw MapKT1D
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT1E
+	dw MapKT1F
+	dw MapKT20
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKT23
@@ -164,8 +164,8 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTA5
+	dw MapKTA6
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -213,9 +213,9 @@ MapKTPointers:
 	dw MapKTD3
 	dw MapKTD4
 	dw MapKTD5
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTD6
+	dw MapKTD7
+	dw MapKTD8
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -375,6 +375,38 @@ MapKT1D:
 	db ROUTE_18,$1
 	db ROUTE_18,$2
 	db ROUTE_18,$3
+MapKT1E:
+	db ROUTE_19,$1
+	db ROUTE_19,$2
+	db ROUTE_19,$3
+	db ROUTE_19,$4
+	db ROUTE_19,$5
+	db ROUTE_19,$6
+	db ROUTE_19,$7
+	db ROUTE_19,$8
+	db ROUTE_19,$9
+	db ROUTE_19,$A
+MapKT1F:
+	db ROUTE_20,$1
+	db ROUTE_20,$2
+	db ROUTE_20,$3
+	db ROUTE_20,$4
+	db ROUTE_20,$5
+	db ROUTE_20,$6
+	db ROUTE_20,$7
+	db ROUTE_20,$8
+	db ROUTE_20,$9
+	db ROUTE_20,$A
+MapKT20:
+	db ROUTE_21,$1
+	db ROUTE_21,$2
+	db ROUTE_21,$3
+	db ROUTE_21,$4
+	db ROUTE_21,$5
+	db ROUTE_21,$6
+	db ROUTE_21,$7
+	db ROUTE_21,$8
+	db ROUTE_21,$9
 MapKT23:
 	db ROUTE_24,$1
 	db ROUTE_24,$2
@@ -491,6 +523,17 @@ MapKT9D:
 	db FUCHSIA_GYM,$5
 	db FUCHSIA_GYM,$6
 	db FUCHSIA_GYM,$7
+MapKTA5:
+	db MANSION_1,$1
+MapKTA6:
+	db CINNABAR_GYM,$1
+	db CINNABAR_GYM,$2
+	db CINNABAR_GYM,$3
+	db CINNABAR_GYM,$4
+	db CINNABAR_GYM,$5
+	db CINNABAR_GYM,$6
+	db CINNABAR_GYM,$7
+	db CINNABAR_GYM,$8
 MapKTB1:
 	db FIGHTING_DOJO,$1
 	db FIGHTING_DOJO,$2
@@ -551,6 +594,14 @@ MapKTD5:
 	db SILPH_CO_8F,$2
 	db SILPH_CO_8F,$3
 	db SILPH_CO_8F,$4
+MapKTD6:
+	db MANSION_2,$1
+MapKTD7:
+	db MANSION_3,$1
+	db MANSION_3,$2
+MapKTD8:
+	db MANSION_4,$1
+	db MANSION_4,$2
 MapKTE8:
 	db ROCK_TUNNEL_2,$1
 	db ROCK_TUNNEL_2,$2

@@ -139,11 +139,13 @@ CinnabarGymScript3:
 	jp z, CinnabarGymScript_75792
 	ld a, $f0
 	ld [wJoyIgnore], a
+
 CinnabarGymScript3_75857:
+	callba IsKillTrainerFlagSet
+	jr nz, .asm_75880
 	ld a, $a
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_BEAT_BLAINE
 	lb bc, TM_38, 1
 	call GiveItem
 	jr nc, .BagFull
@@ -157,6 +159,7 @@ CinnabarGymScript3_75857:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .asm_75880
+	SetEvent EVENT_BEAT_BLAINE
 	ld hl, wObtainedBadges
 	set 6, [hl]
 	ld hl, wBeatGymFlags
@@ -187,6 +190,10 @@ CinnabarGymTextPointers:
 CinnabarGymScript_758b7:
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
+	add $e7
+	ld [wKillTrainerIndex + 1], a
+	xor a
+	ld [wKillTrainerIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 	ld hl, wd72d

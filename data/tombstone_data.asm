@@ -106,6 +106,35 @@ TombstoneTileBlocks:
 	db $8D ; ROUTE_18
 	db $AA
 	db $8E
+	db $96 ; ROUTE_19
+	db $95
+	db $43
+	db $43
+	db $43
+	db $43
+	db $43
+	db $43
+	db $43
+	db $43
+	db $43 ; ROUTE_20
+	db $43
+	db $2D
+	db $43
+	db $43
+	db $43
+	db $A5
+	db $43
+	db $43
+	db $43
+	db $A2 ; ROUTE_21
+	db $A5
+	db $43
+	db $43
+	db $43
+	db $43
+	db $43
+	db $A2
+	db $A4
 	db $95 ; ROUTE_24
 	db $A8
 	db $A4
@@ -201,6 +230,15 @@ TombstoneTileBlocks:
 	db $83
 	db $84
 	db $85
+	db $88 ; MANSION_1
+	db $93 ; CINNABAR_GYM
+	db $81
+	db $81
+	db $81
+	db $81
+	db $81
+	db $81
+	db $81
 	db $83 ; FIGHTING_DOJO
 	db $7B
 	db $7B
@@ -248,6 +286,11 @@ TombstoneTileBlocks:
 	db $81 ; SILPH_CO_8F
 	db $80
 	db $87
+	db $88 ; MANSION_2
+	db $88 ; MANSION_3
+	db $87
+	db $87 ; MANSION_4
+	db $88
 	db $83 ; ROCK_TUNNEL_2
 	db $80
 	db $83
