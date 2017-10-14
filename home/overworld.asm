@@ -1484,6 +1484,7 @@ AdvancePlayerSprite::
 	ld a, [wd430]
 	xor $8 ; half speed flag
 	ld [wd430], a
+	bit 3, a
 	ret z
 .skip
 	ld a,[wSpriteStateData1 + 3] ; delta Y
