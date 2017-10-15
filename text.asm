@@ -357,7 +357,7 @@ _DexSeenOwnedText::
 	db "@"
 
 _DexRatingText::
-	text "#DEX Rating", $6d
+	text "#DEX Rating:"
 	done
 
 _GymStatueText1::
