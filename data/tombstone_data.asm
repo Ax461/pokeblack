@@ -160,9 +160,9 @@ TombstoneTileBlocks:
 	db $85
 	db $74
 	db $83
-	db $80 ; VIRIDIAN_FOREST
+	db $81 ; VIRIDIAN_FOREST
 	db $80
-	db $81
+	db $82
 	db $7F ; PEWTER_GYM
 	db $7E
 	db $81 ; MT_MOON_1
