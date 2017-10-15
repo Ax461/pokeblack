@@ -107,19 +107,19 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
+	dw MapKT6C
+	dw MapKTXX
+	dw MapKTXX
+	dw MapKTXX
+	dw MapKTXX
+	dw MapKT71
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKT78
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
@@ -193,11 +193,11 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
+	dw MapKTC2
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTC6
 	dw MapKTC7
 	dw MapKTC8
 	dw MapKTC9
@@ -244,9 +244,9 @@ MapKTPointers:
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
-	dw MapKTXX
+	dw MapKTF5
+	dw MapKTF6
+	dw MapKTF7
 	dw $FFFF
 
 
@@ -493,6 +493,13 @@ MapKT68:
 	db SS_ANNE_10,$4
 	db SS_ANNE_10,$5
 	db SS_ANNE_10,$6
+MapKT6C:
+	db VICTORY_ROAD_1,$1
+	db VICTORY_ROAD_1,$2
+MapKT71:
+	db LANCES_ROOM,$1
+MapKT78:
+	db CHAMPIONS_ROOM,$1
 MapKT86:
 	db CELADON_GYM,$1
 	db CELADON_GYM,$2
@@ -559,6 +566,17 @@ MapKTB2:
 	db SAFFRON_GYM,$6
 	db SAFFRON_GYM,$7
 	db SAFFRON_GYM,$8
+MapKTC2:
+	db VICTORY_ROAD_2,$1
+	db VICTORY_ROAD_2,$2
+	db VICTORY_ROAD_2,$3
+	db VICTORY_ROAD_2,$4
+	db VICTORY_ROAD_2,$5
+MapKTC6:
+	db VICTORY_ROAD_3,$1
+	db VICTORY_ROAD_3,$2
+	db VICTORY_ROAD_3,$3
+	db VICTORY_ROAD_3,$4
 MapKTC7:
 	db ROCKET_HIDEOUT_1,$1
 	db ROCKET_HIDEOUT_1,$2
@@ -631,3 +649,9 @@ MapKTEA:
 MapKTEB:
 	db SILPH_CO_11F,$4
 	db SILPH_CO_11F,$5
+MapKTF5:
+	db LORELEIS_ROOM,$1
+MapKTF6:
+	db BRUNOS_ROOM,$1
+MapKTF7:
+	db AGATHAS_ROOM,$1

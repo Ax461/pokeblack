@@ -1879,7 +1879,7 @@ Plateau_GFX:       INCBIN "gfx/tilesets/plateau.t10.2bpp"
 Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
 
 Dojo_GFX:
-Gym_GFX:           INCBIN "gfx/tilesets/gym.t6.2bpp"
+Gym_GFX:           INCBIN "gfx/tilesets/gym.t2.2bpp"
 Dojo_Block:
 Gym_Block:         INCBIN "gfx/blocksets/gym.bst"
 
@@ -1905,7 +1905,7 @@ Facility_GFX:      INCBIN "gfx/tilesets/facility.t8.2bpp"
 Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
 Cemetery_GFX:      INCBIN "gfx/tilesets/cemetery.t4.2bpp"
 Cemetery_Block:    INCBIN "gfx/blocksets/cemetery.bst"
-Cavern_GFX:        INCBIN "gfx/tilesets/cavern.t22.2bpp"
+Cavern_GFX:        INCBIN "gfx/tilesets/cavern.t18.2bpp"
 Cavern_Block:      INCBIN "gfx/blocksets/cavern.bst"
 Lobby_GFX:         INCBIN "gfx/tilesets/lobby.t14.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"

@@ -57,6 +57,13 @@ HallofFameRoomScript2:
 	jp Init
 
 HallofFameRoomScript0:
+	callba IsKillTrainerFlagSet
+	jr z, .skip
+	ld a, HS_HALL_OF_FAME_OAK
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ret
+.skip
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld hl, wSimulatedJoypadStatesEnd

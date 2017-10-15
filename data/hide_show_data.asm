@@ -123,7 +123,7 @@ MapHSPointers:
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHSXX
-	dw MapHSXX
+	dw MapHS76
 	dw MapHSXX
 	dw MapHS78
 	dw MapHSXX
@@ -553,6 +553,8 @@ MapHSE3:
 MapHS6C:
 	db VICTORY_ROAD_1,$03,Show
 	db VICTORY_ROAD_1,$04,Show
+MapHS76:
+	db HALL_OF_FAME,$01,Show
 MapHS78:
 	db CHAMPIONS_ROOM,$02,Hide
 MapHSC0:

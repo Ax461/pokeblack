@@ -109,6 +109,8 @@ BrunoScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetBrunoScript
+	callba IsKillTrainerFlagSet
+	jp nz, ResetBrunoScript
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
@@ -124,7 +126,7 @@ BrunoTrainerHeader0:
 	dw BrunoBeforeBattleText ; TextBeforeBattle
 	dw BrunoAfterBattleText ; TextAfterBattle
 	dw BrunoEndBattleText ; TextEndBattle
-	dw BrunoEndBattleText ; TextEndBattle
+	dw KT_BRUNOS_ROOM_TRAINER_0 ; TrainerIndex
 
 	db $ff
 

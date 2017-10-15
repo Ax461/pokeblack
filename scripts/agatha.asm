@@ -110,10 +110,11 @@ AgathaScript2:
 	cp $ff
 	jp z, ResetAgathaScript
 	ld a, $1
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	ld a, $1
 	ld [wGaryCurScript], a
+	ld [hSpriteIndexOrTextID], a
+	callba IsKillTrainerFlagSet
+	jp nz, ResetAgathaScript
+	call DisplayTextID
 	ret
 
 AgathaTextPointers:
@@ -127,7 +128,7 @@ AgathaTrainerHeader0:
 	dw AgathaBeforeBattleText ; TextBeforeBattle
 	dw AgathaAfterBattleText ; TextAfterBattle
 	dw AgathaEndBattleText ; TextEndBattle
-	dw AgathaEndBattleText ; TextEndBattle
+	dw KT_AGATHAS_ROOM_TRAINER_0 ; TrainerIndex
 
 	db $ff
 

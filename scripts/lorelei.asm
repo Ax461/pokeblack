@@ -111,6 +111,8 @@ LoreleiScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetLoreleiScript
+	callba IsKillTrainerFlagSet
+	jp nz, ResetLoreleiScript
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
@@ -126,7 +128,7 @@ LoreleiTrainerHeader0:
 	dw LoreleiBeforeBattleText ; TextBeforeBattle
 	dw LoreleiAfterBattleText ; TextAfterBattle
 	dw LoreleiEndBattleText ; TextEndBattle
-	dw LoreleiEndBattleText ; TextEndBattle
+	dw KT_LORELEIS_ROOM_TRAINER_0 ; TrainerIndex
 
 	db $ff
 

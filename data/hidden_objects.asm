@@ -57,7 +57,7 @@ HiddenObjectMaps:
 	db MANSION_3
 	db ROUTE_23
 	db VICTORY_ROAD_2
-	db $6F
+	db HALL_OF_FAME
 	db BILLS_HOUSE
 	db VIRIDIAN_CITY
 	db SAFARI_ZONE_REST_HOUSE_2
@@ -146,7 +146,7 @@ HiddenObjectPointers:
 	dw Mansion3HiddenObjects
 	dw Route23HiddenObjects
 	dw VictoryRoad2HiddenObjects
-	dw Unused6FHiddenObjects
+	dw HallOfFameHiddenObjects
 	dw BillsHouseHiddenObjects
 	dw ViridianCityHiddenObjects
 	dw SafariZoneRestHouse2HiddenObjects
@@ -690,9 +690,10 @@ VictoryRoad2HiddenObjects:
 	db $07,$1a,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
-Unused6FHiddenObjects:
-	db $0b,$0e,MAX_ELIXER
-	dbw BANK(HiddenItems),HiddenItems
+HallOfFameHiddenObjects:
+	db $01,$04,$04
+	db BANK(OpenHallOfFamePC)
+	dw OpenHallOfFamePC
 	db $FF
 BillsHouseHiddenObjects:
 	db $04,$01,$04

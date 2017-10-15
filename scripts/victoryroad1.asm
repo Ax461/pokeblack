@@ -53,7 +53,7 @@ VictoryRoad1TrainerHeader0:
 	dw VictoryRoad1BattleText1 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText1 ; TextAfterBattle
 	dw VictoryRoad1EndBattleText1 ; TextEndBattle
-	dw VictoryRoad1EndBattleText1 ; TextEndBattle
+	dw KT_VICTORY_ROAD_1_TRAINER_0 ; TrainerIndex
 
 VictoryRoad1TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1_TRAINER_1
@@ -62,7 +62,7 @@ VictoryRoad1TrainerHeader1:
 	dw VictoryRoad1BattleText2 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText2 ; TextAfterBattle
 	dw VictoryRoad1EndBattleText2 ; TextEndBattle
-	dw VictoryRoad1EndBattleText2 ; TextEndBattle
+	dw KT_VICTORY_ROAD_1_TRAINER_1 ; TrainerIndex
 
 	db $ff
 

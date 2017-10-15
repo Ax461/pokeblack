@@ -207,6 +207,10 @@ TombstoneTileBlocks:
 	db $46
 	db $42
 	db $47
+	db $86 ; VICTORY_ROAD_1
+	db $81
+	db $8B ; LANCES_ROOM
+	db $84 ; CHAMPIONS_ROOM
 	db $80 ; CELADON_GYM
 	db $7C
 	db $7B
@@ -261,6 +265,15 @@ TombstoneTileBlocks:
 	db $92
 	db $92
 	db $92
+	db $88 ; VICTORY_ROAD_2
+	db $86
+	db $8A
+	db $87
+	db $8B
+	db $8D ; VICTORY_ROAD_3
+	db $89
+	db $8C
+	db $86
 	db $82 ; ROCKET_HIDEOUT_1
 	db $80
 	db $83
@@ -315,6 +328,9 @@ TombstoneTileBlocks:
 	db $80
 	db $3B ; SILPH_CO_11F
 	db $3A
+	db $8C ; LORELEIS_ROOM
+	db $7B ; BRUNOS_ROOM
+	db $4E ; AGATHAS_ROOM
 
 ; \1 map
 ; \2 1st trainer index

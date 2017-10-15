@@ -196,3 +196,9 @@ OpenPokemonCenterPC:
 
 PokemonCenterPCText:
 	TX_POKECENTER_PC
+
+OpenHallOfFamePC:
+	ld a, [wSpriteStateData1 + 9]
+	cp SPRITE_FACING_UP
+	ret nz
+	jpba HallofFameRoomScript2

@@ -55,6 +55,9 @@ LanceScript4:
 LanceScript0:
 	CheckEvent EVENT_BEAT_LANCE
 	ret nz
+	SetKillTrainerIndex KT_LANCES_ROOM_TRAINER_0
+	callba IsKillTrainerFlagSet
+	jr nz, .notStandingNextToLance
 	ld hl, LanceTriggerMovementCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -90,6 +93,8 @@ LanceScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetLanceScript
+	callba IsKillTrainerFlagSet
+	jp nz, ResetLanceScript
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
@@ -137,7 +142,7 @@ LanceTrainerHeader0:
 	dw LanceBeforeBattleText ; TextBeforeBattle
 	dw LanceAfterBattleText ; TextAfterBattle
 	dw LanceEndBattleText ; TextEndBattle
-	dw LanceEndBattleText ; TextEndBattle
+	dw KT_LANCES_ROOM_TRAINER_0 ; TrainerIndex
 
 	db $ff
 

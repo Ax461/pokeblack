@@ -82,6 +82,7 @@ GaryScript2:
 	ld a, $3
 .saveTrainerId
 	ld [wTrainerNo], a
+	SetKillTrainerIndex KT_CHAMPION_RIVAL
 
 	xor a
 	ld [hJoyHeld], a
@@ -95,6 +96,22 @@ GaryScript3:
 	jp z, ResetGaryScript
 	call UpdateSprites
 	SetEvent EVENT_BEAT_CHAMPION_RIVAL
+	callba IsKillTrainerFlagSet
+	jr z, .skip
+	ld a, 10
+	ld [wAudioFadeOutCounterReloadValue], a
+	ld [wAudioFadeOutCounter], a
+	ld a, $ff
+	ld [wAudioFadeOutControl], a
+	ld c, 100
+	call DelayFrames
+	ld c, $2 ; AUDIO_1
+	ld a, $ff
+	call PlayMusic
+	xor a
+	ld [wGaryCurScript], a
+	ret
+.skip
 	ld a, $f0
 	ld [wJoyIgnore], a
 	ld a, $1
@@ -232,6 +249,8 @@ GaryScript10:
 	ret
 
 GaryScript_760c8:
+	callba IsKillTrainerFlagSet
+	ret nz
 	ld a, $f0
 	ld [wJoyIgnore], a
 	call DisplayTextID
