@@ -151,20 +151,20 @@ TombstoneTileBlocks:
 	db $80
 	db $82
 	db $89
-	db $8A ; VIRIDIAN_GYM
-	db $87
+	db $84 ; VIRIDIAN_GYM
+	db $82
+	db $76
+	db $82
+	db $76
+	db $76
+	db $85
+	db $74
 	db $83
-	db $87
-	db $83
-	db $83
-	db $89
-	db $84
-	db $88
 	db $80 ; VIRIDIAN_FOREST
 	db $80
 	db $81
-	db $74 ; PEWTER_GYM
-	db $75
+	db $7F ; PEWTER_GYM
+	db $7E
 	db $81 ; MT_MOON_1
 	db $80
 	db $80
@@ -177,8 +177,8 @@ TombstoneTileBlocks:
 	db $84
 	db $83
 	db $83
-	db $76 ; CERULEAN_GYM
-	db $77
+	db $7A ; CERULEAN_GYM
+	db $7C
 	db $16
 	db $83 ; ROCK_TUNNEL_1
 	db $81
@@ -187,10 +187,10 @@ TombstoneTileBlocks:
 	db $83
 	db $80
 	db $80
-	db $7A ; VERMILION_GYM
-	db $79
-	db $79
-	db $78
+	db $7D ; VERMILION_GYM
+	db $81
+	db $81
+	db $80
 	db $3E ; SS_ANNE_5
 	db $3E
 	db $3F ; SS_ANNE_8
@@ -209,16 +209,16 @@ TombstoneTileBlocks:
 	db $47
 	db $86 ; VICTORY_ROAD_1
 	db $81
-	db $8B ; LANCES_ROOM
-	db $84 ; CHAMPIONS_ROOM
-	db $80 ; CELADON_GYM
-	db $7C
-	db $7B
-	db $7D
-	db $7D
-	db $7F
-	db $7E
-	db $81
+	db $7B ; LANCES_ROOM
+	db $74 ; CHAMPIONS_ROOM
+	db $87 ; CELADON_GYM
+	db $77
+	db $75
+	db $86
+	db $86
+	db $89
+	db $8A
+	db $88
 	db $4F ; GAME_CORNER
 	db $17 ; POKEMONTOWER_3
 	db $4E
@@ -236,13 +236,13 @@ TombstoneTileBlocks:
 	db $57 ; POKEMONTOWER_7
 	db $58
 	db $57
-	db $84 ; FUCHSIA_GYM
-	db $7C
-	db $86
-	db $7B
-	db $83
-	db $84
-	db $85
+	db $74 ; FUCHSIA_GYM
+	db $77
+	db $78
+	db $75
+	db $76
+	db $74
+	db $79
 	db $88 ; MANSION_1
 	db $93 ; CINNABAR_GYM
 	db $81
@@ -329,7 +329,7 @@ TombstoneTileBlocks:
 	db $3B ; SILPH_CO_11F
 	db $3A
 	db $8C ; LORELEIS_ROOM
-	db $7B ; BRUNOS_ROOM
+	db $75 ; BRUNOS_ROOM
 	db $4E ; AGATHAS_ROOM
 
 ; \1 map
@@ -355,7 +355,7 @@ DoubleTombstoneTileBlocks:
 	double_tombstone ROUTE_14, KT_ROUTE_14_TRAINER_7, KT_ROUTE_14_TRAINER_9, $A, $84
 	double_tombstone ROUTE_15, KT_ROUTE_15_TRAINER_1, KT_ROUTE_15_TRAINER_4, $5, $A1
 	double_tombstone ROUTE_15, KT_ROUTE_15_TRAINER_0, KT_ROUTE_15_TRAINER_5, $6, $A1
-	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $8, $82
+	double_tombstone CELADON_GYM, KT_CELADON_GYM_LEADER, KT_CELADON_GYM_TRAINER_6, $8, $8B
 
 	db $ff
 
