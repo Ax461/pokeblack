@@ -13,7 +13,7 @@ UpdatePlayerSprite:
 .checkIfTextBoxInFrontOfSprite
 	aCoord 8, 9
 	ld [hTilePlayerStandingOn], a
-	cp $78
+	cp $79
 	jr c, .lowerLeftTileIsMapTile
 .disableSprite
 	ld a, $ff
@@ -516,9 +516,9 @@ CheckSpriteAvailability:
 	jr c, .spriteInvisible  ; right of screen region
 .skipXVisibilityTest
 ; make the sprite invisible if a text box is in front of it
-; $77 is the maximum number for map tiles
+; $78 is the maximum number for map tiles
 	call GetTileSpriteStandsOn
-	ld d, $78
+	ld d, $79
 	ld a, [hli]
 	cp d
 	jr nc, .spriteInvisible ; standing on tile with ID >=$78 (bottom left tile)
