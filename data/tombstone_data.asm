@@ -191,22 +191,22 @@ TombstoneTileBlocks:
 	db $81
 	db $81
 	db $80
-	db $3E ; SS_ANNE_5
-	db $3E
+	db $47 ; SS_ANNE_5
+	db $47
 	db $3F ; SS_ANNE_8
-	db $40
-	db $40
-	db $41
-	db $42 ; SS_ANNE_9
-	db $43
-	db $47
 	db $44
-	db $3F ; SS_ANNE_10
 	db $44
-	db $45
-	db $46
 	db $42
-	db $47
+	db $45 ; SS_ANNE_9
+	db $46
+	db $3E
+	db $43
+	db $3F ; SS_ANNE_10
+	db $43
+	db $41
+	db $40
+	db $45
+	db $3E
 	db $8B ; VICTORY_ROAD_1
 	db $81
 	db $7B ; LANCES_ROOM
