@@ -168,23 +168,23 @@ TombstoneTileBlocks:
 	db $81 ; MT_MOON_1
 	db $80
 	db $80
-	db $82
-	db $82
+	db $83
+	db $83
 	db $81
+	db $83
+	db $8D ; MT_MOON_3
+	db $8A
+	db $8A
 	db $82
-	db $85 ; MT_MOON_3
-	db $84
-	db $84
-	db $83
-	db $83
+	db $82
 	db $7A ; CERULEAN_GYM
 	db $7C
 	db $16
-	db $83 ; ROCK_TUNNEL_1
+	db $82 ; ROCK_TUNNEL_1
 	db $81
-	db $83
+	db $82
 	db $81
-	db $83
+	db $82
 	db $80
 	db $80
 	db $7D ; VERMILION_GYM
@@ -207,7 +207,7 @@ TombstoneTileBlocks:
 	db $46
 	db $42
 	db $47
-	db $86 ; VICTORY_ROAD_1
+	db $8B ; VICTORY_ROAD_1
 	db $81
 	db $7B ; LANCES_ROOM
 	db $74 ; CHAMPIONS_ROOM
@@ -265,15 +265,15 @@ TombstoneTileBlocks:
 	db $8C
 	db $8C
 	db $8C
-	db $88 ; VICTORY_ROAD_2
-	db $86
-	db $8A
-	db $87
+	db $8C ; VICTORY_ROAD_2
 	db $8B
-	db $8D ; VICTORY_ROAD_3
+	db $87
+	db $84
 	db $89
-	db $8C
+	db $85 ; VICTORY_ROAD_3
+	db $88
 	db $86
+	db $8B
 	db $87 ; ROCKET_HIDEOUT_1
 	db $80
 	db $8B
@@ -313,13 +313,13 @@ TombstoneTileBlocks:
 	db $83
 	db $83 ; MANSION_4
 	db $82
-	db $83 ; ROCK_TUNNEL_2
+	db $82 ; ROCK_TUNNEL_2
 	db $80
-	db $83
 	db $82
-	db $80
-	db $80
 	db $83
+	db $80
+	db $80
+	db $82
 	db $80
 	db $8E ; SILPH_CO_9F
 	db $82
