@@ -243,8 +243,8 @@ TombstoneTileBlocks:
 	db $76
 	db $74
 	db $79
-	db $88 ; MANSION_1
-	db $93 ; CINNABAR_GYM
+	db $82 ; MANSION_1
+	db $82 ; CINNABAR_GYM
 	db $81
 	db $81
 	db $81
@@ -258,13 +258,13 @@ TombstoneTileBlocks:
 	db $83
 	db $83
 	db $81 ; SAFFRON_GYM
-	db $83
-	db $92
-	db $92
-	db $92
-	db $92
-	db $92
-	db $92
+	db $8B
+	db $8C
+	db $8C
+	db $8C
+	db $8C
+	db $8C
+	db $8C
 	db $88 ; VICTORY_ROAD_2
 	db $86
 	db $8A
@@ -274,45 +274,45 @@ TombstoneTileBlocks:
 	db $89
 	db $8C
 	db $86
-	db $82 ; ROCKET_HIDEOUT_1
+	db $87 ; ROCKET_HIDEOUT_1
 	db $80
-	db $83
+	db $8B
 	db $86
-	db $85
+	db $91
 	db $80 ; ROCKET_HIDEOUT_2
 	db $80 ; ROCKET_HIDEOUT_3
-	db $84
+	db $88
 	db $81 ; ROCKET_HIDEOUT_4
 	db $80
 	db $81
 	db $81 ; SILPH_CO_2F
-	db $87
-	db $87
-	db $87
-	db $89 ; SILPH_CO_3F
-	db $88
+	db $83
+	db $83
+	db $83
+	db $90 ; SILPH_CO_3F
+	db $82
 	db $81 ; SILPH_CO_4F
 	db $80
-	db $8A
-	db $84 ; SILPH_CO_5F
-	db $87
+	db $84
+	db $88 ; SILPH_CO_5F
+	db $83
 	db $80
-	db $8B
-	db $88 ; SILPH_C0_6F
+	db $8F
+	db $82 ; SILPH_CO_6F
 	db $81
-	db $8C
-	db $8E ; SILPH_CO_7F
-	db $8D
+	db $8A
+	db $8D ; SILPH_CO_7F
+	db $85
 	db $80
 	db $81
 	db $81 ; SILPH_CO_8F
 	db $80
-	db $87
-	db $88 ; MANSION_2
-	db $88 ; MANSION_3
-	db $87
-	db $87 ; MANSION_4
-	db $88
+	db $83
+	db $82 ; MANSION_2
+	db $82 ; MANSION_3
+	db $83
+	db $83 ; MANSION_4
+	db $82
 	db $83 ; ROCK_TUNNEL_2
 	db $80
 	db $83
@@ -321,10 +321,10 @@ TombstoneTileBlocks:
 	db $80
 	db $83
 	db $80
-	db $8F ; SILPH_CO_9F
-	db $88
-	db $90
-	db $91 ; SILPH_CO_10F
+	db $8E ; SILPH_CO_9F
+	db $82
+	db $89
+	db $92 ; SILPH_CO_10F
 	db $80
 	db $3B ; SILPH_CO_11F
 	db $3A
