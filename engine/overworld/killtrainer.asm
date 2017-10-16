@@ -202,7 +202,7 @@ ReplaceTileset:
 	ld hl, PokecenterAlt_GFX + $50
 	ld de, vTileset + $3c0
 	ld bc, $10
-	call CopyData
+	jp CopyData
 .continue
 	ld a, [wCurMap]
 	cp ROUTE_10
