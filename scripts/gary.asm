@@ -108,6 +108,8 @@ GaryScript3:
 	ld c, $2 ; AUDIO_1
 	ld a, $ff
 	call PlayMusic
+	ld hl, wMissableObjectFlags + 26
+	set 6, [hl]
 	xor a
 	ld [wGaryCurScript], a
 	ret
