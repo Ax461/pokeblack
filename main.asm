@@ -1852,7 +1852,7 @@ INCLUDE "engine/hidden_object_functions18.asm"
 
 SECTION "bank19", ROMX
 
-Overworld_GFX:     INCBIN "gfx/tilesets/overworld.t9.2bpp"
+Overworld_GFX:     INCBIN "gfx/tilesets/overworld.t7.2bpp"
 Overworld_Block:   INCBIN "gfx/blocksets/overworld.bst"
 
 RedsHouse1_GFX:

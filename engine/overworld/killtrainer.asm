@@ -207,11 +207,8 @@ ReplaceTiles:
 	ld a, [wCurMap]
 	cp ROUTE_10
 	ret nz
+.replace
 	ld hl, TombstonesAlt_GFX
-	ld de, vTileset + $5e0
-	ld bc, $20
-	call CopyData
-	ld hl, TombstonesAlt_GFX + $20
-	ld de, vTileset + $700
-	ld bc, $20
+	ld de, vTileset + $680
+	ld bc, $40
 	jp CopyData

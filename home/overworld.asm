@@ -673,6 +673,11 @@ CheckMapConnections::
 	ld a,h
 	ld [wCurrentTileBlockMapViewPointer + 1],a
 .loadNewMap ; load the connected map that was entered
+	ld a, [wCurMap]
+	cp ROUTE_10
+	call z, LoadTilesetTilePatternData
+	cp CERULEAN_CITY
+	call z, LoadTilesetTilePatternData
 	call SetWarpFlag
 	call LoadMapHeader
 	call PlayDefaultMusicFadeOutCurrent
@@ -2448,10 +2453,9 @@ ResetUsingStrengthOutOfBattleBit:
 SetWarpFlag:
 	ld hl, wd430
 	set 2, [hl] ; warp flag
-	ld hl, wTombstoneList
-	ld a, h
+	ld a, (wTombstoneList >> 8) & $ff
 	ld [wTombstoneListPointer], a
-	ld a, l
+	ld a, wTombstoneList & $ff
 	ld [wTombstoneListPointer + 1], a
 	ret
 
