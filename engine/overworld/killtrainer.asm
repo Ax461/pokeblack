@@ -180,7 +180,7 @@ LoadTrainers:
 	pop bc
 	ret
 
-ReplaceTileset:
+ReplaceTiles:
 	ld a, [wNumHoFTeams]
 	and a
 	jr z, .continue
