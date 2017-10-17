@@ -1905,11 +1905,11 @@ Facility_GFX:      INCBIN "gfx/tilesets/facility.t8.2bpp"
 Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
 Cemetery_GFX:      INCBIN "gfx/tilesets/cemetery.t4.2bpp"
 Cemetery_Block:    INCBIN "gfx/blocksets/cemetery.bst"
-Cavern_GFX:        INCBIN "gfx/tilesets/cavern.t18.2bpp"
+Cavern_GFX:        INCBIN "gfx/tilesets/cavern.t2.2bpp"
 Cavern_Block:      INCBIN "gfx/blocksets/cavern.bst"
 Lobby_GFX:         INCBIN "gfx/tilesets/lobby.t12.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
-Ship_GFX:          INCBIN "gfx/tilesets/ship.t21.2bpp"
+Ship_GFX:          INCBIN "gfx/tilesets/ship.t2.2bpp"
 Ship_Block:        INCBIN "gfx/blocksets/ship.bst"
 
 
