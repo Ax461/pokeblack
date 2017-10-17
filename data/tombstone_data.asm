@@ -371,7 +371,7 @@ connection_tombstone: MACRO
 ENDM
 
 ConnectionTombstoneTileBlocks:
-	connection_tombstone CERULEAN_CITY, KT_ROUTE_24_TRAINER_5, $a2, 13
+	connection_tombstone CERULEAN_CITY, KT_ROUTE_24_TRAINER_5, $a4, 13
 	connection_tombstone VERMILION_CITY, KT_ROUTE_6_TRAINER_3, $82, 13
 	connection_tombstone ROUTE_13, KT_ROUTE_14_TRAINER_1, $94, 216
 	connection_tombstone ROUTE_17, KT_ROUTE_16_TRAINER_1, $96, 10
