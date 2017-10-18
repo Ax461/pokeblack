@@ -44,6 +44,7 @@ AskName:
 	ld a, [wcf4b]
 	cp "@"
 	ret nz
+	jr .declinedNickname
 .skipNaming
 	pop hl
 .declinedNickname
