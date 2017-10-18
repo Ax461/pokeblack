@@ -98,16 +98,7 @@ GaryScript3:
 	SetEvent EVENT_BEAT_CHAMPION_RIVAL
 	callba IsKillTrainerFlagSet
 	jr z, .skip
-	ld a, 10
-	ld [wAudioFadeOutCounterReloadValue], a
-	ld [wAudioFadeOutCounter], a
-	ld a, $ff
-	ld [wAudioFadeOutControl], a
-	ld c, 100
-	call DelayFrames
-	ld c, $2 ; AUDIO_1
-	ld a, $ff
-	call PlayMusic
+	call FadeOutAudio2
 	ld hl, wMissableObjectFlags + 26
 	set 6, [hl]
 	xor a

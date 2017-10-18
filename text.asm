@@ -360,6 +360,11 @@ _DexRatingText::
 	text "#DEX Rating:"
 	done
 
+_ManyYearsLaterText::
+	text "Many years"
+	line "later..."
+	done
+
 _GymStatueText1::
 	TX_RAM wGymCityName
 	text ""

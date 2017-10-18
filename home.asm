@@ -871,6 +871,17 @@ FadeOutAudio::
 	ld [wNewSoundID], a
 	jp PlaySound
 
+FadeOutAudio2:
+	ld a, 10
+	ld [wAudioFadeOutCounterReloadValue], a
+	ld [wAudioFadeOutCounter], a
+	ld a, $ff
+	ld [wAudioFadeOutControl], a
+	ld c, 100
+	call DelayFrames
+	ld c, $2 ; AUDIO_1
+	ld a, $ff
+	jp PlayMusic
 
 ; this function is used to display sign messages, sprite dialog, etc.
 ; INPUT: [hSpriteIndexOrTextID] = sprite ID or text ID

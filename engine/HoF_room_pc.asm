@@ -1,37 +1,28 @@
 HallOfFamePC:
 	callba AnimateHallOfFame
 	call ClearScreen
-	ld c, 100
-	call DelayFrames
 	call DisableLCD
-	ld hl, vFont
-	ld bc, $800 / 2
-	call ZeroMemory
-	ld hl, vChars2 + $600
-	ld bc, $200 / 2
-	call ZeroMemory
-	ld hl, vChars2 + $7e0
+	ld hl, vChars2 + $780
 	ld bc, $10
 	ld a, $ff
 	call FillMemory
-	coord hl, 0, 0
-	call FillFourRowsWithBlack
-	coord hl, 0, 14
-	call FillFourRowsWithBlack
+	ld hl, wTileMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld a, $78
+	call FillMemory
 	ld a, %11000000
 	ld [rBGP], a
 	call EnableLCD
-	ld a, $ff
-	call PlaySoundWaitForCurrent
-	ld c, BANK(Music_Credits)
-	ld a, MUSIC_CREDITS
-	call PlayMusic
-	ld c, 128
+	call FadeOutAudio2
+	ld c, 240
 	call DelayFrames
-	xor a
-	ld [wUnusedCD3D], a ; not read
-	ld [wNumCreditsMonsDisplayed], a
-	jp Credits
+	ld hl, ManyYearsLaterText
+	call PrintText
+	ret
+
+ManyYearsLaterText:
+	TX_FAR _ManyYearsLaterText
+	db "@"
 
 FadeInCreditsText:
 	ld hl, HoFGBPalettes
