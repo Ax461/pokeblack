@@ -17,7 +17,7 @@ _DayCareOnlyHaveOneMonText::
 	done
 
 _DayCareCantAcceptMonText::
-	text "I'm sorry, but i"
+	text "I'm sorry, but I"
 	line "can't accept that"
 	cont "#MON."
 	done
