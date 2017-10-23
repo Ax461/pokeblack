@@ -59,6 +59,9 @@ PCMainMenu:
 	callba PlayerPC
 	jr ReloadMainMenu
 OaksPC:
+	ld a, [wNumHoFTeams]
+	and a
+	jr nz, PKMNLeague
 	ld a, SFX_ENTER_PC
 	call PlaySound
 	call WaitForSoundToFinish

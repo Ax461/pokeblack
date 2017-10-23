@@ -1803,6 +1803,11 @@ _NoMonText::
 	line "no #MON here!"
 	prompt
 
+_PartyIsEmptyText::
+	text "What? You don't"
+	line "have any #MON!"
+	prompt
+
 _CantTakeMonText::
 	text "You can't take"
 	line "any more #MON."

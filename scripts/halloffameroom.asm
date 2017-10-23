@@ -41,9 +41,17 @@ HallofFameRoomScript2:
 	ld [wHallOfFameRoomCurScript], a
 	; Elite 4 events
 	ResetEventRange ELITE4_EVENTS_START, ELITE4_CHAMPION_EVENTS_END, 1
+	ResetEvent EVENT_GOT_POKEDEX
 	xor a
 	ld [wHallOfFameRoomCurScript], a
 	ld [wPartyCount], a
+	ld [wNumBagItems], a
+	ld [wNumBoxItems], a
+	dec a
+	ld [wBagItems], a
+	ld hl, wObtainedHiddenItemsFlags
+	ld bc, wWalkBikeSurfState - wObtainedHiddenItemsFlags
+	call FillMemory
 	ld b, 5
 .delayLoop
 	ld c, 600 / 5

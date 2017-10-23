@@ -7,9 +7,7 @@ DisplayPCMainMenu::
 	jr nz, .leaguePCAvailable
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .noOaksPC
-	ld a, [wNumHoFTeams]
-	and a
-	jr nz, .leaguePCAvailable
+.leaguePCAvailable
 	coord hl, 0, 0
 	ld b, 8
 	ld c, 14
@@ -17,11 +15,6 @@ DisplayPCMainMenu::
 .noOaksPC
 	coord hl, 0, 0
 	ld b, 6
-	ld c, 14
-	jr .next
-.leaguePCAvailable
-	coord hl, 0, 0
-	ld b, 10
 	ld c, 14
 .next
 	call TextBoxBorder
@@ -45,23 +38,20 @@ DisplayPCMainMenu::
 	ld h, b
 	ld de, PlayersPCText
 	call PlaceString
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .noLeaguePC
+	coord hl, 2, 6
+	ld de, PKMNLeaguePCText
+	call PlaceString
+	jr .logOffText
+.noLeaguePC
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .noOaksPC2
 	coord hl, 2, 6
 	ld de, OaksPCText
 	call PlaceString
-	ld a, [wNumHoFTeams]
-	and a
-	jr z, .noLeaguePC
-	ld a, 4
-	ld [wMaxMenuItem], a
-	coord hl, 2, 8
-	ld de, PKMNLeaguePCText
-	call PlaceString
-	coord hl, 2, 10
-	ld de, LogOffPCText
-	jr .next3
-.noLeaguePC
+.logOffText
 	coord hl, 2, 8
 	ld de, LogOffPCText
 	jr .next3
@@ -206,9 +196,15 @@ ExitBillsPC:
 
 BillsPCDeposit:
 	ld a, [wPartyCount]
+	and a
+	jr nz, .partyNotEmpty
+	ld hl, PartyIsEmptyText
+	jr .printText
+.partyNotEmpty
 	dec a
 	jr nz, .partyLargeEnough
 	ld hl, CantDepositLastMonText
+.printText
 	call PrintText
 	jp BillsPCMenu
 .partyLargeEnough
@@ -254,9 +250,13 @@ BillsPCDeposit:
 	jp BillsPCMenu
 
 BillsPCWithdraw:
+	ld a, [wNumHoFTeams]
+	and a
+	jr nz, .boxEmpty
 	ld a, [wNumInBox]
 	and a
 	jr nz, .boxNotEmpty
+.boxEmpty
 	ld hl, NoMonText
 	call PrintText
 	jp BillsPCMenu
@@ -491,6 +491,10 @@ MonIsTakenOutText:
 
 NoMonText:
 	TX_FAR _NoMonText
+	db "@"
+
+PartyIsEmptyText:
+	TX_FAR _PartyIsEmptyText
 	db "@"
 
 CantTakeMonText:
