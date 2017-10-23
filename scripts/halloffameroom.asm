@@ -44,9 +44,6 @@ HallofFameRoomScript2:
 	xor a
 	ld [wHallOfFameRoomCurScript], a
 	ld [wPartyCount], a
-	ld a, PALLET_TOWN
-	ld [wLastBlackoutMap], a
-	callba SaveSAVtoSRAM
 	ld b, 5
 .delayLoop
 	ld c, 600 / 5
@@ -54,7 +51,18 @@ HallofFameRoomScript2:
 	dec b
 	jr nz, .delayLoop
 	call WaitForTextScrollButtonPress
-	jp Init
+	call ClearScreen
+	ld a, PLAYER_DIR_LEFT << 2
+	ld [PlayerFacingDirection], a
+	ld a, POKEMONTOWER_2
+	ld [wCurMap], a
+	ld a, LAVENDER_TOWN
+	ld [wLastMap], a
+	ld a, $2
+	ld [wDestinationWarpID], a
+	ld hl, wd430
+	set 5, [hl]
+	jp EnterMap
 
 HallofFameRoomScript0:
 	callba IsKillTrainerFlagSet

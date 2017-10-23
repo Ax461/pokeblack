@@ -1,9 +1,10 @@
 PokemonTower2Object:
 	db $1 ; border block
 
-	db $2 ; warps
+	db $3 ; warps
 	db $9, $3, $0, POKEMONTOWER_3
 	db $9, $12, $2, POKEMONTOWER_1
+	db $9, $a, $0, $0
 
 	db $0 ; signs
 
@@ -14,3 +15,4 @@ PokemonTower2Object:
 	; warp-to
 	EVENT_DISP POKEMONTOWER_2_WIDTH, $9, $3 ; POKEMONTOWER_3
 	EVENT_DISP POKEMONTOWER_2_WIDTH, $9, $12 ; POKEMONTOWER_1
+	EVENT_DISP POKEMONTOWER_2_WIDTH, $9, $a

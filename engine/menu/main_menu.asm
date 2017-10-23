@@ -321,6 +321,15 @@ SpecialEnterMap:
 	ld hl, wd732
 	set 0, [hl] ; count play time
 	call ResetPlayerSpriteData
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, wd430
+	bit 5, [hl]
+	jr z, .skip
+	ld a, PLAYER_DIR_LEFT << 2
+	ld [PlayerFacingDirection], a
+.skip
 	ld c, 20
 	call DelayFrames
 	ld a, [wEnteringCableClub]
