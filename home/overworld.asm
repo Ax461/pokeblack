@@ -1034,7 +1034,16 @@ LoadTileBlockMap::
 	ld [hEastWestConnectedMapWidth],a
 	call LoadEastWestConnectionsTileMap
 .done
-	jpba PlaceTombstones
+	callba PlaceTombstones
+	ld a, [wNumHoFTeams]
+	and a
+	ret z
+	ld a, [wCurMap]
+	cp ROUTE_2
+	ret nz
+	ld a, $6d
+	ld [wOverworldMap + 133], a
+	ret
 
 LoadNorthSouthConnectionsTileMap::
 	ld c,MAP_BORDER
