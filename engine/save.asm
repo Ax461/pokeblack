@@ -478,6 +478,9 @@ DisplayChangeBoxMenu:
 	ld a, [de]
 	and a ; is the box empty?
 	jr z, .skipPlacingPokeball
+	ld a, [wNumHoFTeams]
+	and a
+	jr nz, .skipPlacingPokeball
 	ld [hl], $78 ; place pokeball tile next to box name if box not empty
 .skipPlacingPokeball
 	add hl, bc
