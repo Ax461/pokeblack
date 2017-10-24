@@ -2347,6 +2347,15 @@ LoadMapHeader::
 	ld a, BANK(MapSongBanks)
 	ld [hLoadedROMBank],a
 	ld [MBC1RomBank],a
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .loadMusicID
+	ld a, $d4
+	ld [wMapMusicSoundID], a
+	ld a, $2 ; AUDIO_1
+	ld [wMapMusicROMBank], a
+	jr .end
+.loadMusicID
 	ld hl, MapSongBanks
 	add hl,bc
 	add hl,bc
@@ -2354,6 +2363,7 @@ LoadMapHeader::
 	ld [wMapMusicSoundID],a ; music 1
 	ld a,[hl]
 	ld [wMapMusicROMBank],a ; music 2
+.end
 	pop af
 	ld [hLoadedROMBank],a
 	ld [MBC1RomBank],a
