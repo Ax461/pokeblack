@@ -24,6 +24,7 @@ GaryScriptPointers:
 	dw GaryScript10
 
 GaryScript0:
+	SetKillTrainerIndex KT_CHAMPION_RIVAL
 	ret
 
 GaryScript1:
