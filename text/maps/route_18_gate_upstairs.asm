@@ -13,3 +13,12 @@ _Route18GateUpstairsText_4999f::
 	para "There are people"
 	line "swimming!"
 	done
+
+
+_Route18GateUpstairsText_4999fAlt::
+	text "Looked into the"
+	line "binoculars."
+
+	para "MT. MOON is far"
+	line "ahead!"
+	done

@@ -821,6 +821,14 @@ _Route15UpstairsBinocularsText::
 	cont "toward the sea."
 	done
 
+_Route15UpstairsBinocularsTextAlt::
+	text "Looked into the"
+	line "binoculars..."
+
+	para "It's SILPH CO."
+	line "office building!"
+	done
+
 _AerodactylFossilText::
 	text "AERODACTYL Fossil"
 	line "A primitive and"

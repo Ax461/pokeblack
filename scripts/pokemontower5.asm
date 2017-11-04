@@ -13,12 +13,16 @@ PokemonTower5ScriptPointers:
 	dw EndTrainerBattle
 
 PokemonTower5Script0:
+	ld a, [wNumHoFTeams]
+	and a
+	jr nz, .skip
 	ld hl, CoordsData_60992
 	call ArePlayerCoordsInArray
 	jr c, .asm_60960
 	ld hl, wd72e
 	res 4, [hl]
 	ResetEvent EVENT_IN_PURIFIED_ZONE
+.skip
 	jp CheckFightingMapTrainers
 .asm_60960
 	CheckAndSetEvent EVENT_IN_PURIFIED_ZONE

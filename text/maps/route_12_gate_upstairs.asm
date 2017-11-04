@@ -34,6 +34,13 @@ _Route12GateUpstairsText_495b8::
 	para "A man fishing!"
 	done
 
+_Route12GateUpstairsText_495b8Alt::
+	text "Looked into the"
+	line "binoculars."
+
+	para "A distant river!"
+	done
+
 _Route12GateUpstairsText_495c4::
 	text "Looked into the"
 	line "binoculars."

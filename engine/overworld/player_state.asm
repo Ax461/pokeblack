@@ -234,6 +234,9 @@ IsPlayerStandingOnDoorTileOrWarpTile:
 INCLUDE "data/warp_tile_ids.asm"
 
 PrintSafariZoneSteps:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	ld a, [wCurMap]
 	cp SAFARI_ZONE_EAST
 	ret c

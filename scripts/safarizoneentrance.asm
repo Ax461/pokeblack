@@ -14,6 +14,9 @@ SafariZoneEntranceScriptPointers:
 	dw .SafariZoneEntranceScript6
 
 .SafariZoneEntranceScript0
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	ld hl, .CoordsData_75221
 	call ArePlayerCoordsInArray
 	ret nc

@@ -18,6 +18,12 @@ Route15GateLeftBinoculars:
 	cp SPRITE_FACING_UP
 	ret nz
 	call EnableAutoTextBoxDrawing
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .continue
+	tx_pre Route15UpstairsBinocularsTextAlt
+	ret
+.continue
 	tx_pre Route15UpstairsBinocularsText
 	ld a, ARTICUNO
 	ld [wcf91], a
@@ -26,6 +32,10 @@ Route15GateLeftBinoculars:
 
 Route15UpstairsBinocularsText:
 	TX_FAR _Route15UpstairsBinocularsText
+	db "@"
+
+Route15UpstairsBinocularsTextAlt:
+	TX_FAR _Route15UpstairsBinocularsTextAlt
 	db "@"
 
 AerodactylFossil:

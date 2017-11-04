@@ -49,10 +49,19 @@ TM39NoRoomText:
 Route12GateUpstairsText2:
 	TX_ASM
 	ld hl, Route12GateUpstairsText_495b8
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .end
+	ld hl, Route12GateUpstairsText_495b8Alt
+.end
 	jp GateUpstairsScript_PrintIfFacingUp
 
 Route12GateUpstairsText_495b8:
 	TX_FAR _Route12GateUpstairsText_495b8
+	db "@"
+
+Route12GateUpstairsText_495b8Alt:
+	TX_FAR _Route12GateUpstairsText_495b8Alt
 	db "@"
 
 Route12GateUpstairsText3:

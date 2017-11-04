@@ -4532,7 +4532,7 @@ const_value = 1
 	add_tx_pre MtMoonPokecenterBenchGuyText         ; 18
 	add_tx_pre RockTunnelPokecenterBenchGuyText     ; 19
 	add_tx_pre CeladonCityHotelText                 ; 1A
-	add_tx_pre UnusedBenchGuyText1                  ; 1B XXX unused
+	add_tx_pre Route15UpstairsBinocularsTextAlt     ; 1B
 	add_tx_pre UnusedBenchGuyText2                  ; 1C XXX unused
 	add_tx_pre UnusedPredefText                     ; 1D XXX unused
 	add_tx_pre PokemonCenterPCText                  ; 1E
