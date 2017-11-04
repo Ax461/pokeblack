@@ -41,6 +41,9 @@ VermilionCityScript0:
 	ld a, [wSpriteStateData1 + 9]
 	and a ; cp SPRITE_FACING_DOWN
 	ret nz
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	ld hl, CoordsData_19823
 	call ArePlayerCoordsInArray
 	ret nc
