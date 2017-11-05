@@ -649,6 +649,10 @@ AIPrintItemUseAndUpdateHPBar:
 
 AISwitchIfEnoughMons:
 ; enemy trainer switches if there are 3 or more unfainted mons in party
+	ld a, [wBattleMonSpecies]
+	cp GHOST
+	ret z
+
 	ld a,[wEnemyPartyCount]
 	ld c,a
 	ld hl,wEnemyMon1HP
