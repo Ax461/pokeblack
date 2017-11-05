@@ -44,9 +44,13 @@ HallofFameRoomScript2:
 	ResetEvent EVENT_GOT_POKEDEX
 	xor a
 	ld [wHallOfFameRoomCurScript], a
+	ld [wObtainedBadges], a
 	ld [wPartyCount], a
 	ld [wNumBagItems], a
 	ld [wNumBoxItems], a
+	ld [wPlayerMoney], a
+	ld [wPlayerMoney + 1], a
+	ld [wPlayerMoney + 2], a
 	dec a
 	ld [wBagItems], a
 	ld hl, wObtainedHiddenItemsFlags
