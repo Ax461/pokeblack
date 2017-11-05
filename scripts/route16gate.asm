@@ -13,6 +13,9 @@ Route16GateScriptPointers:
 	dw Route16GateScript3
 
 Route16GateScript0:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	call Route16GateScript_49755
 	ret nz
 	ld hl, CoordsData_49714

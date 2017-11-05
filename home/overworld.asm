@@ -1919,6 +1919,9 @@ JoypadOverworld::
 	ld a,[wCurMap]
 	cp ROUTE_17 ; Cycling Road
 	jr nz,.notForcedDownwards
+	ld a, [wNumHoFTeams]
+	and a
+	jr nz, .notForcedDownwards
 	ld a,[hJoyHeld]
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON
 	jr nz,.notForcedDownwards

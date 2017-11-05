@@ -35,6 +35,9 @@ CheckForceBikeOrSurf:
 	ld hl, wd732
 	bit 5, [hl]
 	ret nz
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	ld hl, ForcedBikeOrSurfMaps
 	ld a, [wYCoord]
 	ld b, a

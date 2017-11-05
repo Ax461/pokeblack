@@ -13,6 +13,9 @@ Route18GateScriptPointers:
 	dw Route18GateScript3
 
 Route18GateScript0:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	call Route16GateScript_49755
 	ret nz
 	ld hl, CoordsData_498cc
