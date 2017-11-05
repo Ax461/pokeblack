@@ -68,12 +68,26 @@ _FuchsiaCityChanseyText::
 	line "all up to chance."
 	prompt
 
+_FuchsiaCityChanseyTextAlt::
+	text "Name: CHANSEY"
+
+	para "Catching one is"
+	line "all up to chance."
+	done
+
 _FuchsiaCityVoltorbText::
 	text "Name: VOLTORB"
 
 	para "The very image of"
 	line "a # BALL."
 	prompt
+
+_FuchsiaCityVoltorbTextAlt::
+	text "Name: VOLTORB"
+
+	para "The very image of"
+	line "a # BALL."
+	done
 
 _FuchsiaCityKangaskhanText::
 	text "Name: KANGASKHAN"
@@ -84,6 +98,15 @@ _FuchsiaCityKangaskhanText::
 	cont "on its belly."
 	prompt
 
+_FuchsiaCityKangaskhanTextAlt::
+	text "Name: KANGASKHAN"
+
+	para "A maternal #MON"
+	line "that raises its"
+	cont "young in a pouch"
+	cont "on its belly."
+	done
+
 _FuchsiaCitySlowpokeText::
 	text "Name: SLOWPOKE"
 
@@ -91,12 +114,26 @@ _FuchsiaCitySlowpokeText::
 	line "slow moving."
 	prompt
 
+_FuchsiaCitySlowpokeTextAlt::
+	text "Name: SLOWPOKE"
+
+	para "Friendly and very"
+	line "slow moving."
+	done
+
 _FuchsiaCityLaprasText::
 	text "Name: LAPRAS"
 
 	para "A.K.A. the king"
 	line "of the seas."
 	prompt
+
+_FuchsiaCityLaprasTextAlt::
+	text "Name: LAPRAS"
+
+	para "A.K.A. the king"
+	line "of the seas."
+	done
 
 _FuchsiaCityOmanyteText::
 	text "Name: OMANYTE"
@@ -106,6 +143,14 @@ _FuchsiaCityOmanyteText::
 	cont "from a fossil."
 	prompt
 
+_FuchsiaCityOmanyteTextAlt::
+	text "Name: OMANYTE"
+
+	para "A #MON that"
+	line "was resurrected"
+	cont "from a fossil."
+	done
+
 _FuchsiaCityKabutoText::
 	text "Name: KABUTO"
 
@@ -113,6 +158,14 @@ _FuchsiaCityKabutoText::
 	line "was resurrected"
 	cont "from a fossil."
 	prompt
+
+_FuchsiaCityKabutoTextAlt::
+	text "Name: KABUTO"
+
+	para "A #MON that"
+	line "was resurrected"
+	cont "from a fossil."
+	done
 
 _FuchsiaCityText_19b2a::
 	text "..."

@@ -76,6 +76,11 @@ FuchsiaCityText18:
 FuchsiaCityText19:
 	TX_ASM
 	ld hl, FuchsiaCityChanseyText
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, FuchsiaCityChanseyTextAlt
+.skip
 	call PrintText
 	ld a, CHANSEY
 	call DisplayPokedex
@@ -85,9 +90,18 @@ FuchsiaCityChanseyText:
 	TX_FAR _FuchsiaCityChanseyText
 	db "@"
 
+FuchsiaCityChanseyTextAlt:
+	TX_FAR _FuchsiaCityChanseyTextAlt
+	db "@"
+
 FuchsiaCityText20:
 	TX_ASM
 	ld hl, FuchsiaCityVoltorbText
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, FuchsiaCityVoltorbTextAlt
+.skip
 	call PrintText
 	ld a, VOLTORB
 	call DisplayPokedex
@@ -97,9 +111,18 @@ FuchsiaCityVoltorbText:
 	TX_FAR _FuchsiaCityVoltorbText
 	db "@"
 
+FuchsiaCityVoltorbTextAlt:
+	TX_FAR _FuchsiaCityVoltorbTextAlt
+	db "@"
+
 FuchsiaCityText21:
 	TX_ASM
 	ld hl, FuchsiaCityKangaskhanText
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, FuchsiaCityKangaskhanTextAlt
+.skip
 	call PrintText
 	ld a, KANGASKHAN
 	call DisplayPokedex
@@ -109,9 +132,18 @@ FuchsiaCityKangaskhanText:
 	TX_FAR _FuchsiaCityKangaskhanText
 	db "@"
 
+FuchsiaCityKangaskhanTextAlt:
+	TX_FAR _FuchsiaCityKangaskhanTextAlt
+	db "@"
+
 FuchsiaCityText22:
 	TX_ASM
 	ld hl, FuchsiaCitySlowpokeText
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, FuchsiaCitySlowpokeTextAlt
+.skip
 	call PrintText
 	ld a, SLOWPOKE
 	call DisplayPokedex
@@ -121,9 +153,18 @@ FuchsiaCitySlowpokeText:
 	TX_FAR _FuchsiaCitySlowpokeText
 	db "@"
 
+FuchsiaCitySlowpokeTextAlt:
+	TX_FAR _FuchsiaCitySlowpokeTextAlt
+	db "@"
+
 FuchsiaCityText23:
 	TX_ASM
 	ld hl, FuchsiaCityLaprasText
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, FuchsiaCityLaprasTextAlt
+.skip
 	call PrintText
 	ld a, LAPRAS
 	call DisplayPokedex
@@ -131,6 +172,10 @@ FuchsiaCityText23:
 
 FuchsiaCityLaprasText:
 	TX_FAR _FuchsiaCityLaprasText
+	db "@"
+
+FuchsiaCityLaprasTextAlt:
+	TX_FAR _FuchsiaCityLaprasTextAlt
 	db "@"
 
 FuchsiaCityText24:
@@ -144,11 +189,21 @@ FuchsiaCityText24:
 	jr .asm_4343f
 .asm_3b4e8
 	ld hl, FuchsiaCityOmanyteText
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip1
+	ld hl, FuchsiaCityOmanyteTextAlt
+.skip1
 	call PrintText
 	ld a, OMANYTE
 	jr .asm_81556
 .asm_667d5
 	ld hl, FuchsiaCityKabutoText
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip2
+	ld hl, FuchsiaCityKabutoTextAlt
+.skip2
 	call PrintText
 	ld a, KABUTO
 .asm_81556
@@ -160,8 +215,16 @@ FuchsiaCityOmanyteText:
 	TX_FAR _FuchsiaCityOmanyteText
 	db "@"
 
+FuchsiaCityOmanyteTextAlt:
+	TX_FAR _FuchsiaCityOmanyteTextAlt
+	db "@"
+
 FuchsiaCityKabutoText:
 	TX_FAR _FuchsiaCityKabutoText
+	db "@"
+
+FuchsiaCityKabutoTextAlt:
+	TX_FAR _FuchsiaCityKabutoTextAlt
 	db "@"
 
 FuchsiaCityText_19b2a:

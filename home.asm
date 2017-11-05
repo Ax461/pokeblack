@@ -2555,6 +2555,9 @@ IsItemInBag::
 
 DisplayPokedex::
 	ld [wd11e], a
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	jpba _DisplayPokedex
 
 SetSpriteFacingDirectionAndDelay::
