@@ -40,6 +40,9 @@ ViridianCityScript_1900b:
 	ret
 
 ViridianCityScript_1903d:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	CheckEvent EVENT_GOT_POKEDEX
 	ret nz
 	ld a, [wYCoord]
