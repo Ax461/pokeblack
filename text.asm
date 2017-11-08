@@ -21,6 +21,11 @@ INCLUDE "hram.asm"
 
 SECTION "Text 1", ROMX, BANK[TEXT_1]
 
+_HasntBeenWorkingText::
+	text "It hasn't been"
+	line "working for years."
+	done
+
 _CardKeySuccessText1::
 	text "Bingo!@@"
 
@@ -646,7 +651,7 @@ _BillsHousePokemonListText2::
 	line "you want to see?"
 	done
 
-_OakLabEmailText::
+_OakLabEmailText1::
 	text "There's an e-mail"
 	line "message here!"
 
@@ -805,7 +810,7 @@ _IndigoPlateauHQText::
 	line "#MON LEAGUE HQ"
 	done
 
-_RedBedroomSNESText::
+_RedBedroomSNESText1::
 	text "<PLAYER> is"
 	line "playing the SNES!"
 	cont "...Okay!"

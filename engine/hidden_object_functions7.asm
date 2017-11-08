@@ -388,6 +388,15 @@ BillsHouseInitiatedText:
 
 BillsHousePokemonList:
 	TX_ASM
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, HasntBeenWorkingText
+	call PrintText
+	jr .end
+.skip
 	call SaveScreenTilesToBuffer1
 	ld hl, BillsHousePokemonListText1
 	call PrintText
@@ -438,6 +447,7 @@ BillsHousePokemonList:
 	ld hl, wd730
 	res 6, [hl]
 	call LoadScreenTilesFromBuffer2
+.end
 	jp TextScriptEnd
 
 BillsHousePokemonListText1:
@@ -463,5 +473,16 @@ DisplayOakLabEmailText:
 	tx_pre_jump OakLabEmailText
 
 OakLabEmailText:
-	TX_FAR _OakLabEmailText
+	TX_ASM
+	ld hl, OakLabEmailText1
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+.skip
+	call PrintText
+	jp TextScriptEnd
+
+OakLabEmailText1:
+	TX_FAR _OakLabEmailText1
 	db "@"

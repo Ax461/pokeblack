@@ -55,6 +55,12 @@ RedsHouse1FText2: ; TV
 	cp SPRITE_FACING_UP
 	ld hl,TVWrongSideText
 	jr nz,.notUp
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+	jr .notUp
+.skip
 	ld hl,StandByMeText
 .notUp
 	call PrintText

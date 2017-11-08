@@ -3,7 +3,18 @@ PrintRedSNESText:
 	tx_pre_jump RedBedroomSNESText
 
 RedBedroomSNESText:
-	TX_FAR _RedBedroomSNESText
+	TX_ASM
+	ld hl, RedBedroomSNESText1
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+.skip
+	call PrintText
+	jp TextScriptEnd
+
+RedBedroomSNESText1:
+	TX_FAR _RedBedroomSNESText1
 	db "@"
 
 OpenRedsPC:

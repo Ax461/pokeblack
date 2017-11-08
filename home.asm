@@ -772,6 +772,10 @@ TextScriptEnd::
 	ld hl,TextScriptEndingChar
 	ret
 
+HasntBeenWorkingText:
+	TX_FAR _HasntBeenWorkingText
+	db "@"
+
 ExclamationText::
 	TX_FAR _ExclamationText
 	db "@"

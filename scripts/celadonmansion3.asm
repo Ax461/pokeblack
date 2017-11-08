@@ -55,14 +55,47 @@ DirectorText:
 	jp TextScriptEnd
 
 GameFreakPCText1:
+	TX_ASM
+	ld hl, CeladonMansion3Text5
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+.skip
+	call PrintText
+	jp TextScriptEnd
+
+GameFreakPCText2:
+	TX_ASM
+	ld hl, CeladonMansion3Text6
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+.skip
+	call PrintText
+	jp TextScriptEnd
+
+GameFreakPCText3:
+	TX_ASM
+	ld hl, CeladonMansion3Text7
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+.skip
+	call PrintText
+	jp TextScriptEnd
+
+CeladonMansion3Text5:
 	TX_FAR _CeladonMansion3Text5
 	db "@"
 
-GameFreakPCText2:
+CeladonMansion3Text6:
 	TX_FAR _CeladonMansion3Text6
 	db "@"
 
-GameFreakPCText3:
+CeladonMansion3Text7:
 	TX_FAR _CeladonMansion3Text7
 	db "@"
 
