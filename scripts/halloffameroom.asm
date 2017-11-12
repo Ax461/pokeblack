@@ -73,7 +73,7 @@ HallofFameRoomScript2:
 	ld a, $2
 	ld [wDestinationWarpID], a
 	ld hl, wd430
-	set 5, [hl]
+	set 6, [hl]
 	jp EnterMap
 
 HallofFameRoomScript0:

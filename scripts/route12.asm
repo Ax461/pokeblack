@@ -37,7 +37,7 @@ Route12Script0:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld hl, wd430
-	res 4, [hl]
+	res 5, [hl]
 	ld a, $3
 	ld [wRoute12CurScript], a
 	ld [wCurMapScript], a
@@ -45,7 +45,7 @@ Route12Script0:
 
 Route12Script3:
 	ld a, [wd430]
-	bit 4, a
+	bit 5, a
 	jr nz, .asm_59664
 	ld a, [wIsInBattle]
 	cp $ff

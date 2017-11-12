@@ -36,7 +36,7 @@ EnterMap::
 	set 5, [hl]
 	set 6, [hl]
 	ld hl, wd430
-	bit 5, [hl]
+	bit 6, [hl]
 	jr z, .skipSaving
 	callba SaveSAVtoSRAM
 .skipSaving
@@ -183,7 +183,7 @@ OverworldLoopLessDelay::
 
 .handleDirectionButtonPress
 	ld hl, wd430
-	res 5, [hl]
+	res 6, [hl]
 	ld [wPlayerDirection],a ; new direction
 	ld a,[wd730]
 	bit 7,a ; are we simulating button presses?
@@ -1521,9 +1521,9 @@ AdvancePlayerSprite::
 	and a
 	jr z, .skip
 	ld a, [wd430]
-	xor $8 ; half speed flag
+	xor $10 ; half speed flag
 	ld [wd430], a
-	bit 3, a
+	bit 4, a
 	ret z
 .skip
 	ld a,[wSpriteStateData1 + 3] ; delta Y
@@ -2499,7 +2499,7 @@ ResetUsingStrengthOutOfBattleBit:
 
 SetWarpFlag:
 	ld hl, wd430
-	set 2, [hl] ; warp flag
+	set 3, [hl] ; warp flag
 	ld a, (wTombstoneList >> 8) & $ff
 	ld [wTombstoneListPointer], a
 	ld a, wTombstoneList & $ff

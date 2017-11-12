@@ -20,7 +20,7 @@ PlaceTombstones:
 	jr .next
 .continue
 	ld a, [wd430]
-	bit 2, a ; warp flag
+	bit 3, a ; warp flag
 	ret z
 	ld hl, wKillTrainerList
 .loop
@@ -85,7 +85,7 @@ PlaceTombstones:
 	jr .loop
 .done
 	ld hl, wd430
-	res 2, [hl] ; warp flag
+	res 3, [hl] ; warp flag
 
 	ld a, [wCurMap]
 	ld b, a

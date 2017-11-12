@@ -826,6 +826,9 @@ FaintEnemyPokemon:
 	ld a, [wIsInBattle]
 	dec a
 	jr z, .wild
+	ld a, [wd430]
+	bit 2, a
+	jr nz, .wild
 	ld a, [wEnemyMonPartyPos]
 	ld hl, wEnemyMon1HP
 	ld bc, wEnemyMon2 - wEnemyMon1
@@ -974,6 +977,8 @@ EndLowHealthAlarm:
 
 AnyEnemyPokemonAliveCheck:
 	ld a, [wEnemyPartyCount]
+	and a
+	ret z
 	ld b, a
 	xor a
 	ld hl, wEnemyMon1HP
@@ -1053,7 +1058,7 @@ TrainerBattleVictory:
 	call DisplayBattleMenu
 .skip
 	ld hl, wd430
-	res 2, [hl] ; warp flag
+	res 3, [hl] ; warp flag
 	ld de, wPlayerMoney + 2
 	ld hl, wAmountMoneyWon + 2
 	ld c, $3
@@ -1430,12 +1435,18 @@ EnemySendOutFirstMon:
 	ld [wWhichPokemon],a
 	jr .next3
 .next
-	ld b,$FF
+	ld b, 0
+	ld hl, wd430
+	bit 2, [hl]
+	res 2, [hl]
+	jr nz, .skip
+	dec b
 .next2
 	inc b
 	ld a,[wEnemyMonPartyPos]
 	cp b
 	jr z,.next2
+.skip
 	ld hl,wEnemyMon1
 	ld a,b
 	ld [wWhichPokemon],a
@@ -3213,7 +3224,7 @@ ExecutePlayerMove:
 	jr nz, .skip
 	ld hl, wd430
 	set 0, [hl] ; curse flag
-	set 4, [hl]
+	set 5, [hl]
 .skip
 	ld a, [wPlayerSelectedMove]
 	inc a
@@ -6945,8 +6956,6 @@ PlayMoveAnimation:
 	predef_jump MoveAnimation
 
 InitBattle:
-	xor a
-	ld [wKilledMonsNumber], a
 	ld a, [wCurOpponent]
 	and a
 	jr z, DetermineWildOpponent
@@ -7345,9 +7354,42 @@ MoveEffectPointerTable:
 	 dw DisableEffect             ; DISABLE_EFFECT
 
 CurseEffect:
-	ld hl, wKilledMonsNumber
-	inc [hl]
-	ret
+	ld hl, wd430
+	set 2, [hl]
+	ld hl, wEnemyPartyCount
+	dec [hl]
+	ld a, [wEnemyMonPartyPos]
+	ld d, a
+	ld a, PARTY_LENGTH - 1
+	sub d
+	ld hl, $0000
+	ld bc, wEnemyMon2 - wEnemyMon1
+	call AddNTimes
+	push hl
+	ld a, d
+	ld hl, wEnemyMons
+	ld bc, wEnemyMon2 - wEnemyMon1
+	call AddNTimes
+	ld d, h
+	ld e, l
+	add hl, bc
+	pop bc
+	call CopyData
+	ld hl, wEnemyPartyMons
+	ld a, [wEnemyMonPartyPos]
+	inc a
+	add l
+	ld l, a
+	ld d, h
+	ld e, l
+	dec e
+	ld a, [wEnemyMonPartyPos]
+	ld b, a
+	ld a, PARTY_LENGTH
+	sub b
+	ld b, 0
+	ld c, a
+	jp CopyData
 
 SleepEffect:
 	ld de, wEnemyMonStatus

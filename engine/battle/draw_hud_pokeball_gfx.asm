@@ -32,26 +32,9 @@ SetupOwnPartyPokeballs:
 
 SetupEnemyPartyPokeballs:
 	call PlaceEnemyHUDTiles
-	ld a, [wKilledMonsNumber]
-	ld b, a
-	ld a, [wEnemyPartyCount]
-	push af
-	sub b
-	ld [wEnemyPartyCount], a
 	ld hl, wEnemyMons
-	ld a, b
-	and a
-	jr z, .skip
-	ld de, PARTY_STRUCT_LENGTH
-.loop
-	dec b
-	add hl, de
-	jr nz, .loop
-.skip
 	ld de, wEnemyPartyCount
 	call SetupPokeballs
-	pop af
-	ld [wEnemyPartyCount], a
 	ld hl, wBaseCoordX
 	ld a, $48
 	ld [hli], a

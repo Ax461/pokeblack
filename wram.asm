@@ -5,6 +5,7 @@ flag_array: MACRO
 	ds ((\1) + 7) / 8
 ENDM
 
+box_struct_length EQU 25 + NUM_MOVES * 2
 box_struct: MACRO
 \1Species::    db
 \1HP::         dw
@@ -2576,13 +2577,11 @@ wDestinationWarpID:: ; d42f
 wd430::
 ; bit 0: curse animation playing
 ; bit 1: trainer is being cursed
-; bit 2: set when entering a new map
-; bit 3: used to make the player move at half speed
-; bit 4: used for Snorlax at Route 12 and Route 16
-; bit 5: set after beating the league to automatically sve the game
-	ds 1
-
-wKilledMonsNumber::
+; bit 2: party is being shifted after curse use
+; bit 3: player is entering a new map
+; bit 4: player is moving at half speed
+; bit 5: used for Snorlax at Route 12 and Route 16
+; bit 6: automatically save the game after beating the league
 	ds 1
 
 wKillTrainerList::
@@ -2617,7 +2616,7 @@ wTombstoneList::
 wTombstoneListPointer::
 	ds 2
 
-	ds 17
+	ds 18
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)
@@ -3259,7 +3258,7 @@ wBoxSpecies:: ds MONS_PER_BOX + 1
 
 wBoxMons::
 wBoxMon1:: box_struct wBoxMon1 ; da96
-wBoxMon2:: ds BOX_STRUCT_LENGTH * (MONS_PER_BOX + -1) ; dab7
+wBoxMon2:: ds box_struct_length * (MONS_PER_BOX + -1) ; dab7
 
 wBoxMonOT::    ds NAME_LENGTH * MONS_PER_BOX ; dd2a
 wBoxMonNicks:: ds NAME_LENGTH * MONS_PER_BOX ; de06
