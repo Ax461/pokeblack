@@ -19,6 +19,7 @@ CeladonMart3TextPointers:
 	dw CeladonMart3Text15
 	dw CeladonMart3Text16
 	dw CeladonMart3Text17
+	dw CeladonMart3Text18
 
 CeladonMart3Text1:
 	TX_ASM
@@ -101,6 +102,7 @@ CeladonMart3Text14:
 	TX_FAR _CeladonMart3Text14
 	db "@"
 
+CeladonMart3Text18:
 CeladonMart3Text17:
 CeladonMart3Text16:
 CeladonMart3Text15:

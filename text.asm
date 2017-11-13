@@ -828,7 +828,7 @@ _Route15UpstairsBinocularsText::
 
 _Route15UpstairsBinocularsTextAlt::
 	text "Looked into the"
-	line "binoculars..."
+	line "binoculars."
 
 	para "It's SILPH CO."
 	line "office building!"

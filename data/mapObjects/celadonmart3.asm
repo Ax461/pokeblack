@@ -6,7 +6,7 @@ CeladonMart3Object:
 	db $1, $10, $1, CELADON_MART_2
 	db $1, $1, $0, CELADON_MART_ELEVATOR
 
-	db $c ; signs
+	db $d ; signs
 	db $4, $2, $6 ; CeladonMart3Text6
 	db $4, $3, $7 ; CeladonMart3Text7
 	db $4, $5, $8 ; CeladonMart3Text8
@@ -18,7 +18,8 @@ CeladonMart3Object:
 	db $1, $e, $e ; CeladonMart3Text14
 	db $1, $4, $f ; CeladonMart3Text15
 	db $1, $6, $10 ; CeladonMart3Text16
-	db $1, $a, $11 ; CeladonMart3Text17
+	db $1, $8, $11 ; CeladonMart3Text17
+	db $1, $a, $12 ; CeladonMart3Text18
 
 	db $5 ; objects
 	object SPRITE_MART_GUY, $10, $5, STAY, NONE, $1 ; person

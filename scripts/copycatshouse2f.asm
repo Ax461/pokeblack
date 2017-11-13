@@ -79,6 +79,17 @@ CopycatsHouse2FText3:
 	db "@"
 
 CopycatsHouse2FText6:
+	TX_ASM
+	ld hl, CopycatsHouseTextGame
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+.skip
+	call PrintText
+	jp TextScriptEnd
+
+CopycatsHouseTextGame:
 	TX_FAR _CopycatsHouse2FText6
 	db "@"
 
@@ -88,6 +99,12 @@ CopycatsHouse2FText7:
 	cp SPRITE_FACING_UP
 	ld hl, CopycatsHouse2FText_5cd1c
 	jr nz, .notUp
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .skip
+	ld hl, HasntBeenWorkingText
+	jr .notUp
+.skip
 	ld hl, CopycatsHouse2FText_5cd17
 .notUp
 	call PrintText

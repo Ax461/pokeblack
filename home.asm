@@ -892,16 +892,25 @@ FadeOutAudio2:
 DisplayTextID::
 	ld a, [wNumHoFTeams]
 	and a
-	jr z, .continue
-	ld a, [wCurMapTileset]
-	cp POKECENTER
+	jr z, .skip
+	ld a, [wCurMap]
+	cp CELADON_PRIZE_ROOM
+	ret z
+	cp VIRIDIAN_SCHOOL
 	jr nz, .continue
 	ld a, [hSpriteIndexOrTextID]
+	cp $1f
+	ret z
+.continue
+	ld a, [wCurMapTileset]
+	cp POKECENTER
+	jr nz, .skip
+	ld a, [hSpriteIndexOrTextID]
 	cp $0f
-	jr c, .continue
+	jr c, .skip
 	cp $1a
 	ret c
-.continue
+.skip
 	ld a,[hLoadedROMBank]
 	push af
 	callba DisplayTextIDInit ; initialization

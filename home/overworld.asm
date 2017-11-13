@@ -1034,34 +1034,7 @@ LoadTileBlockMap::
 	ld [hEastWestConnectedMapWidth],a
 	call LoadEastWestConnectionsTileMap
 .done
-	callba PlaceTombstones
-	ld a, [wNumHoFTeams]
-	and a
-	ret z
-	ld a, [wCurMap]
-	cp ROUTE_2
-	jr z, .route2
-	ld a, [wCurMap]
-	cp VERMILION_DOCK
-	jr z, .vermilionDock
-	ret
-.route2
-	ld a, $6d
-	ld [wOverworldMap + 133], a
-	ret
-.vermilionDock
-	ld a, $17
-	ld [wOverworldMap + 90], a
-	ld a, $01
-	ld [wOverworldMap + 88], a
-	ld [wOverworldMap + 91], a
-	ld a, $0d
-	ld [wOverworldMap + 89], a
-	ld [wOverworldMap + 108], a
-	ld [wOverworldMap + 109], a
-	ld [wOverworldMap + 110], a
-	ld [wOverworldMap + 111], a
-	ret
+	jpba PlaceTombstones
 
 LoadNorthSouthConnectionsTileMap::
 	ld c,MAP_BORDER

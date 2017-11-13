@@ -12,6 +12,9 @@ Museum1FScriptPointers:
 	dw Museum1FScript1
 
 Museum1FScript0:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	ld a, [wYCoord]
 	cp $4
 	ret nz

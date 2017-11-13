@@ -1,4 +1,39 @@
 PlaceTombstones:
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .tombstones
+	ld a, [wCurMap]
+	cp ROUTE_2
+	jr z, .route2
+	ld a, [wCurMap]
+	cp VIRIDIAN_SCHOOL
+	jr z, .viridianSchool
+	cp VERMILION_DOCK
+	jr z, .vermilionDock
+	jr .tombstones
+.route2
+	ld a, $6d
+	ld [wOverworldMap + 133], a
+	jr .tombstones
+.viridianSchool
+	ld a, $23
+	ld [wOverworldMap + 44], a
+	ld a, $24
+	ld [wOverworldMap + 54], a
+	jr .tombstones
+.vermilionDock
+	ld a, $17
+	ld [wOverworldMap + 90], a
+	ld a, $01
+	ld [wOverworldMap + 88], a
+	ld [wOverworldMap + 91], a
+	ld a, $0d
+	ld [wOverworldMap + 89], a
+	ld [wOverworldMap + 108], a
+	ld [wOverworldMap + 109], a
+	ld [wOverworldMap + 110], a
+	ld [wOverworldMap + 111], a
+.tombstones
 	ld a, [wCurMap]
 	ld b, a
 	ld a, [wTombstoneListMap]
