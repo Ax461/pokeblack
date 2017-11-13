@@ -14,13 +14,13 @@ PlaceTombstones:
 .route2
 	ld a, $6d
 	ld [wOverworldMap + 133], a
-	jr .tombstones
+	ret
 .viridianSchool
 	ld a, $23
 	ld [wOverworldMap + 44], a
 	ld a, $24
 	ld [wOverworldMap + 54], a
-	jr .tombstones
+	ret
 .vermilionDock
 	ld a, $17
 	ld [wOverworldMap + 90], a
@@ -33,6 +33,7 @@ PlaceTombstones:
 	ld [wOverworldMap + 109], a
 	ld [wOverworldMap + 110], a
 	ld [wOverworldMap + 111], a
+	ret
 .tombstones
 	ld a, [wCurMap]
 	ld b, a
