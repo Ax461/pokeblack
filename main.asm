@@ -1909,7 +1909,7 @@ Cavern_GFX:        INCBIN "gfx/tilesets/cavern.t2.2bpp"
 Cavern_Block:      INCBIN "gfx/blocksets/cavern.bst"
 Lobby_GFX:         INCBIN "gfx/tilesets/lobby.t12.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
-Ship_GFX:          INCBIN "gfx/tilesets/ship.t2.2bpp"
+Ship_GFX:          INCBIN "gfx/tilesets/ship.t1.2bpp"
 Ship_Block:        INCBIN "gfx/blocksets/ship.bst"
 
 

@@ -12,7 +12,7 @@ TombstoneTileBlocks:
 	db $82 ; ROUTE_4
 	db $96 ; ROUTE_6
 	db $95
-	db $A8
+	db $AA
 	db $82
 	db $81
 	db $A8
@@ -79,21 +79,21 @@ TombstoneTileBlocks:
 	db $83
 	db $A0 ; ROUTE_15
 	db $9F
-	db $96
+	db $95
 	db $95
 	db $A0
 	db $9F
 	db $9E
 	db $9E
 	db $A0
-	db $95
+	db $96
 	db $94 ; ROUTE_16
 	db $96
 	db $94
 	db $95
 	db $80
 	db $94
-	db $AF ; ROUTE_17
+	db $AA ; ROUTE_17
 	db $90
 	db $8F
 	db $90
@@ -191,7 +191,7 @@ TombstoneTileBlocks:
 	db $81
 	db $81
 	db $80
-	db $47 ; SS_ANNE_5
+	db $48 ; SS_ANNE_5
 	db $47
 	db $3F ; SS_ANNE_8
 	db $44
@@ -252,11 +252,11 @@ TombstoneTileBlocks:
 	db $81
 	db $81
 	db $81
-	db $83 ; FIGHTING_DOJO
-	db $7B
-	db $7B
-	db $83
-	db $83
+	db $76 ; FIGHTING_DOJO
+	db $75
+	db $75
+	db $76
+	db $76
 	db $81 ; SAFFRON_GYM
 	db $8B
 	db $8C
@@ -348,9 +348,9 @@ ENDM
 DoubleTombstoneTileBlocks:
 	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_0, KT_ROUTE_6_TRAINER_1, $2, $97
 	double_tombstone ROUTE_6, KT_ROUTE_6_TRAINER_3, KT_ROUTE_6_TRAINER_4, $5, $85
-	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $6, $AF
+	double_tombstone ROUTE_8, KT_ROUTE_8_TRAINER_4, KT_ROUTE_8_TRAINER_5, $6, $B1
 	double_tombstone ROUTE_13, KT_ROUTE_13_TRAINER_0, KT_ROUTE_13_TRAINER_1, $2, $A6
-	double_tombstone ROUTE_13, KT_ROUTE_13_TRAINER_6, KT_ROUTE_13_TRAINER_7, $6, $9D
+	double_tombstone ROUTE_13, KT_ROUTE_13_TRAINER_6, KT_ROUTE_13_TRAINER_7, $8, $9D
 	double_tombstone ROUTE_14, KT_ROUTE_14_TRAINER_4, KT_ROUTE_14_TRAINER_8, $9, $85
 	double_tombstone ROUTE_14, KT_ROUTE_14_TRAINER_7, KT_ROUTE_14_TRAINER_9, $A, $84
 	double_tombstone ROUTE_15, KT_ROUTE_15_TRAINER_1, KT_ROUTE_15_TRAINER_4, $5, $A1
