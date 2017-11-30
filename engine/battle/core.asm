@@ -239,6 +239,9 @@ StartBattle:
 .foundFirstAliveEnemyMon
 	ld a, d
 	ld [wSerialExchangeNybbleReceiveData], a
+	ld a, [wd430]
+	bit 7, a
+	jp nz, MainInBattleLoop
 	ld a, [wIsInBattle]
 	dec a ; is it a trainer battle?
 	call nz, EnemySendOutFirstMon ; if it is a trainer battle, send out enemy mon
@@ -369,10 +372,14 @@ EnemyRanText:
 
 MainInBattleLoop:
 	call ReadPlayerMonCurHPAndStatus
+	ld a, [wd430]
+	bit 7, a
+	jr nz, .skip
 	ld hl, wBattleMonHP
 	ld a, [hli]
 	or [hl] ; is battle mon HP 0?
 	jp z, HandlePlayerMonFainted  ; if battle mon HP is 0, jump
+.skip
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl] ; is enemy mon HP 0?
@@ -1941,10 +1948,20 @@ DrawPlayerHUDAndHPBar:
 	callab PlacePlayerHUDTiles
 	coord hl, 18, 9
 	ld [hl], $73
+	ld a, [wd430]
+	bit 7, a
+	jr nz, .reposition
 	ld de, wBattleMonNick
 	coord hl, 10, 7
 	call CenterMonName
 	call PlaceString
+	jr .continue
+.reposition
+	ld de, wBattleMonNick
+	coord hl, 10, 8
+	call CenterMonName
+	call PlaceString
+.continue
 	ld hl, wBattleMonSpecies
 	ld de, wLoadedMon
 	ld bc, wBattleMonDVs - wBattleMonSpecies
@@ -1959,6 +1976,9 @@ DrawPlayerHUDAndHPBar:
 	ld de, wLoadedMonStatus
 	call PrintStatusConditionNotFainted
 	pop hl
+	jr nz, .doNotPrintLevel
+	ld a, [wd430]
+	bit 7, a
 	jr nz, .doNotPrintLevel
 	call PrintLevel
 .doNotPrintLevel
@@ -2466,6 +2486,13 @@ PartyMenuOrRockOrRun:
 	ld [wcf91], a
 	jp UseBagItem
 .partyMenuWasSelected
+	ld a, [wPartyCount]
+	and a
+	jr nz, .playerhaspokemon
+	ld hl, NoPokemonText
+	call PrintText
+	jr .skipPartyMenu
+.playerhaspokemon
 	call LoadScreenTilesFromBuffer1
 	xor a ; NORMAL_PARTY_MENU
 	ld [wPartyMenuTypeOrMessageID], a
@@ -2476,6 +2503,7 @@ PartyMenuOrRockOrRun:
 .quitPartyMenu
 	call ClearSprites
 	call GBPalWhiteOut
+.skipPartyMenu
 	call LoadHudTilePatterns
 	call LoadScreenTilesFromBuffer2
 	call RunDefaultPaletteCommand
@@ -2607,6 +2635,10 @@ SwitchPlayerMon:
 
 AlreadyOutText:
 	TX_FAR _AlreadyOutText
+	db "@"
+
+NoPokemonText:
+	TX_FAR _NoPokemonText
 	db "@"
 
 BattleMenu_RunWasSelected:
@@ -3466,6 +3498,10 @@ ScaredText:
 
 EnemyScaredText:
 	TX_FAR _EnemyScaredText
+	db "@"
+
+GhostIdleText:
+	TX_FAR _GhostIdleText
 	db "@"
 
 GetOutText:
@@ -4927,6 +4963,9 @@ HandleCounterMove:
 	ret
 
 ApplyAttackToEnemyPokemon:
+	ld a, [wd430]
+	bit 7, a
+	ret nz
 	ld a,[wPlayerMoveEffect]
 	cp a,OHKO_EFFECT
 	jr z,ApplyDamageToEnemyPokemon
@@ -5800,6 +5839,16 @@ ExecuteEnemyMove:
 	jr nz, .enemyHasNoSpecialConditions
 	jp hl
 .enemyHasNoSpecialConditions
+	ld a, [wd430]
+	bit 7, a
+	jr z, .cpGhostNormal
+	ld a, [wLowHealthAlarm]
+	bit 7, a
+	jp nz, DoFinalCurse
+	ld hl, GhostIdleText
+	call PrintText
+	jp ExecuteEnemyMoveDone
+.cpGhostNormal
 	ld a, [wBattleMonSpecies]
 	cp GHOST
 	jr nz, .skip
@@ -5996,6 +6045,25 @@ HitXTimesText:
 ExecuteEnemyMoveDone:
 	ld b, $1
 	ret
+
+DoFinalCurse:
+	ld hl, .text
+	call PrintText
+	call Delay3
+	callba ClearSAV
+	call GBPalBlackOut
+	call ClearScreen
+	call StopAllSounds
+	call DelayFrame
+	di
+.loop
+	nop
+	jr .loop
+	
+.text
+	text "Enemy GHOST"
+	line "used CURSE!"
+	prompt
 
 ; checks for various status conditions affecting the enemy mon
 ; stores whether the mon cannot use a move this turn in Z flag
@@ -7013,6 +7081,10 @@ InitWildBattle:
 	ld [wIsInBattle], a
 	call LoadEnemyMonData
 	call DoBattleTransitionAndInitBattleVariables
+	ld a, [wd430]
+	bit 7, a
+	jr nz, .isGhost
+	call IsGhostBattle
 	ld a, [wCurOpponent]
 	cp MAROWAK
 	jr z, .isGhost

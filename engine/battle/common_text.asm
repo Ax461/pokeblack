@@ -2,6 +2,9 @@ PrintBeginningBattleText:
 	ld a, [wIsInBattle]
 	dec a
 	jr nz, .trainerBattle
+	ld a, [wd430]
+	bit 7, a
+	jr nz, .isFinal
 	ld a, [wCurMap]
 	cp POKEMONTOWER_3
 	jr c, .notPokemonTower
@@ -46,6 +49,10 @@ PrintBeginningBattleText:
 	ld hl, GhostCantBeIDdText
 	call PrintText
 	jr .done
+.isFinal
+	ld hl, EnemyAppearedText
+	call PrintText
+	jr .done
 .isMarowak
 	ld a, b
 	and a
@@ -58,7 +65,6 @@ PrintBeginningBattleText:
 	callab MarowakAnim
 	ld hl, WildMonAppearedText
 	call PrintText
-
 .playSFX
 	xor a
 	ld [wFrequencyModifier], a

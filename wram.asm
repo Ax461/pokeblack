@@ -2582,6 +2582,7 @@ wd430::
 ; bit 4: player is moving at half speed
 ; bit 5: used for Snorlax at Route 12 and Route 16
 ; bit 6: automatically save the game after beating the league
+; bit 7: final battle vs. ghost
 	ds 1
 
 wKillTrainerList::

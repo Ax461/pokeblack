@@ -1,4 +1,4 @@
-PYTHON := python2.7
+PYTHON := python2
 
 2bpp     := $(PYTHON) extras/pokemontools/gfx.py 2bpp
 1bpp     := $(PYTHON) extras/pokemontools/gfx.py 1bpp

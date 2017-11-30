@@ -1195,6 +1195,12 @@ _AlreadyOutText::
 	line "already out!"
 	prompt
 
+_NoPokemonText::
+	TX_RAM wPlayerName
+	text " has no"
+	line "usable #MON!"
+	prompt
+
 _MoveNoPPText::
 	text "No PP left for"
 	line "this move!"
@@ -1228,6 +1234,10 @@ _EnemyScaredText::
 	TX_RAM wEnemyMonNick
 	text " is too"
 	line "scared to move!"
+	prompt
+
+_GhostIdleText::
+	text "GHOST: ..."
 	prompt
 
 _GetOutText::
@@ -2283,8 +2293,24 @@ _EvadedAttackText::
 	prompt
 
 _HitWithRecoilText::
+; fake out...
+	TX_ASM
+	ld a, [wd430]
+	bit 7, a
+	jr z, .noghost
+	ld hl, .ghosted
+	call PrintText	
+.noghost
+	ld hl, .main
+	call PrintText	
+	jp TextScriptEnd
+.main
 	text "<USER>'s"
 	line "hit with recoil!"
+	prompt
+.ghosted
+	text "STRUGGLE didn't"
+	line "affect GHOST!"
 	prompt
 
 _ConvertedTypeText::
