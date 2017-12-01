@@ -1624,6 +1624,9 @@ NoWillText:
 TryRunningFromBattle:
 	call IsGhostBattle
 	jp z, .canEscape ; jump if it's a ghost battle
+	ld a, [wd430]
+	bit 7, a		; final battle?
+	jp nz, .cantEscape
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
 	jp z, .canEscape ; jump if it's a safari battle
@@ -1696,6 +1699,7 @@ TryRunningFromBattle:
 	jr nc, .canEscape ; if the random value was less than or equal to the quotient
 	                  ; plus 30 times the number of attempts, the player can escape
 ; can't escape
+.cantEscape
 	ld a, $1
 	ld [wActionResultOrTookBattleTurn], a ; you lose your turn when you can't escape
 	ld hl, CantEscapeText
@@ -6057,7 +6061,7 @@ DoFinalCurse:
 	call DelayFrame
 	di
 .loop
-	nop
+	nop			; freeze here
 	jr .loop
 	
 .text
