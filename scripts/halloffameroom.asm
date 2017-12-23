@@ -63,6 +63,20 @@ HallofFameRoomScript2:
 	dec b
 	jr nz, .delayLoop
 	call WaitForTextScrollButtonPress
+	ld hl, wKilledMonsPointer
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	call EnableSRAM1
+	ld a, $ff
+	ld [hl], a
+	ld hl, wKilledTrainersPointer
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	ld a, $ff
+	ld [hl], a
+	call DisableSRAM1
 	call ClearScreen
 	ld a, PLAYER_DIR_LEFT << 2
 	ld [PlayerFacingDirection], a

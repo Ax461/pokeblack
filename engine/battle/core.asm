@@ -7356,6 +7356,23 @@ MoveEffectPointerTable:
 CurseEffect:
 	ld hl, wd430
 	set 2, [hl]
+	ld bc, sKilledMonsEnd
+	ld hl, wKilledMonsPointer
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	call CompareHLWithBC
+	jr z, .continue
+	call EnableSRAM1
+	ld a, [wEnemyMonSpecies2]
+	ld [hl], a
+	call DisableSRAM1
+	inc hl
+	ld a, h
+	ld [wKilledMonsPointer], a
+	ld a, l
+	ld [wKilledMonsPointer + 1], a
+.continue
 	ld hl, wEnemyPartyCount
 	dec [hl]
 	ld a, [wEnemyMonPartyPos]

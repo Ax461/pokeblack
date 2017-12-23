@@ -10,15 +10,18 @@ sHallOfFame:: ds HOF_TEAM * HOF_TEAM_CAPACITY ; a598
 
 
 SECTION "Save Data", SRAM
-	ds $598
+sPlayerName::  ds NAME_LENGTH ; a000
+sMainData::    ds wMainDataEnd   - wMainDataStart ; a00b
+sSpriteData::  ds wSpriteDataEnd - wSpriteDataStart ; a794
+sPartyData::   ds wPartyDataEnd  - wPartyDataStart ; a994
+sCurBoxData::  ds wBoxDataEnd    - wBoxDataStart ; ab28
+sTilesetType:: ds 1 ; af8a
+sMainDataCheckSum:: ds 1 ; af8b
 
-sPlayerName::  ds NAME_LENGTH ; a598
-sMainData::    ds wMainDataEnd   - wMainDataStart ; a5a3
-sSpriteData::  ds wSpriteDataEnd - wSpriteDataStart ; ad2c
-sPartyData::   ds wPartyDataEnd  - wPartyDataStart ; af2c
-sCurBoxData::  ds wBoxDataEnd    - wBoxDataStart ; b0c0
-sTilesetType:: ds 1 ; b522
-sMainDataCheckSum:: ds 1 ; b523
+sKilledMons::  ds 2001 ; af8c
+sKilledMonsEnd::
+
+sKilledTrainers:: ds 401 ; b75d
 
 
 SECTION "Saved Boxes 1", SRAM

@@ -1,4 +1,17 @@
 KillTrainer:
+	ld hl, wKilledTrainersPointer
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	call EnableSRAM1
+	ld a, [wTrainerClass]
+	ld [hl], a
+	call DisableSRAM1
+	inc hl
+	ld a, h
+	ld [wKilledTrainersPointer], a
+	ld a, l
+	ld [wKilledTrainersPointer + 1], a
 	ld hl, wKillTrainerFlags
 	ld a, [wKillTrainerIndex]
 	ld d, a

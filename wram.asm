@@ -2616,7 +2616,13 @@ wTombstoneList::
 wTombstoneListPointer::
 	ds 2
 
-	ds 18
+wKilledMonsPointer::
+	ds 2
+
+wKilledTrainersPointer::
+	ds 2
+
+	ds 14
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)

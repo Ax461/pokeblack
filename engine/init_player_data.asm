@@ -57,6 +57,18 @@ START_MONEY EQU $3000
 	ld a, l
 	ld [wTombstoneListPointer + 1], a
 
+	ld hl, sKilledMons
+	ld a, h
+	ld [wKilledMonsPointer], a
+	ld a, l
+	ld [wKilledMonsPointer + 1], a
+
+	ld hl, sKilledTrainers
+	ld a, h
+	ld [wKilledTrainersPointer], a
+	ld a, l
+	ld [wKilledTrainersPointer + 1], a
+
 	jp InitializeMissableObjectsFlags
 
 InitializeEmptyList:

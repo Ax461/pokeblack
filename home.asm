@@ -2863,6 +2863,20 @@ YesNoChoicePokeCenter::
 	lb bc, 8, 12
 	jr DisplayYesNoChoice
 
+EnableSRAM1:
+	ld a, SRAM_ENABLE
+	ld [MBC1SRamEnable], a
+	ld a, $1
+	ld [MBC1SRamBankingMode], a
+	ld [MBC1SRamBank], a
+	ret
+
+DisableSRAM1:
+	xor a
+	ld [MBC1SRamBankingMode], a
+	ld [MBC1SRamEnable], a
+	ret
+
 CompareHLWithBC:
 	ld a, h
 	sub b
