@@ -38,7 +38,7 @@ Route16Script0:
 	predef HideObject
 	call UpdateSprites
 	ld hl, wd430
-	res 5, [hl]
+	res 5, [hl] ; snorlax flag
 	ld a, $3
 	ld [wRoute16CurScript], a
 	ld [wCurMapScript], a
@@ -46,7 +46,7 @@ Route16Script0:
 
 Route16Script3:
 	ld a, [wd430]
-	bit 5, a
+	bit 5, a ; snorlax flag
 	jr nz, .asm_599a8
 	ld a, [wIsInBattle]
 	cp $ff

@@ -875,7 +875,7 @@ FadeOutAudio::
 	ld [wNewSoundID], a
 	jp PlaySound
 
-FadeOutAudio2:
+FadeOutAudio2::
 	ld a, 10
 	ld [wAudioFadeOutCounterReloadValue], a
 	ld [wAudioFadeOutCounter], a

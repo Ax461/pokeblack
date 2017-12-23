@@ -325,7 +325,7 @@ SpecialEnterMap:
 	and a
 	jr z, .skip
 	ld hl, wd430
-	bit 6, [hl]
+	bit 6, [hl] ; auto save flag
 	jr z, .skip
 	ld a, PLAYER_DIR_LEFT << 2
 	ld [PlayerFacingDirection], a

@@ -87,7 +87,7 @@ HallofFameRoomScript2:
 	ld a, $2
 	ld [wDestinationWarpID], a
 	ld hl, wd430
-	set 6, [hl]
+	set 6, [hl] ; auto save flag
 	jp EnterMap
 
 HallofFameRoomScript0:
