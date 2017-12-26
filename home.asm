@@ -470,7 +470,7 @@ GetMonHeader::
 	ld b,$66 ; size of Kabutops fossil and Ghost sprites
 	cp FOSSIL_KABUTOPS ; Kabutops fossil
 	jr z,.specialID
-	ld de,GhostPic
+	ld de,GhostPicFront
 	cp MON_GHOST ; Ghost
 	jr z,.specialID
 	ld de,FossilAerodactylPic
@@ -560,7 +560,7 @@ UncompressMonSprite::
 	jr z,.GotBank
 	ld a,b
 	cp GHOST
-	ld a,BANK(GhostPic)
+	ld a,BANK(GhostPicFront)
 	jr z,.GotBank
 	ld a,b
 	cp FOSSIL_KABUTOPS

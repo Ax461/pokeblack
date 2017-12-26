@@ -7022,7 +7022,7 @@ InitWildBattle:
 	ld hl, wMonHSpriteDim
 	ld a, $66
 	ld [hli], a   ; write sprite dimensions
-	ld bc, GhostPic
+	ld bc, GhostPicFront
 	ld a, c
 	ld [hli], a   ; write front sprite pointer
 	ld [hl], b
