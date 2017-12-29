@@ -12,6 +12,8 @@ KillTrainer:
 	ld [wKilledTrainersPointer], a
 	ld a, l
 	ld [wKilledTrainersPointer + 1], a
+	ld hl, wKilledEntitiesCounter
+	inc [hl]
 	ld hl, wKillTrainerFlags
 	ld a, [wKillTrainerIndex]
 	ld d, a

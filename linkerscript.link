@@ -159,6 +159,9 @@ ROMX $2C
 ROMX $2D
   "bank2D"
 
+ROMX $2E
+  "Black Pics 1"
+
 WRAM0
   "WRAM Bank 0"
 

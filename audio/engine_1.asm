@@ -779,6 +779,7 @@ Audio1_notepitch:
 	ld hl, wChannelOctaves
 	add hl, bc
 	ld b, [hl]
+	call DecreasePitch
 	call Audio1_CalculateFrequency
 	ld b, 0
 	ld hl, wChannelFlags1
@@ -1330,7 +1331,6 @@ Audio1_PlaySound::
 
 .playMusic
 	xor a
-	ld [wUnusedC000], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMusicTempo + 1], a
 	ld [wMusicWaveInstrument], a
@@ -1571,7 +1571,6 @@ Audio1_PlaySound::
 	ld a, $77
 	ld [rNR50], a ; full volume
 	xor a
-	ld [wUnusedC000], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMuteAudioAndPauseMusic], a
 	ld [wMusicTempo + 1], a

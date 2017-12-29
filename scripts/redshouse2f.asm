@@ -18,7 +18,16 @@ RedsHouse2FScript0:
 	ret
 
 RedsHouse2FScript1:
-	ret
+	ld a, [wNumHoFTeams]
+	and a
+	ret z
+	ld a, [wYCoord]
+	cp $6
+	ret nz
+	ld a, [wXCoord]
+	cp $3
+	ret nz
+	jpba FinalSequence
 
 RedsHouse2FTextPointers:
 	db "@"

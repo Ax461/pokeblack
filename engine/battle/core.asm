@@ -7372,6 +7372,8 @@ CurseEffect:
 	ld [wKilledMonsPointer], a
 	ld a, l
 	ld [wKilledMonsPointer + 1], a
+	ld hl, wKilledEntitiesCounter
+	inc [hl]
 .continue
 	ld hl, wEnemyPartyCount
 	dec [hl]

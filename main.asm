@@ -578,6 +578,7 @@ TangelaPicBack::      INCBIN "pic/monback/tangelab.pic"
 
 
 SECTION "Battle (bank 9)", ROMX
+
 INCLUDE "engine/battle/print_type.asm"
 INCLUDE "engine/battle/save_trainer_name.asm"
 INCLUDE "engine/battle/moveEffects/focus_energy_effect.asm"
@@ -652,6 +653,7 @@ MoltresPicBack::      INCBIN "pic/monback/moltresb.pic"
 
 
 SECTION "Battle (bank A)", ROMX
+
 INCLUDE "engine/battle/moveEffects/leech_seed_effect.asm"
 
 
@@ -811,6 +813,7 @@ OldManPic::            INCBIN "pic/trainer/oldman.pic"
 
 
 SECTION "Battle (bank C)", ROMX
+
 INCLUDE "engine/battle/moveEffects/mist_effect.asm"
 INCLUDE "engine/battle/moveEffects/one_hit_ko_effect.asm"
 
@@ -2101,3 +2104,14 @@ INCLUDE "engine/overworld/tombstone.asm"
 INCLUDE "data/tombstone_data.asm"
 INCLUDE "engine/overworld/killtrainer.asm"
 INCLUDE "data/killtrainer_data.asm"
+INCLUDE "engine/final_sequence.asm"
+INCLUDE "data/final_sequence_sprites.asm"
+
+
+SECTION "Black Pics 1", ROMX
+
+RhydonPicBlack::      INCBIN "pic/bmon/rhydon.2bpp"
+KangaskhanPicBlack::  INCBIN "pic/bmon/kangaskhan.2bpp"
+NidoranMPicBlack::    INCBIN "pic/bmon/nidoranm.2bpp"
+ClefairyPicBlack::    INCBIN "pic/bmon/clefairy.2bpp"
+SpearowPicBlack::     INCBIN "pic/bmon/spearow.2bpp"

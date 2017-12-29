@@ -80,8 +80,27 @@ HideSprites::
 	jr nz, .loop
 	ret
 
-INCLUDE "home/copy.asm"
+DecreasePitch::
+	ld e, a
+	ld a, [wMusicPitchModifier]
+	ld d, a
+	inc d
+	ld a, e
+.loop
+	dec d
+	ret z
+	and a
+	jr nz, .skip
+	ld a, $0c
+	inc b
+	bit 3, b ; is b = 8?
+	jr z, .skip
+	dec b
+.skip
+	dec a
+	jr .loop
 
+INCLUDE "home/copy.asm"
 
 
 SECTION "Entry", ROM0 [$100]

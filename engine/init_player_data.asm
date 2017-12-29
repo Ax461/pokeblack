@@ -44,8 +44,8 @@ START_MONEY EQU $3000
 	ld bc, wGameProgressFlagsEnd - wGameProgressFlags
 	call FillMemory ; clear all game progress flags
 
-	ld hl, wKillTrainerFlags
-	ld bc, wKillTrainerFlagsEnd - wKillTrainerFlags
+	ld hl, wSpecialDataStart
+	ld bc, wSpecialDataEnd - wSpecialDataStart
 	call FillMemory
 
 	ld a, $ff
