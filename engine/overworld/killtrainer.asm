@@ -152,7 +152,6 @@ LoadTrainers:
 	ld a, h
 	sub d
 	ld h, a
-	ld a, h
 	ld [hDividend], a
 	ld a, l
 	ld [hDividend+1], a
