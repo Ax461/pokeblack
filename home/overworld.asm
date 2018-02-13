@@ -2424,13 +2424,6 @@ LoadMapData::
 	ld a,[wd732]
 	and a,1 << 4 | 1 << 3 ; fly warp or dungeon warp
 	jr nz,.restoreRomBank
-	ld a, [wKillTrainerFlags + 26]
-	bit 3, a ; KT_CHAMPION_RIVAL
-	jr z, .continue
-	ld a, [wNumHoFTeams]
-	and a
-	call z, FadeOutAudio2
-.continue
 	ld a,[wFlags_D733]
 	bit 1,a
 	jr nz,.restoreRomBank

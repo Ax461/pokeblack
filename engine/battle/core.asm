@@ -2301,7 +2301,8 @@ DisplayBattleMenu:
 	ld hl, wd430
 	set 1, [hl] ; trainer curse flag
 	callba KillTrainer
-	call Delay3
+	ld c, 30
+	call DelayFrames
 	call GBPalBlackOut
 	ld c, 30
 	call DelayFrames
