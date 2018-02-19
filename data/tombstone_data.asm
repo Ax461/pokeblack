@@ -53,7 +53,7 @@ TombstoneTileBlocks:
 	db $A5 ; ROUTE_12
 	db $A4
 	db $A3
-	db $94
+	db $93
 	db $A2
 	db $A3
 	db $8C
