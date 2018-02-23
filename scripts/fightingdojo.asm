@@ -32,6 +32,9 @@ FightingDojoScript1:
 	xor a
 	ld [hJoyHeld], a
 	ld [wcf0d], a
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	ld a, [wYCoord]
 	cp $3
 	ret nz
