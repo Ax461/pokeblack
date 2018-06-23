@@ -16,8 +16,12 @@ LoreleiShowOrHideExitBlock:
 	ret z
 	ld hl, wBeatLorelei
 	set 1, [hl]
+	SetKillTrainerIndex KT_LORELEIS_ROOM_TRAINER_0
+	callba IsKillTrainerFlagSet
+	jr nz, .skip
 	CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
 	jr z, .blockExitToNextRoom
+.skip
 	ld a, $5
 	jr .setExitBlock
 .blockExitToNextRoom
@@ -69,6 +73,8 @@ LoreleiScript0:
 	ld [hJoyHeld], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wSimulatedJoypadStatesIndex], a
+	callba IsKillTrainerFlagSet
+	jr nz, .end
 	ld a, [wCoordIndex]
 	cp $3  ; Is player standing one tile above the exit?
 	jr c, .stopPlayerFromLeaving
@@ -83,6 +89,7 @@ LoreleiScript0:
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
+.end
 	ld a, $3
 	ld [wLoreleiCurScript], a
 	ld [wCurMapScript], a

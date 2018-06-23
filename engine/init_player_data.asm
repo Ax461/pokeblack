@@ -44,8 +44,8 @@ START_MONEY EQU $3000
 	ld bc, wGameProgressFlagsEnd - wGameProgressFlags
 	call FillMemory ; clear all game progress flags
 
-	ld hl, wKillTrainerFlags
-	ld bc, wKillTrainerFlagsEnd - wKillTrainerFlags
+	ld hl, wSpecialDataStart
+	ld bc, wSpecialDataEnd - wSpecialDataStart
 	call FillMemory
 
 	ld a, $ff
@@ -56,6 +56,18 @@ START_MONEY EQU $3000
 	ld [wTombstoneListPointer], a
 	ld a, l
 	ld [wTombstoneListPointer + 1], a
+
+	ld hl, sKilledMons
+	ld a, h
+	ld [wKilledMonsPointer], a
+	ld a, l
+	ld [wKilledMonsPointer + 1], a
+
+	ld hl, sKilledTrainers
+	ld a, h
+	ld [wKilledTrainersPointer], a
+	ld a, l
+	ld [wKilledTrainersPointer + 1], a
 
 	jp InitializeMissableObjectsFlags
 

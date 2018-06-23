@@ -80,8 +80,27 @@ HideSprites::
 	jr nz, .loop
 	ret
 
-INCLUDE "home/copy.asm"
+DecreasePitch::
+	ld e, a
+	ld a, [wMusicPitchModifier]
+	ld d, a
+	inc d
+	ld a, e
+.loop
+	dec d
+	ret z
+	and a
+	jr nz, .skip
+	ld a, $0c
+	inc b
+	bit 3, b ; is b = 8?
+	jr z, .skip
+	dec b
+.skip
+	dec a
+	jr .loop
 
+INCLUDE "home/copy.asm"
 
 
 SECTION "Entry", ROM0 [$100]
@@ -470,7 +489,7 @@ GetMonHeader::
 	ld b,$66 ; size of Kabutops fossil and Ghost sprites
 	cp FOSSIL_KABUTOPS ; Kabutops fossil
 	jr z,.specialID
-	ld de,GhostPic
+	ld de,GhostPicFront
 	cp MON_GHOST ; Ghost
 	jr z,.specialID
 	ld de,FossilAerodactylPic
@@ -560,7 +579,7 @@ UncompressMonSprite::
 	jr z,.GotBank
 	ld a,b
 	cp GHOST
-	ld a,BANK(GhostPic)
+	ld a,BANK(GhostPicFront)
 	jr z,.GotBank
 	ld a,b
 	cp FOSSIL_KABUTOPS
@@ -875,7 +894,7 @@ FadeOutAudio::
 	ld [wNewSoundID], a
 	jp PlaySound
 
-FadeOutAudio2:
+FadeOutAudio2::
 	ld a, 10
 	ld [wAudioFadeOutCounterReloadValue], a
 	ld [wAudioFadeOutCounter], a
@@ -2862,6 +2881,20 @@ YesNoChoicePokeCenter::
 	coord hl, 11, 6
 	lb bc, 8, 12
 	jr DisplayYesNoChoice
+
+EnableSRAM1:
+	ld a, SRAM_ENABLE
+	ld [MBC1SRamEnable], a
+	ld a, $1
+	ld [MBC1SRamBankingMode], a
+	ld [MBC1SRamBank], a
+	ret
+
+DisableSRAM1:
+	xor a
+	ld [MBC1SRamBankingMode], a
+	ld [MBC1SRamEnable], a
+	ret
 
 CompareHLWithBC:
 	ld a, h

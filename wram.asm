@@ -62,7 +62,7 @@ ENDM
 
 SECTION "WRAM Bank 0", WRAM0
 
-wUnusedC000:: ; c000
+wMusicPitchModifier:: ; c000
 	ds 1
 
 wSoundID:: ; c001
@@ -2574,6 +2574,8 @@ wDestinationWarpID:: ; d42f
 ; if $ff, the player's coordinates are not updated when entering the map
 	ds 1
 
+wSpecialDataStart::
+
 wd430::
 ; bit 0: curse animation playing
 ; bit 1: trainer is being cursed
@@ -2596,7 +2598,6 @@ wKillTrainerList::
 
 wKillTrainerFlags::
 	ds 42
-wKillTrainerFlagsEnd::
 
 wKillTrainerIndex::
 	ds 2
@@ -2617,7 +2618,22 @@ wTombstoneList::
 wTombstoneListPointer::
 	ds 2
 
-	ds 18
+wKilledEntitiesCounter::
+wDecreasePitchInterval::
+	ds 1
+
+wDecreasePitchCounter::
+	ds 1
+
+wKilledMonsPointer::
+	ds 2
+
+wKilledTrainersPointer::
+	ds 2
+
+wSpecialDataEnd::
+
+	ds 12
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)

@@ -1,9 +1,9 @@
 PYTHON := python2
 
-2bpp     := $(PYTHON) extras/pokemontools/gfx.py 2bpp
-1bpp     := $(PYTHON) extras/pokemontools/gfx.py 1bpp
-pic      := $(PYTHON) extras/pokemontools/pic.py compress
-includes := $(PYTHON) extras/pokemontools/scan_includes.py
+2bpp     := $(PYTHON) tools/gfx.py 2bpp
+1bpp     := $(PYTHON) tools/gfx.py 1bpp
+pic      := $(PYTHON) tools/pic.py compress
+includes := $(PYTHON) tools/scan_includes.py
 
 pokeblack_obj := audio.o main.o text.o wram.o
 

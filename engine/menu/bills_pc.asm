@@ -434,7 +434,13 @@ DisplayDepositWithdrawMenu:
 .choseDepositWithdraw
 	ld a, [wcf91]
 	cp GHOST
-	jr z, .loop
+	jr nz, .continue
+	call SaveScreenTilesToBuffer1
+	ld hl, CantDepositThatMonText
+	call PrintText
+	call LoadScreenTilesFromBuffer1
+	jr .loop
+.continue
 	scf
 	ret
 .viewStats
@@ -479,6 +485,10 @@ MonWasStoredText:
 
 CantDepositLastMonText:
 	TX_FAR _CantDepositLastMonText
+	db "@"
+
+CantDepositThatMonText:
+	TX_FAR _CantDepositThatMonText
 	db "@"
 
 BoxFullText:

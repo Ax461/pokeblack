@@ -1347,7 +1347,6 @@ Audio2_PlaySound::
 	jp nc, Audio2_2210d
 .asm_2204c
 	xor a
-	ld [wUnusedC000], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMusicTempo + 1], a
 	ld [wMusicWaveInstrument], a
@@ -1588,7 +1587,6 @@ Audio2_221f3:
 	ld a, $77
 	ld [rNR50], a
 	xor a
-	ld [wUnusedC000], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMuteAudioAndPauseMusic], a
 	ld [wMusicTempo + 1], a

@@ -36,7 +36,7 @@ EnterMap::
 	set 5, [hl]
 	set 6, [hl]
 	ld hl, wd430
-	bit 6, [hl]
+	bit 6, [hl] ; auto save flag
 	jr z, .skipSaving
 	callba SaveSAVtoSRAM
 .skipSaving
@@ -183,7 +183,7 @@ OverworldLoopLessDelay::
 
 .handleDirectionButtonPress
 	ld hl, wd430
-	res 6, [hl]
+	res 6, [hl] ; auto save flag
 	ld [wPlayerDirection],a ; new direction
 	ld a,[wd730]
 	bit 7,a ; are we simulating button presses?

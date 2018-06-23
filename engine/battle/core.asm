@@ -834,7 +834,7 @@ FaintEnemyPokemon:
 	dec a
 	jr z, .wild
 	ld a, [wd430]
-	bit 2, a
+	bit 2, a ; party shift flag
 	jr nz, .wild
 	ld a, [wEnemyMonPartyPos]
 	ld hl, wEnemyMon1HP
@@ -915,7 +915,7 @@ FaintEnemyPokemon:
 	and a
 	ret z
 	ld a, [wd430]
-	bit 0, a
+	bit 0, a ; curse flag
 	jr nz, .skip
 	ld hl, EnemyMonFaintedText
 	call PrintText
@@ -1444,7 +1444,7 @@ EnemySendOutFirstMon:
 .next
 	ld b, 0
 	ld hl, wd430
-	bit 2, [hl]
+	bit 2, [hl] ; party shift flag
 	res 2, [hl]
 	jr nz, .skip
 	dec b
@@ -2325,7 +2325,8 @@ DisplayBattleMenu:
 	ld hl, wd430
 	set 1, [hl] ; trainer curse flag
 	callba KillTrainer
-	call Delay3
+	ld c, 30
+	call DelayFrames
 	call GBPalBlackOut
 	ld c, 30
 	call DelayFrames
@@ -3260,7 +3261,7 @@ ExecutePlayerMove:
 	jr nz, .skip
 	ld hl, wd430
 	set 0, [hl] ; curse flag
-	set 5, [hl]
+	set 5, [hl] ; snorlax flag
 .skip
 	ld a, [wPlayerSelectedMove]
 	inc a
@@ -7098,7 +7099,7 @@ InitWildBattle:
 	ld hl, wMonHSpriteDim
 	ld a, $66
 	ld [hli], a   ; write sprite dimensions
-	ld bc, GhostPic
+	ld bc, GhostPicFront
 	ld a, c
 	ld [hli], a   ; write front sprite pointer
 	ld [hl], b
@@ -7431,7 +7432,26 @@ MoveEffectPointerTable:
 
 CurseEffect:
 	ld hl, wd430
-	set 2, [hl]
+	set 2, [hl] ; party shift flag
+	ld bc, sKilledMonsEnd
+	ld hl, wKilledMonsPointer
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
+	call CompareHLWithBC
+	jr z, .continue
+	call EnableSRAM1
+	ld a, [wEnemyMonSpecies2]
+	ld [hl], a
+	call DisableSRAM1
+	inc hl
+	ld a, h
+	ld [wKilledMonsPointer], a
+	ld a, l
+	ld [wKilledMonsPointer + 1], a
+	ld hl, wKilledEntitiesCounter
+	inc [hl]
+.continue
 	ld hl, wEnemyPartyCount
 	dec [hl]
 	ld a, [wEnemyMonPartyPos]

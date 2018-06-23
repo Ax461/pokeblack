@@ -23,12 +23,13 @@ RedsHouse2FScript1:
 	ret z
 
 	ld hl, wYCoord
-	ld a, [hli]	
+	ld a, [hli]
 	cp 6
 	ret nz
 	ld a, [hl]
 	cp 3
 	ret nz
+	callba FinalSequence
 	call _Finale
 	ret
 
@@ -36,16 +37,16 @@ _Finale:
 	call GBPalBlackOut
 	call ClearScreen
 	ld c, 100
-; placeholder for cursed mon/trainer sequence
-; though putting sprites on a black background
-; is impossible...
+
+; final seq. goes here?
+
 	call DelayFrames
 	ld a, [wd430]
 	set 7, a
 	ld [wd430], a
 	ld a, $1F
 	ld [wCurOpponent], a
-	
+
 	ld hl, wPlayerName
 	ld de, wBattleMonNick
 	ld bc, NAME_LENGTH
@@ -73,6 +74,6 @@ _Finale:
 	ld [wCurEnemyLVL], a
 	ld [wBattleMonLevel], a
 	ret
-	
+
 RedsHouse2FTextPointers:
 	db "@"

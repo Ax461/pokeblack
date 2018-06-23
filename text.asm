@@ -1807,6 +1807,11 @@ _CantDepositLastMonText::
 	line "the last #MON!"
 	prompt
 
+_CantDepositThatMonText::
+	text "You can't deposit"
+	line "that #MON!"
+	prompt
+
 _BoxFullText::
 	text "Oops! This Box is"
 	line "full of #MON."
