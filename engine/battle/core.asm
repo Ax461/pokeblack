@@ -1625,7 +1625,7 @@ TryRunningFromBattle:
 	call IsGhostBattle
 	jp z, .canEscape ; jump if it's a ghost battle
 	ld a, [wd430]
-	bit 7, a		; final battle?
+	bit 7, a		; vs. Ghost?
 	jp nz, .cantEscape
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_SAFARI
@@ -6064,7 +6064,7 @@ DoFinalCurse:
 .loop
 	nop			; freeze here
 	jr .loop
-	
+
 .text
 	text "Enemy GHOST"
 	line "used CURSE!"

@@ -35,14 +35,17 @@ RedsHouse2FScript1:
 
 _Finale:
 	call GBPalBlackOut
+	ld a, $FF
+	ld [hWY], a
+	ld a, $E3		; kinda hacky
+	ld [rLCDC], a
+	ld a, 7
+	ld [rWX], a
 	call ClearScreen
 	ld c, 100
-
-; final seq. goes here?
-
 	call DelayFrames
 	ld a, [wd430]
-	set 7, a
+	set 7, a		; final vs. Ghost flag
 	ld [wd430], a
 	ld a, $1F
 	ld [wCurOpponent], a
