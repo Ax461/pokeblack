@@ -1,4 +1,4 @@
-PYTHON := python2
+PYTHON := python2.7
 
 2bpp     := $(PYTHON) tools/gfx.py 2bpp
 1bpp     := $(PYTHON) tools/gfx.py 1bpp

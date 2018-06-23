@@ -6066,7 +6066,7 @@ DoFinalCurse:
 	jr .loop
 
 .text
-	text "Enemy GHOST"
+	text "GHOST"
 	line "used CURSE!"
 	prompt
 

@@ -1505,6 +1505,11 @@ _TrainerWantsToFightText::
 	line "to fight!"
 	prompt
 
+_GhostWantsFightText::
+	text "GHOST wants"
+	line "to fight!"
+	prompt
+
 _UnveiledGhostText::
 	text "SILPH SCOPE"
 	line "unveiled the"
@@ -2304,10 +2309,10 @@ _HitWithRecoilText::
 	bit 7, a
 	jr z, .noghost
 	ld hl, .ghosted
-	call PrintText	
+	call PrintText
 .noghost
 	ld hl, .main
-	call PrintText	
+	call PrintText
 	jp TextScriptEnd
 .main
 	text "<USER>'s"

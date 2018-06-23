@@ -50,7 +50,7 @@ PrintBeginningBattleText:
 	call PrintText
 	jr .done
 .isFinal
-	ld hl, EnemyAppearedText
+	ld hl, GhostWantsFightText
 	call PrintText
 	jr .done
 .isMarowak
@@ -86,6 +86,10 @@ HookedMonAttackedText:
 
 EnemyAppearedText:
 	TX_FAR _EnemyAppearedText
+	db "@"
+
+GhostWantsFightText:
+	TX_FAR _GhostWantsFightText
 	db "@"
 
 TrainerWantsToFightText:
