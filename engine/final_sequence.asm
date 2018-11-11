@@ -17,9 +17,10 @@ FinalSequence:
 	call UpdateSprites
 	ld hl, wTileMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, $6c
+	ld a, $6b
 	call FillMemory	; black out the screen
-	call Delay3
+	ld c, 60
+	call DelayFrames
 	call GBPalNormal
 	coord hl, 6, 5
 	xor a
@@ -38,9 +39,9 @@ FinalSequence:
 	pop bc
 	dec b
 	jr nz, .y
-	ld a, [wKilledEntitiesCounter]
-	ld [hDividend], a
 	ld a, [wKilledEntitiesCounter + 1]
+	ld [hDividend], a
+	ld a, [wKilledEntitiesCounter]
 	ld [hDividend + 1], a
 	xor a
 	ld [hDividend + 2], a
