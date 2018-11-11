@@ -441,9 +441,9 @@ FightIntroBackMon:
 FightIntroBackMonEnd:
 
 FightIntroFrontMon:
-	INCBIN "gfx/intro_nido_1.6x6.2bpp"
-	INCBIN "gfx/intro_nido_2.6x6.2bpp"
-	INCBIN "gfx/intro_nido_3.6x6.2bpp"
+	INCBIN "gfx/intro_nido_1.2bpp"
+	INCBIN "gfx/intro_nido_2.2bpp"
+	INCBIN "gfx/intro_nido_3.2bpp"
 
 FightIntroFrontMonEnd:
 

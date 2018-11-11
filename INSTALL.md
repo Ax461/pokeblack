@@ -1,7 +1,8 @@
 # Linux
 
-	sudo apt-get install make gcc bison git python
+	sudo apt-get install make git gcc
 
+	sudo apt-get install byacc flex pkg-config libpng-dev
 	git clone https://github.com/rednex/rgbds
 	cd rgbds
 	sudo make install
