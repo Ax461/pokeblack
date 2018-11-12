@@ -67,7 +67,7 @@ DisplayKilledMons:
 	push hl
 	ld [wWholeScreenPaletteMonSpecies], a
 	dec a
-	ld hl, BlackPokemon
+	ld hl, FinalSequencePokemonPointers
 	ld bc, 3		; pointer size
 	call AddNTimes
 	call PlaceSprite
@@ -85,7 +85,7 @@ DisplayKilledTrainers:
 	ret z
 	push hl
 	dec a
-	ld hl, BlackTrainers
+	ld hl, FinalSequenceTrainerPointers
 	ld bc, 3
 	call AddNTimes
 	call PlaceSprite

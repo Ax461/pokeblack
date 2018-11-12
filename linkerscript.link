@@ -160,7 +160,34 @@ ROMX $2D
   "bank2D"
 
 ROMX $2E
-  "Black Pics 1"
+  "Final Sequence Pics 1"
+
+ROMX $2F
+  "Final Sequence Pics 2"
+
+ROMX $30
+  "Final Sequence Pics 3"
+
+ROMX $31
+  "Final Sequence Pics 4"
+
+ROMX $32
+  "Final Sequence Pics 5"
+
+ROMX $33
+  "Final Sequence Pics 6"
+
+ROMX $34
+  "Final Sequence Pics 7"
+
+ROMX $35
+  "Final Sequence Pics 8"
+
+ROMX $36
+  "Final Sequence Pics 9"
+
+ROMX $37
+  "Final Sequence Pics 10"
 
 WRAM0
   "WRAM Bank 0"
