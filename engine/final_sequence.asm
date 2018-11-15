@@ -39,10 +39,15 @@ FinalSequence:
 	pop bc
 	dec b
 	jr nz, .y
+	ld bc, 0
 	ld a, [wKilledEntitiesCounter + 1]
+	ld l, a
 	ld [hDividend], a
 	ld a, [wKilledEntitiesCounter]
+	ld h, a
 	ld [hDividend + 1], a
+	call CompareHLWithBC
+	jr z, .skip
 	xor a
 	ld [hDividend + 2], a
 	ld [hDividend + 3], a
@@ -56,7 +61,10 @@ FinalSequence:
 	ld [wDecreasePitchCounter], a
 	call EnableSRAM1
 	call DisplayKilledMons
-	jr DisplayKilledTrainers
+	call DisplayKilledTrainers
+	call DisableSRAM1
+.skip
+	jp GhostBattle
 
 DisplayKilledMons:
 	ld hl, sKilledMons
