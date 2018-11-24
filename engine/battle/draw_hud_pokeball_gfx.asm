@@ -59,6 +59,8 @@ SetupPokeballs:
 	ld de, wBuffer
 .monloop
 	push af
+	and a
+	ret z
 	call PickPokeball
 	inc de
 	pop af

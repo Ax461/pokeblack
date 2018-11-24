@@ -1495,6 +1495,11 @@ _TrainerWantsToFightText::
 	line "to fight!"
 	prompt
 
+_GhostWantsToFightText::
+	text "GHOST wants"
+	line "to fight!"
+	prompt
+
 _UnveiledGhostText::
 	text "SILPH SCOPE"
 	line "unveiled the"

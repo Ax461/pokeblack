@@ -174,7 +174,7 @@ LoadTrainers:
 	ld b, a
 	ld a, [hli]
 	cp b
-	jr nz, .done    ; not for current map anymore
+	jr nz, .done               ; not for current map anymore
 	ld a, [hli]
 	ld [de], a                 ; write (map-local) sprite ID
 	inc de

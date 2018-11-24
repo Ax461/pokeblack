@@ -2106,6 +2106,7 @@ INCLUDE "engine/overworld/killtrainer.asm"
 INCLUDE "data/killtrainer_data.asm"
 INCLUDE "engine/final_sequence.asm"
 INCLUDE "data/final_sequence.asm"
+INCLUDE "engine/ghost_battle.asm"
 
 
 SECTION "Final Sequence Pics 1", ROMX
