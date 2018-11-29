@@ -283,6 +283,8 @@ DisplayBattleMenu2:
 	call DisplayListMenuID
 	ld a, [wCurrentMenuItem]
 	ld [wBagSavedMenuItem], a
+	xor a
+	ld [wMenuWatchMovingOutOfBounds], a
 	jr .done
 .runMenu
 	ld hl, CantEscapeText2
