@@ -1500,6 +1500,23 @@ _GhostWantsToFightText::
 	line "to fight!"
 	prompt
 
+_GhostThreeDotsText::
+	text "GHOST: …"
+	prompt
+
+_GhostUsedCurseText::
+	text "GHOST"
+	line "used CURSE!@@"
+
+_PlayerUsedStruggleText::
+	text "<PLAYER>"
+	line "used STRUGGLE!@@"
+
+_PlayerHitWithRecoilText::
+	text "<PLAYER>'s"
+	line "hit with recoil!"
+	prompt
+
 _UnveiledGhostText::
 	text "SILPH SCOPE"
 	line "unveiled the"
