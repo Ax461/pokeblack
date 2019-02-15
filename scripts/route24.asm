@@ -59,8 +59,8 @@ Route24Script4:
 
 Route24Script3:
 	SetEvent EVENT_BEAT_ROUTE24_ROCKET
-	callba IsKillTrainerFlagSet
-	jp nz, Route24Script_513c0
+	CheckKillTrainerFlag KT_ROUTE_24_ROCKET
+	jr nz, Route24Script_513c0
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, Route24Script_513c0

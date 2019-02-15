@@ -932,6 +932,8 @@ OaksLabMonChoiceMenu:
 	ld a, GHOST
 	ld [wcf91], a
 	call AddPartyMon
+	ld a, %11000001
+	ld [wPartyMon2PP], a
 	ld hl, wd72e
 	set 3, [hl]
 	ld a, $fc

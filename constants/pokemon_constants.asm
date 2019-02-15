@@ -30,7 +30,7 @@ const_value = 1
 	const BLASTOISE    ; $1C
 	const PINSIR       ; $1D
 	const TANGELA      ; $1E
-	const GHOST        ; $1F
+	const MISSINGNO_1F ; $1F
 	const MISSINGNO_20 ; $20
 	const GROWLITHE    ; $21
 	const ONIX         ; $22
@@ -155,7 +155,7 @@ const_value = 1
 	const BULBASAUR    ; $99
 	const VENUSAUR     ; $9A
 	const TENTACRUEL   ; $9B
-	const MISSINGNO_9C ; $9C
+	const GHOST        ; $9C
 	const GOLDEEN      ; $9D
 	const SEAKING      ; $9E
 	const MISSINGNO_9F ; $9F

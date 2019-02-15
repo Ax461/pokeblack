@@ -80,27 +80,8 @@ HideSprites::
 	jr nz, .loop
 	ret
 
-DecreasePitch::
-	ld e, a
-	ld a, [wMusicPitchModifier]
-	ld d, a
-	inc d
-	ld a, e
-.loop
-	dec d
-	ret z
-	and a
-	jr nz, .skip
-	ld a, $0c
-	inc b
-	bit 3, b ; is b = 8?
-	jr z, .skip
-	dec b
-.skip
-	dec a
-	jr .loop
-
 INCLUDE "home/copy.asm"
+
 
 
 SECTION "Entry", ROM0 [$100]
@@ -238,9 +219,9 @@ LoadFrontSpriteByMonIndex::
 
 PlayCry::
 ; Play monster a's cry.
-	call GetCryData
-	cp CRY_SFX_END
+	cp GHOST
 	ret z
+	call GetCryData
 	call PlaySound
 	jp WaitForSoundToFinish
 
@@ -578,10 +559,6 @@ UncompressMonSprite::
 	ld a,BANK(MewPicFront)
 	jr z,.GotBank
 	ld a,b
-	cp GHOST
-	ld a,BANK(GhostPicFront)
-	jr z,.GotBank
-	ld a,b
 	cp FOSSIL_KABUTOPS
 	ld a,BANK(FossilKabutopsPic)
 	jr z,.GotBank
@@ -894,7 +871,7 @@ FadeOutAudio::
 	ld [wNewSoundID], a
 	jp PlaySound
 
-FadeOutAudio2::
+FadeOutAudioToSilence::
 	ld a, 10
 	ld [wAudioFadeOutCounterReloadValue], a
 	ld [wAudioFadeOutCounter], a
@@ -909,26 +886,15 @@ FadeOutAudio2::
 ; this function is used to display sign messages, sprite dialog, etc.
 ; INPUT: [hSpriteIndexOrTextID] = sprite ID or text ID
 DisplayTextID::
+	ld a, [wCurMap]
+	cp CELADON_PRIZE_ROOM
+	jr nz, .skip
 	ld a, [wNumHoFTeams]
 	and a
 	jr z, .skip
-	ld a, [wCurMap]
-	cp CELADON_PRIZE_ROOM
-	ret z
-	cp VIRIDIAN_SCHOOL
-	jr nz, .continue
 	ld a, [hSpriteIndexOrTextID]
-	cp $1f
-	ret z
-.continue
-	ld a, [wCurMapTileset]
-	cp POKECENTER
-	jr nz, .skip
-	ld a, [hSpriteIndexOrTextID]
-	cp $0f
-	jr c, .skip
-	cp $1a
-	ret c
+	and a
+	ret nz
 .skip
 	ld a,[hLoadedROMBank]
 	push af
@@ -2587,9 +2553,6 @@ IsItemInBag::
 
 DisplayPokedex::
 	ld [wd11e], a
-	ld a, [wNumHoFTeams]
-	and a
-	ret nz
 	jpba _DisplayPokedex
 
 SetSpriteFacingDirectionAndDelay::

@@ -14,8 +14,7 @@ AgathaShowOrHideExitBlock:
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
-	SetKillTrainerIndex KT_AGATHAS_ROOM_TRAINER_0
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_AGATHAS_ROOM_TRAINER_0
 	jr nz, .skip
 	CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
 	jr z, .blockExitToNextRoom
@@ -71,10 +70,10 @@ AgathaScript0:
 	ld [hJoyHeld], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wSimulatedJoypadStatesIndex], a
+	CheckKillTrainerFlag KT_AGATHAS_ROOM_TRAINER_0
+	jr nz, .end
 	ld a, [wCoordIndex]
 	cp $3  ; Is player standing one tile above the exit?
-	callba IsKillTrainerFlagSet
-	jr nz, .end
 	jr c, .stopPlayerFromLeaving
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_AGATHAS_ROOM
 	jr z, AgathaScriptWalkIntoRoom
@@ -117,12 +116,11 @@ AgathaScript2:
 	cp $ff
 	jp z, ResetAgathaScript
 	ld a, $1
-	ld [wGaryCurScript], a
 	ld [hSpriteIndexOrTextID], a
-	callba IsKillTrainerFlagSet
+	ld [wGaryCurScript], a
+	CheckKillTrainerFlag KT_AGATHAS_ROOM_TRAINER_0
 	jp nz, ResetAgathaScript
-	call DisplayTextID
-	ret
+	jp DisplayTextID
 
 AgathaTextPointers:
 	dw AgathaText1

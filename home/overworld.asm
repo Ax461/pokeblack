@@ -38,6 +38,7 @@ EnterMap::
 	ld hl, wd430
 	bit 6, [hl] ; auto save flag
 	jr z, .skipSaving
+	res 6, [hl]
 	callba SaveSAVtoSRAM
 .skipSaving
 	xor a
@@ -182,8 +183,6 @@ OverworldLoopLessDelay::
 
 
 .handleDirectionButtonPress
-	ld hl, wd430
-	res 6, [hl] ; auto save flag
 	ld [wPlayerDirection],a ; new direction
 	ld a,[wd730]
 	bit 7,a ; are we simulating button presses?
@@ -680,11 +679,6 @@ CheckMapConnections::
 	ld a,h
 	ld [wCurrentTileBlockMapViewPointer + 1],a
 .loadNewMap ; load the connected map that was entered
-	ld a, [wCurMap]
-	cp ROUTE_10
-	call z, LoadTilesetTilePatternData
-	cp CERULEAN_CITY
-	call z, LoadTilesetTilePatternData
 	call SetWarpFlag
 	call LoadMapHeader
 	call PlayDefaultMusicFadeOutCurrent
@@ -768,13 +762,12 @@ MapEntryAfterBattle::
 	call UpdateSprites
 	call Delay3
 .skip
-	ld a,[wMapPalOffset]
-	and a
-	call z,GBFadeInFromWhite
-	call LoadGBPal
 	xor a
 	ld [PlayerIntraAnimFrameCounter], a
-	ret
+	ld a, [wMapPalOffset]
+	and a
+	jp z, GBFadeInFromWhite
+	jp LoadGBPal
 
 HandleBlackOut::
 ; For when all the player's pokemon faint.
@@ -1487,12 +1480,12 @@ LoadCurrentMapView::
 	ret
 
 AdvancePlayerSprite::
-	ld a, [wd736]
-	bit 6, a ; check if jumping down ledge
-	jr nz, .skip
 	ld a, [wNumHoFTeams]
 	and a
 	jr z, .skip
+	ld a, [wd736]
+	bit 6, a ; check if jumping down ledge
+	jr nz, .skip
 	ld a, [wd430]
 	xor $10 ; half speed flag
 	ld [wd430], a
@@ -2343,21 +2336,20 @@ LoadMapHeader::
 	ld [MBC1RomBank],a
 	ld a, [wNumHoFTeams]
 	and a
-	jr z, .loadMusicID
-	ld a, $d4
+	jr z, .loadMapMusic
+	ld a, MUSIC_LAVENDER
 	ld [wMapMusicSoundID], a
-	ld a, $2 ; AUDIO_1
-	ld [wMapMusicROMBank], a
+	ld a, BANK(Music_Lavender)
 	jr .end
-.loadMusicID
+.loadMapMusic
 	ld hl, MapSongBanks
 	add hl,bc
 	add hl,bc
 	ld a,[hli]
 	ld [wMapMusicSoundID],a ; music 1
 	ld a,[hl]
-	ld [wMapMusicROMBank],a ; music 2
 .end
+	ld [wMapMusicROMBank],a ; music 2
 	pop af
 	ld [hLoadedROMBank],a
 	ld [MBC1RomBank],a

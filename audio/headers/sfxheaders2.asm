@@ -256,9 +256,6 @@ SFX_Battle_14::
 SFX_Vine_Whip::
 	audio SFX_Vine_Whip, Ch7
 
-SFX_Battle_16::
-	audio SFX_Battle_16, Ch7
-
 SFX_Battle_17::
 	audio SFX_Battle_17, Ch7
 

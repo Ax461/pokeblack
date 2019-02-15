@@ -22,8 +22,8 @@ FinalSequence:
 	ld c, 60
 	call DelayFrames
 	call GBPalNormal
-	coord hl, 6, 5
 	xor a
+	coord hl, 6, 5
 	lb bc, 7, 7
 	ld de, SCREEN_WIDTH
 .y
@@ -39,31 +39,25 @@ FinalSequence:
 	pop bc
 	dec b
 	jr nz, .y
-	ld bc, 0
-	ld a, [wKilledEntitiesCounter + 1]
-	ld l, a
-	ld [hDividend], a
 	ld a, [wKilledEntitiesCounter]
-	ld h, a
+	ld [hDividend], a
+	ld a, [wKilledEntitiesCounter + 1]
 	ld [hDividend + 1], a
-	call CompareHLWithBC
-	jr z, .skip
 	xor a
 	ld [hDividend + 2], a
 	ld [hDividend + 3], a
+	inc a
+	ld [wDecreasePitchCounter], a
 	ld a, TARGET_PITCH
 	ld [hDivisor], a
 	ld b, 2
 	call Divide
-	ld a, [hDividend + 3]
+	ld a, [hQuotient + 3]
 	ld [wDecreasePitchInterval], a
-	ld a, 1
-	ld [wDecreasePitchCounter], a
 	call EnableSRAM1
 	call DisplayKilledMons
 	call DisplayKilledTrainers
 	call DisableSRAM1
-.skip
 	jp GhostBattle
 
 DisplayKilledMons:
@@ -76,7 +70,7 @@ DisplayKilledMons:
 	ld [wWholeScreenPaletteMonSpecies], a
 	dec a
 	ld hl, FinalSequencePokemonPointers
-	ld bc, 3		; pointer size
+	ld bc, 3
 	call AddNTimes
 	call PlaceSprite
 	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
@@ -142,12 +136,11 @@ IncreasePitchModifier:
 	ret
 
 SetPaletteAndDelay:
-	ld c, 22
-	ld a, [wOnSGB]
-	and a
-	jr z, .continue
 	ld c, 0
 	call RunPaletteCommand
+	ld c, 22
+	and a
+	jr z, .done
 	ld c, 12
-.continue
+.done
 	jp DelayFrames

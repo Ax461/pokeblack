@@ -58,7 +58,7 @@ CeladonGameCornerScript1:
 	jp z, CeladonGameCornerScript_48c07
 	ld a, $f0
 	ld [wJoyIgnore], a
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_GAME_CORNER_ROCKET
 	jr nz, CeladonGameCornerScript_48c07
 	ld a, $d
 	ld [hSpriteIndexOrTextID], a

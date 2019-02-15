@@ -113,13 +113,13 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld [wEvoNewSpecies], a
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_TRAINER
-	jr nz, .skip
+	jr nz, .skipClearingScreen
 	coord hl, 14, 0
 	lb bc, 7, 7
 	call ClearScreenArea
 	call Delay3
 	call GBPalNormal
-.skip
+.skipClearingScreen
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName

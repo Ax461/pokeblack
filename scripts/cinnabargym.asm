@@ -141,7 +141,7 @@ CinnabarGymScript3:
 	ld [wJoyIgnore], a
 
 CinnabarGymScript3_75857:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_CINNABAR_GYM_LEADER
 	jr nz, .asm_75880
 	ld a, $a
 	ld [hSpriteIndexOrTextID], a
@@ -190,7 +190,7 @@ CinnabarGymTextPointers:
 CinnabarGymScript_758b7:
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
-	add $e7
+	add KT_CINNABAR_GYM_LEADER - 1
 	ld [wKillTrainerIndex + 1], a
 	xor a
 	ld [wKillTrainerIndex], a

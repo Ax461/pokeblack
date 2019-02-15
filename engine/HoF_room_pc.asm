@@ -13,12 +13,11 @@ HallOfFamePC:
 	ld a, %11000000
 	ld [rBGP], a
 	call EnableLCD
-	call FadeOutAudio2
+	call FadeOutAudioToSilence
 	ld c, 240
 	call DelayFrames
 	ld hl, ManyYearsLaterText
-	call PrintText
-	ret
+	jp PrintText
 
 ManyYearsLaterText:
 	TX_FAR _ManyYearsLaterText

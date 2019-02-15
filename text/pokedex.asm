@@ -298,9 +298,6 @@ _TangelaDexEntry::
 	next "shake as it walks"
 	dex
 
-_GhostDexEntry::
-	dex
-
 _GrowlitheDexEntry::
 	text "Very protective"
 	next "of its territory."
@@ -1279,6 +1276,9 @@ _TentacruelDexEntry::
 	page "they are extended"
 	next "to ensnare and"
 	next "immobilize prey"
+	dex
+
+_GhostDexEntry::
 	dex
 
 _GoldeenDexEntry::

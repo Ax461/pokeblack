@@ -2,10 +2,10 @@ DecrementPP:
 ; after using a move, decrement pp in battle and (if not transformed?) in party
 	ld a, [de]
 	cp a, STRUGGLE
-	ret z
-	cp a, CURSE
 	ret z                ; if the pokemon is using "struggle", there's nothing to do
 	                     ; we don't decrement PP for "struggle"
+	cp a, CURSE
+	ret z
 	ld hl, wPlayerBattleStatus1
 	ld a, [hli]          ; load the wPlayerBattleStatus1 pokemon status flags and increment hl to load the
 	                     ; wPlayerBattleStatus2 status flags later

@@ -99,12 +99,12 @@ InitializeMissableObjectsFlags:
 
 ; tests if current sprite is a missable object that is hidden/has been removed
 IsObjectHidden:
-	ld a, [hCurrentSpriteOffset]
-	swap a
-	ld b, a
 	ld a, [wNumHoFTeams]
 	and a
 	jr nz, .hidden
+	ld a, [hCurrentSpriteOffset]
+	swap a
+	ld b, a
 	ld hl, wMissableObjectList
 .loop
 	ld a, [hli]

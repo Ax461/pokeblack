@@ -10,38 +10,20 @@ GhostBattle:
 	call ClearScreen
 	ld c, 60
 	call DelayFrames
-	callba PlayBattleMusic
+	ld c, BANK(Music_GhostBattle)
+	ld a, MUSIC_GHOST_BATTLE
+	call PlayMusic
 	ld hl, wLetterPrintingDelayFlags
 	res 1, [hl]
-	call InitGhostBattleVariables
-	call InitGhostBattleData
+	call InitGhostBattleVariablesAndData
 	call LoadGhostPic
 	call SlidePlayerAndGhostSilhouettesOnScreen
-	ld c, 20
-	call DelayFrames
-	ld a, 1
-	ld [wIsInBattle], a
 	callba DrawAllPokeballs
 	ld hl, GhostWantsToFightText
 	call PrintText
-	xor a
-	ld [hAutoBGTransferEnabled], a
 	callba PrintEmptyString
-	call SaveScreenTilesToBuffer1
-	call ClearScreen
-	ld a, $98
-	ld [hAutoBGTransferDest + 1], a
-	ld a, 1
-	ld [hAutoBGTransferEnabled], a
-	call Delay3
-	ld a, $9c
-	ld [hAutoBGTransferDest + 1], a
-	call LoadScreenTilesFromBuffer1
 	coord hl, 9, 7
 	lb bc, 5, 10
-	call ClearScreenArea
-	coord hl, 1, 0
-	lb bc, 4, 10
 	call ClearScreenArea
 	call ClearSprites
 	callba DrawEnemyHUDAndHPBar
@@ -69,11 +51,10 @@ DisplayGhostBattleMenu:
 	ld a, " "
 	Coorda 15, 14
 	Coorda 15, 16
-	ld b, $9
 	ld hl, wTopMenuItemY
 	ld a, $e
 	ld [hli], a
-	ld a, b
+	ld a, $9
 	ld [hli], a
 	inc hl
 	inc hl
@@ -87,11 +68,10 @@ DisplayGhostBattleMenu:
 	ld a, " "
 	Coorda 9, 14
 	Coorda 9, 16
-	ld b, $f
 	ld hl, wTopMenuItemY
 	ld a, $e
 	ld [hli], a
-	ld a, b
+	ld a, $f
 	ld [hli], a
 	inc hl
 	inc hl
@@ -114,7 +94,7 @@ DisplayGhostBattleMenu:
 	cp 2
 	jp z, .done
 	cp 3
-	jr z, .runMenu
+	jr z, .run
 	ld hl, PlayerUsedStruggleText
 	call PrintText
 	ld a, 5
@@ -159,7 +139,7 @@ DisplayGhostBattleMenu:
 	xor a
 	ld [wMenuWatchMovingOutOfBounds], a
 	jr .done
-.runMenu
+.run
 	ld hl, CantEscapeText2
 	call PrintText
 .done
@@ -209,13 +189,11 @@ SlidePlayerAndGhostSilhouettesOnScreen:
 	ld [rWY], a
 	xor a
 	ld [hSCY], a
+	ld [hAutoBGTransferEnabled], a
 	dec a
 	ld [wUpdateSpritesEnabled], a
 	call Delay3
-	xor a
-	ld [hAutoBGTransferEnabled], a
-	ld b, $70
-	ld c, $90
+	ld bc, $7090
 	ld a, c
 	ld [hSCX], a
 	call DelayFrame
@@ -229,8 +207,7 @@ SlidePlayerAndGhostSilhouettesOnScreen:
 	call SetScrollXForSlidingPlayerBodyLeft2
 	inc b
 	inc b
-	ld h, $0
-	ld l, $60
+	ld hl, $0060
 	call SetScrollXForSlidingPlayerBodyLeft2
 	call SlidePlayerHeadLeft2
 	ld a, c
@@ -240,21 +217,16 @@ SlidePlayerAndGhostSilhouettesOnScreen:
 	jr nz, .slideSilhouettesLoop
 	ld a, 1
 	ld [hAutoBGTransferEnabled], a
-	ld a, $31
-	ld [hStartTileID], a
 	coord hl, 1, 5
 	predef CopyUncompressedPicToTilemap
 	xor a
 	ld [hWY], a
 	ld [rWY], a
-	inc a
-	ld [hAutoBGTransferEnabled], a
 	call Delay3
 	ld a, GHOST
 	ld [wEnemyMonSpecies2], a
 	ld b, SET_PAL_BATTLE
-	call RunPaletteCommand
-	jp HideSprites
+	jp RunPaletteCommand
 
 SlidePlayerHeadLeft2:
 	push bc
@@ -284,17 +256,8 @@ SetScrollXForSlidingPlayerBodyLeft2:
 
 LoadGhostPic:
 	callba LoadHudAndHpBarAndStatusTilePatterns
-	ld a, 1
-	ld [hAutoBGTransferEnabled], a
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
-	call ClearSprites
-	call ClearScreen
-	xor a
-	ld [hAutoBGTransferEnabled], a
-	ld [hWY], a
-	ld [rWY], a
-	ld [hTilesetType], a
 	ld hl, wMonHSpriteDim
 	ld a, $66
 	ld [hli], a
@@ -302,7 +265,7 @@ LoadGhostPic:
 	ld a, c
 	ld [hli], a
 	ld [hl], b
-	ld a, MON_GHOST
+	ld a, GHOST
 	ld [wcf91], a
 	ld de, vFrontPic
 	call LoadMonFrontSprite
@@ -361,28 +324,28 @@ DrawPlayerHUDAndHPBar2:
 	ld b, SET_PAL_BATTLE
 	jp RunPaletteCommand
 
-InitGhostBattleVariables:
+InitGhostBattleVariablesAndData:
 	xor a
+	ld [wBattleMonSpecies], a
 	ld [wBattleAndStartSavedMenuItem], a
 	ld [hStartTileID], a
+	inc a
+	ld [wIsInBattle], a
 	ld hl, wPlayerHPBarColor
 	ld [hli], a
 	ld [hl], a
 	ld a, 20
 	ld [wBattleMonHP + 1], a
 	ld [wBattleMonMaxHP + 1], a
-	ret
-
-InitGhostBattleData:
 	ld hl, wPartyMons
 	ld bc, wPartyMon2 - wPartyMon1
 .nextMon
 	ld a, [hl]
 	cp GHOST
-	jr z, .continue
+	jr z, .found
 	add hl, bc
 	jr .nextMon
-.continue
+.found
 	push hl
 	push hl
 	ld a, [hl]

@@ -43,7 +43,7 @@ CeladonGymScript3:
 	ld [wJoyIgnore], a
 
 CeladonGymText_48963:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_CELADON_GYM_LEADER
 	jr nz, .asm_4898c
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a

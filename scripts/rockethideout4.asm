@@ -54,8 +54,7 @@ RocketHideout4ScriptPointers:
 	dw RocketHideout4Script3
 
 RocketHideout4Script0:
-	SetKillTrainerIndex KT_ROCKET_HIDEOUT_4_TRAINER_2
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_ROCKET_HIDEOUT_4_TRAINER_2
 	jr z, .end
 	ld a, $0f
 	ld [Sprite09MapX], a
@@ -184,8 +183,7 @@ RocketHideout4Text10:
 
 RocketHideout4Text2:
 	TX_ASM
-	SetKillTrainerIndex KT_MT_MOON_3_TRAINER_1
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_MT_MOON_3_TRAINER_1
 	ld hl, RocketHideout4TrainerHeader3
 	jr nz, .done
 	ld hl, RocketHideout4TrainerHeader0

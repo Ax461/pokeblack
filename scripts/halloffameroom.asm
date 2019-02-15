@@ -91,7 +91,7 @@ HallofFameRoomScript2:
 	jp EnterMap
 
 HallofFameRoomScript0:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_CHAMPION_RIVAL
 	ret nz
 	ld a, $ff
 	ld [wJoyIgnore], a

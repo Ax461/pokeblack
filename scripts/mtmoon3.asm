@@ -87,7 +87,7 @@ MtMoon3Script3:
 	ret
 
 MtMoon3Script4:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_MT_MOON_EXIT_SUPER_NERD
 	ret nz
 	ld a, $1
 	ld [hSpriteIndex], a

@@ -29,7 +29,7 @@ PokedexEntryPointers:
 	dw BlastoiseDexEntry
 	dw PinsirDexEntry
 	dw TangelaDexEntry
-	dw GhostDexEntry
+	dw MissingNoDexEntry
 	dw MissingNoDexEntry
 	dw GrowlitheDexEntry
 	dw OnixDexEntry
@@ -154,7 +154,7 @@ PokedexEntryPointers:
 	dw BulbasaurDexEntry
 	dw VenusaurDexEntry
 	dw TentacruelDexEntry
-	dw MissingNoDexEntry
+	dw GhostDexEntry
 	dw GoldeenDexEntry
 	dw SeakingDexEntry
 	dw MissingNoDexEntry
@@ -403,13 +403,6 @@ TangelaDexEntry:
 	db 3,3
 	dw 770
 	TX_FAR _TangelaDexEntry
-	db "@"
-
-GhostDexEntry:
-	db "@"
-	db 0,0
-	dw 0
-	TX_FAR _GhostDexEntry
 	db "@"
 
 GrowlitheDexEntry:
@@ -1096,6 +1089,13 @@ TentacruelDexEntry:
 	db 5,3
 	dw 1210
 	TX_FAR _TentacruelDexEntry
+	db "@"
+
+GhostDexEntry:
+	db "@"
+	db 0,0
+	dw 0
+	TX_FAR _GhostDexEntry
 	db "@"
 
 GoldeenDexEntry:

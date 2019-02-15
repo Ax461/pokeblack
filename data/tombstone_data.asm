@@ -1,5 +1,4 @@
 TombstoneTileBlocks:
-	db $00
 	db $9E ; CERULEAN_CITY
 	db $86 ; ROUTE_3
 	db $80

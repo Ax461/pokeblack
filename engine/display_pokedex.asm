@@ -1,4 +1,7 @@
 _DisplayPokedex:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	ld hl, wd730
 	set 6, [hl]
 	predef ShowPokedexData

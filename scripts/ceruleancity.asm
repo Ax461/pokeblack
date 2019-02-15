@@ -26,7 +26,7 @@ CeruleanCityScript4:
 	ld a, $f0
 	ld [wJoyIgnore], a
 	SetEvent EVENT_BEAT_CERULEAN_ROCKET_THIEF
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_CERULEAN_CITY_ROCKET_THIEF
 	jr nz, .skip
 	ld a, $2
 	ld [hSpriteIndexOrTextID], a
@@ -294,9 +294,9 @@ CeruleanCityText2:
 	call SaveEndBattleTextPointers
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
-	SetKillTrainerIndex KT_CERULEAN_CITY_ROCKET_THIEF
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+	SetKillTrainerIndex KT_CERULEAN_CITY_ROCKET_THIEF
 	ld a, $4
 	ld [wCeruleanCityCurScript], a
 	jp TextScriptEnd

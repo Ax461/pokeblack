@@ -366,8 +366,7 @@ _DexRatingText::
 	done
 
 _ManyYearsLaterText::
-	text "Many years"
-	line "later..."
+	text "Many years later…"
 	done
 
 _GymStatueText1::

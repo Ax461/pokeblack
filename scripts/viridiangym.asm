@@ -138,7 +138,7 @@ ViridianGymScript3:
 	ld [wJoyIgnore], a
 
 ViridianGymScript3_74995:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_VIRIDIAN_GYM_LEADER
 	jr nz, .asm_749be
 	ld a, $c
 	ld [hSpriteIndexOrTextID], a

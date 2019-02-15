@@ -1,5 +1,5 @@
 MapKTPointers:
-	dw MapKT00
+	dw MapKTXX
 	dw MapKTXX
 	dw MapKTXX
 	dw MapKT03
@@ -252,8 +252,6 @@ MapKTPointers:
 
 MapKTXX:
 	db $FF,$FF
-MapKT00:
-	db $00,$00
 MapKT03:
 	db CERULEAN_CITY,$2
 MapKT0E:

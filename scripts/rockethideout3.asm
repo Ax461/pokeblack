@@ -195,8 +195,7 @@ RocketHideout3Text2:
 
 RocketHideout3BattleTxt:
 	TX_ASM
-	SetKillTrainerIndex KT_GAME_CORNER_ROCKET
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_GAME_CORNER_ROCKET
 	ld hl, RocketHideout3BattleTxtAlt
 	jr nz, .done
 	ld hl, RocketHideout3BattleTxtNormal

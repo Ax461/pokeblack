@@ -117,7 +117,6 @@ DisplayTitleScreen:
 	call SaveScreenTilesToBuffer2
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
-
 	ld a, (vBGMap0 + $300) / $100
 	call TitleScreenCopyTileMapToVRAM
 	call SaveScreenTilesToBuffer1

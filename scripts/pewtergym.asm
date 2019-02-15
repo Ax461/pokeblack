@@ -43,7 +43,7 @@ PewterGymScript3:
 	ld [wJoyIgnore], a
 
 PewterGymScript_5c3df:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_PEWTER_GYM_LEADER
 	jr nz, .asm_5c408
 	ld a, $4
 	ld [hSpriteIndexOrTextID], a

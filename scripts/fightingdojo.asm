@@ -74,7 +74,7 @@ FightingDojoScript3:
 	ld a, $f0
 	ld [wJoyIgnore], a
 	SetEventRange EVENT_BEAT_KARATE_MASTER, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_KARATE_MASTER
 	jr nz, .skip
 	ld a, $8
 	ld [hSpriteIndexOrTextID], a
@@ -260,8 +260,7 @@ FightingDojoText6:
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
-	SetKillTrainerIndex KT_KARATE_MASTER
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_KARATE_MASTER
 	jr nz, .GetMon
 	ld hl, OtherHitmonText
 	call PrintText
@@ -298,8 +297,7 @@ FightingDojoText7:
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
-	SetKillTrainerIndex KT_KARATE_MASTER
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_KARATE_MASTER
 	jr nz, .GetMon
 	ld hl, OtherHitmonText
 	call PrintText

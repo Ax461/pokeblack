@@ -62,7 +62,7 @@ VermilionGymScript3:
 	ld [wJoyIgnore], a
 
 VermilionGymScript_5caaa:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_VERMILION_GYM_LEADER
 	jr nz, .asm_5cad3
 	ld a, $6
 	ld [hSpriteIndexOrTextID], a

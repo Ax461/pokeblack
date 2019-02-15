@@ -43,7 +43,7 @@ SaffronGymScript3:
 	ld [wJoyIgnore], a
 
 SaffronGymText_5d068:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_SAFFRON_GYM_LEADER
 	jr nz, .asm_5d091
 	ld a, $a
 	ld [hSpriteIndexOrTextID], a

@@ -5,23 +5,24 @@ KillTrainer:
 	ld h, a
 	call EnableSRAM1
 	ld a, [wTrainerClass]
-	ld [hl], a
+	ld [hli], a
 	call DisableSRAM1
-	inc hl
 	ld a, h
 	ld [wKilledTrainersPointer], a
 	ld a, l
 	ld [wKilledTrainersPointer + 1], a
-	ld hl, wKilledEntitiesCounter
+	ld hl, wKilledEntitiesCounter + 1
 	inc [hl]
-	ld hl, wKillTrainerFlags
+	jr nz, .notCarry
+	dec hl
+	inc [hl]
+.notCarry
 	ld a, [wKillTrainerIndex]
 	ld d, a
 	ld a, [wKillTrainerIndex + 1]
 	ld e, a
 	ld b, FLAG_SET
-	call KillTrainerFlagAction
-	jp UpdateSprites
+	jr KillTrainerFlagAction
 
 IsKillTrainerFlagInHLSet:
 	ld a, [hli]
@@ -29,14 +30,12 @@ IsKillTrainerFlagInHLSet:
 	ld a, [hli]
 	ld d, a
 	push hl
-	ld hl, wKillTrainerFlags
 	ld b, FLAG_TEST
 	call KillTrainerFlagAction
 	pop hl
 	ret
 
 IsKillTrainerFlagSet:
-	ld hl, wKillTrainerFlags
 	ld a, [wKillTrainerIndex]
 	ld d, a
 	ld a, [wKillTrainerIndex + 1]
@@ -44,7 +43,9 @@ IsKillTrainerFlagSet:
 	ld b, FLAG_TEST
 
 KillTrainerFlagAction::
-; Perform action b on bit de in flag array hl.
+; Perform action b on bit de in flag array wKillTrainerFlags
+
+	ld hl, wKillTrainerFlags
 
 	; get index within the byte
 	ld a, e
@@ -115,12 +116,10 @@ IsTrainerKilled:
 	ld a, [hli]
 	inc hl
 	jr nz, .loop
-	dec hl
 	ld d, a
-	ld a, [hl]
-	ld e, a
+	dec hl
+	ld e, [hl]
 	ld b, FLAG_TEST
-	ld hl, wKillTrainerFlags
 	call KillTrainerFlagAction
 	ld a, c
 	and a
@@ -142,7 +141,7 @@ LoadTrainers:
 	ld h, [hl]
 	ld l, a
 	push hl
-	ld de, MapKT00             ; calculate difference between out pointer and the base pointer
+	ld de, MapKTXX             ; calculate difference between out pointer and the base pointer
 	ld a, l
 	sub e
 	jr nc, .noCarry
@@ -151,21 +150,10 @@ LoadTrainers:
 	ld l, a
 	ld a, h
 	sub d
-	ld h, a
-	ld [hDividend], a
-	ld a, l
-	ld [hDividend+1], a
-	xor a
-	ld [hDividend+2], a
-	ld [hDividend+3], a
-	ld a, $2
-	ld [hDivisor], a
-	ld b, $2
-	call Divide                ; divide difference by 2, resulting in the global offset (number of trainers before ours)
-	ld a, [hDividend+2]
+	srl a
+	rr l                       ; divide difference by 2, resulting in the global offset (number of trainers before ours)
 	ld b, a
-	ld a, [hDividend+3]
-	ld c, a
+	ld c, l
 	pop hl
 	push bc
 	ld de, wKillTrainerList
@@ -193,36 +181,3 @@ LoadTrainers:
 	ld [de], a                 ; write sentinel
 	pop bc
 	ret
-
-ReplaceTiles:
-	ld a, [wNumHoFTeams]
-	and a
-	jr z, .continue
-	ld a, [wCurMapTileset]
-	cp POKECENTER
-	jr nz, .continue
-	ld hl, PokecenterAlt_GFX
-	ld de, vTileset + $240
-	ld bc, $20
-	call CopyData
-	ld hl, PokecenterAlt_GFX + $20
-	ld de, vTileset + $390
-	ld bc, $10
-	call CopyData
-	ld hl, PokecenterAlt_GFX + $30
-	ld de, vTileset + $340
-	ld bc, $20
-	call CopyData
-	ld hl, PokecenterAlt_GFX + $50
-	ld de, vTileset + $3c0
-	ld bc, $10
-	jp CopyData
-.continue
-	ld a, [wCurMap]
-	cp ROUTE_10
-	ret nz
-.replace
-	ld hl, TombstonesAlt_GFX
-	ld de, vTileset + $680
-	ld bc, $40
-	jp CopyData

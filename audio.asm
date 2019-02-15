@@ -532,8 +532,6 @@ Music_DoLowHealthAlarm::
 	db $00,$00,$00,$80
 
 
-INCLUDE "engine/menu/bills_pc.asm"
-
 INCLUDE "audio/engine_2.asm"
 
 
@@ -610,7 +608,6 @@ INCLUDE "audio/music/routes3.asm"
 INCLUDE "audio/music/routes4.asm"
 INCLUDE "audio/music/indigoplateau.asm"
 INCLUDE "audio/music/pallettown.asm"
-INCLUDE "audio/music/unusedsong.asm"
 INCLUDE "audio/music/cities1.asm"
 INCLUDE "audio/sfx/get_item1_1.asm"
 INCLUDE "audio/music/museumguy.asm"
@@ -644,6 +641,7 @@ INCLUDE "audio/sfx/caught_mon.asm"
 INCLUDE "audio/music/defeatedtrainer.asm"
 INCLUDE "audio/music/defeatedwildmon.asm"
 INCLUDE "audio/music/defeatedgymleader.asm"
+INCLUDE "audio/music/ghostbattle.asm"
 
 
 SECTION "Music 3", ROMX, BANK[AUDIO_3]

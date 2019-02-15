@@ -779,7 +779,7 @@ Audio1_notepitch:
 	ld hl, wChannelOctaves
 	add hl, bc
 	ld b, [hl]
-	call DecreasePitch
+	call Audio1_DecreasePitch
 	call Audio1_CalculateFrequency
 	ld b, 0
 	ld hl, wChannelFlags1
@@ -1693,6 +1693,25 @@ Audio1_PlaySound::
 	ld [rNR50], a ; full volume
 .done
 	ret
+
+Audio1_DecreasePitch:
+	ld d, a
+	ld a, [wMusicPitchModifier]
+	inc a
+	ld e, a
+	ld a, d
+.loop
+	dec e
+	ret z
+	dec a
+	cp $ff
+jr nz, .loop
+	ld a, $0b
+	inc b
+	bit 3, b
+	jr z, .loop
+	dec b
+	jr .loop
 
 Audio1_CryEndchannel:
 	endchannel

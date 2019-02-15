@@ -1,40 +1,6 @@
 PlaceTombstones:
-	ld a, [wNumHoFTeams]
-	and a
-	jr z, .tombstones
-	ld a, [wCurMap]
-	cp ROUTE_2
-	jr z, .route2
-	ld a, [wCurMap]
-	cp VIRIDIAN_SCHOOL
-	jr z, .viridianSchool
-	cp VERMILION_DOCK
-	jr z, .vermilionDock
-	jr .tombstones
-.route2
-	ld a, $6d
-	ld [wOverworldMap + 133], a
-	ret
-.viridianSchool
-	ld a, $23
-	ld [wOverworldMap + 44], a
-	ld a, $24
-	ld [wOverworldMap + 54], a
-	ret
-.vermilionDock
-	ld a, $17
-	ld [wOverworldMap + 90], a
-	ld a, $01
-	ld [wOverworldMap + 88], a
-	ld [wOverworldMap + 91], a
-	ld a, $0d
-	ld [wOverworldMap + 89], a
-	ld [wOverworldMap + 108], a
-	ld [wOverworldMap + 109], a
-	ld [wOverworldMap + 110], a
-	ld [wOverworldMap + 111], a
-	ret
-.tombstones
+	call ReplaceTileBlocks
+	ret c
 	ld a, [wCurMap]
 	ld b, a
 	ld a, [wTombstoneListMap]
@@ -72,7 +38,6 @@ PlaceTombstones:
 	ld [wBuffer + 2], a
 	ld b, FLAG_TEST
 	push hl
-	ld hl, wKillTrainerFlags
 	call KillTrainerFlagAction
 	ld a, c
 	and a
@@ -122,7 +87,6 @@ PlaceTombstones:
 .done
 	ld hl, wd430
 	res 3, [hl] ; warp flag
-
 	ld a, [wCurMap]
 	ld b, a
 	ld hl, ConnectionTombstoneTileBlocks
@@ -155,8 +119,48 @@ PlaceTombstones:
 	pop hl
 	jr .next2
 
+ReplaceTileBlocks:
+	ld a, [wNumHoFTeams]
+	and a
+	ret z
+	ld a, [wCurMap]
+	cp ROUTE_2
+	jr z, .route2
+	ld a, [wCurMap]
+	cp VIRIDIAN_SCHOOL
+	jr z, .viridianSchool
+	cp VERMILION_DOCK
+	jr z, .vermilionDock
+	or a
+	ret
+.route2
+	ld a, $6d
+	ld [wOverworldMap + 133], a
+	jr .done
+.viridianSchool
+	ld a, $23
+	ld [wOverworldMap + 44], a
+	ld a, $24
+	ld [wOverworldMap + 54], a
+	jr .done
+.vermilionDock
+	ld a, $17
+	ld [wOverworldMap + 90], a
+	ld a, $01
+	ld [wOverworldMap + 88], a
+	ld [wOverworldMap + 91], a
+	ld a, $0d
+	ld [wOverworldMap + 89], a
+	ld [wOverworldMap + 108], a
+	ld [wOverworldMap + 109], a
+	ld [wOverworldMap + 110], a
+	ld [wOverworldMap + 111], a
+.done
+	scf
+	ret
+
 LoadTileBlock:
-	ld hl, TombstoneTileBlocks
+	ld hl, TombstoneTileBlocks - 1
 	ld a, [wBuffer + 1]
 	ld d, a
 	ld a, [wBuffer + 2]
@@ -164,7 +168,6 @@ LoadTileBlock:
 	add hl, de
 	ld a, [hl]
 	ld [wNewTileBlockID], a
-
 	ld a, [wBuffer]
 	ld b, a
 	ld a, [wCurMap]
@@ -205,13 +208,13 @@ LoadTileBlock:
 ReplaceTileBlock2:
 	ld hl, wOverworldMap
 	ld a, [wCurMapWidth]
-	add $6
+	add 6
 	ld e, a
-	ld d, $0
+	ld d, 0
 	add hl, de
 	add hl, de
 	add hl, de
-	ld e, $3
+	ld e, 3
 	add hl, de
 	ld e, a
 	ld a, b
@@ -226,3 +229,32 @@ ReplaceTileBlock2:
 	ld a, [wNewTileBlockID]
 	ld [hl], a
 	ret
+
+ReplaceTiles:
+	ld a, [wCurMap]
+	cp ROUTE_10
+	jr nz, .checkPokecenter
+	ld hl, TombstonesAlt_GFX
+	ld de, vTileset + $680
+	ld bc, $40
+	jp CopyData
+.checkPokecenter
+	ld a, [wNumHoFTeams]
+	and a
+	ret z
+	ld a, [wCurMapTileset]
+	cp POKECENTER
+	ret nz
+	ld hl, PokecenterAlt_GFX
+	ld de, vTileset + $240
+	ld bc, $20
+	call CopyData
+	ld de, vTileset + $390
+	ld bc, $10
+	call CopyData
+	ld de, vTileset + $340
+	ld bc, $20
+	call CopyData
+	ld de, vTileset + $3c0
+	ld bc, $10
+	jp CopyData

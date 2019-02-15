@@ -49,24 +49,21 @@ START_MONEY EQU $3000
 	call FillMemory
 
 	ld a, $ff
-	ld [wTombstoneList], a
+	ld [wTombstoneListMap], a
 
-	ld hl, wTombstoneList
-	ld a, h
+	ld a, wTombstoneList >> 8
 	ld [wTombstoneListPointer], a
-	ld a, l
+	ld a, wTombstoneList & $ff
 	ld [wTombstoneListPointer + 1], a
 
-	ld hl, sKilledMons
-	ld a, h
+	ld a, sKilledMons >> 8
 	ld [wKilledMonsPointer], a
-	ld a, l
+	ld a, sKilledMons & $ff
 	ld [wKilledMonsPointer + 1], a
 
-	ld hl, sKilledTrainers
-	ld a, h
+	ld a, sKilledTrainers >> 8
 	ld [wKilledTrainersPointer], a
-	ld a, l
+	ld a, sKilledTrainers & $ff
 	ld [wKilledTrainersPointer + 1], a
 
 	jp InitializeMissableObjectsFlags

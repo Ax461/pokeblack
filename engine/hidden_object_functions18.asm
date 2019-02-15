@@ -48,6 +48,9 @@ GymStatueText2:
 	db "@"
 
 PrintBenchGuyText:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	call EnableAutoTextBoxDrawing
 	ld hl, BenchGuyTextPointers
 	ld a, [wCurMap]

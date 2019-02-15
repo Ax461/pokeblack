@@ -14,8 +14,7 @@ BrunoShowOrHideExitBlock:
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
-	SetKillTrainerIndex KT_BRUNOS_ROOM_TRAINER_0
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_BRUNOS_ROOM_TRAINER_0
 	jr nz, .skip
 	CheckEvent EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
 	jr z, .blockExitToNextRoom
@@ -71,9 +70,9 @@ BrunoScript0:
 	ld [hJoyHeld], a
 	ld [wSimulatedJoypadStatesEnd], a
 	ld [wSimulatedJoypadStatesIndex], a
-	ld a, [wCoordIndex]
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_BRUNOS_ROOM_TRAINER_0
 	jr nz, .end
+	ld a, [wCoordIndex]
 	cp $3  ; Is player standing one tile above the exit?
 	jr c, .stopPlayerFromLeaving
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_BRUNOS_ROOM
@@ -116,7 +115,7 @@ BrunoScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetBrunoScript
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_BRUNOS_ROOM_TRAINER_0
 	jp nz, ResetBrunoScript
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a

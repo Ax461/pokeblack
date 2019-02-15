@@ -909,11 +909,11 @@ FaintEnemyPokemon:
 	ret z
 	ld a, [wd430]
 	bit 0, a ; curse flag
-	jr nz, .skip
+	jr nz, .skipPrintingFaintedText
 	ld hl, EnemyMonFaintedText
 	call PrintText
 	call PrintEmptyString
-.skip
+.skipPrintingFaintedText
 	call SaveScreenTilesToBuffer1
 	ld hl, wd430
 	res 0, [hl] ; curse flag
@@ -1051,12 +1051,12 @@ TrainerBattleVictory:
 	call PrintText
 	ld a, [wBattleMonSpecies]
 	cp GHOST
-	jr nz, .skip
+	jr nz, .normalBattle
 	ld a, BATTLE_TYPE_TRAINER
 	ld [wBattleType], a
 	call SaveScreenTilesToBuffer1
 	call DisplayBattleMenu
-.skip
+.normalBattle
 	ld hl, wd430
 	res 3, [hl] ; warp flag
 	ld de, wPlayerMoney + 2
@@ -2277,15 +2277,15 @@ DisplayBattleMenu:
 ; the "FIGHT" menu was selected
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_TRAINER
-	jr z, .skip
+	jr z, .curseTrainer
 	xor a
 	ld [wNumRunAttempts], a
 	jp LoadScreenTilesFromBuffer1 ; restore saved screen and return
-.skip
+.curseTrainer
 	call MoveSelectionMenu
 	ld a, [hJoyHeld]
 	bit 1, a ; B button pressed?
-	jp nz, DisplayBattleMenu
+	jr nz, .done
 	call LoadScreenTilesFromBuffer1
 	call PrintMonName1Text
 	ld bc, KT_NOT_KILLABLE
@@ -2294,10 +2294,11 @@ DisplayBattleMenu:
 	ld a, [wKillTrainerIndex + 1]
 	ld l, a
 	call CompareHLWithBC
-	jr nz, .continue
+	jr nz, .playTrainerCurseAnimation
 	call PrintButItFailedTextDelay
+.done
 	jp DisplayBattleMenu
-.continue
+.playTrainerCurseAnimation
 	ld hl, wd430
 	set 1, [hl] ; trainer curse flag
 	callba KillTrainer
@@ -2431,12 +2432,12 @@ UseBagItem:
 
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_TRAINER
-	jr nz, .skip
+	jr nz, .notTrainerBattle
 	call LoadScreenTilesFromBuffer2
 	call Delay3
 	call GBPalNormal
 	jp DisplayBattleMenu
-.skip
+.notTrainerBattle
 	call GBPalNormal
 	and a ; reset carry
 	ret
@@ -2528,12 +2529,12 @@ PartyMenuOrRockOrRun:
 	predef StatusScreen2
 	ld a, [wBattleType]
 	cp BATTLE_TYPE_TRAINER
-	jr nz, .skip
+	jr nz, .notTrainerBattle
 	call GetTrainerInformation
-	callab ReadTrainer
+	callba ReadTrainer
 	call _LoadTrainerPic
 	jp .partyMenuWasSelected
-.skip
+.notTrainerBattle
 ; now we need to reload the enemy mon pic
 	ld a, [wEnemyBattleStatus2]
 	bit HasSubstituteUp, a ; does the enemy mon have a substitute?
@@ -3222,11 +3223,11 @@ ExecutePlayerMove:
 	ld [hWhoseTurn], a ; set player's turn
 	ld a, [wBattleMonSpecies]
 	cp GHOST
-	jr nz, .skip
+	jr nz, .notCurse
 	ld hl, wd430
 	set 0, [hl] ; curse flag
 	set 5, [hl] ; snorlax flag
-.skip
+.notCurse
 	ld a, [wPlayerSelectedMove]
 	inc a
 	jp z, ExecutePlayerMoveDone ; for selected move = FF, skip most of player's turn
@@ -3426,10 +3427,8 @@ MultiHitText:
 	db "@"
 
 ExecutePlayerMoveDone:
-	push hl
 	ld hl, wd430
 	res 0, [hl] ; curse flag
-	pop hl
 	xor a
 	ld [wActionResultOrTookBattleTurn],a
 	ld b,1
@@ -3444,10 +3443,10 @@ PrintGhostText:
 	jr nz,.Ghost
 	ld a, [wBattleMonSpecies]
 	cp GHOST
-	jr nz, .skip
+	jr nz, .notCurse
 	call PrintMonName1Text
 	jp PrintButItFailedTextDelay
-.skip
+.notCurse
 	ld a,[wBattleMonStatus] ; player’s turn
 	and a,SLP | (1 << FRZ)
 	ret nz
@@ -5803,11 +5802,11 @@ ExecuteEnemyMove:
 .enemyHasNoSpecialConditions
 	ld a, [wBattleMonSpecies]
 	cp GHOST
-	jr nz, .skip
+	jr nz, .notCurse
 	ld hl, EnemyScaredText
 	call PrintText
 	jp ExecuteEnemyMoveDone
-.skip
+.notCurse
 	ld hl, wEnemyBattleStatus1
 	bit ChargingUp, [hl] ; is the enemy charging up for attack?
 	jr nz, EnemyCanExecuteChargingMove ; if so, jump
@@ -7240,6 +7239,7 @@ LoadMonBackPic:
 
 JumpMoveEffect:
 	call _JumpMoveEffect
+	ld b, $0
 	ld a, [wd430]
 	bit 0, a ; curse flag
 	ret nz
@@ -7361,19 +7361,24 @@ CurseEffect:
 	ld l, [hl]
 	ld h, a
 	call CompareHLWithBC
-	jr z, .continue
+	jr z, .shiftEnemyParty
 	call EnableSRAM1
 	ld a, [wEnemyMonSpecies2]
-	ld [hl], a
+	ld [hli], a
 	call DisableSRAM1
-	inc hl
 	ld a, h
 	ld [wKilledMonsPointer], a
 	ld a, l
 	ld [wKilledMonsPointer + 1], a
-	ld hl, wKilledEntitiesCounter
+	ld hl, wKilledEntitiesCounter + 1
 	inc [hl]
-.continue
+	jr nz, .shiftEnemyParty
+	dec hl
+	inc [hl]
+.shiftEnemyParty
+	ld a, [wIsInBattle]
+	dec a
+	ret z
 	ld hl, wEnemyPartyCount
 	dec [hl]
 	ld a, [wEnemyMonPartyPos]
@@ -7386,7 +7391,6 @@ CurseEffect:
 	push hl
 	ld a, d
 	ld hl, wEnemyMons
-	ld bc, wEnemyMon2 - wEnemyMon1
 	call AddNTimes
 	ld d, h
 	ld e, l
@@ -7395,12 +7399,11 @@ CurseEffect:
 	call CopyData
 	ld hl, wEnemyPartyMons
 	ld a, [wEnemyMonPartyPos]
-	inc a
 	add l
 	ld l, a
 	ld d, h
 	ld e, l
-	dec e
+	inc hl
 	ld a, [wEnemyMonPartyPos]
 	ld b, a
 	ld a, PARTY_LENGTH

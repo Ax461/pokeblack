@@ -24,7 +24,6 @@ GaryScriptPointers:
 	dw GaryScript10
 
 GaryScript0:
-	SetKillTrainerIndex KT_CHAMPION_RIVAL
 	ret
 
 GaryScript1:
@@ -97,14 +96,14 @@ GaryScript3:
 	jp z, ResetGaryScript
 	call UpdateSprites
 	SetEvent EVENT_BEAT_CHAMPION_RIVAL
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_CHAMPION_RIVAL
 	jr z, .skip
-	call FadeOutAudio2
-	ld hl, wMissableObjectFlags + 26
-	set 6, [hl]
 	xor a
 	ld [wGaryCurScript], a
-	ret
+	call FadeOutAudioToSilence
+	ld a, HS_HALL_OF_FAME_OAK
+	ld [wMissableObjectIndex], a
+	jpba HideObject
 .skip
 	ld a, $f0
 	ld [wJoyIgnore], a
@@ -243,8 +242,6 @@ GaryScript10:
 	ret
 
 GaryScript_760c8:
-	callba IsKillTrainerFlagSet
-	ret nz
 	ld a, $f0
 	ld [wJoyIgnore], a
 	call DisplayTextID

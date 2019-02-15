@@ -1,4 +1,7 @@
 PrintNotebookText:
+	ld a, [wNumHoFTeams]
+	and a
+	ret nz
 	call EnableAutoTextBoxDrawing
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a

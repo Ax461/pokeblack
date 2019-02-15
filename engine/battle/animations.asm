@@ -389,13 +389,13 @@ MoveAnimation:
 
 .moveAnimation
 	ld a, [wAnimationID]
-	cp $a5 ; Curse animation ID
-	jp z, .skip
+	cp CURSE
+	jr z, .playAnimation
 	; check if battle animations are disabled in the options
 	ld a,[wOptions]
 	bit 7,a
 	jr nz, .animationsDisabled
-.skip
+.playAnimation
 	call ShareMoveAnimations
 	call PlayAnimation
 	jr .next4
@@ -1078,11 +1078,11 @@ AnimationDelay10:
 	jp DelayFrames
 
 AnimationDelay30:
-	ld c,30
+	ld c, 30
 	jp DelayFrames
 
 AnimationPlayDistortedCry:
-	ld a,[wEnemyMonSpecies2]
+	ld a, [wEnemyMonSpecies2]
 	jp PlayCry
 
 ; calls a function with the turn flipped from player to enemy or vice versa
@@ -1189,24 +1189,15 @@ AnimationFlashScreen:
 	ret
 
 AnimationClearScreen:
-	ld c,27
+	ld c, 30
 	call DelayFrames
-
 	coord hl, 0, 0
 	lb bc, 4, 11
 	call ClearScreenArea
-
 	coord hl, 12, 0
 	lb bc, 7, 7
 	call ClearScreenArea
-
-	coord hl, 1, 14
-	lb bc, 3, 11
-	call ClearScreenArea
-
-	call Delay3
-
-	ret
+	jpba PrintEmptyString
 
 AnimationDarkScreenPalette:
 ; Changes the screen's palette to a dark palette.

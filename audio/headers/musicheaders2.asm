@@ -18,3 +18,6 @@ Music_DefeatedWildMon::
 
 Music_DefeatedGymLeader::
 	audio Music_DefeatedGymLeader, Ch0, Ch1, Ch2
+
+Music_GhostBattle::
+	audio Music_GhostBattle, Ch0, Ch1, Ch2, Ch3

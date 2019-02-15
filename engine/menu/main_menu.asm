@@ -321,20 +321,8 @@ SpecialEnterMap:
 	ld hl, wd732
 	set 0, [hl] ; count play time
 	call ResetPlayerSpriteData
-	ld a, [wNumHoFTeams]
-	and a
-	jr z, .checkChampionRivalFlag
-	ld hl, wd430
-	bit 6, [hl] ; auto save flag
-	jr z, .skip
-	ld a, PLAYER_DIR_LEFT << 2
-	ld [PlayerFacingDirection], a
-	jr .skip
-.checkChampionRivalFlag
-	ld a, [wKillTrainerFlags + 26]
-	bit 3, a ; KT_CHAMPION_RIVAL
-	call nz, FadeOutAudio2
-.skip
+	CheckKillTrainerFlag KT_CHAMPION_RIVAL
+	call nz, FadeOutAudioToSilence
 	ld c, 20
 	call DelayFrames
 	ld a, [wEnteringCableClub]

@@ -203,6 +203,7 @@ INCLUDE "engine/battle/moveEffects/conversion_effect.asm"
 INCLUDE "engine/battle/moveEffects/haze_effect.asm"
 INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/random.asm"
+INCLUDE "engine/menu/bills_pc.asm"
 
 
 SECTION "NPC Sprites 2", ROMX
@@ -651,7 +652,6 @@ JynxPicBack::         INCBIN "pic/monback/jynxb.pic"
 MoltresPicFront::     INCBIN "pic/mon/moltres.pic"
 MoltresPicBack::      INCBIN "pic/monback/moltresb.pic"
 
-
 SECTION "Battle (bank A)", ROMX
 
 INCLUDE "engine/battle/moveEffects/leech_seed_effect.asm"
@@ -884,7 +884,6 @@ INCLUDE "engine/slot_machine.asm"
 INCLUDE "engine/overworld/pewter_guys.asm"
 INCLUDE "engine/multiply_divide.asm"
 INCLUDE "engine/game_corner_slots.asm"
-
 
 SECTION "bankE", ROMX
 
@@ -1875,6 +1874,8 @@ Interior_Block:    INCBIN "gfx/blocksets/interior.bst"
 
 SECTION "bank1A", ROMX
 
+INCLUDE "engine/battle/decrement_pp.asm"
+
 Version_GFX:       INCBIN "gfx/blackversion.1bpp" ; 10 tiles
 Version_GFXEnd:
 
@@ -1918,7 +1919,6 @@ Ship_Block:        INCBIN "gfx/blocksets/ship.bst"
 
 SECTION "bank1C", ROMX
 
-INCLUDE "engine/battle/decrement_pp.asm"
 INCLUDE "engine/gamefreak.asm"
 INCLUDE "engine/hall_of_fame.asm"
 INCLUDE "engine/overworld/healing_machine.asm"
@@ -2093,7 +2093,6 @@ INCLUDE "data/animations.asm"
 INCLUDE "engine/evolution.asm"
 
 INCLUDE "engine/overworld/elevator.asm"
-
 
 SECTION "bank2D", ROMX
 

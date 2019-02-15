@@ -44,7 +44,7 @@ FuchsiaGymScript3:
 	ld [wJoyIgnore], a
 
 FuchsiaGymScript3_75497:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_FUCHSIA_GYM_LEADER
 	jr nz, .asm_754c0
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a

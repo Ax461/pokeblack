@@ -43,7 +43,7 @@ CeruleanGymScript3:
 	ld [wJoyIgnore], a
 
 CeruleanGymScript_5c70d:
-	callba IsKillTrainerFlagSet
+	CheckKillTrainerFlag KT_CERULEAN_GYM_LEADER
 	jr nz, .asm_5c736
 	ld a, $5
 	ld [hSpriteIndexOrTextID], a
