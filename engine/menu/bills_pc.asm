@@ -164,6 +164,12 @@ BillsPCMenu:
 	bit 1, a
 	jp nz, ExitBillsPC ; b button
 	call PlaceUnfilledArrowMenuCursor
+	ld a, [wNumHoFTeams]
+	and a
+	jr z, .boxNotEmpty
+	xor a
+	ld [wNumInBox], a
+.boxNotEmpty
 	ld a, [wCurrentMenuItem]
 	ld [wParentMenuItem], a
 	and a
@@ -250,13 +256,9 @@ BillsPCDeposit:
 	jp BillsPCMenu
 
 BillsPCWithdraw:
-	ld a, [wNumHoFTeams]
-	and a
-	jr nz, .boxEmpty
 	ld a, [wNumInBox]
 	and a
 	jr nz, .boxNotEmpty
-.boxEmpty
 	ld hl, NoMonText
 	call PrintText
 	jp BillsPCMenu
