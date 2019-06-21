@@ -1435,14 +1435,12 @@ EnemySendOutFirstMon:
 	ld [wWhichPokemon],a
 	jr .next3
 .next
-	ld b, 0
-	ld hl, wd430
-	bit 2, [hl] ; party shift flag
-	res 2, [hl]
-	jr nz, .skip
-	dec b
+	ld b, $FF
 .next2
 	inc b
+	ld hl, wd430
+	bit 2, [hl] ; party shift flag
+	jr nz, .skip
 	ld a,[wEnemyMonPartyPos]
 	cp b
 	jr z,.next2
@@ -1461,6 +1459,8 @@ EnemySendOutFirstMon:
 	or c
 	jr z,.next2
 .next3
+	ld hl, wd430
+	res 2, [hl] ; party shift flag
 	ld a,[wWhichPokemon]
 	ld hl,wEnemyMon1Level
 	ld bc,wEnemyMon2 - wEnemyMon1
