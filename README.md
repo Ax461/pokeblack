@@ -1,18 +1,26 @@
 # Pokémon Black
 
-This rom hack is based on the disassembly of Pokémon Red.
+Faithful recreation of the [**pokemon black creepypasta**][creepypasta], based on the Pokemon Red disassemby.
 
-The current developers are trying to recreate the game based on the [**pokemon black creepypasta**][creepypasta] as close as possible to the original story.
+It is possible to download a BPS patch for this hack on [**romhacking.net**][patch].
 
-To set up the repository, see [**INSTALL.md**](INSTALL.md).
+To set up the repository, see [**INSTALL.md**](INSTALL.md). Note that this project is based on an old version of the pokered disassembly, so the istructions may be outdated.
 
 ## See also
 
- * Disassembly of [**Pokémon Red/Blue**][pokered]
- * Disassembly of [**Pokémon Crystal**][pokecrystal]
- * irc: [**freenode#pret**][irc]
+ * **Discord**: [pret][discord]
+ * **IRC:** [freenode#pret][irc]
 
-[pokered]: https://github.com/pret/pokered
-[pokecrystal]: https://github.com/pret/pokecrystal
-[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
+Other disassembly projects:
+
+ * Disassembly of [**Pokémon Red/Blue**][pokered]
+ * Disassembly of [**Pokémon Yellow**][pokeyellow]
+ * Disassembly of [**Pokémon Crystal**][pokecrystal]
+
 [creepypasta]: http://tinycartridge.com/post/866743831/super-creepy-pok%C3%A9mon-hack
+[patch]: https://www.romhacking.net/hacks/4577
+[discord]: https://discord.gg/d5dubZ3
+[irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
+[pokered]: https://github.com/pret/pokered
+[pokeyellow]: https://github.com/pret/pokeyellow
+[pokecrystal]: https://github.com/pret/pokecrystal
