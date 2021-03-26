@@ -4,7 +4,7 @@ Faithful recreation of the [**pokemon black creepypasta**][creepypasta], based o
 
 It is possible to download a BPS patch for this hack on [**romhacking.net**][patch].
 
-To set up the repository, see [**INSTALL.md**](INSTALL.md). Note that this project is based on an old version of the pokered disassembly, so the istructions may be outdated.
+To set up the repository, see [**INSTALL.md**](INSTALL.md). Note that this project is based on an old version of the pokered disassembly, so the instructions may be outdated.
 
 ## See also
 
