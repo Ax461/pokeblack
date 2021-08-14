@@ -329,6 +329,8 @@ InitGhostBattleVariablesAndData:
 	ld [wBattleMonSpecies], a
 	ld [wBattleAndStartSavedMenuItem], a
 	ld [hStartTileID], a
+	ld [wBattleMonHP], a
+	ld [wBattleMonMaxHP], a
 	inc a
 	ld [wIsInBattle], a
 	ld hl, wPlayerHPBarColor
