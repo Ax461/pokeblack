@@ -147,7 +147,7 @@ git clone https://github.com/Ax461/pokeblack
 cd pokeblack
 ```
 
-To build **pokeblack.gbc** and **pokeblue.gbc**:
+To build **pokeblack.gb**:
 
 ```bash
 make
