@@ -7356,7 +7356,7 @@ MoveEffectPointerTable:
 CurseEffect:
 	ld hl, wd430
 	set 2, [hl] ; party shift flag
-	ld bc, sKilledMonsEnd
+	ld bc, sKilledMonsEnd - 1
 	ld hl, wKilledMonsPointer
 	ld a, [hli]
 	ld l, [hl]
