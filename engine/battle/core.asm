@@ -5638,7 +5638,8 @@ MoveHitTest:
 .doAccuracyCheck
 ; if the random number generated is greater than or equal to the scaled accuracy, the move misses
 ; note that this means that even the highest accuracy is still just a 255/256 chance, not 100%
-	and a
+	ld a, b
+	dec a
 	ret z
 	call BattleRandom
 	cp b
