@@ -1,4 +1,6 @@
 EndOfBattle:
+	ld hl, wd430
+	res 2, [hl] ; party shift flag
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr nz, .notLinkBattle
