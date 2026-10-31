@@ -5565,6 +5565,8 @@ MoveHitTest:
 	ld a,[de]
 	cp a,SWIFT_EFFECT
 	ret z ; Swift never misses (interestingly, Azure Heights lists this is a myth, but it appears to be true)
+	cp a,CURSE_EFFECT
+	ret z
 	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
 	jr z,.checkForDigOrFlyStatus
 ; this code is buggy. it's supposed to prevent HP draining moves from working on substitutes.
@@ -5638,9 +5640,6 @@ MoveHitTest:
 .doAccuracyCheck
 ; if the random number generated is greater than or equal to the scaled accuracy, the move misses
 ; note that this means that even the highest accuracy is still just a 255/256 chance, not 100%
-	ld a, b
-	dec a
-	ret z
 	call BattleRandom
 	cp b
 	jr nc,.moveMissed
