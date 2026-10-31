@@ -653,3 +653,4 @@ MapKTF6:
 	db BRUNOS_ROOM,$1
 MapKTF7:
 	db AGATHAS_ROOM,$1
+	db $FF

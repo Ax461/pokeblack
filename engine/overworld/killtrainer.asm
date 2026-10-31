@@ -141,7 +141,7 @@ LoadTrainers:
 	ld h, [hl]
 	ld l, a
 	push hl
-	ld de, MapKTXX             ; calculate difference between out pointer and the base pointer
+	ld de, MapKTXX             ; calculate difference between our pointer and the base pointer
 	ld a, l
 	sub e
 	jr nc, .noCarry
