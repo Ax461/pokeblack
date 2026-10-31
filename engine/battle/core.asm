@@ -7396,7 +7396,11 @@ CurseEffect:
 	ld e, l
 	add hl, bc
 	pop bc
+	ld a, b
+	or c
+	jr z, .skipShiftingEnemyMons
 	call CopyData
+.skipShiftingEnemyMons
 	ld hl, wEnemyPartyMons
 	ld a, [wEnemyMonPartyPos]
 	add l
